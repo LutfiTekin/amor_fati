@@ -1,6 +1,8 @@
 package tekin.luetfi.amorfati.ui.screens
 
 import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -26,12 +28,20 @@ import tekin.luetfi.amorfati.utils.Deck
 
 @Composable
 fun EmailComposeScreen(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     viewModel: EmailComposerViewModel = hiltViewModel()
 ) {
     var recipientEmail by rememberSaveable { mutableStateOf("") }
     var jsonInput by rememberSaveable { mutableStateOf("") }
-    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
+    var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
+
+    // Prepare the image‑picker launcher
+    val imagePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent(),
+        onResult = { uri: Uri? ->
+            selectedImageUri = uri
+        }
+    )
 
     Scaffold { padding ->
         Column(
@@ -56,7 +66,7 @@ fun EmailComposeScreen(
                             .clickable { /* no-op */ }
                     ) {
                         AsyncImage(
-                            model = card.imageUrl,
+                            card.imageUrl,
                             contentDescription = card.name,
                             modifier = Modifier
                                 .width(80.dp)
@@ -66,8 +76,7 @@ fun EmailComposeScreen(
                         Text(
                             text = card.name,
                             style = MaterialTheme.typography.bodySmall,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                            maxLines = 1
                         )
                     }
                 }
@@ -96,7 +105,6 @@ fun EmailComposeScreen(
                     .weight(1f),
                 label = { Text("Paste JSON here") },
                 placeholder = { Text("{ \"cards\": [...], \"notes\": [...] }") },
-                textStyle = MaterialTheme.typography.bodyMedium,
                 maxLines = 10
             )
 
@@ -107,9 +115,7 @@ fun EmailComposeScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Button(onClick = {
-                    // launch image picker
-                }) {
+                Button(onClick = { imagePickerLauncher.launch("image/*") }) {
                     Text("Select Metaphor Image")
                 }
                 selectedImageUri?.let { uri ->
@@ -127,7 +133,17 @@ fun EmailComposeScreen(
 
             // 5. Submit Button
             Button(
-                onClick = { viewModel.onSubmit(jsonInput, selectedImageUri, recipientEmail) },
+                onClick = {
+                    viewModel.onSubmit(
+                        jsonInput,
+                        selectedImageUri,
+                        recipientEmail){
+                        // Clear the form
+                        recipientEmail = ""
+                        jsonInput = ""
+                        selectedImageUri = null
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),

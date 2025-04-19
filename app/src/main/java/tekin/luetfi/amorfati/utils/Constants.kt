@@ -4,6 +4,7 @@ import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 
 object Defaults{
     val sender = EmailAddress("readingby@lutfitek.in", "Lütfi Tekin")
+    val recipient = EmailAddress("pcoyuncy@gmail.com", "Lütfi Tekin")
 }
 
 const val SEND_GRID_BASE_URL = "https://api.sendgrid.com/"

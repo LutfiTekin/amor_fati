@@ -35,6 +35,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.utils.Deck
+import tekin.luetfi.amorfati.utils.recipient
 import tekin.luetfi.amorfati.utils.selectedCards
 import tekin.luetfi.amorfati.utils.validatedJSON
 
@@ -57,6 +58,7 @@ fun EmailComposeScreen(
 
     LaunchedEffect(jsonInput) {
         selectedCards = jsonInput.selectedCards
+        recipient = jsonInput.recipient
     }
 
     // Prepare the image‑picker launcher

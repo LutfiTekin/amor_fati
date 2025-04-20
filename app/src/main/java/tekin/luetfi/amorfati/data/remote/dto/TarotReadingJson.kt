@@ -8,3 +8,11 @@ data class TarotReadingJson(
     val third_card_url: String,
     val fourth_card_url: String
 )
+
+data class TarotReadingJsonRecipient(
+    private val name: String,
+    private val email: String
+){
+    val toMail: EmailAddress
+        get() = EmailAddress(email, name)
+}

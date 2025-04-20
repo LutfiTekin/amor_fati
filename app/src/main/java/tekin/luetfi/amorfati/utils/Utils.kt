@@ -4,7 +4,9 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.json.JSONException
 import org.json.JSONObject
+import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJson
+import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJsonRecipient
 import tekin.luetfi.amorfati.domain.model.TarotCard
 
 val String.selectedCards: List<TarotCard>
@@ -36,6 +38,27 @@ val String.selectedCards: List<TarotCard>
             }
         }catch (e: Exception){
             Deck.cards
+        }
+    }
+
+val String.recipient: EmailAddress
+    get() {
+        return try {
+            // Build Moshi instance with Kotlin support
+            val moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+
+            // Create adapter for our JSON data class
+            val adapter = moshi.adapter(TarotReadingJsonRecipient::class.java)
+
+            // Parse the JSON string
+            val reading = adapter.fromJson(this)
+                ?: throw IllegalArgumentException("Invalid JSON for Tarot reading")
+
+            reading.toMail
+        }catch (e: Exception){
+            EmailAddress("", null)
         }
     }
 

@@ -28,6 +28,7 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.utils.Deck
 
 
@@ -38,7 +39,9 @@ fun EmailComposeScreen(
     snackbarHostState: SnackbarHostState
 ) {
     val coroutineScope = rememberCoroutineScope()
-    var recipientEmail by rememberSaveable { mutableStateOf("") }
+    var recipient by rememberSaveable {
+        mutableStateOf(EmailAddress(email = "", name = null))
+    }
     var jsonInput by rememberSaveable { mutableStateOf("") }
     var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
     var uploadProgress by remember { mutableStateOf<Int?>(null) }
@@ -112,14 +115,31 @@ fun EmailComposeScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         // 2. Recipient Email Input
-        OutlinedTextField(
-            value = recipientEmail,
-            onValueChange = { recipientEmail = it },
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text("Recipient Email") },
-            placeholder = { Text("you@example.com") },
-            singleLine = true
-        )
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            OutlinedTextField(
+                value = recipient.name.orEmpty(),
+                onValueChange = { newName ->
+                    recipient = recipient.copy(name = newName)
+                },
+                modifier = Modifier.weight(1f),
+                label = { Text("Name") },
+                placeholder = { Text("Jane Doe") },
+                singleLine = true
+            )
+            OutlinedTextField(
+                value = recipient.email,
+                onValueChange = { newEmail ->
+                    recipient = recipient.copy(email = newEmail)
+                },
+                modifier = Modifier.weight(2f),
+                label = { Text("Email Address") },
+                placeholder = { Text("you@example.com") },
+                singleLine = true
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
         // 3. Image Picker
@@ -166,11 +186,11 @@ fun EmailComposeScreen(
                 viewModel.onSubmit(
                     jsonInput,
                     selectedImageUri,
-                    recipientEmail){ progress ->
+                    recipient){ progress ->
                     uploadProgress = progress
                     if (progress == 100){
                         // Clear the form
-                        recipientEmail = ""
+                        recipient = EmailAddress(email = "", name = null)
                         jsonInput = ""
                         selectedImageUri = null
                         coroutineScope.launch {
@@ -184,9 +204,10 @@ fun EmailComposeScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
-            enabled = recipientEmail.isNotBlank()
+            enabled = recipient.email.isNotBlank()
                     && jsonInput.isNotBlank()
                     && selectedImageUri != null
+                    && uploadProgress == null
         ) {
             Text("Submit")
         }

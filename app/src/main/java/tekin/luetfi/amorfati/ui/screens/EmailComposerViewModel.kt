@@ -27,7 +27,7 @@ class EmailComposerViewModel @Inject constructor(
     fun onSubmit(
         jsonInput: String,
         selectedImageUri: Uri?,
-        recipientEmail: String,
+        recipientEmail: EmailAddress,
         progress: (Int?) -> Unit
     ) = viewModelScope.launch {
         try {
@@ -45,7 +45,7 @@ class EmailComposerViewModel @Inject constructor(
                 ?: error("Invalid JSON")
             progress(90)
             //send email
-            useCase(dynamicData, EmailAddress(recipientEmail))
+            useCase(dynamicData, recipientEmail)
             progress(100)
         } catch (e: Exception) {
             println("Error: ${e.message}")

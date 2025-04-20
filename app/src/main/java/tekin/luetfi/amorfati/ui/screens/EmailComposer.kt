@@ -1,7 +1,10 @@
 package tekin.luetfi.amorfati.ui.screens
 
 
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -25,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
@@ -46,6 +50,8 @@ fun EmailComposeScreen(
     viewModel: EmailComposerViewModel = hiltViewModel(),
     snackbarHostState: SnackbarHostState
 ) {
+    val context = LocalContext.current
+    val activity = (context as? Activity)
     var selectedCards by remember { mutableStateOf(Deck.cards) }
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
     val coroutineScope = rememberCoroutineScope()
@@ -59,6 +65,21 @@ fun EmailComposeScreen(
     LaunchedEffect(jsonInput) {
         selectedCards = jsonInput.selectedCards
         recipient = jsonInput.recipient
+    }
+
+    LaunchedEffect(activity?.intent) {
+        activity?.intent
+            ?.takeIf { it.action == Intent.ACTION_SEND }
+            ?.let { intent ->
+                val uri: Uri? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
+                }
+                uri?.let { selectedImageUri = it }
+                activity.intent = Intent() // clear it
+            }
     }
 
     // Prepare the image‑picker launcher

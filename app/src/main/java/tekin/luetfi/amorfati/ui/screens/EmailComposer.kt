@@ -8,9 +8,11 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
@@ -33,6 +35,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
@@ -69,15 +73,14 @@ fun EmailComposeScreen(
 
     LaunchedEffect(jsonInput) {
         recipient = jsonInput.recipient
-        selectedCards = jsonInput.selectedCards
         val displayedCards = jsonInput.selectedCards
         if (displayedCards.size > 4)
             selectedCards = displayedCards
         else if (displayedCards.size == 4){
             selectedCards = listOf()
             displayedCards.forEach {
-                delay(100)
                 selectedCards += it
+                delay(400)
             }
         }
     }
@@ -137,7 +140,7 @@ fun EmailComposeScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(selectedCards) { card ->
                 if (selectedCards.size < 5) {
@@ -149,17 +152,11 @@ fun EmailComposeScreen(
                     }
                     AnimatedVisibility(
                         visible = visible,
-                        enter = fadeIn(tween(300)) +
-                                slideInVertically(
-                                    // start the content below the viewport
-                                    initialOffsetY = { fullHeight -> fullHeight },
-                                    animationSpec = tween(durationMillis = 400)
-                                ),
-                        exit = fadeOut(tween(200)) +
-                                slideOutVertically(
-                                    targetOffsetY = { fullHeight -> fullHeight },
-                                    animationSpec = tween(durationMillis = 200)
-                                )
+                        enter = scaleIn(
+                            // start from 0% size
+                            initialScale = 0f,
+                            animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
+                        ) + fadeIn(tween(200))
                     ) {
                         TarotCardItem(card)
                     }

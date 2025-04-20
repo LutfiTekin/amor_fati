@@ -45,6 +45,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.utils.Deck
@@ -61,6 +62,7 @@ fun EmailComposeScreen(
 ) {
     val context = LocalContext.current
     val activity = (context as? Activity)
+    val intentFlow = remember { snapshotFlow { activity?.intent } }
     var selectedCards by remember { mutableStateOf(Deck.cards) }
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
     val coroutineScope = rememberCoroutineScope()
@@ -85,10 +87,10 @@ fun EmailComposeScreen(
         }
     }
 
-    LaunchedEffect(activity?.intent) {
-        activity?.intent
-            ?.takeIf { it.action == Intent.ACTION_SEND }
-            ?.let { intent ->
+
+    LaunchedEffect(intentFlow, activity?.intent) {
+        intentFlow.collect { intent ->
+            if (intent?.action == Intent.ACTION_SEND) {
                 val uri: Uri? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     intent.getParcelableExtra(Intent.EXTRA_STREAM, Uri::class.java)
                 } else {
@@ -96,8 +98,10 @@ fun EmailComposeScreen(
                     intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
                 }
                 uri?.let { selectedImageUri = it }
-                activity.intent = Intent() // clear it
+                // clear so we don’t re‑handle the same intent
+                activity?.intent = Intent()
             }
+        }
     }
 
     // Prepare the image‑picker launcher

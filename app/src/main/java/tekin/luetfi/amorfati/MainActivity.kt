@@ -1,5 +1,6 @@
 package tekin.luetfi.amorfati
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -45,20 +46,14 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AmorFatiTheme {
-        Greeting("Android")
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        // this updates the Activity.intent property so Compose can observe it
+        setIntent(intent)
     }
 }
+
+
+

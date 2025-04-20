@@ -1,5 +1,6 @@
 package tekin.luetfi.amorfati.ui.screens
 
+
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -8,7 +9,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -20,15 +23,20 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.ClipboardManager
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.json.JSONException
+import org.json.JSONObject
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.selectedCards
+import tekin.luetfi.amorfati.utils.validatedJSON
 
 
 @Composable
@@ -38,6 +46,7 @@ fun EmailComposeScreen(
     snackbarHostState: SnackbarHostState
 ) {
     var selectedCards by remember { mutableStateOf(Deck.cards) }
+    val clipboardManager: ClipboardManager = LocalClipboardManager.current
     val coroutineScope = rememberCoroutineScope()
     var recipient by rememberSaveable {
         mutableStateOf(EmailAddress(email = "", name = null))
@@ -170,14 +179,40 @@ fun EmailComposeScreen(
         // 4. JSON Input
         OutlinedTextField(
             value = jsonInput,
-            onValueChange = { jsonInput = it },
+            onValueChange = { /* no-op */ },
+            readOnly = true,
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f),
-            label = { Text("Paste JSON here") },
-            placeholder = { Text("{ \"cards\": [...], \"notes\": [...] }") },
-            maxLines = 10
+                .weight(1f)
+                .verticalScroll(rememberScrollState()),
+            label = { Text("Reading JSON") },
+            maxLines = Int.MAX_VALUE
         )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        //    Buttons for Paste / Clear
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Button(
+                onClick = {
+                    clipboardManager.getText()?.text?.let { jsonInput = it.validatedJSON }
+                },
+                enabled = true,
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Paste JSON")
+            }
+            Button(
+                onClick = { jsonInput = "" },
+                enabled = jsonInput.isNotBlank(),
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Clear JSON")
+            }
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -215,5 +250,7 @@ fun EmailComposeScreen(
         ) {
             Text("Submit")
         }
+
+
     }
 }

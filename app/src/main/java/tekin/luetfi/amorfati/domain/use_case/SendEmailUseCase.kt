@@ -1,6 +1,5 @@
 package tekin.luetfi.amorfati.domain.use_case
 
-import tekin.luetfi.amorfati.data.remote.dto.Personalization
 import tekin.luetfi.amorfati.domain.repository.MailComposerRepository
 import javax.inject.Inject
 

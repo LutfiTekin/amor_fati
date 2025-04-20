@@ -13,8 +13,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -30,6 +28,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.utils.Deck
+import tekin.luetfi.amorfati.utils.selectedCards
 
 
 @Composable
@@ -38,6 +37,7 @@ fun EmailComposeScreen(
     viewModel: EmailComposerViewModel = hiltViewModel(),
     snackbarHostState: SnackbarHostState
 ) {
+    var selectedCards by remember { mutableStateOf(Deck.cards) }
     val coroutineScope = rememberCoroutineScope()
     var recipient by rememberSaveable {
         mutableStateOf(EmailAddress(email = "", name = null))
@@ -45,6 +45,10 @@ fun EmailComposeScreen(
     var jsonInput by rememberSaveable { mutableStateOf("") }
     var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
     var uploadProgress by remember { mutableStateOf<Int?>(null) }
+
+    LaunchedEffect(jsonInput) {
+        selectedCards = jsonInput.selectedCards
+    }
 
     // Prepare the image‑picker launcher
     val imagePickerLauncher = rememberLauncherForActivityResult(
@@ -88,7 +92,7 @@ fun EmailComposeScreen(
                 .height(100.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(Deck.cards) { card ->
+            items(selectedCards) { card ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier

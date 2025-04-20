@@ -10,9 +10,12 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -24,6 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.utils.Deck
 
 @Composable
@@ -31,9 +37,12 @@ fun EmailComposeScreen(
     modifier: Modifier = Modifier,
     viewModel: EmailComposerViewModel = hiltViewModel()
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
     var recipientEmail by rememberSaveable { mutableStateOf("") }
     var jsonInput by rememberSaveable { mutableStateOf("") }
     var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
+    var uploadProgress by remember { mutableStateOf<Int?>(null) }
 
     // Prepare the image‑picker launcher
     val imagePickerLauncher = rememberLauncherForActivityResult(
@@ -43,7 +52,10 @@ fun EmailComposeScreen(
         }
     )
 
-    Scaffold { padding ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { padding ->
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -51,6 +63,18 @@ fun EmailComposeScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
+
+            // 0. Progress bar
+            uploadProgress?.let { progress ->
+                LinearProgressIndicator(
+                    progress = { progress / 100f },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(4.dp),
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+
             // 1. Card Bar
             LazyRow(
                 modifier = Modifier
@@ -95,22 +119,7 @@ fun EmailComposeScreen(
             )
 
             Spacer(modifier = Modifier.height(16.dp))
-
-            // 3. JSON Input
-            OutlinedTextField(
-                value = jsonInput,
-                onValueChange = { jsonInput = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
-                label = { Text("Paste JSON here") },
-                placeholder = { Text("{ \"cards\": [...], \"notes\": [...] }") },
-                maxLines = 10
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // 4. Image Picker
+            // 3. Image Picker
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -131,17 +140,42 @@ fun EmailComposeScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // 4. JSON Input
+            OutlinedTextField(
+                value = jsonInput,
+                onValueChange = { jsonInput = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+                label = { Text("Paste JSON here") },
+                placeholder = { Text("{ \"cards\": [...], \"notes\": [...] }") },
+                maxLines = 10
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+
+
+
             // 5. Submit Button
             Button(
                 onClick = {
                     viewModel.onSubmit(
                         jsonInput,
                         selectedImageUri,
-                        recipientEmail){
-                        // Clear the form
-                        recipientEmail = ""
-                        jsonInput = ""
-                        selectedImageUri = null
+                        recipientEmail){ progress ->
+                        uploadProgress = progress
+                        if (progress == 100){
+                            // Clear the form
+                            recipientEmail = ""
+                            jsonInput = ""
+                            selectedImageUri = null
+                            coroutineScope.launch {
+                                delay(2000)
+                                uploadProgress = null
+                                snackbarHostState.showSnackbar("Email sent successfully!")
+                            }
+                        }
                     }
                 },
                 modifier = Modifier

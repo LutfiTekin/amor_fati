@@ -11,7 +11,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import tekin.luetfi.amorfati.data.remote.dto.Personalization
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
@@ -22,14 +21,17 @@ import javax.inject.Inject
 class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailUseCase): ViewModel() {
 
 
-    fun onSubmit(jsonInput: String, selectedImageUri: Uri?, recipientEmail: String, onSuccess: () -> Unit) = viewModelScope.launch {
+    fun onSubmit(jsonInput: String, selectedImageUri: Uri?, recipientEmail: String, progress: (Int) -> Unit) = viewModelScope.launch {
         try {
+            progress(1)
             //Add card images to json
             var rawJson = Deck.cards.fold(jsonInput) { acc, card ->
                 acc.replace(card.code, card.imageUrl)
             }
+            progress(30)
             //add metaphor image to json
             val imageUrl =  uploadMetaphorImage(selectedImageUri ?: error("No image selected"))
+            progress(60)
             rawJson = rawJson.replace(METAPHOR_IMAGE_KEY, imageUrl)
             //create dynamic template data
             val moshi = Builder()
@@ -40,14 +42,14 @@ class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailU
                 Map::class.java, String::class.java, Any::class.java
             )
             val mapAdapter = moshi.adapter<Map<String, Any>>(mapType)
-
+            progress(80)
             // parse your raw JSON into a Map
             val dynamicData: Map<String, Any> = mapAdapter.fromJson(rawJson)
                 ?: error("Invalid JSON")
-
+            progress(90)
             //send email
             useCase(dynamicData, recipientEmail)
-            onSuccess()
+            progress(100)
         }catch (e: Exception){
             println("Error: ${e.message}")
             e.printStackTrace()

@@ -6,12 +6,11 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.Moshi.*
 import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
@@ -19,10 +18,18 @@ import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
-class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailUseCase, private val moshi: Moshi): ViewModel() {
+class EmailComposerViewModel @Inject constructor(
+    private val useCase: SendEmailUseCase,
+    private val moshi: Moshi
+) : ViewModel() {
 
 
-    fun onSubmit(jsonInput: String, selectedImageUri: Uri?, recipientEmail: String, progress: (Int?) -> Unit) = viewModelScope.launch {
+    fun onSubmit(
+        jsonInput: String,
+        selectedImageUri: Uri?,
+        recipientEmail: String,
+        progress: (Int?) -> Unit
+    ) = viewModelScope.launch {
         try {
             progress(-1)
             val rawJson = processCardInfo(jsonInput, selectedImageUri)
@@ -33,15 +40,14 @@ class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailU
                 Map::class.java, String::class.java, Any::class.java
             )
             val mapAdapter = moshi.adapter<Map<String, Any>>(mapType)
-            progress(80)
             // parse your raw JSON into a Map
             val dynamicData: Map<String, Any> = mapAdapter.fromJson(rawJson)
                 ?: error("Invalid JSON")
             progress(90)
             //send email
-            useCase(dynamicData, recipientEmail)
+            useCase(dynamicData, EmailAddress(recipientEmail))
             progress(100)
-        }catch (e: Exception){
+        } catch (e: Exception) {
             println("Error: ${e.message}")
             e.printStackTrace()
             progress(null)
@@ -55,7 +61,7 @@ class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailU
             acc.replace(card.code, card.imageUrl)
         }
         //add metaphor image to json
-        val imageUrl =  uploadMetaphorImage(selectedImageUri ?: error("No image selected"))
+        val imageUrl = uploadMetaphorImage(selectedImageUri ?: error("No image selected"))
         rawJson = rawJson.replace(METAPHOR_IMAGE_KEY, imageUrl)
         return rawJson
     }
@@ -76,7 +82,6 @@ class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailU
         // Once uploaded, retrieve the download URL
         return ref.downloadUrl.await().toString()
     }
-
 
 
 }

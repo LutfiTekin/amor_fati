@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.squareup.moshi.Moshi
 import com.squareup.moshi.Moshi.*
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -18,25 +19,15 @@ import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
-class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailUseCase): ViewModel() {
+class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailUseCase, private val moshi: Moshi): ViewModel() {
 
 
-    fun onSubmit(jsonInput: String, selectedImageUri: Uri?, recipientEmail: String, progress: (Int) -> Unit) = viewModelScope.launch {
+    fun onSubmit(jsonInput: String, selectedImageUri: Uri?, recipientEmail: String, progress: (Int?) -> Unit) = viewModelScope.launch {
         try {
-            progress(1)
-            //Add card images to json
-            var rawJson = Deck.cards.fold(jsonInput) { acc, card ->
-                acc.replace(card.code, card.imageUrl)
-            }
-            progress(30)
-            //add metaphor image to json
-            val imageUrl =  uploadMetaphorImage(selectedImageUri ?: error("No image selected"))
+            progress(-1)
+            val rawJson = processCardInfo(jsonInput, selectedImageUri)
             progress(60)
-            rawJson = rawJson.replace(METAPHOR_IMAGE_KEY, imageUrl)
             //create dynamic template data
-            val moshi = Builder()
-                .add(KotlinJsonAdapterFactory())
-                .build()
             // create a JsonAdapter for Map<String,Any>
             val mapType = Types.newParameterizedType(
                 Map::class.java, String::class.java, Any::class.java
@@ -53,8 +44,20 @@ class EmailComposerViewModel @Inject constructor(private val useCase: SendEmailU
         }catch (e: Exception){
             println("Error: ${e.message}")
             e.printStackTrace()
+            progress(null)
         }
 
+    }
+
+    private suspend fun processCardInfo(jsonInput: String, selectedImageUri: Uri?): String {
+        //Add card images to json
+        var rawJson = Deck.cards.fold(jsonInput) { acc, card ->
+            acc.replace(card.code, card.imageUrl)
+        }
+        //add metaphor image to json
+        val imageUrl =  uploadMetaphorImage(selectedImageUri ?: error("No image selected"))
+        rawJson = rawJson.replace(METAPHOR_IMAGE_KEY, imageUrl)
+        return rawJson
     }
 
     /**

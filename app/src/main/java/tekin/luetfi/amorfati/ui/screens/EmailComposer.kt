@@ -7,6 +7,13 @@ import android.net.Uri
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -35,8 +42,6 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.json.JSONException
-import org.json.JSONObject
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.recipient
@@ -63,8 +68,18 @@ fun EmailComposeScreen(
     var uploadProgress by remember { mutableStateOf<Int?>(null) }
 
     LaunchedEffect(jsonInput) {
-        selectedCards = jsonInput.selectedCards
         recipient = jsonInput.recipient
+        selectedCards = jsonInput.selectedCards
+        val displayedCards = jsonInput.selectedCards
+        if (displayedCards.size > 4)
+            selectedCards = displayedCards
+        else if (displayedCards.size == 4){
+            selectedCards = listOf()
+            displayedCards.forEach {
+                delay(100)
+                selectedCards += it
+            }
+        }
     }
 
     LaunchedEffect(activity?.intent) {
@@ -125,26 +140,30 @@ fun EmailComposeScreen(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(selectedCards) { card ->
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .width(80.dp)
-                        .clickable { /* no-op */ }
-                ) {
-                    AsyncImage(
-                        card.imageUrl,
-                        contentDescription = card.name,
-                        modifier = Modifier
-                            .width(80.dp)
-                            .height(140.dp)
-                            .clip(RoundedCornerShape(12.dp))
-                    )
-                    Text(
-                        text = card.name,
-                        style = MaterialTheme.typography.bodySmall,
-                        maxLines = 1
-                    )
-                }
+                if (selectedCards.size < 5) {
+                    // each item owns its own visibility flag
+                    var visible by remember { mutableStateOf(false) }
+                    LaunchedEffect(card) {
+                        // flip to true on first composition
+                        visible = true
+                    }
+                    AnimatedVisibility(
+                        visible = visible,
+                        enter = fadeIn(tween(300)) +
+                                slideInVertically(
+                                    // start the content below the viewport
+                                    initialOffsetY = { fullHeight -> fullHeight },
+                                    animationSpec = tween(durationMillis = 400)
+                                ),
+                        exit = fadeOut(tween(200)) +
+                                slideOutVertically(
+                                    targetOffsetY = { fullHeight -> fullHeight },
+                                    animationSpec = tween(durationMillis = 200)
+                                )
+                    ) {
+                        TarotCardItem(card)
+                    }
+                } else TarotCardItem(card)
             }
         }
 

@@ -1,8 +1,24 @@
 package tekin.luetfi.amorfati.domain.model
 
+import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
+
+/**
+ * Represents a Tarot card with its name, image URL, and a unique code.
+ *
+ * This data class is used to store the essential information about a single
+ * Tarot card, making it easy to manage and use in applications that deal with
+ * Tarot readings or card collections.
+ *
+ * @property name The name of the Tarot card (e.g., "The Fool", "The Magician").
+ * @property code A unique code or identifier for the Tarot card.
+ */
 data class TarotCard(
     val name: String,
-    val imageUrl: String,
     val code: String
-)
+){
+    val imageUrl: String
+        get() {
+            return IMAGE_HOST_DIR + code.lowercase() + ".png"
+        }
+}
 

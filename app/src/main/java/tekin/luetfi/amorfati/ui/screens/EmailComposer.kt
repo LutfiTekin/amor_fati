@@ -11,13 +11,8 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -26,7 +21,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -35,23 +29,24 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
+import tekin.luetfi.amorfati.domain.model.ReadingProgress
+import tekin.luetfi.amorfati.domain.model.compileLogMessage
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.recipient
 import tekin.luetfi.amorfati.utils.selectedCards
 import tekin.luetfi.amorfati.utils.validatedJSON
+import androidx.compose.runtime.*
+import tekin.luetfi.amorfati.domain.model.addNewProgress
+import kotlin.collections.LinkedHashSet
 
 
 @Composable
@@ -71,7 +66,10 @@ fun EmailComposeScreen(
     }
     var jsonInput by rememberSaveable { mutableStateOf("") }
     var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
-    var uploadProgress by remember { mutableStateOf<Int?>(null) }
+    var progress by remember { mutableStateOf<ReadingProgress?>(null) }
+    var progressList by remember { mutableStateOf<List<ReadingProgress>>(listOf()) }
+    val progressLog by remember { derivedStateOf { progressList.compileLogMessage() } }
+
 
     LaunchedEffect(jsonInput) {
         recipient = jsonInput.recipient
@@ -120,16 +118,16 @@ fun EmailComposeScreen(
     ) {
 
         // 0. Progress bar
-        uploadProgress?.let { progress ->
-            if (progress == -1){
+        progress?.progress?.let { rp ->
+            if (rp == -1){
                 LinearProgressIndicator(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(4.dp),
                 )
-            }else{
+            }else if(rp < 100){
                 LinearProgressIndicator(
-                    progress = { progress / 100f },
+                    progress = { rp / 100f },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(4.dp),
@@ -219,18 +217,32 @@ fun EmailComposeScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 4. JSON Input
-        OutlinedTextField(
-            value = jsonInput,
-            onValueChange = { /* no-op */ },
-            readOnly = true,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-                .verticalScroll(rememberScrollState()),
-            label = { Text("Reading JSON") },
-            maxLines = Int.MAX_VALUE
-        )
+        // 4. JSON Input or Progress Log
+        if (progressList.isNotEmpty() && progress != null) {
+            OutlinedTextField(
+                value = progressLog.orEmpty(),
+                onValueChange = { /* no-op */ },
+                readOnly = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState()),
+                label = { Text("Progress Log") },
+                maxLines = Int.MAX_VALUE
+            )
+        } else {
+            OutlinedTextField(
+                value = jsonInput,
+                onValueChange = { /* no-op */ },
+                readOnly = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState()),
+                label = { Text("Reading JSON") },
+                maxLines = Int.MAX_VALUE
+            )
+        }
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -241,6 +253,7 @@ fun EmailComposeScreen(
         ) {
             Button(
                 onClick = {
+                    progress = null
                     clipboardManager.getText()?.text?.let { jsonInput = it.validatedJSON }
                 },
                 enabled = true,
@@ -268,16 +281,17 @@ fun EmailComposeScreen(
                 viewModel.onSubmit(
                     jsonInput,
                     selectedImageUri,
-                    recipient){ progress ->
-                    uploadProgress = progress
-                    if (progress == 100){
+                    recipient){
+                    progress = it
+                    progressList = progressList.addNewProgress(it)
+                    if (progress?.progress == 100){
                         // Clear the form
                         recipient = EmailAddress(email = "", name = null)
                         jsonInput = ""
                         selectedImageUri = null
                         coroutineScope.launch {
                             delay(2000)
-                            uploadProgress = null
+                            //progress = null
                             snackbarHostState.showSnackbar("Email sent successfully!")
                         }
                     }
@@ -289,7 +303,7 @@ fun EmailComposeScreen(
             enabled = recipient.email.isNotBlank()
                     && jsonInput.isNotBlank()
                     && selectedImageUri != null
-                    && uploadProgress == null
+                    && progress == null
         ) {
             Text("Submit")
         }

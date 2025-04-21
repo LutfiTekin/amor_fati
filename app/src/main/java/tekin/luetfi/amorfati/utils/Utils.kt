@@ -101,5 +101,5 @@ fun formattedTarotDateTime(epochMillis: Long = System.currentTimeMillis()): Stri
     val hour   = zdt.format(DateTimeFormatter.ofPattern("HH"))      // 24‑hour, zero‑padded
     val minute = zdt.format(DateTimeFormatter.ofPattern("mm"))      // zero‑padded minute
 
-    return "${day}${day.ordinalSuffix()} of $month $year $hour:$minute"
+    return "${day}${day.ordinalSuffix()} of $month $year, $hour:$minute"
 }

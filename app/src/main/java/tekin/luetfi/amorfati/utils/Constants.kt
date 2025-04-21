@@ -15,3 +15,8 @@ const val IMAGE_HOST_DIR = "https://lutfitek.in/assets/"
 
 const val METAPHOR_IMAGE_KEY = "METAPHOR_IMAGE"
 const val READING_TIME_KEY = "READING_TIME"
+
+/**
+ * Don't send emails while testing other components
+ */
+const val EMAIL_ENABLED = true

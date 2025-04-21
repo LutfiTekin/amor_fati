@@ -254,6 +254,7 @@ fun EmailComposeScreen(
             Button(
                 onClick = {
                     progress = null
+                    progressList = listOf()
                     clipboardManager.getText()?.text?.let { jsonInput = it.validatedJSON }
                 },
                 enabled = true,

@@ -75,8 +75,8 @@ class EmailComposerViewModel @Inject constructor(
 
     private suspend fun processCardInfo(jsonInput: String, selectedImageUri: Uri?, uploadProgress: (Int?) -> Unit): String {
         //Add card images to json
-        var rawJson = Deck.cards.fold(jsonInput) { acc, card ->
-            acc.replace(card.code, card.imageUrl)
+        var rawJson: String = Deck.cards.fold(jsonInput.replace("&","and")) { acc, card ->
+            acc.replace("\"" + card.code + "\"", "\"" + card.imageUrl + "\"")
         }
         //add metaphor image to json
         val imageUrl = uploadMetaphorImage(selectedImageUri ?: error("No image selected")){

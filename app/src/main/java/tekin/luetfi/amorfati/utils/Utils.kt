@@ -1,9 +1,9 @@
 package tekin.luetfi.amorfati.utils
 
-import android.content.Intent
-import android.os.Build.VERSION.SDK_INT
-import android.os.Bundle
-import android.os.Parcelable
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.json.JSONException
@@ -75,3 +75,31 @@ val String.validatedJSON: String
             "Invalid JSON try again..."
         }
     }
+
+
+/** Returns the English ordinal suffix for a day (1→st, 2→nd, 3→rd, 4→th, … 11–13→th, etc.) */
+private fun Int.ordinalSuffix(): String = when {
+    this in 11..13 -> "th"
+    this % 10 == 1 -> "st"
+    this % 10 == 2 -> "nd"
+    this % 10 == 3 -> "rd"
+    else           -> "th"
+}
+
+/**
+ * Formats an epochMillis into a string like "21st of April 2025 11:11"
+ */
+fun formattedTarotDateTime(epochMillis: Long = System.currentTimeMillis()): String {
+
+    val zone: ZoneId = ZoneId.systemDefault()
+    val zdt: ZonedDateTime = Instant.ofEpochMilli(epochMillis).atZone(zone)
+
+
+    val day    = zdt.dayOfMonth
+    val month  = zdt.format(DateTimeFormatter.ofPattern("MMMM"))    // full month name
+    val year   = zdt.year
+    val hour   = zdt.format(DateTimeFormatter.ofPattern("HH"))      // 24‑hour, zero‑padded
+    val minute = zdt.format(DateTimeFormatter.ofPattern("mm"))      // zero‑padded minute
+
+    return "${day}${day.ordinalSuffix()} of $month $year $hour:$minute"
+}

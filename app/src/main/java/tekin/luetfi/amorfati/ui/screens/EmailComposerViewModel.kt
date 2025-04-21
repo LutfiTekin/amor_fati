@@ -14,6 +14,8 @@ import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
+import tekin.luetfi.amorfati.utils.READING_TIME_KEY
+import tekin.luetfi.amorfati.utils.formattedTarotDateTime
 import java.util.UUID
 import javax.inject.Inject
 
@@ -63,6 +65,8 @@ class EmailComposerViewModel @Inject constructor(
         //add metaphor image to json
         val imageUrl = uploadMetaphorImage(selectedImageUri ?: error("No image selected"))
         rawJson = rawJson.replace(METAPHOR_IMAGE_KEY, imageUrl)
+        //add time to json
+        rawJson = rawJson.replace(READING_TIME_KEY, formattedTarotDateTime())
         return rawJson
     }
 

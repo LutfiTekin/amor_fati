@@ -2,6 +2,7 @@ package tekin.luetfi.amorfati.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
 
 /**
@@ -23,5 +24,11 @@ data class TarotCard(
         get() {
             return IMAGE_HOST_DIR + code.lowercase() + ".png"
         }
+
+    val cardLore: CardLore?
+        get() {
+            return Defaults.mainLore.find { it.code == code }
+        }
+
 }
 

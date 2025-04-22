@@ -14,6 +14,7 @@ import kotlinx.coroutines.tasks.await
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.domain.model.ReadingProgress
 import tekin.luetfi.amorfati.domain.model.withMessage
+import tekin.luetfi.amorfati.domain.use_case.GetLoreUseCase
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
@@ -22,14 +23,30 @@ import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
 import tekin.luetfi.amorfati.utils.READING_TIME_KEY
 import tekin.luetfi.amorfati.utils.formattedTarotDateTime
 import tekin.luetfi.amorfati.utils.metaphorImageName
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
 class EmailComposerViewModel @Inject constructor(
-    private val useCase: SendEmailUseCase,
+    private val sendEmailUseCase: SendEmailUseCase,
+    private val loreUseCase: GetLoreUseCase,
     private val moshi: Moshi
 ) : ViewModel() {
+
+    init {
+        // Fetch and populate your global lore list as soon as VM is created
+        viewModelScope.launch {
+            try {
+                val lore = loreUseCase()
+                Defaults.mainLore.apply {
+                    clear()
+                    addAll(lore.cards)
+                }
+            } catch (e: Exception) {
+                // You might log this or expose an error state
+                e.printStackTrace()
+            }
+        }
+    }
 
 
     fun onSubmit(
@@ -62,7 +79,7 @@ class EmailComposerViewModel @Inject constructor(
             delay(400)
             //send email
             if (EMAIL_ENABLED)
-                useCase(dynamicData, recipientEmail)
+                sendEmailUseCase(dynamicData, recipientEmail)
             progress(-1 withMessage "Email Sent to ${recipientEmail.name} - ${recipientEmail.email}")
             progress(-1 withMessage formattedTarotDateTime())
             delay(500)

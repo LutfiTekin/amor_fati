@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import tekin.luetfi.amorfati.domain.model.TarotCard
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardBottomSheet(
@@ -17,16 +18,12 @@ fun CardBottomSheet(
 ) {
     ModalBottomSheet(onDismissRequest = onDismiss) {
         Column(
-            Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = card.name,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            // 1) Card image
             AsyncImage(
                 model = card.imageUrl,
                 contentDescription = card.name,
@@ -36,6 +33,51 @@ fun CardBottomSheet(
                     .padding(bottom = 24.dp)
             )
 
+            // 2) Lore sections (only if present)
+            card.cardLore?.let { lore ->
+                // Effects
+                if (lore.effects.isNotEmpty()) {
+                    Text(
+                        text = "Effects",
+                        style = MaterialTheme.typography.titleSmall,
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(bottom = 8.dp)
+                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 8.dp, bottom = 16.dp)
+                    ) {
+                        lore.effects.forEach { effect ->
+                            Text(
+                                text = "• $effect",
+                                style = MaterialTheme.typography.bodyMedium,
+                                modifier = Modifier.padding(vertical = 2.dp)
+                            )
+                        }
+                    }
+                }
+
+                // Story
+                if (lore.story.isNotBlank()) {
+                    Text(
+                        text = "Story",
+                        style = MaterialTheme.typography.titleSmall,
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = lore.story,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp)
+                    )
+                }
+            }
         }
     }
 }
+

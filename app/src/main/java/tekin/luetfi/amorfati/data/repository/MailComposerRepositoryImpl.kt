@@ -15,10 +15,7 @@ class MailComposerRepositoryImpl @Inject constructor(private val api: SendGridAp
         val envelope: Map<String, Any> = mapOf(
             "personalizations" to listOf(
                 mapOf(
-                    "to" to listOf(
-                        recipientEmail.mapped,
-                        Defaults.cc.mapped
-                    ),
+                    "to" to recipientEmail.receivers,
                     "dynamic_template_data" to dynamicData
                 )
             ),

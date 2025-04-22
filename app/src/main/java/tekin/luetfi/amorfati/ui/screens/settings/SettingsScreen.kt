@@ -14,8 +14,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import tekin.luetfi.amorfati.utils.Defaults
+
 
 @Composable
 fun SettingsScreen(modifier: Modifier = Modifier, onDone: () -> Unit) {
@@ -53,6 +55,20 @@ fun SettingsScreen(modifier: Modifier = Modifier, onDone: () -> Unit) {
             )
         }
 
+        //Toggle sending CC
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Send CC")
+            Switch(
+                checked = Defaults.shouldSendCC,
+                onCheckedChange = { Defaults.shouldSendCC = it },
+                enabled = Defaults.sendEmail
+            )
+        }
+
         Spacer(Modifier.weight(1f))
 
         Button(
@@ -62,4 +78,10 @@ fun SettingsScreen(modifier: Modifier = Modifier, onDone: () -> Unit) {
             Text("Done")
         }
     }
+}
+
+@Preview
+@Composable
+fun SettingsScreenPreview() {
+    SettingsScreen(onDone = {})
 }

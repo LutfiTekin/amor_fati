@@ -9,6 +9,7 @@ import tekin.luetfi.amorfati.domain.model.CardLore
 object Defaults{
     var useTestBucket by mutableStateOf(false)
     var sendEmail     by mutableStateOf(true)
+    var shouldSendCC by mutableStateOf(true)
     val sender = EmailAddress("readingby@lutfitek.in", "Lütfi Tekin")
     val cc = EmailAddress("cc@lutfitek.in", "Lütfi Tekin")
     val storageBucketPath = if (useTestBucket) "metaphors" else "testuploads/metaphors"

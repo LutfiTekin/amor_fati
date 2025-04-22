@@ -11,7 +11,9 @@ import org.json.JSONObject
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJson
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJsonRecipient
+import tekin.luetfi.amorfati.data.remote.dto.TarotReadingMetaphorJson
 import tekin.luetfi.amorfati.domain.model.TarotCard
+import java.util.UUID
 
 val String.selectedCards: List<TarotCard>
     get() {
@@ -63,6 +65,27 @@ val String.recipient: EmailAddress
             reading.toMail
         }catch (e: Exception){
             EmailAddress("", null)
+        }
+    }
+
+val String.metaphorImageName: String
+    get() {
+        return try {
+            // Build Moshi instance with Kotlin support
+            val moshi = Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+
+            // Create adapter for our JSON data class
+            val adapter = moshi.adapter(TarotReadingMetaphorJson::class.java)
+
+            // Parse the JSON string
+            val oneliner = adapter.fromJson(this)
+                ?: throw IllegalArgumentException("Invalid JSON for Tarot reading")
+
+            oneliner.toString()
+        }catch (e: Exception){
+            UUID.randomUUID().toString()
         }
     }
 

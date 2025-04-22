@@ -5,8 +5,10 @@ import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 object Defaults{
     val sender = EmailAddress("readingby@lutfitek.in", "Lütfi Tekin")
     val cc = EmailAddress("cc@lutfitek.in", "Lütfi Tekin")
+    val storageBucketPath = if (PROD_READY) "metaphors" else "testuploads/metaphors"
 }
 
+const val PROD_READY = false
 const val SEND_GRID_BASE_URL = "https://api.sendgrid.com/"
 const val DEFAULT_TIMEOUT = "default_timeout"
 const val TEMPLATE_ID = "d-7690a1effdad4c6295cfe1d4c343987f"
@@ -19,4 +21,4 @@ const val READING_TIME_KEY = "READING_TIME"
 /**
  * Don't send emails while testing other components
  */
-const val EMAIL_ENABLED = true
+const val EMAIL_ENABLED = PROD_READY

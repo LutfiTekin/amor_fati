@@ -16,10 +16,12 @@ import tekin.luetfi.amorfati.domain.model.ReadingProgress
 import tekin.luetfi.amorfati.domain.model.withMessage
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase
 import tekin.luetfi.amorfati.utils.Deck
+import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.EMAIL_ENABLED
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
 import tekin.luetfi.amorfati.utils.READING_TIME_KEY
 import tekin.luetfi.amorfati.utils.formattedTarotDateTime
+import tekin.luetfi.amorfati.utils.metaphorImageName
 import java.util.UUID
 import javax.inject.Inject
 
@@ -79,7 +81,7 @@ class EmailComposerViewModel @Inject constructor(
             acc.replace("\"" + card.code + "\"", "\"" + card.imageUrl + "\"")
         }
         //add metaphor image to json
-        val imageUrl = uploadMetaphorImage(selectedImageUri ?: error("No image selected")){
+        val imageUrl = uploadMetaphorImage(jsonInput, selectedImageUri ?: error("No image selected")){
             uploadProgress(it)
         }
         rawJson = rawJson.replace(METAPHOR_IMAGE_KEY, imageUrl)
@@ -92,10 +94,10 @@ class EmailComposerViewModel @Inject constructor(
      * Uploads the given image URI to Firebase Storage
      * and returns its public download URL.
      */
-    private suspend fun uploadMetaphorImage(imageUri: Uri, uploadProgress: (Int?) -> Unit): String {
+    private suspend fun uploadMetaphorImage(jsonInput: String, imageUri: Uri, uploadProgress: (Int?) -> Unit): String {
         val storage = Firebase.storage
         // Create a random filename
-        val path = "metaphors/${UUID.randomUUID()}.jpg"
+        val path = "${Defaults.storageBucketPath}/${jsonInput.metaphorImageName}.jpg"
         val ref = storage.reference.child(path)
 
         // Upload the file to Firebase

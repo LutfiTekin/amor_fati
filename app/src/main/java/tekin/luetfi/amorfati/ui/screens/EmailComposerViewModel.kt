@@ -18,7 +18,6 @@ import tekin.luetfi.amorfati.domain.use_case.GetLoreUseCase
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
-import tekin.luetfi.amorfati.utils.EMAIL_ENABLED
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
 import tekin.luetfi.amorfati.utils.READING_TIME_KEY
 import tekin.luetfi.amorfati.utils.formattedTarotDateTime
@@ -58,6 +57,9 @@ class EmailComposerViewModel @Inject constructor(
         try {
             progress(-1 withMessage "Processing Json...")
             progress(-1 withMessage "Replacing Card Placeholders")
+            if (Defaults.useTestBucket)
+                progress(-1 withMessage "Using Test Bucket")
+            delay(400)
             val rawJson = processCardInfo(jsonInput, selectedImageUri){
                 progress(ReadingProgress(-1, it, "Uploading Image"))
             }
@@ -78,10 +80,11 @@ class EmailComposerViewModel @Inject constructor(
             progress(90 withMessage "Sending Email")
             delay(400)
             //send email
-            if (EMAIL_ENABLED)
+            if (Defaults.sendEmail) {
                 sendEmailUseCase(dynamicData, recipientEmail)
-            progress(-1 withMessage "Email Sent to ${recipientEmail.name} - ${recipientEmail.email}")
-            progress(-1 withMessage formattedTarotDateTime())
+                progress(-1 withMessage "Email Sent to ${recipientEmail.name} - ${recipientEmail.email}")
+                progress(-1 withMessage formattedTarotDateTime())
+            } else progress(-1 withMessage "Test Mode: Email Send Disabled")
             delay(500)
             progress(100 withMessage "Session Ended Gracefully")
         } catch (e: Exception) {

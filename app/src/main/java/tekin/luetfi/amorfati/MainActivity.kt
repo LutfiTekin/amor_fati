@@ -7,18 +7,26 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import tekin.luetfi.amorfati.ui.screens.EmailComposeScreen
+import tekin.luetfi.amorfati.ui.screens.SettingsScreen
 import tekin.luetfi.amorfati.ui.theme.AmorFatiTheme
 
 @AndroidEntryPoint
@@ -29,19 +37,36 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AmorFatiTheme {
+                // session‑only flag
+                var showSettings by remember { mutableStateOf(false) }
                 val snackbarHostState = remember { SnackbarHostState() }
                 Scaffold(modifier = Modifier.fillMaxSize(),
                     topBar = {
                         TopAppBar(
-                            title = { Text("Compose Email") },
+                            title = { Text(if (showSettings) "Settings" else "Compose Email") },
+                            actions = {
+                                IconButton(onClick = { showSettings = !showSettings }) {
+                                    Icon(
+                                        imageVector = Icons.Default.Settings,
+                                        contentDescription = "Settings"
+                                    )
+                                }
+                            }
                         )
                     },
                     snackbarHost = { SnackbarHost(snackbarHostState) }
                 ) { innerPadding ->
-                    EmailComposeScreen(
-                        modifier = Modifier.padding(innerPadding).fillMaxSize(),
-                        snackbarHostState = snackbarHostState
-                    )
+                    if (showSettings) {
+                        SettingsScreen(
+                            modifier = Modifier.padding(innerPadding).fillMaxSize(),
+                            onDone = { showSettings = false })
+                    } else {
+                        EmailComposeScreen(
+                            modifier = Modifier.padding(innerPadding).fillMaxSize(),
+                            snackbarHostState = snackbarHostState
+                        )
+                    }
+
                 }
             }
         }

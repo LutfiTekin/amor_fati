@@ -1,16 +1,20 @@
 package tekin.luetfi.amorfati.utils
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.domain.model.CardLore
 
 object Defaults{
+    var useTestBucket by mutableStateOf(false)
+    var sendEmail     by mutableStateOf(true)
     val sender = EmailAddress("readingby@lutfitek.in", "Lütfi Tekin")
     val cc = EmailAddress("cc@lutfitek.in", "Lütfi Tekin")
-    val storageBucketPath = if (PROD_READY) "metaphors" else "testuploads/metaphors"
+    val storageBucketPath = if (useTestBucket) "metaphors" else "testuploads/metaphors"
     val mainLore = mutableListOf<CardLore>()
 }
 
-const val PROD_READY = false
 const val SEND_GRID_BASE_URL = "https://api.sendgrid.com/"
 const val LORE_API_BASE_URL = "https://lutfitek.in/"
 const val DEFAULT_TIMEOUT = "default_timeout"
@@ -21,7 +25,3 @@ const val IMAGE_HOST_DIR = "https://lutfitek.in/assets/"
 const val METAPHOR_IMAGE_KEY = "METAPHOR_IMAGE"
 const val READING_TIME_KEY = "READING_TIME"
 
-/**
- * Don't send emails while testing other components
- */
-const val EMAIL_ENABLED = PROD_READY

@@ -1,4 +1,4 @@
-package tekin.luetfi.amorfati.ui.screens
+package tekin.luetfi.amorfati.ui.screens.email
 
 
 import android.app.Activity
@@ -25,7 +25,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -46,10 +45,8 @@ import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.recipient
 import tekin.luetfi.amorfati.utils.selectedCards
 import tekin.luetfi.amorfati.utils.validatedJSON
-import androidx.compose.runtime.*
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.domain.model.addNewProgress
-import kotlin.collections.LinkedHashSet
 
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,4 +1,4 @@
-package tekin.luetfi.amorfati.ui.screens
+package tekin.luetfi.amorfati.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

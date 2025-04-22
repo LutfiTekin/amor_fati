@@ -17,16 +17,14 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
-import tekin.luetfi.amorfati.ui.screens.EmailComposeScreen
-import tekin.luetfi.amorfati.ui.screens.SettingsScreen
+import tekin.luetfi.amorfati.ui.screens.email.EmailComposeScreen
+import tekin.luetfi.amorfati.ui.screens.settings.SettingsScreen
 import tekin.luetfi.amorfati.ui.theme.AmorFatiTheme
 
 @AndroidEntryPoint

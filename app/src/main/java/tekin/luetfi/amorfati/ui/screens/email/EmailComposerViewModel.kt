@@ -1,4 +1,4 @@
-package tekin.luetfi.amorfati.ui.screens
+package tekin.luetfi.amorfati.ui.screens.email
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package tekin.luetfi.amorfati.ui.screens
+package tekin.luetfi.amorfati.ui.screens.email
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

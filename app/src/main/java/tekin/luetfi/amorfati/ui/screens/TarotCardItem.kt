@@ -16,12 +16,12 @@ import coil.compose.AsyncImage
 import tekin.luetfi.amorfati.domain.model.TarotCard
 
 @Composable
-fun TarotCardItem(card: TarotCard){
+fun TarotCardItem(card: TarotCard, cardSelected: (TarotCard) -> Unit = {}){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .width(80.dp)
-            .clickable { /* no-op */ }
+            .clickable { cardSelected(card) }
     ) {
         AsyncImage(
             card.imageUrl,

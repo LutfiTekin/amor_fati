@@ -1,5 +1,7 @@
 package tekin.luetfi.amorfati.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
 
 /**
@@ -12,10 +14,11 @@ import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
  * @property name The name of the Tarot card (e.g., "The Fool", "The Magician").
  * @property code A unique code or identifier for the Tarot card.
  */
+@Parcelize
 data class TarotCard(
     val name: String,
     val code: String
-){
+) : Parcelable {
     val imageUrl: String
         get() {
             return IMAGE_HOST_DIR + code.lowercase() + ".png"

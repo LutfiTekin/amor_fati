@@ -20,10 +20,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -45,10 +47,12 @@ import tekin.luetfi.amorfati.utils.recipient
 import tekin.luetfi.amorfati.utils.selectedCards
 import tekin.luetfi.amorfati.utils.validatedJSON
 import androidx.compose.runtime.*
+import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.domain.model.addNewProgress
 import kotlin.collections.LinkedHashSet
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmailComposeScreen(
     modifier: Modifier = Modifier,
@@ -66,10 +70,29 @@ fun EmailComposeScreen(
     }
     var jsonInput by rememberSaveable { mutableStateOf("") }
     var selectedImageUri by rememberSaveable { mutableStateOf<Uri?>(null) }
+
+    /**
+     * Track general progress
+     */
     var progress by remember { mutableStateOf<ReadingProgress?>(null) }
     var progressList by remember { mutableStateOf<List<ReadingProgress>>(listOf()) }
     val progressLog by remember { derivedStateOf { progressList.compileLogMessage() } }
 
+    /**
+     * Bottom sheet for card preview
+     */
+    var selectedCard by remember { mutableStateOf<TarotCard?>(null) }
+    var sheetOpen   by remember { mutableStateOf(false) }
+
+
+    if (sheetOpen) {
+        selectedCard?.let { card ->
+            CardBottomSheet(
+                card = card,
+                onDismiss = { sheetOpen = false }
+            )
+        }
+    }
 
     LaunchedEffect(jsonInput) {
         recipient = jsonInput.recipient
@@ -160,9 +183,15 @@ fun EmailComposeScreen(
                             animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing)
                         ) + fadeIn(tween(200))
                     ) {
-                        TarotCardItem(card)
+                        TarotCardItem(card, cardSelected = {
+                            selectedCard = it
+                            sheetOpen = true
+                        })
                     }
-                } else TarotCardItem(card)
+                } else TarotCardItem(card, cardSelected = {
+                    selectedCard = it
+                    sheetOpen = true
+                })
             }
         }
 
@@ -312,3 +341,4 @@ fun EmailComposeScreen(
 
     }
 }
+

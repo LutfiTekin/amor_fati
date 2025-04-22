@@ -4,7 +4,6 @@ import tekin.luetfi.amorfati.data.remote.SendGridApi
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.domain.repository.MailComposerRepository
 import tekin.luetfi.amorfati.utils.Defaults
-import tekin.luetfi.amorfati.utils.TEMPLATE_ID
 import javax.inject.Inject
 
 class MailComposerRepositoryImpl @Inject constructor(private val api: SendGridApi) :
@@ -20,7 +19,7 @@ class MailComposerRepositoryImpl @Inject constructor(private val api: SendGridAp
                 )
             ),
             "from" to Defaults.sender.mapped,
-            "template_id" to TEMPLATE_ID
+            "template_id" to Defaults.selectedTemplate.id,
         )
 
         val response = api.sendMail(envelope)

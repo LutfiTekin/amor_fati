@@ -43,7 +43,7 @@ val String.selectedCards: List<TarotCard>
                 Deck.cards.firstOrNull { it.code == code }
             }
         }catch (e: Exception){
-            Deck.cards.shuffled()
+            (Deck.cards + Deck.locationCards).shuffled()
         }
     }
 

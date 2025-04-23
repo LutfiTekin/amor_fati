@@ -59,7 +59,7 @@ fun EmailComposeScreen(
     val context = LocalContext.current
     val activity = (context as? Activity)
     val intentFlow = remember { snapshotFlow { activity?.intent } }
-    var selectedCards by remember { mutableStateOf(Deck.cards) }
+    var selectedCards by remember { mutableStateOf(Deck.cards + Deck.locationCards) }
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
     val coroutineScope = rememberCoroutineScope()
     var recipient by rememberSaveable {

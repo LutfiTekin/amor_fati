@@ -47,6 +47,55 @@ object Deck {
         TarotCard(name = "Wench Of Whiskey", code = "WENCH_OF_WHISKEY")
     )
 
+    val locationCards = listOf(
+        TarotCard(name = "Tehran", code = "TEHRAN"),
+        TarotCard(name = "Hong Kong", code = "HONG_KONG"),
+        TarotCard(name = "Baghdad", code = "BAGHDAD"),
+        TarotCard(name = "Hanoi", code = "HANOI"),
+        TarotCard(name = "Seattle", code = "SEATTLE"),
+        TarotCard(name = "New York", code = "NEW_YORK"),
+        TarotCard(name = "Athens", code = "ATHENS"),
+        TarotCard(name = "Bangkok", code = "BANGKOK"),
+        TarotCard(name = "Helsinki", code = "HELSINKI"),
+        TarotCard(name = "Bielefeld", code = "BIELEFELD"),
+        TarotCard(name = "Berlin", code = "BERLIN"),
+        TarotCard(name = "Prague", code = "PRAGUE"),
+        TarotCard(name = "Stockholm", code = "STOCKHOLM"),
+        TarotCard(name = "Moscow", code = "MOSCOW"),
+        TarotCard(name = "Rome", code = "ROME"),
+        TarotCard(name = "Brazil", code = "BRAZIL"),
+        TarotCard(name = "Barcelona", code = "BARCELONA"),
+        TarotCard(name = "Nairobi", code = "NAIROBI"),
+        TarotCard(name = "Edinburgh", code = "EDINBURGH"),
+        TarotCard(name = "Zermatt", code = "ZERMATT"),
+        TarotCard(name = "Johannesburg", code = "JOHANNESBURG"),
+        TarotCard(name = "Las Vegas", code = "LAS_VEGAS"),
+        TarotCard(name = "Erfurt", code = "ERFURT"),
+        TarotCard(name = "Leipzig", code = "LEIPZIG"),
+        TarotCard(name = "Antalya", code = "ANTALYA"),
+        TarotCard(name = "Amsterdam", code = "AMSTERDAM"),
+        TarotCard(name = "Boston", code = "BOSTON"),
+        TarotCard(name = "Florence", code = "FLORENCE"),
+        TarotCard(name = "Busan", code = "BUSAN"),
+        TarotCard(name = "Tokyo", code = "TOKYO"),
+        TarotCard(name = "Tbilisi", code = "TBILISI"),
+        TarotCard(name = "Bruges", code = "BRUGES"),
+        TarotCard(name = "Vienna", code = "VIENNA"),
+        TarotCard(name = "San Francisco", code = "SAN_FRANCISCO"),
+        TarotCard(name = "Dublin", code = "DUBLIN"),
+        TarotCard(name = "Copenhagen", code = "COPENHAGEN"),
+        TarotCard(name = "Madrid", code = "MADRID"),
+        TarotCard(name = "Dubai", code = "DUBAI"),
+        TarotCard(name = "Versailles", code = "VERSAILLES"),
+        TarotCard(name = "Istanbul", code = "ISTANBUL"),
+        TarotCard(name = "Sheffield", code = "SHEFFIELD"),
+        TarotCard(name = "Dresden", code = "DRESDEN"),
+        TarotCard(name = "Jerusalem", code = "JERUSALEM"),
+        TarotCard(name = "Mumbai", code = "MUMBAI"),
+        TarotCard(name = "Venice", code = "VENICE")
+    )
+
+
 
 
 }

@@ -22,7 +22,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import dagger.hilt.android.AndroidEntryPoint
+import tekin.luetfi.amorfati.ui.screens.TabletMainScreen
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposeScreen
 import tekin.luetfi.amorfati.ui.screens.settings.SettingsScreen
 import tekin.luetfi.amorfati.ui.theme.AmorFatiTheme
@@ -35,48 +37,41 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AmorFatiTheme {
-                // session‑only flag
-                var showSettings by remember { mutableStateOf(false) }
                 val snackbarHostState = remember { SnackbarHostState() }
-                Scaffold(modifier = Modifier.fillMaxSize(),
+                val configuration = LocalConfiguration.current
+                val isTablet = configuration.screenWidthDp >= 600
+
+                var showSettings by remember { mutableStateOf(false) }
+                Scaffold(
                     topBar = {
                         TopAppBar(
                             title = { Text(if (showSettings) "Settings" else "Compose Email") },
                             actions = {
                                 IconButton(onClick = { showSettings = !showSettings }) {
-                                    Icon(
-                                        imageVector = Icons.Default.Settings,
-                                        contentDescription = "Settings"
-                                    )
+                                    Icon(Icons.Default.Settings, null)
                                 }
                             }
                         )
                     },
                     snackbarHost = { SnackbarHost(snackbarHostState) }
-                ) { innerPadding ->
+                ) { inner ->
                     if (showSettings) {
                         SettingsScreen(
-                            modifier = Modifier.padding(innerPadding).fillMaxSize(),
-                            onDone = { showSettings = false })
-                    } else {
-                        EmailComposeScreen(
-                            modifier = Modifier.padding(innerPadding).fillMaxSize(),
-                            snackbarHostState = snackbarHostState
+                            modifier = Modifier.padding(inner).fillMaxSize(),
+                            onDone = { showSettings = false }
                         )
+                    } else {
+                        if (isTablet){
+                            TabletMainScreen(modifier = Modifier.padding(inner).fillMaxSize(), snackbarHostState)
+                        }else {
+                            EmailComposeScreen(
+                                modifier = Modifier.padding(inner).fillMaxSize(),
+                                snackbarHostState = snackbarHostState
+                            )
+                        }
                     }
-
                 }
             }
         }
     }
-
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        // this updates the Activity.intent property so Compose can observe it
-        setIntent(intent)
-    }
 }
-
-
-

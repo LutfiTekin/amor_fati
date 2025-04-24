@@ -40,12 +40,14 @@ class MainActivity : ComponentActivity() {
                 val snackbarHostState = remember { SnackbarHostState() }
                 val configuration = LocalConfiguration.current
                 val isTablet = configuration.screenWidthDp >= 600
-
                 var showSettings by remember { mutableStateOf(false) }
+                val title = if (showSettings) "Settings" else {
+                    if (isTablet) "Amor Fati" else "Compose Email"
+                }
                 Scaffold(
                     topBar = {
                         TopAppBar(
-                            title = { Text(if (showSettings) "Settings" else "Compose Email") },
+                            title = { Text(title) },
                             actions = {
                                 IconButton(onClick = { showSettings = !showSettings }) {
                                     Icon(Icons.Default.Settings, null)

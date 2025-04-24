@@ -26,6 +26,7 @@ fun FlippableCard(
     modifier: Modifier = Modifier,
     card: TarotCard,
     size: Dp = 200.dp,
+    onTapped: (card: TarotCard?) -> Unit = {},
     startFlipped: Boolean = false,
     singleFlipDuration: Int = 400,
     spinDurationMillis: Int = 4000
@@ -76,6 +77,7 @@ fun FlippableCard(
                 interactionSource = remember { MutableInteractionSource() },
                 indication        = null,
                 onClick           = {
+                    onTapped(if (showBack.not()) null else card)
                     if (!isSpinning) rotationCount++
                 },
                 onLongClick       = {

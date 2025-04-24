@@ -1,82 +1,117 @@
 package tekin.luetfi.amorfati.ui.screens.email
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
+
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.utils.DEFAULT_BACK_IMAGE
+import kotlinx.coroutines.coroutineScope
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FlippableCard(
     card: TarotCard,
     size: Dp = 200.dp,
-    animationDuration: Int = 400
+    singleFlipDuration: Int = 400,
+    spinDurationMillis: Int = 4000
 ) {
-    // How many half-turns we've done
     var rotationCount by remember { mutableStateOf(0) }
+    var isSpinning by remember { mutableStateOf(false) }
 
-    // Target rotation = 180° × count => 0°, 180°, 360°, 540°, ...
-    val targetRotation = rotationCount * 180f
-
-    // Animate toward that target
-    val animatedRotation: Float by animateFloatAsState(
-        targetValue = targetRotation,
-        animationSpec = tween(durationMillis = animationDuration)
+    // 1) single‐tap flips one half turn
+    val targetFlip = rotationCount * 180f
+    val animatedFlip by animateFloatAsState(
+        targetValue = targetFlip,
+        animationSpec = tween(singleFlipDuration)
     )
 
-    // a painter for placeholder / error
-    val placeholderPainter = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
+    // 2) continuous spin when long-pressed
+    val infinite = rememberInfiniteTransition()
+    val animatedSpin by infinite.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            tween(spinDurationMillis, easing = LinearEasing),
+            RepeatMode.Restart
+        )
+    )
 
-    // Determine whether we're showing the front or back:
-    // front when near 0° or 360°, back when near 180°
-    val normalized = (animatedRotation % 360f + 360f) % 360f
-    val showBack = normalized > 90f && normalized < 270f
+    // choose which animation to apply
+    val cardRotationY = if (isSpinning) animatedSpin else animatedFlip
 
-    // Larger camera distance so the 3D effect is visible
+    // decide front/back
+    val normalized = (cardRotationY % 360f + 360f) % 360f
+    val showBack = normalized in 90f..270f
+
+    // placeholder painter
+    val placeholder = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
+
+    // a bit of camera distance
     val cameraDist = 8f * LocalDensity.current.density
 
-    // No ripple
-    val interactionSource = remember { MutableInteractionSource() }
-
     Box(
-        Modifier
+        modifier = Modifier
             .size(size)
             .graphicsLayer {
-                rotationY = animatedRotation
+                this.rotationY = cardRotationY
                 cameraDistance = cameraDist
             }
-            .clickable(
-                interactionSource = interactionSource,
-                indication = null
-            ) {
-                // always spin forward
-                rotationCount++
+            // combinedClickable gives us onClick + onLongClick
+            .combinedClickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = {
+                    if (!isSpinning) {
+                        rotationCount++
+                    }
+                },
+                onLongClick = {
+                    isSpinning = true
+                }
+            )
+            // watch for the finger lift so we can stop spin & reset
+            .pointerInput(isSpinning) {
+                if (isSpinning) {
+                    // run a single gesture scope
+                    coroutineScope {
+                        // wait for first down, then wait until it's up
+                        awaitPointerEventScope {
+                            val down = awaitFirstDown()
+                            do {
+                                val event = awaitPointerEvent()
+                            } while (event.changes.any { it.pressed })
+                            // finger lifted
+                            isSpinning = false
+                            rotationCount = 0
+                        }
+                    }
+                }
             }
     ) {
         if (!showBack) {
-            // Front face
             AsyncImage(
                 model = card.imageUrl,
                 contentDescription = "${card.name} front",
                 modifier = Modifier.matchParentSize()
             )
         } else {
-            // Back face (add an extra 180° so it's not mirrored)
             AsyncImage(
                 model = card.backsideImageUrl,
-                placeholder = placeholderPainter,
-                error = placeholderPainter,
+                placeholder = placeholder,
+                error = placeholder,
                 contentDescription = "${card.name} back",
                 modifier = Modifier
                     .matchParentSize()

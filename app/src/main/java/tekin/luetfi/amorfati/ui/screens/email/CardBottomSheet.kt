@@ -28,8 +28,7 @@ fun CardBottomSheet(
             // 1) Card image
             FlippableCard(
                 card = card,
-                size = 300.dp,
-                animationDuration = 400
+                size = 300.dp
             )
             if (card.name.isNotBlank() && Deck.locationCards.contains(card)) {
                 Text(

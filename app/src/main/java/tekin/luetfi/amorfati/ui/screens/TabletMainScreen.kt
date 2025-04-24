@@ -60,6 +60,8 @@ fun TabletMainScreen(
         }
     }
 
+    val flippable by remember { derivedStateOf { selectedChip != 0 } }
+
     val (columns, cardSize) = if (selectedChip == 1) {
         // F8: 4 columns, bigger cards
         4 to 250.dp
@@ -118,6 +120,7 @@ fun TabletMainScreen(
                         modifier = Modifier.padding(4.dp),
                         card = card,
                         size = cardSize,
+                        flippable = flippable,
                         startFlipped = flipped,
                         onTapped = {
                             selectedCard = it

@@ -23,6 +23,7 @@ import kotlinx.coroutines.coroutineScope
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FlippableCard(
+    modifier: Modifier = Modifier,
     card: TarotCard,
     size: Dp = 200.dp,
     singleFlipDuration: Int = 400,
@@ -63,7 +64,7 @@ fun FlippableCard(
     val cameraDist = 8f * LocalDensity.current.density
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(size)
             .graphicsLayer {
                 this.rotationY = cardRotationY

@@ -1,6 +1,5 @@
 package tekin.luetfi.amorfati
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -64,7 +63,7 @@ class MainActivity : ComponentActivity() {
                         )
                     } else {
                         if (isTablet){
-                            TabletMainScreen(modifier = Modifier.padding(inner).fillMaxSize(), snackbarHostState)
+                            TabletMainScreen(modifier = Modifier.padding(inner).fillMaxSize())
                         }else {
                             EmailComposeScreen(
                                 modifier = Modifier.padding(inner).fillMaxSize(),

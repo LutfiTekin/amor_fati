@@ -14,7 +14,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -27,10 +26,8 @@ import coil.request.ImageRequest
 import coil.request.SuccessResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.selects.select
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.ui.screens.email.CardInfo
-import tekin.luetfi.amorfati.ui.screens.email.EmailComposeScreen
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposerViewModel
 import tekin.luetfi.amorfati.ui.screens.email.FlippableCard
 import tekin.luetfi.amorfati.utils.Deck
@@ -38,7 +35,6 @@ import tekin.luetfi.amorfati.utils.Deck
 @Composable
 fun TabletMainScreen(
     modifier: Modifier = Modifier,
-    snackbarHostState: SnackbarHostState,
     viewModel: EmailComposerViewModel = hiltViewModel()
 ) {
     val scope = rememberCoroutineScope()
@@ -68,7 +64,6 @@ fun TabletMainScreen(
     } else if(selectedChip == 2){
         8 to 120.dp
     } else {
-        // Default: 5 columns, smaller cards
         5 to 200.dp
     }
 
@@ -207,9 +202,6 @@ fun TabletMainScreen(
                     }
                 }
             }
-
-
-
 
         }
     }

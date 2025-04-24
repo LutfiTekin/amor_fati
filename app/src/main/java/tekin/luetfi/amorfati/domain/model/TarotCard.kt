@@ -1,9 +1,12 @@
 package tekin.luetfi.amorfati.domain.model
 
 import android.os.Parcelable
+import androidx.compose.ui.text.toLowerCase
 import kotlinx.parcelize.Parcelize
+import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
+import java.util.Locale
 
 /**
  * Represents a Tarot card with its name, image URL, and a unique code.
@@ -32,6 +35,10 @@ data class TarotCard(
 
     val backsideImageUrl: String
         get() {
+            if (Deck.locationCards.any { it.code == code })
+                return IMAGE_HOST_DIR + code.lowercase() + "_back.png"
+            if (Deck.f8Cards.any { it.code == code })
+                return IMAGE_HOST_DIR + "f8_back.png"
             return IMAGE_HOST_DIR + "back.png"
         }
 

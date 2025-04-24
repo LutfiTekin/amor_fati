@@ -26,76 +26,72 @@ fun FlippableCard(
     modifier: Modifier = Modifier,
     card: TarotCard,
     size: Dp = 200.dp,
+    startFlipped: Boolean = false,
     singleFlipDuration: Int = 400,
     spinDurationMillis: Int = 4000
 ) {
-    var rotationCount by remember { mutableStateOf(0) }
-    var isSpinning by remember { mutableStateOf(false) }
+    // if startFlipped==true we initialize one half-turn (180°)
+    var rotationCount by remember { mutableStateOf(if (startFlipped) 1 else 0) }
+    var isSpinning    by remember { mutableStateOf(false) }
 
     // 1) single‐tap flips one half turn
     val targetFlip = rotationCount * 180f
     val animatedFlip by animateFloatAsState(
-        targetValue = targetFlip,
+        targetValue   = targetFlip,
         animationSpec = tween(singleFlipDuration)
     )
 
     // 2) continuous spin when long-pressed
-    val infinite = rememberInfiniteTransition()
+    val infinite   = rememberInfiniteTransition()
     val animatedSpin by infinite.animateFloat(
-        initialValue = 0f,
-        targetValue = 360f,
-        animationSpec = infiniteRepeatable(
-            tween(spinDurationMillis, easing = LinearEasing),
-            RepeatMode.Restart
+        initialValue   = 0f,
+        targetValue    = 360f,
+        animationSpec  = infiniteRepeatable(
+            animation = tween(spinDurationMillis, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
         )
     )
 
-    // choose which animation to apply
+    // choose which rotation to apply
     val cardRotationY = if (isSpinning) animatedSpin else animatedFlip
 
     // decide front/back
     val normalized = (cardRotationY % 360f + 360f) % 360f
-    val showBack = normalized in 90f..270f
+    val showBack   = normalized in 90f..270f
 
     // placeholder painter
     val placeholder = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
 
-    // a bit of camera distance
+    // camera distance for 3D effect
     val cameraDist = 8f * LocalDensity.current.density
 
     Box(
         modifier = modifier
             .size(size)
             .graphicsLayer {
-                this.rotationY = cardRotationY
+                rotationY     = cardRotationY
                 cameraDistance = cameraDist
             }
-            // combinedClickable gives us onClick + onLongClick
             .combinedClickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = null,
-                onClick = {
-                    if (!isSpinning) {
-                        rotationCount++
-                    }
+                indication        = null,
+                onClick           = {
+                    if (!isSpinning) rotationCount++
                 },
-                onLongClick = {
+                onLongClick       = {
                     isSpinning = true
                 }
             )
-            // watch for the finger lift so we can stop spin & reset
             .pointerInput(isSpinning) {
                 if (isSpinning) {
-                    // run a single gesture scope
                     coroutineScope {
-                        // wait for first down, then wait until it's up
                         awaitPointerEventScope {
-                            val down = awaitFirstDown()
+                            awaitFirstDown()
                             do {
                                 val event = awaitPointerEvent()
                             } while (event.changes.any { it.pressed })
-                            // finger lifted
-                            isSpinning = false
+                            // on release stop spinning and reset to front
+                            isSpinning   = false
                             rotationCount = 0
                         }
                     }
@@ -104,17 +100,17 @@ fun FlippableCard(
     ) {
         if (!showBack) {
             AsyncImage(
-                model = card.imageUrl,
+                model              = card.imageUrl,
                 contentDescription = "${card.name} front",
-                modifier = Modifier.matchParentSize()
+                modifier           = Modifier.matchParentSize()
             )
         } else {
             AsyncImage(
-                model = card.backsideImageUrl,
-                placeholder = placeholder,
-                error = placeholder,
+                model              = card.backsideImageUrl,
+                placeholder        = placeholder,
+                error              = placeholder,
                 contentDescription = "${card.name} back",
-                modifier = Modifier
+                modifier           = Modifier
                     .matchParentSize()
                     .graphicsLayer { rotationY = 180f }
             )

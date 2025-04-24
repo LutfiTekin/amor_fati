@@ -19,81 +19,82 @@ import coil.compose.rememberAsyncImagePainter
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.utils.DEFAULT_BACK_IMAGE
 import kotlinx.coroutines.coroutineScope
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FlippableCard(
     modifier: Modifier = Modifier,
     card: TarotCard,
     size: Dp = 200.dp,
-    onTapped: (card: TarotCard?) -> Unit = {},
+    flippable: Boolean = true,
     startFlipped: Boolean = false,
     singleFlipDuration: Int = 400,
-    spinDurationMillis: Int = 4000
+    spinDurationMillis: Int = 4000,
+    onTapped: (TarotCard?) -> Unit = {}
 ) {
-    // if startFlipped==true we initialize one half-turn (180°)
-    var rotationCount by remember { mutableStateOf(if (startFlipped) 1 else 0) }
+    // Initialize rotationCount to 1 if we want to start flipped AND flipping is enabled
+    var rotationCount by remember { mutableStateOf(if (flippable && startFlipped) 1 else 0) }
     var isSpinning    by remember { mutableStateOf(false) }
 
-    // 1) single‐tap flips one half turn
-    val targetFlip = rotationCount * 180f
+    // 1) single‐tap flip animation
     val animatedFlip by animateFloatAsState(
-        targetValue   = targetFlip,
+        targetValue   = if (flippable) rotationCount * 180f else 0f,
         animationSpec = tween(singleFlipDuration)
     )
 
-    // 2) continuous spin when long-pressed
-    val infinite   = rememberInfiniteTransition()
+    // 2) continuous spin when long‐pressed (only if flippable)
+    val infinite    = rememberInfiniteTransition()
     val animatedSpin by infinite.animateFloat(
         initialValue   = 0f,
         targetValue    = 360f,
         animationSpec  = infiniteRepeatable(
-            animation = tween(spinDurationMillis, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
+            tween(spinDurationMillis, easing = LinearEasing),
+            RepeatMode.Restart
         )
     )
 
     // choose which rotation to apply
-    val cardRotationY = if (isSpinning) animatedSpin else animatedFlip
+    val cardRotationY = if (isSpinning && flippable) animatedSpin else animatedFlip
 
-    // decide front/back
+    // determine if back is showing
     val normalized = (cardRotationY % 360f + 360f) % 360f
-    val showBack   = normalized in 90f..270f
+    val showBack   = flippable && normalized in 90f..270f
 
-    // placeholder painter
     val placeholder = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
-
-    // camera distance for 3D effect
-    val cameraDist = 8f * LocalDensity.current.density
+    val cameraDist  = 8f * LocalDensity.current.density
 
     Box(
         modifier = modifier
             .size(size)
             .graphicsLayer {
-                rotationY     = cardRotationY
+                rotationY      = cardRotationY
                 cameraDistance = cameraDist
             }
             .combinedClickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication        = null,
-                onClick           = {
-                    onTapped(if (showBack.not()) null else card)
-                    if (!isSpinning) rotationCount++
+                onClick = {
+                    // only invoke callback when front is showing
+                    onTapped(if (!showBack) card else null)
+                    // only flip if allowed
+                    if (flippable && !isSpinning) {
+                        rotationCount++
+                    }
                 },
-                onLongClick       = {
-                    isSpinning = true
+                onLongClick = {
+                    if (flippable) isSpinning = true
                 }
             )
-            .pointerInput(isSpinning) {
-                if (isSpinning) {
+            .pointerInput(isSpinning, flippable) {
+                // only handle spin release if flippable
+                if (isSpinning && flippable) {
                     coroutineScope {
                         awaitPointerEventScope {
                             awaitFirstDown()
                             do {
                                 val event = awaitPointerEvent()
                             } while (event.changes.any { it.pressed })
-                            // on release stop spinning and reset to front
-                            isSpinning   = false
+                            // on release: stop spinning & reset to front
+                            isSpinning    = false
                             rotationCount = 0
                         }
                     }

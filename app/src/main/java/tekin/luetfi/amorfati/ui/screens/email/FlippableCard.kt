@@ -73,8 +73,13 @@ fun FlippableCard(
                 interactionSource = remember { MutableInteractionSource() },
                 indication        = null,
                 onClick = {
-                    // only invoke callback when front is showing
-                    onTapped(if (!showBack) card else null)
+                    if (flippable){
+                        // only invoke callback when front is showing
+                        onTapped(if (showBack) card else null)
+                    }else {
+                        onTapped(card)
+                    }
+
                     // only flip if allowed
                     if (flippable && !isSpinning) {
                         rotationCount++

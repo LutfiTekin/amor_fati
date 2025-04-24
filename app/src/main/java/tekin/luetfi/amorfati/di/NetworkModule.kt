@@ -1,10 +1,13 @@
 package tekin.luetfi.amorfati.di
 
+import android.content.Context
+import coil.ImageLoader
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -56,4 +59,15 @@ object NetworkModule {
         .client(okHttpClient)
         .addConverterFactory(moshiConverter).build()
 
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object CoilModule {
+    @Provides
+    @Singleton
+    fun provideImageLoader(@ApplicationContext context: Context): ImageLoader =
+        ImageLoader.Builder(context)
+            // you can tweak memory/disk cache sizes here if you like
+            .build()
 }

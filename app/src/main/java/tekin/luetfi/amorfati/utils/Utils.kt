@@ -127,3 +127,17 @@ fun formattedTarotDateTime(epochMillis: Long = System.currentTimeMillis()): Stri
 
     return "${day}${day.ordinalSuffix()} of $month $year, $hour:$minute"
 }
+
+
+val imagesToPreload: List<String>
+    get() {
+        val imageUrls = Deck.fullDeck.map { it.imageUrl }.toMutableList()
+        imageUrls.addAll(
+            listOf(
+                Deck.cards.first().backsideImageUrl,
+                Deck.f8Cards.first().backsideImageUrl
+            )
+        )
+        imageUrls.addAll(Deck.locationCards.map { it.backsideImageUrl })
+        return imageUrls.toList()
+    }

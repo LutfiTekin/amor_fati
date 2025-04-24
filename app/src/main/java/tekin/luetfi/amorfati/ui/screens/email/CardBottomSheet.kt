@@ -26,13 +26,10 @@ fun CardBottomSheet(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // 1) Card image
-            AsyncImage(
-                model = card.imageUrl,
-                contentDescription = card.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .padding(bottom = 24.dp)
+            FlippableCard(
+                card = card,
+                size = 300.dp,
+                animationDuration = 400
             )
             if (card.name.isNotBlank() && Deck.locationCards.contains(card)) {
                 Text(

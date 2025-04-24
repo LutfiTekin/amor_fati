@@ -1,13 +1,18 @@
 package tekin.luetfi.amorfati.ui.screens.email
 
+import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil.ImageLoader
+import coil.request.ImageRequest
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -21,6 +26,7 @@ import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
 import tekin.luetfi.amorfati.utils.READING_TIME_KEY
 import tekin.luetfi.amorfati.utils.formattedTarotDateTime
+import tekin.luetfi.amorfati.utils.imagesToPreload
 import tekin.luetfi.amorfati.utils.metaphorImageName
 import javax.inject.Inject
 
@@ -28,7 +34,9 @@ import javax.inject.Inject
 class EmailComposerViewModel @Inject constructor(
     private val sendEmailUseCase: SendEmailUseCase,
     private val loreUseCase: GetLoreUseCase,
-    private val moshi: Moshi
+    private val moshi: Moshi,
+    private val imageLoader: ImageLoader,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     init {
@@ -45,6 +53,7 @@ class EmailComposerViewModel @Inject constructor(
                 e.printStackTrace()
             }
         }
+        preloadAllCardImages()
     }
 
 
@@ -133,6 +142,20 @@ class EmailComposerViewModel @Inject constructor(
 
         // Once uploaded, retrieve the download URL
         return ref.downloadUrl.await().toString()
+    }
+
+    private fun preloadAllCardImages() {
+        viewModelScope.launch(Dispatchers.IO) {
+            // Use your precomputed list
+            imagesToPreload.forEach { url ->
+                println("Preloading $url")
+                val request = ImageRequest.Builder(context)
+                    .data(url)
+                    .allowHardware(false)
+                    .build()
+                imageLoader.enqueue(request)
+            }
+        }
     }
 
 

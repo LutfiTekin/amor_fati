@@ -92,7 +92,8 @@ object Deck {
         TarotCard(name = "Dresden", code = "DRESDEN"),
         TarotCard(name = "Jerusalem", code = "JERUSALEM"),
         TarotCard(name = "Mumbai", code = "MUMBAI"),
-        TarotCard(name = "Venice", code = "VENICE")
+        TarotCard(name = "Venice", code = "VENICE"),
+        TarotCard(name = "London", code = "LONDON"),
     )
 
 

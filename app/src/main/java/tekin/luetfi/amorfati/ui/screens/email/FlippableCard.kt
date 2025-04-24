@@ -1,23 +1,21 @@
 package tekin.luetfi.amorfati.ui.screens.email
-
-import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import tekin.luetfi.amorfati.domain.model.TarotCard
+import tekin.luetfi.amorfati.utils.DEFAULT_BACK_IMAGE
 
 @Composable
 fun FlippableCard(
@@ -25,46 +23,64 @@ fun FlippableCard(
     size: Dp = 200.dp,
     animationDuration: Int = 400
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
+    // How many half-turns we've done
+    var rotationCount by remember { mutableStateOf(0) }
 
-    var flipped by remember { mutableStateOf(false) }
+    // Target rotation = 180° × count => 0°, 180°, 360°, 540°, ...
+    val targetRotation = rotationCount * 180f
 
-    // Animate between 0f and 180f
-    val rotationY: Float by animateFloatAsState(
-        targetValue = if (flipped) 180f else 0f,
-        animationSpec = TweenSpec(durationMillis = animationDuration)
+    // Animate toward that target
+    val animatedRotation: Float by animateFloatAsState(
+        targetValue = targetRotation,
+        animationSpec = tween(durationMillis = animationDuration)
     )
 
-    // Increase camera distance so the 3D effect is visible
-    val cameraDistance = 8f * LocalDensity.current.density
+    // a painter for placeholder / error
+    val placeholderPainter = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
+
+    // Determine whether we're showing the front or back:
+    // front when near 0° or 360°, back when near 180°
+    val normalized = (animatedRotation % 360f + 360f) % 360f
+    val showBack = normalized > 90f && normalized < 270f
+
+    // Larger camera distance so the 3D effect is visible
+    val cameraDist = 8f * LocalDensity.current.density
+
+    // No ripple
+    val interactionSource = remember { MutableInteractionSource() }
 
     Box(
         Modifier
             .size(size)
             .graphicsLayer {
-                this.rotationY = rotationY
-                this.cameraDistance = cameraDistance
+                rotationY = animatedRotation
+                cameraDistance = cameraDist
             }
             .clickable(
                 interactionSource = interactionSource,
                 indication = null
-            ) { flipped = !flipped }
+            ) {
+                // always spin forward
+                rotationCount++
+            }
     ) {
-        if (rotationY <= 90f) {
-            // FRONT
+        if (!showBack) {
+            // Front face
             AsyncImage(
                 model = card.imageUrl,
                 contentDescription = "${card.name} front",
                 modifier = Modifier.matchParentSize()
             )
         } else {
-            // BACK: rotate a further 180° so it reads correctly
+            // Back face (add an extra 180° so it's not mirrored)
             AsyncImage(
                 model = card.backsideImageUrl,
+                placeholder = placeholderPainter,
+                error = placeholderPainter,
                 contentDescription = "${card.name} back",
                 modifier = Modifier
                     .matchParentSize()
-                    .graphicsLayer(rotationY = 180f)
+                    .graphicsLayer { rotationY = 180f }
             )
         }
     }

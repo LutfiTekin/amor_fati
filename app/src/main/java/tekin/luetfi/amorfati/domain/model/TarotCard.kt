@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
-import java.util.Locale
 
 /**
  * Represents a Tarot card with its name, image URL, and a unique code.

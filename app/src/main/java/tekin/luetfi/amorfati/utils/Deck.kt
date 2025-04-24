@@ -24,7 +24,7 @@ object Deck {
         TarotCard(name = "Nine Of Hounds", code = "NINE_OF_HOUNDS"),
         TarotCard(name = "Nomad Of Tracks", code = "NOMAD_OF_TRACKS"),
         TarotCard(name = "Queen Of Whatever", code = "QUEEN_OF_WHATEVER"),
-        TarotCard(name = "Queens Of The Tea", code = "QUEENS_OF_THE_TEA"),
+        TarotCard(name = "Sisters of the Seven Tea", code = "SISTERS_OF_THE_SEVEN_TEA"),
         TarotCard(name = "Round Trip Knight", code = "ROUND_TRIP_KNIGHT"),
         TarotCard(name = "Sentinel Of The Twin Towers", code = "SENTINEL_OF_THE_TWIN_TOWERS"),
         TarotCard(name = "Silent Judge", code = "SILENT_JUDGE"),

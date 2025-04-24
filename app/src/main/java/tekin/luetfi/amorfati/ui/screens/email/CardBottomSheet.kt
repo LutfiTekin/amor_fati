@@ -5,9 +5,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import tekin.luetfi.amorfati.domain.model.TarotCard
+import tekin.luetfi.amorfati.utils.Deck
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,6 +34,13 @@ fun CardBottomSheet(
                     .height(300.dp)
                     .padding(bottom = 24.dp)
             )
+            if (card.name.isNotBlank() && Deck.locationCards.contains(card)) {
+                Text(
+                    text = card.name,
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
 
             // 2) Lore sections (only if present)
             card.cardLore?.let { lore ->
@@ -80,4 +89,5 @@ fun CardBottomSheet(
         }
     }
 }
+
 

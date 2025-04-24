@@ -7,7 +7,8 @@ data class TarotReadingJson(
     val first_card_url: String,
     val second_card_url: String,
     val third_card_url: String,
-    val fourth_card_url: String
+    val fourth_card_url: String,
+    val location_card_url: String
 )
 
 data class TarotReadingJsonRecipient(

@@ -47,6 +47,7 @@ import tekin.luetfi.amorfati.utils.selectedCards
 import tekin.luetfi.amorfati.utils.validatedJSON
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.domain.model.addNewProgress
+import tekin.luetfi.amorfati.utils.READING_CARDS_AMOUNT
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,7 +60,7 @@ fun EmailComposeScreen(
     val context = LocalContext.current
     val activity = (context as? Activity)
     val intentFlow = remember { snapshotFlow { activity?.intent } }
-    var selectedCards by remember { mutableStateOf(Deck.cards + Deck.locationCards) }
+    var selectedCards by remember { mutableStateOf(Deck.fullDeck) }
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
     val coroutineScope = rememberCoroutineScope()
     var recipient by rememberSaveable {
@@ -94,9 +95,9 @@ fun EmailComposeScreen(
     LaunchedEffect(jsonInput) {
         recipient = jsonInput.recipient
         val displayedCards = jsonInput.selectedCards
-        if (displayedCards.size > 4)
+        if (displayedCards.size > READING_CARDS_AMOUNT)
             selectedCards = displayedCards
-        else if (displayedCards.size == 4){
+        else if (displayedCards.size == READING_CARDS_AMOUNT){
             selectedCards = listOf()
             displayedCards.forEach {
                 selectedCards += it

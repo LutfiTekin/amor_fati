@@ -30,5 +30,10 @@ data class TarotCard(
             return Defaults.mainLore.find { it.code == code }
         }
 
+    val backsideImageUrl: String
+        get() {
+            return IMAGE_HOST_DIR + "back.png"
+        }
+
 }
 

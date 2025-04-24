@@ -35,15 +35,16 @@ val String.selectedCards: List<TarotCard>
                 reading.first_card_url,
                 reading.second_card_url,
                 reading.third_card_url,
-                reading.fourth_card_url
+                reading.fourth_card_url,
+                reading.location_card_url
             )
 
             // Map URLs back to TarotCard objects, preserving order
             selectedUrls.mapNotNull { code ->
-                Deck.cards.firstOrNull { it.code == code }
+                Deck.fullDeck.firstOrNull { it.code == code }
             }
         }catch (e: Exception){
-            (Deck.cards + Deck.locationCards).shuffled()
+            Deck.fullDeck.shuffled()
         }
     }
 

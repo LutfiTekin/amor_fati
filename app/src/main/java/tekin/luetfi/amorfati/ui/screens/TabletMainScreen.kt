@@ -41,22 +41,26 @@ fun TabletMainScreen(
     val context = LocalContext.current
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-
+    val pickedCards = remember { mutableStateListOf<TarotCard>() }
     var selectedCard by remember { mutableStateOf<TarotCard?>(null) }
     // 1) which chip is selected: 0 = Full Deck, 1 = F8, 2 = Regular
     var selectedChip by remember { mutableIntStateOf(0) }
-    val chipLabels = listOf("Full Deck", "F8 Cards", "Regular Cards")
+    val chipLabels = listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards")
 
     // 2) choose which list to display
-    val cardsToShow = remember(selectedChip) {
-        when (selectedChip) {
-            0 -> Deck.fullDeck
-            1 -> Deck.f8Cards.shuffled()   // shuffle once on switch to F8
-            else -> Deck.cards.shuffled()   // shuffle once on switch to Regular
+    val cardsToShow by remember {
+        derivedStateOf {
+            when (selectedChip) {
+                0 -> Deck.fullDeck
+                1 -> Deck.f8Cards.shuffled()   // shuffle once on switch to F8
+                3 -> pickedCards.sortedByDescending { it.isF8Card }
+                else -> Deck.cards.shuffled()   // shuffle once on switch to Regular
+            }
         }
     }
 
-    val flippable by remember { derivedStateOf { selectedChip != 0 } }
+
+    val flippable by remember { derivedStateOf { listOf(1,2).contains(selectedChip) } }
 
     val (columns, cardSize) = if (selectedChip == 1) {
         // F8: 4 columns, bigger cards
@@ -119,6 +123,10 @@ fun TabletMainScreen(
                         startFlipped = flipped,
                         onTapped = {
                             selectedCard = it
+                            //Picked cards should be removed by tap
+                            if (selectedChip == 3){
+                                pickedCards.remove(it)
+                            }
                         }
                     )
                 }
@@ -172,6 +180,18 @@ fun TabletMainScreen(
                     Text("Draw Card")
                 }
 
+                // Add to picked list
+                Button(onClick = {
+                    selectedCard.let { card ->
+                        if (!pickedCards.contains(card)) {
+                            pickedCards.removeIf { it.isF8Card }
+                            pickedCards.add(card)
+                        }
+                    }
+                },
+                    enabled = !pickedCards.contains(selectedCard) && pickedCards.size < 4) {
+                    Text("Add")
+                }
                 Spacer(Modifier.height(16.dp))
 
                 val scroll = rememberScrollState()
@@ -183,7 +203,8 @@ fun TabletMainScreen(
                 ) {
                     CardInfo(selectedCard)
                 }
-            } ?: run {
+
+            }?: run {
                 // Empty state
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -203,6 +224,10 @@ fun TabletMainScreen(
                 }
             }
 
+
+
+            }
+
         }
     }
-}
+

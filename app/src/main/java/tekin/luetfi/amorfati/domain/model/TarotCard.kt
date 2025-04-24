@@ -34,12 +34,20 @@ data class TarotCard(
 
     val backsideImageUrl: String
         get() {
-            if (Deck.locationCards.any { it.code == code })
+            if (isLocationCard)
                 return IMAGE_HOST_DIR + code.lowercase() + "_back.png"
-            if (Deck.f8Cards.any { it.code == code })
+            if (isF8Card)
                 return IMAGE_HOST_DIR + "f8_back.png"
             return IMAGE_HOST_DIR + "back.png"
         }
+
+    val isLocationCard: Boolean
+        get() {
+            return Deck.locationCards.any { it.code == code }
+        }
+
+    val isF8Card: Boolean
+        get() = Deck.f8Cards.any { it.code == code }
 
 }
 

@@ -2,6 +2,7 @@ package tekin.luetfi.amorfati.ui.screens.email
 
 import android.content.Context
 import android.net.Uri
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
 import tekin.luetfi.amorfati.domain.model.ReadingProgress
+import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.domain.model.withMessage
 import tekin.luetfi.amorfati.domain.use_case.GetLoreUseCase
 import tekin.luetfi.amorfati.domain.use_case.SendEmailUseCase

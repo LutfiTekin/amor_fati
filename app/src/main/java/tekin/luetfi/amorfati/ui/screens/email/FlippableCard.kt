@@ -1,24 +1,36 @@
 package tekin.luetfi.amorfati.ui.screens.email
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
+import kotlinx.coroutines.coroutineScope
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.utils.DEFAULT_BACK_IMAGE
-import kotlinx.coroutines.coroutineScope
+
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun FlippableCard(
@@ -29,61 +41,67 @@ fun FlippableCard(
     startFlipped: Boolean = false,
     singleFlipDuration: Int = 400,
     spinDurationMillis: Int = 4000,
-    onTapped: (TarotCard?) -> Unit = {}
+    onTapped: (TarotCard?) -> Unit = {},
+    onFlip: (card: TarotCard, isFront: Boolean) -> Unit = { _, _ -> }
 ) {
-    // Initialize rotationCount to 1 if we want to start flipped AND flipping is enabled
+    // rotationCount = how many half-turns we've done
     var rotationCount by remember { mutableStateOf(if (flippable && startFlipped) 1 else 0) }
-    var isSpinning    by remember { mutableStateOf(false) }
+    var isSpinning by remember { mutableStateOf(false) }
 
     // 1) single‐tap flip animation
     val animatedFlip by animateFloatAsState(
-        targetValue   = if (flippable) rotationCount * 180f else 0f,
+        targetValue = if (flippable) rotationCount * 180f else 0f,
         animationSpec = tween(singleFlipDuration)
     )
 
-    // 2) continuous spin when long‐pressed (only if flippable)
-    val infinite    = rememberInfiniteTransition()
+    // 2) continuous spin
+    val infinite = rememberInfiniteTransition()
     val animatedSpin by infinite.animateFloat(
-        initialValue   = 0f,
-        targetValue    = 360f,
-        animationSpec  = infiniteRepeatable(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
             tween(spinDurationMillis, easing = LinearEasing),
             RepeatMode.Restart
         )
     )
 
-    // choose which rotation to apply
+    // choose rotation
     val cardRotationY = if (isSpinning && flippable) animatedSpin else animatedFlip
 
-    // determine if back is showing
+    // compute whether back is showing
     val normalized = (cardRotationY % 360f + 360f) % 360f
-    val showBack   = flippable && normalized in 90f..270f
+    val showingBack = flippable && normalized in 90f..270f
+    val isFront = !showingBack
 
     val placeholderBack = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
     val placeholderFront = rememberAsyncImagePainter(card.thumbnail)
-    val cameraDist  = 8f * LocalDensity.current.density
+    val cameraDist = 8f * LocalDensity.current.density
 
     Box(
         modifier = modifier
             .size(size)
             .graphicsLayer {
-                rotationY      = cardRotationY
+                rotationY = cardRotationY
                 cameraDistance = cameraDist
             }
             .combinedClickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication        = null,
+                indication = null,
                 onClick = {
-                    if (flippable){
-                        // only invoke callback when front is showing
-                        onTapped(if (showBack) card else null)
-                    }else {
+                    // 1) fire the tapped callback
+                    if (flippable) {
+                        onTapped(if (showingBack) card else null)
+                    } else {
                         onTapped(card)
                     }
-
-                    // only flip if allowed
+                    // 2) perform flip + notify orientation
                     if (flippable && !isSpinning) {
-                        rotationCount++
+                        val newCount = rotationCount + 1
+                        // compute what face we'll get after this flip
+                        val newNorm = ((newCount * 180f) % 360f + 360f) % 360f
+                        val newIsFront = newNorm !in 90f..270f
+                        onFlip(card, newIsFront)
+                        rotationCount = newCount
                     }
                 },
                 onLongClick = {
@@ -91,7 +109,6 @@ fun FlippableCard(
                 }
             )
             .pointerInput(isSpinning, flippable) {
-                // only handle spin release if flippable
                 if (isSpinning && flippable) {
                     coroutineScope {
                         awaitPointerEventScope {
@@ -99,28 +116,29 @@ fun FlippableCard(
                             do {
                                 val event = awaitPointerEvent()
                             } while (event.changes.any { it.pressed })
-                            // on release: stop spinning & reset to front
-                            isSpinning    = false
+                            // on release: stop spin, reset to front, notify
+                            isSpinning = false
                             rotationCount = 0
+                            onFlip(card, true)
                         }
                     }
                 }
             }
     ) {
-        if (!showBack) {
+        if (isFront) {
             AsyncImage(
-                model              = card.imageUrl,
-                placeholder        = placeholderFront,
+                model = card.imageUrl,
+                placeholder = placeholderFront,
                 contentDescription = "${card.name} front",
-                modifier           = Modifier.matchParentSize()
+                modifier = Modifier.matchParentSize()
             )
         } else {
             AsyncImage(
-                model              = card.backsideImageUrl,
-                placeholder        = placeholderBack,
-                error              = placeholderBack,
+                model = card.backsideImageUrl,
+                placeholder = placeholderBack,
+                error = placeholderBack,
                 contentDescription = "${card.name} back",
-                modifier           = Modifier
+                modifier = Modifier
                     .matchParentSize()
                     .graphicsLayer { rotationY = 180f }
             )

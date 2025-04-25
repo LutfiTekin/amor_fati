@@ -49,6 +49,12 @@ import tekin.luetfi.amorfati.ui.screens.email.EmailComposerViewModel
 import tekin.luetfi.amorfati.ui.screens.email.FlippableCard
 import tekin.luetfi.amorfati.utils.Deck
 
+const val CHIP_FULL_DECK = 0
+const val CHIP_F8_CARDS = 1
+const val CHIP_REGULAR_CARDS = 2
+const val CHIP_PICKED_CARDS = 3
+const val CHIP_LOCATION_CARDS = 4
+
 @Composable
 fun TabletMainScreen(
     modifier: Modifier = Modifier,
@@ -62,7 +68,8 @@ fun TabletMainScreen(
     var cardToPreview by remember { mutableStateOf<TarotCard?>(null) }
     // 1) which chip is selected: 0 = Full Deck, 1 = F8, 2 = Regular
     var selectedChip by remember { mutableIntStateOf(0) }
-    val chipLabels = listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards")
+    val chipLabels =
+        listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards", "Location Cards")
 
 
     //Pre shuffle cards
@@ -72,9 +79,11 @@ fun TabletMainScreen(
     val cardsToShow by remember {
         derivedStateOf {
             when (selectedChip) {
-                0 -> Deck.fullDeck
-                1 -> f8Shuffled
-                3 -> pickedCards.sortedByDescending { it.isF8Card }
+                CHIP_FULL_DECK -> Deck.fullDeck
+                CHIP_F8_CARDS -> f8Shuffled
+                CHIP_PICKED_CARDS -> pickedCards.sortedByDescending { it.isF8Card }
+                CHIP_REGULAR_CARDS -> regularShuffled
+                CHIP_LOCATION_CARDS -> Deck.locationCards
                 else -> regularShuffled
             }
         }
@@ -84,12 +93,12 @@ fun TabletMainScreen(
     val flippable by remember { derivedStateOf { listOf(1, 2).contains(selectedChip) } }
 
     val (columns, cardSize) = when (selectedChip) {
-        1, 3 -> {
+        CHIP_F8_CARDS, CHIP_PICKED_CARDS -> {
             // F8: 4 columns, bigger cards
             4 to 250.dp
         }
 
-        2 -> {
+        CHIP_REGULAR_CARDS -> {
             8 to 120.dp
         }
 
@@ -98,7 +107,7 @@ fun TabletMainScreen(
         }
     }
 
-    val flipped = selectedChip != 0
+    val flipped = if (selectedChip == CHIP_LOCATION_CARDS) true else selectedChip != 0
 
     Row(modifier = modifier.fillMaxSize()) {
         // Left pane: chips + grid
@@ -139,12 +148,18 @@ fun TabletMainScreen(
                 items(
                     items = cardsToShow,
                     key = { card ->
-                        if (selectedChip == 0)
+                        if (selectedChip == CHIP_FULL_DECK)
                             card.code
                         else Triple(selectedChip, card.code, pickedCards.contains(card))
                     }
                 ) { card ->
-                    val isPicked by remember(pickedCards) { derivedStateOf { pickedCards.contains(card) } }
+                    val isPicked by remember(pickedCards) {
+                        derivedStateOf {
+                            pickedCards.contains(
+                                card
+                            )
+                        }
+                    }
                     FlippableCard(
                         modifier = Modifier.padding(4.dp),
                         card = card,
@@ -238,10 +253,10 @@ fun TabletMainScreen(
                                 if (!pickedCards.contains(card)) {
                                     pickedCards.removeIf { it.isF8Card && card.isF8Card }
                                     pickedCards.add(card)
+                                    //Show Picked cards
+                                    selectedChip = CHIP_PICKED_CARDS
                                 } else pickedCards.remove(card)
                             }
-                            //Show Picked cards
-                            selectedChip = 3
                         },
                         modifier = Modifier.weight(1f)
                     ) {

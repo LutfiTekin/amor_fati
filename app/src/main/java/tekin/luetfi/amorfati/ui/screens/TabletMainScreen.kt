@@ -142,56 +142,61 @@ fun TabletMainScreen(
         ) {
 
             selectedCard?.let { selectedCard ->
-                Button(
-                    onClick = {
-                        // run in IO since we do disk writes
-                        scope.launch(Dispatchers.IO) {
-                            // 1) load the image as a Bitmap
-                            val loader = ImageLoader(context)
-                            val req = ImageRequest.Builder(context)
-                                .data(selectedCard.imageUrl)
-                                .build()
-                            val result = loader.execute(req)
-                            if (result is SuccessResult) {
-                                val drawable = result.drawable as BitmapDrawable
-                                val bitmap = drawable.bitmap
+                Row(Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Button(
+                        onClick = {
+                            // run in IO since we do disk writes
+                            scope.launch(Dispatchers.IO) {
+                                // 1) load the image as a Bitmap
+                                val loader = ImageLoader(context)
+                                val req = ImageRequest.Builder(context)
+                                    .data(selectedCard.imageUrl)
+                                    .build()
+                                val result = loader.execute(req)
+                                if (result is SuccessResult) {
+                                    val drawable = result.drawable as BitmapDrawable
+                                    val bitmap = drawable.bitmap
 
-                                // 2) insert into MediaStore to get a content:// URI
-                                val path = MediaStore.Images.Media.insertImage(
-                                    context.contentResolver,
-                                    bitmap,
-                                    selectedCard.code,
-                                    null
-                                )
-                                val uri = android.net.Uri.parse(path)
+                                    // 2) insert into MediaStore to get a content:// URI
+                                    val path = MediaStore.Images.Media.insertImage(
+                                        context.contentResolver,
+                                        bitmap,
+                                        selectedCard.code,
+                                        null
+                                    )
+                                    val uri = android.net.Uri.parse(path)
 
-                                // 3) copy that URI into the clipboard as an IMAGE
-                                val clip = ClipData.newUri(
-                                    context.contentResolver,
-                                    "Card Image",
-                                    uri
-                                )
-                                clipboard.setPrimaryClip(clip)
+                                    // 3) copy that URI into the clipboard as an IMAGE
+                                    val clip = ClipData.newUri(
+                                        context.contentResolver,
+                                        "Card Image",
+                                        uri
+                                    )
+                                    clipboard.setPrimaryClip(clip)
+                                }
+                            }
+                        },
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text("Draw Card")
+                    }
+
+                    // Add to picked list
+                    Button(onClick = {
+                        selectedCard.let { card ->
+                            if (!pickedCards.contains(card)) {
+                                pickedCards.removeIf { it.isF8Card }
+                                pickedCards.add(card)
                             }
                         }
                     },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text("Draw Card")
+                        modifier = Modifier.weight(1f),
+                        enabled = !pickedCards.contains(selectedCard) && pickedCards.size < 4) {
+                        Text("Add")
+                    }
                 }
 
-                // Add to picked list
-                Button(onClick = {
-                    selectedCard.let { card ->
-                        if (!pickedCards.contains(card)) {
-                            pickedCards.removeIf { it.isF8Card }
-                            pickedCards.add(card)
-                        }
-                    }
-                },
-                    enabled = !pickedCards.contains(selectedCard) && pickedCards.size < 4) {
-                    Text("Add")
-                }
                 Spacer(Modifier.height(16.dp))
 
                 val scroll = rememberScrollState()

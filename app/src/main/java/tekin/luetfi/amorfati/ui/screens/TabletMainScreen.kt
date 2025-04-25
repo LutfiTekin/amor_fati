@@ -5,7 +5,15 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.provider.MediaStore
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -15,7 +23,15 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -25,6 +41,7 @@ import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.ui.screens.email.CardInfo
@@ -47,29 +64,35 @@ fun TabletMainScreen(
     var selectedChip by remember { mutableIntStateOf(0) }
     val chipLabels = listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards")
 
+
+    //Pre shuffle cards
+    val f8Shuffled = remember { Deck.f8Cards.shuffled() }
+    val regularShuffled = remember { Deck.cards.shuffled() }
     // 2) choose which list to display
     val cardsToShow by remember {
         derivedStateOf {
             when (selectedChip) {
                 0 -> Deck.fullDeck
-                1 -> Deck.f8Cards.shuffled()   // shuffle once on switch to F8
+                1 -> f8Shuffled
                 3 -> pickedCards.sortedByDescending { it.isF8Card }
-                else -> Deck.cards.shuffled()   // shuffle once on switch to Regular
+                else -> regularShuffled
             }
         }
     }
 
 
-    val flippable by remember { derivedStateOf { listOf(1,2).contains(selectedChip) } }
+    val flippable by remember { derivedStateOf { listOf(1, 2).contains(selectedChip) } }
 
     val (columns, cardSize) = when (selectedChip) {
         1, 3 -> {
             // F8: 4 columns, bigger cards
             4 to 250.dp
         }
+
         2 -> {
             8 to 120.dp
         }
+
         else -> {
             5 to 200.dp
         }
@@ -111,18 +134,22 @@ fun TabletMainScreen(
                 columns = GridCells.Fixed(columns),
                 modifier = Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalArrangement   = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 items(
                     items = cardsToShow,
                     key = { card ->
-                        selectedChip to card.code
+                        if (selectedChip == 0)
+                            card.code
+                        else Triple(selectedChip, card.code, pickedCards.contains(card))
                     }
                 ) { card ->
+                    val isPicked by remember(pickedCards) { derivedStateOf { pickedCards.contains(card) } }
                     FlippableCard(
                         modifier = Modifier.padding(4.dp),
                         card = card,
                         size = cardSize,
+                        isPicked = isPicked,
                         flippable = flippable,
                         startFlipped = if (pickedCards.contains(card)) false else flipped,
                         onTapped = {
@@ -131,11 +158,22 @@ fun TabletMainScreen(
                         onFlip = { flippedCard, isFront ->
                             if (pickedCards.contains(flippedCard))
                                 return@FlippableCard
-                            if (isFront.not())
+                            if (isFront.not()) {
+                                scope.launch {
+                                    delay(400)
+                                    pickedCards.remove(flippedCard)
+                                }
                                 return@FlippableCard
+                            }
                             if (pickedCards.size >= 4)
                                 return@FlippableCard
-                            pickedCards.add(flippedCard)
+                            scope.launch {
+                                delay(500)
+                                if (flippedCard.isF8Card)
+                                    pickedCards.removeIf { it.isF8Card }
+                                delay(400)
+                                pickedCards.add(flippedCard)
+                            }
                         }
                     )
                 }
@@ -151,8 +189,10 @@ fun TabletMainScreen(
         ) {
 
             cardToPreview?.let { selectedCard ->
-                Row(Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     Button(
                         onClick = {
                             // run in IO since we do disk writes
@@ -192,19 +232,20 @@ fun TabletMainScreen(
                     }
 
                     // Add to picked list
-                    Button(onClick = {
-                        selectedCard.let { card ->
-                            if (!pickedCards.contains(card)) {
-                                pickedCards.removeIf { it.isF8Card && card.isF8Card }
-                                pickedCards.add(card)
-                            }else pickedCards.remove(card)
-                        }
-                        //Show Picked cards
-                        selectedChip = 3
-                    },
-                        modifier = Modifier.weight(1f),
-                        enabled = pickedCards.size < 4) {
-                        Text(if(pickedCards.contains(selectedCard)) "Remove" else "Add")
+                    Button(
+                        onClick = {
+                            selectedCard.let { card ->
+                                if (!pickedCards.contains(card)) {
+                                    pickedCards.removeIf { it.isF8Card && card.isF8Card }
+                                    pickedCards.add(card)
+                                } else pickedCards.remove(card)
+                            }
+                            //Show Picked cards
+                            selectedChip = 3
+                        },
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(if (pickedCards.contains(selectedCard)) "Remove" else "Add")
                     }
                 }
 
@@ -220,7 +261,7 @@ fun TabletMainScreen(
                     CardInfo(selectedCard)
                 }
 
-            }?: run {
+            } ?: run {
                 // Empty state
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -241,10 +282,9 @@ fun TabletMainScreen(
             }
 
 
-
-            }
-
-
         }
+
+
     }
+}
 

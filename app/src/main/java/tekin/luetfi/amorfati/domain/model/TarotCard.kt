@@ -27,6 +27,11 @@ data class TarotCard(
             return IMAGE_HOST_DIR + code.lowercase() + ".png"
         }
 
+    val thumbnail: String
+        get() {
+            return IMAGE_HOST_DIR + "thumbnails/" + code.lowercase() + ".png"
+        }
+
     val cardLore: CardLore?
         get() {
             return Defaults.mainLore.find { it.code == code }

@@ -14,10 +14,13 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -27,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.filter
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.utils.DEFAULT_BACK_IMAGE
 
@@ -37,6 +42,7 @@ fun FlippableCard(
     modifier: Modifier = Modifier,
     card: TarotCard,
     size: Dp = 200.dp,
+    isPicked: Boolean = false,
     flippable: Boolean = true,
     startFlipped: Boolean = false,
     singleFlipDuration: Int = 400,
@@ -45,8 +51,18 @@ fun FlippableCard(
     onFlip: (card: TarotCard, isFront: Boolean) -> Unit = { _, _ -> }
 ) {
     // rotationCount = how many half-turns we've done
-    var rotationCount by remember { mutableStateOf(if (flippable && startFlipped) 1 else 0) }
+    var rotationCount by remember { mutableIntStateOf(if (flippable && startFlipped) 1 else 0) }
     var isSpinning by remember { mutableStateOf(false) }
+
+    // only collect removals after the initial state
+    LaunchedEffect(Unit) {
+        snapshotFlow { isPicked }
+            .drop(1)               // drop the startup value
+            .filter { picked -> !picked }  // only care when it goes false
+            .collect {
+                rotationCount += 1   // bump for a forward flip
+            }
+    }
 
     // 1) single‐tap flip animation
     val animatedFlip by animateFloatAsState(

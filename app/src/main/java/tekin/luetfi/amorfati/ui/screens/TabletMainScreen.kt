@@ -127,10 +127,10 @@ fun TabletMainScreen(
                         startFlipped = if (pickedCards.contains(card)) false else flipped,
                         onTapped = {
                             selectedCard = it
-                            //Picked cards should be removed by tap
-                            if (selectedChip == 3){
-                                pickedCards.remove(it)
-                            }
+                        },
+                        onFlip = { flippedCard, isFront ->
+                            if (pickedCards.contains(flippedCard).not() && isFront)
+                                pickedCards.add(flippedCard)
                         }
                     )
                 }
@@ -183,7 +183,7 @@ fun TabletMainScreen(
                         },
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text("Draw Card")
+                        Text("Send Card")
                     }
 
                     // Add to picked list
@@ -192,14 +192,14 @@ fun TabletMainScreen(
                             if (!pickedCards.contains(card)) {
                                 pickedCards.removeIf { it.isF8Card && card.isF8Card }
                                 pickedCards.add(card)
-                            }
+                            }else pickedCards.remove(card)
                         }
                         //Show Picked cards
                         selectedChip = 3
                     },
                         modifier = Modifier.weight(1f),
-                        enabled = !pickedCards.contains(selectedCard) && pickedCards.size < 4) {
-                        Text("Add")
+                        enabled = pickedCards.size < 4) {
+                        Text(if(pickedCards.contains(selectedCard)) "Remove" else "Add")
                     }
                 }
 

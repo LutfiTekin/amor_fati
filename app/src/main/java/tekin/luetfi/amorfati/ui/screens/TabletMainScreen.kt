@@ -129,8 +129,13 @@ fun TabletMainScreen(
                             cardToPreview = it
                         },
                         onFlip = { flippedCard, isFront ->
-                            if (pickedCards.contains(flippedCard).not() && isFront)
-                                pickedCards.add(flippedCard)
+                            if (pickedCards.contains(flippedCard).not())
+                                return@FlippableCard
+                            if (isFront.not())
+                                return@FlippableCard
+                            if (pickedCards.size >= 4)
+                                return@FlippableCard
+                            pickedCards.add(flippedCard)
                         }
                     )
                 }

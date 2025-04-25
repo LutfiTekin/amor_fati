@@ -62,13 +62,17 @@ fun TabletMainScreen(
 
     val flippable by remember { derivedStateOf { listOf(1,2).contains(selectedChip) } }
 
-    val (columns, cardSize) = if (selectedChip == 1) {
-        // F8: 4 columns, bigger cards
-        4 to 250.dp
-    } else if(selectedChip == 2){
-        8 to 120.dp
-    } else {
-        5 to 200.dp
+    val (columns, cardSize) = when (selectedChip) {
+        1, 3 -> {
+            // F8: 4 columns, bigger cards
+            4 to 250.dp
+        }
+        2 -> {
+            8 to 120.dp
+        }
+        else -> {
+            5 to 200.dp
+        }
     }
 
     val flipped = selectedChip != 0
@@ -186,10 +190,12 @@ fun TabletMainScreen(
                     Button(onClick = {
                         selectedCard.let { card ->
                             if (!pickedCards.contains(card)) {
-                                pickedCards.removeIf { it.isF8Card }
+                                pickedCards.removeIf { it.isF8Card && card.isF8Card }
                                 pickedCards.add(card)
                             }
                         }
+                        //Show Picked cards
+                        selectedChip = 3
                     },
                         modifier = Modifier.weight(1f),
                         enabled = !pickedCards.contains(selectedCard) && pickedCards.size < 4) {
@@ -232,6 +238,7 @@ fun TabletMainScreen(
 
 
             }
+
 
         }
     }

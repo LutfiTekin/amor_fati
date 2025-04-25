@@ -42,7 +42,7 @@ fun TabletMainScreen(
     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
     val pickedCards = remember { mutableStateListOf<TarotCard>() }
-    var selectedCard by remember { mutableStateOf<TarotCard?>(null) }
+    var cardToPreview by remember { mutableStateOf<TarotCard?>(null) }
     // 1) which chip is selected: 0 = Full Deck, 1 = F8, 2 = Regular
     var selectedChip by remember { mutableIntStateOf(0) }
     val chipLabels = listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards")
@@ -126,7 +126,7 @@ fun TabletMainScreen(
                         flippable = flippable,
                         startFlipped = if (pickedCards.contains(card)) false else flipped,
                         onTapped = {
-                            selectedCard = it
+                            cardToPreview = it
                         },
                         onFlip = { flippedCard, isFront ->
                             if (pickedCards.contains(flippedCard).not() && isFront)
@@ -145,7 +145,7 @@ fun TabletMainScreen(
                 .padding(16.dp)
         ) {
 
-            selectedCard?.let { selectedCard ->
+            cardToPreview?.let { selectedCard ->
                 Row(Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     Button(
@@ -228,7 +228,7 @@ fun TabletMainScreen(
                     )
                     Spacer(Modifier.height(16.dp))
                     Button(onClick = {
-                        selectedCard = Deck.fullDeck.random()
+                        cardToPreview = Deck.fullDeck.random()
                     }) {
                         Text("Pick random card")
                     }

@@ -124,7 +124,7 @@ fun TabletMainScreen(
                         card = card,
                         size = cardSize,
                         flippable = flippable,
-                        startFlipped = flipped,
+                        startFlipped = if (pickedCards.contains(card)) false else flipped,
                         onTapped = {
                             selectedCard = it
                             //Picked cards should be removed by tap

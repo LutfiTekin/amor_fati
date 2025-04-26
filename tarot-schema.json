@@ -8,7 +8,7 @@
     "email": {
       "type": "string",
       "format": "email",
-      "description": "User's email address, such as 'USER_EMAIL'."
+      "description": "User's email address."
     },
     "date_time": {
       "type": "string",
@@ -16,23 +16,28 @@
     },
     "first_card_url": {
       "type": "string",
-      "description": "Code of the first card. Must be in all caps with underscores, e.g., 'CODE_OF_FIRST_CARD'."
+      "description": "Code of the first card. Must be in all caps with underscores, e.g., 'CODE_OF_FIRST_CARD'. '&' must be converted to 'AND'.",
+      "pattern": "^[A-Z_]+$"
     },
     "second_card_url": {
       "type": "string",
-      "description": "Code of the second card. Must be in all caps with underscores, e.g., 'CODE_OF_SECOND_CARD'."
+      "description": "Code of the second card. Must be in all caps with underscores, e.g., 'CODE_OF_SECOND_CARD'. '&' must be converted to 'AND'.",
+      "pattern": "^[A-Z_]+$"
     },
     "third_card_url": {
       "type": "string",
-      "description": "Code of the third card. Must be in all caps with underscores, e.g., 'CODE_OF_THIRD_CARD'."
+      "description": "Code of the third card. Must be in all caps with underscores, e.g., 'CODE_OF_THIRD_CARD'. '&' must be converted to 'AND'.",
+      "pattern": "^[A-Z_]+$"
     },
     "fourth_card_url": {
       "type": "string",
-      "description": "Code of the fourth card. Must be in all caps with underscores, e.g., 'CODE_OF_FOURTH_CARD'."
+      "description": "Code of the fourth card. Must be in all caps with underscores, e.g., 'CODE_OF_FOURTH_CARD'. '&' must be converted to 'AND'.",
+      "pattern": "^[A-Z_]+$"
     },
     "location_card_url": {
       "type": "string",
-      "description": "Code of the location card. Must be in all caps with underscores, e.g., 'CODE_OF_LOCATION_CARD'."
+      "description": "Code of the location card. Must be in all caps with underscores, e.g., 'CODE_OF_LOCATION_CARD'. '&' must be converted to 'AND'.",
+      "pattern": "^[A-Z_]+$"
     },
     "first_card_quote": {
       "type": "string",
@@ -52,7 +57,7 @@
     },
     "location_card_quote": {
       "type": "string",
-      "description": "A paragraph about the history of the location and its effects on the story. This output will be different from other card quotes."
+      "description": "A paragraph (3–5 sentences) about the location’s history and narrative influence. This output will be different from other card quotes."
     },
     "card_influence_summary": {
       "type": "string",

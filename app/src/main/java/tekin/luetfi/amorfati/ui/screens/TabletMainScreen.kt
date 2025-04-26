@@ -215,7 +215,7 @@ fun TabletMainScreen(
                                 // 1) load the image as a Bitmap
                                 val loader = ImageLoader(context)
                                 val req = ImageRequest.Builder(context)
-                                    .data(selectedCard.imageUrl)
+                                    .data(selectedCard.localImageFile)
                                     .build()
                                 val result = loader.execute(req)
                                 if (result is SuccessResult) {

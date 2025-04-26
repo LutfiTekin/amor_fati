@@ -3,7 +3,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "User's name, including first and possibly last name. "
+      "description": "User's name, including first and possibly last name."
     },
     "email": {
       "type": "string",
@@ -91,6 +91,10 @@
     "metaphor_image_quote": {
       "type": "string",
       "description": "A poetic line that ties to the metaphor image."
+    },
+    "reading_subtitle": {
+      "type": "string",
+      "description": "A single neutral but poetic sentence introducing the reading, based on the 152,371,200 possible outcomes prompt."
     }
   },
   "required": [
@@ -113,6 +117,7 @@
     "act3",
     "future_holds",
     "metaphor_image_url",
-    "metaphor_image_quote"
+    "metaphor_image_quote",
+    "reading_subtitle"
   ]
 }

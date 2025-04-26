@@ -24,7 +24,7 @@ fun TarotCardItem(card: TarotCard, cardSelected: (TarotCard) -> Unit = {}){
             .clickable { cardSelected(card) }
     ) {
         AsyncImage(
-            card.imageUrl,
+            card.localImageFile,
             contentDescription = card.name,
             modifier = Modifier
                 .width(80.dp)

@@ -1,7 +1,6 @@
 package tekin.luetfi.amorfati.domain.model
 
 import android.os.Parcelable
-import androidx.compose.ui.text.toLowerCase
 import kotlinx.parcelize.Parcelize
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
@@ -27,9 +26,9 @@ data class TarotCard(
             return IMAGE_HOST_DIR + code.lowercase() + ".png"
         }
 
-    val thumbnail: String
+    val localImageFile: String
         get() {
-            return IMAGE_HOST_DIR + "thumbnails/" + code.lowercase() + ".png"
+            return "file:///android_asset/" + code.lowercase() + ".png"
         }
 
     val cardLore: CardLore?
@@ -37,16 +36,16 @@ data class TarotCard(
             return Defaults.mainLore.find { it.code == code }
         }
 
-    val backsideImageUrl: String
+    val backSideImage: String
         get() {
             if (isLocationCard)
-                return IMAGE_HOST_DIR + code.lowercase() + "_back.png"
+                return "file:///android_asset/" + code.lowercase() + "_back.png"
             if (isF8Card)
-                return IMAGE_HOST_DIR + "f8_back.png"
-            return IMAGE_HOST_DIR + "back.png"
+                return "file:///android_asset/f8_back.png"
+            return "file:///android_asset/back.png"
         }
 
-    val isLocationCard: Boolean
+    private val isLocationCard: Boolean
         get() {
             return Deck.locationCards.any { it.code == code }
         }

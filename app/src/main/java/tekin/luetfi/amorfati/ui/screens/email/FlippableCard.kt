@@ -90,7 +90,6 @@ fun FlippableCard(
     val isFront = !showingBack
 
     val placeholderBack = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
-    val placeholderFront = rememberAsyncImagePainter(card.thumbnail)
     val cameraDist = 8f * LocalDensity.current.density
 
     Box(
@@ -143,14 +142,13 @@ fun FlippableCard(
     ) {
         if (isFront) {
             AsyncImage(
-                model = card.imageUrl,
-                placeholder = placeholderFront,
+                model = card.localImageFile,
                 contentDescription = "${card.name} front",
                 modifier = Modifier.matchParentSize()
             )
         } else {
             AsyncImage(
-                model = card.backsideImageUrl,
+                model = card.backSideImage,
                 placeholder = placeholderBack,
                 error = placeholderBack,
                 contentDescription = "${card.name} back",

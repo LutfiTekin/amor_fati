@@ -28,7 +28,6 @@ import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
 import tekin.luetfi.amorfati.utils.READING_TIME_KEY
 import tekin.luetfi.amorfati.utils.formattedTarotDateTime
-import tekin.luetfi.amorfati.utils.imagesToPreload
 import tekin.luetfi.amorfati.utils.metaphorImageName
 import javax.inject.Inject
 
@@ -55,7 +54,6 @@ class EmailComposerViewModel @Inject constructor(
                 e.printStackTrace()
             }
         }
-        preloadAllCardImages()
     }
 
 
@@ -146,19 +144,6 @@ class EmailComposerViewModel @Inject constructor(
         return ref.downloadUrl.await().toString()
     }
 
-    private fun preloadAllCardImages() {
-        viewModelScope.launch(Dispatchers.IO) {
-            // Use your precomputed list
-            imagesToPreload.forEach { url ->
-                println("Preloading $url")
-                val request = ImageRequest.Builder(context)
-                    .data(url)
-                    .allowHardware(false)
-                    .build()
-                imageLoader.enqueue(request)
-            }
-        }
-    }
 
 
 }

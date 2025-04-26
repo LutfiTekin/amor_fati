@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarot Card Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      cursor: pointer;
+      border: 2px solid #444;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .gallery img:hover {
+      border-color: #fff;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      text-align: center;
+    }
+    .modal img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    .lore {
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px auto 0;
+      max-width: 700px;
+    }
+    .nav-buttons button {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .nav-buttons button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tarot Card Gallery</h1>
+  <div class="gallery" id="gallery"></div>
+
+  <div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modal-img" src="" alt="Full Image">
+      <div class="lore" id="modal-lore">Loading...</div>
+      <div class="nav-buttons">
+        <button onclick="showPrev()">Previous</button>
+        <button onclick="showNext()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loreUrl = 'https://lutfitek.in/assets/lore.json';
+    let loreData = {};
+
+    fetch(loreUrl)
+      .then(response => response.json())
+      .then(data => {
+        data.cards.forEach(card => {
+          loreData[card.code] = card.story;
+        });
+      });
+
+    const imageCodes = [
+  "THE_ALCHEMIST", "THE_BALLAD", "SISTER_SINISTER", "ROUND_TRIP_KNIGHT", "LAVENDER_TRIO",
+  "ALE_OF_THE_ACHE", "THE_BADDIES", "SILENT_JUDGE", "SISTERS_OF_THE_SEVEN_TEA", "FOCUS_OF_FATE",
+  "NOMAD_OF_TRACKS", "DUCHESS_AND_THE_WHITE_HOUND", "SNOW_MEXICAN", "SENTINEL_OF_THE_TWIN_TOWERS",
+  "THE_TEXAN_AND_THE_THISTLE", "TEACHER_OF_TREACHERY", "THE_BADDIES_III", "KEEPER_OF_THE_BITTER_TRUTH",
+  "THE_DISTANT_LIAISON", "THE_LONE_STAR", "THE_LIBRARIAN", "THE_DEALER", "THE_BADDIES_II",
+  "THE_RULE_OF_THREES", "NINE_OF_HOUNDS", "THE_ENDLESS_POUR", "DESIGNATED_DRIVER", "GENTLE_HIGHLANDER",
+  "GAZE_OF_EXHAUSTION", "KEEPERS_OF_THE_SKY_NEEDLE", "GENTLEMAN_OF_THE_ALPS", "COUNCIL_OF_THREE"
+];
+
+const images = imageCodes.map(code => {
+  const filename = code.toLowerCase();
+  return {
+    code,
+    thumbnail: `https://lutfitek.in/assets/thumbnails/${filename}.png`,
+    full: `https://lutfitek.in/assets/${filename}.png`
+  };
+}); // already defined
+    let currentIndex = 0;
+
+    const gallery = document.getElementById('gallery');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalLore = document.getElementById('modal-lore');
+
+    function openModal(imageIndex) {
+      currentIndex = imageIndex;
+      const image = images[currentIndex];
+      modal.style.display = 'flex';
+      modalImg.style.opacity = 0;
+      modalImg.src = image.thumbnail;
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        modalImg.src = image.full;
+        modalImg.style.transition = 'opacity 0.5s';
+        modalImg.style.opacity = 1;
+      };
+      tempImg.src = image.full;
+      modalLore.textContent = loreData[image.code] || 'No lore entry available.';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      modalImg.src = '';
+      modalLore.textContent = '';
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      openModal(currentIndex);
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      openModal(currentIndex);
+    }
+
+    images.forEach((img, index) => {
+      const imageElement = document.createElement('img');
+      imageElement.src = img.thumbnail;
+      imageElement.alt = img.code;
+      imageElement.onclick = () => openModal(index);
+      gallery.appendChild(imageElement);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (modal.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') showPrev();
+        else if (e.key === 'ArrowRight') showNext();
+        else if (e.key === 'Escape') closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

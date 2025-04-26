@@ -86,7 +86,7 @@ Open in Android Studio.
 
 Let Hilt generate code.
 
-Run on a phone (full-screen compose) or tablet (split grid + compose pane).
+Run on a phone (full-screen compose) or tablet (split grid + preview pane).
 
 
 

@@ -1,36 +1,113 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": [
-    "first_card_url", "second_card_url", "third_card_url", "fourth_card_url",
-    "first_card_quote", "second_card_quote", "third_card_quote", "fourth_card_quote",
-    "card_influence_summary", "reading_story", "future_holds",
-    "metaphor_image_url", "metaphor_image_quote"
-  ],
   "properties": {
-    "first_card_url": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
-    "second_card_url": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
-    "third_card_url": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
-    "fourth_card_url": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
-
-    "first_card_quote": { "type": "string", "minLength": 10, "maxLength": 100 },
-    "second_card_quote": { "type": "string", "minLength": 10, "maxLength": 100 },
-    "third_card_quote": { "type": "string", "minLength": 10, "maxLength": 100 },
-    "fourth_card_quote": { "type": "string", "minLength": 10, "maxLength": 100 },
-
-    "card_influence_summary": { "type": "string", "minLength": 20, "maxLength": 200 },
-    "reading_story": { "type": "string", "minLength": 50, "maxLength": 1000 },
-
+    "name": {
+      "type": "string",
+      "description": "User's name, including first and possibly last name. "
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User's email address, such as 'USER_EMAIL'."
+    },
+    "date_time": {
+      "type": "string",
+      "description": "Placeholder for the reading time. Always 'READING_TIME'."
+    },
+    "first_card_url": {
+      "type": "string",
+      "description": "Code of the first card. Must be in all caps with underscores, e.g., 'CODE_OF_FIRST_CARD'."
+    },
+    "second_card_url": {
+      "type": "string",
+      "description": "Code of the second card. Must be in all caps with underscores, e.g., 'CODE_OF_SECOND_CARD'."
+    },
+    "third_card_url": {
+      "type": "string",
+      "description": "Code of the third card. Must be in all caps with underscores, e.g., 'CODE_OF_THIRD_CARD'."
+    },
+    "fourth_card_url": {
+      "type": "string",
+      "description": "Code of the fourth card. Must be in all caps with underscores, e.g., 'CODE_OF_FOURTH_CARD'."
+    },
+    "location_card_url": {
+      "type": "string",
+      "description": "Code of the location card. Must be in all caps with underscores, e.g., 'CODE_OF_LOCATION_CARD'."
+    },
+    "first_card_quote": {
+      "type": "string",
+      "description": "A short, original, evocative, poetic, and symbolic one-liner about the first card."
+    },
+    "second_card_quote": {
+      "type": "string",
+      "description": "A short, original, evocative, poetic, and symbolic one-liner about the second card."
+    },
+    "third_card_quote": {
+      "type": "string",
+      "description": "A short, original, evocative, poetic, and symbolic one-liner about the third card."
+    },
+    "fourth_card_quote": {
+      "type": "string",
+      "description": "A short, original, evocative, poetic, and symbolic one-liner about the fourth card."
+    },
+    "location_card_quote": {
+      "type": "string",
+      "description": "A paragraph about the history of the location and its effects on the story. This output will be different from other card quotes."
+    },
+    "card_influence_summary": {
+      "type": "string",
+      "description": "A concise summary of how the four primary cards interact."
+    },
+    "act1": {
+      "type": "string",
+      "description": "Description of the opening setting or tension based on the cards."
+    },
+    "act2": {
+      "type": "string",
+      "description": "Description of the conflict or transformation based on the cards."
+    },
+    "act3": {
+      "type": "string",
+      "description": "Description of the outcome or fate based on the cards."
+    },
     "future_holds": {
       "type": "array",
-      "minItems": 1,
-      "maxItems": 9,
-      "items": { "type": "string", "minLength": 5, "maxLength": 100 }
+      "items": {
+        "type": "string"
+      },
+      "description": "An array of symbolic outcomes. Must contain 3, 4, 5, or 9 items based on card effects (Rule of Threes → 3, Nine of Hounds → 9). Defaults to 4 items.",
+      "minItems": 3,
+      "maxItems": 9
     },
-
-    "metaphor_image_url": { "type": "string", "const": "METAPHOR_IMAGE" },
-    "metaphor_image_quote": { "type": "string", "minLength": 10, "maxLength": 100 }
+    "metaphor_image_url": {
+      "type": "string",
+      "description": "Placeholder for the metaphor image URL. Always 'METAPHOR_IMAGE'."
+    },
+    "metaphor_image_quote": {
+      "type": "string",
+      "description": "A poetic line that ties to the metaphor image."
+    }
   },
-  "additionalProperties": false
+  "required": [
+    "name",
+    "email",
+    "date_time",
+    "first_card_url",
+    "second_card_url",
+    "third_card_url",
+    "fourth_card_url",
+    "location_card_url",
+    "first_card_quote",
+    "second_card_quote",
+    "third_card_quote",
+    "fourth_card_quote",
+    "location_card_quote",
+    "card_influence_summary",
+    "act1",
+    "act2",
+    "act3",
+    "future_holds",
+    "metaphor_image_url",
+    "metaphor_image_quote"
+  ]
 }
-

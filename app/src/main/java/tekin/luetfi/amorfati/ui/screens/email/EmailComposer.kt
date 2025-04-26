@@ -97,7 +97,7 @@ fun EmailComposeScreen(
         val displayedCards = jsonInput.selectedCards
         if (displayedCards.size > READING_CARDS_AMOUNT)
             selectedCards = displayedCards
-        else if (displayedCards.size == READING_CARDS_AMOUNT){
+        else {
             selectedCards = listOf()
             displayedCards.forEach {
                 selectedCards += it

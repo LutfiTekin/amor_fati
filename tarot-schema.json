@@ -80,7 +80,7 @@
       "items": {
         "type": "string"
       },
-      "description": "An array of symbolic outcomes. Must contain 3, 4, 5, or 9 items based on card effects (Rule of Threes → 3, Nine of Hounds → 9). Defaults to 4 items.",
+      "description": "An array of symbolic outcomes. Must contain 3, 4, 5, or 9 items based on card effects (Rule of Threes → 3, Nine of Hounds → 9, Snow Mexican → 5). Defaults to 4 items.",
       "minItems": 3,
       "maxItems": 9
     },

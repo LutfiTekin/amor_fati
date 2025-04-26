@@ -672,6 +672,13 @@
                 "May introduce unexpected encounters or challenges related to navigation within a vast network."
             ],
             "story": "A sprawling metropolis built on centuries of history, where ancient landmarks stand watch over bustling modernity. London is a nexus of culture, finance, and countless intersecting lives, a city of hidden corners and iconic vistas."
+        },
+        {
+            "code": "SISTERS_OF_THE_SEVEN_TEA",
+            "effects": [
+                "Expands the narrative, drawing out events and weaving in additional layers of detail."
+            ],
+            "story": "Gathered around a table, three figures share hushed whispers and knowing glances over steaming cups. Their quiet conversation holds sway, revealing hidden threads of connection and allowing the story to unfold with careful deliberation, revealing truths layer by layer."
         }
     ]
 }

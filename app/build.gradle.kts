@@ -81,4 +81,6 @@ dependencies {
     implementation(libs.retrofit.converter.moshi)
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.maplibre)
+    implementation(libs.maplibreAnno)
 }

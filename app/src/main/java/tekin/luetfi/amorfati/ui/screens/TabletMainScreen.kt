@@ -32,14 +32,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -47,6 +50,7 @@ import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.ui.screens.email.CardInfo
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposerViewModel
 import tekin.luetfi.amorfati.ui.screens.email.FlippableCard
+import tekin.luetfi.amorfati.ui.screens.map.MapScreen
 import tekin.luetfi.amorfati.utils.Deck
 
 const val CHIP_FULL_DECK = 0
@@ -54,6 +58,7 @@ const val CHIP_F8_CARDS = 1
 const val CHIP_REGULAR_CARDS = 2
 const val CHIP_PICKED_CARDS = 3
 const val CHIP_LOCATION_CARDS = 4
+const val CHIP_CARD_MAP = 5
 
 @Composable
 fun TabletMainScreen(
@@ -69,7 +74,7 @@ fun TabletMainScreen(
     // 1) which chip is selected: 0 = Full Deck, 1 = F8, 2 = Regular
     var selectedChip by remember { mutableIntStateOf(0) }
     val chipLabels =
-        listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards", "Location Cards")
+        listOf("Full Deck", "F8 Cards", "Regular Cards", "Picked Cards", "Location Cards", "Map")
 
 
     //Pre shuffle cards
@@ -84,6 +89,7 @@ fun TabletMainScreen(
                 CHIP_PICKED_CARDS -> pickedCards.sortedByDescending { it.isF8Card }
                 CHIP_REGULAR_CARDS -> regularShuffled
                 CHIP_LOCATION_CARDS -> Deck.locationCards
+                CHIP_CARD_MAP -> listOf()
                 else -> regularShuffled
             }
         }
@@ -138,61 +144,25 @@ fun TabletMainScreen(
                 }
             }
 
-            // -- Grid of cards --
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(columns),
-                modifier = Modifier.fillMaxSize(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                items(
-                    items = cardsToShow,
-                    key = { card ->
-                        if (selectedChip == CHIP_FULL_DECK)
-                            card.code
-                        else Triple(selectedChip, card.code, pickedCards.contains(card))
-                    }
-                ) { card ->
-                    val isPicked by remember(pickedCards) {
-                        derivedStateOf {
-                            pickedCards.contains(
-                                card
-                            )
-                        }
-                    }
-                    FlippableCard(
-                        modifier = Modifier.padding(4.dp),
-                        card = card,
-                        size = cardSize,
-                        isPicked = isPicked,
-                        flippable = flippable,
-                        startFlipped = if (pickedCards.contains(card)) false else flipped,
-                        onTapped = {
-                            cardToPreview = it
-                        },
-                        onFlip = { flippedCard, isFront ->
-                            if (pickedCards.contains(flippedCard))
-                                return@FlippableCard
-                            if (isFront.not()) {
-                                scope.launch {
-                                    delay(400)
-                                    pickedCards.remove(flippedCard)
-                                }
-                                return@FlippableCard
-                            }
-                            if (pickedCards.size >= 4)
-                                return@FlippableCard
-                            scope.launch {
-                                delay(500)
-                                if (flippedCard.isF8Card)
-                                    pickedCards.removeIf { it.isF8Card }
-                                delay(400)
-                                pickedCards.add(flippedCard)
-                            }
-                        }
-                    )
+            if (selectedChip == CHIP_CARD_MAP) {
+                MapScreen {
+                    cardToPreview = it
                 }
+            }else {
+                // -- Grid of cards --
+                CardGrid(
+                    columns,
+                    cardsToShow,
+                    selectedChip,
+                    pickedCards,
+                    cardSize,
+                    flippable,
+                    flipped,
+                    cardToPreview,
+                    scope
+                )
             }
+
         }
 
         // Right pane: card info
@@ -300,6 +270,75 @@ fun TabletMainScreen(
         }
 
 
+    }
+}
+
+@Composable
+private fun CardGrid(
+    columns: Int,
+    cardsToShow: List<TarotCard>,
+    selectedChip: Int,
+    pickedCards: SnapshotStateList<TarotCard>,
+    cardSize: Dp,
+    flippable: Boolean,
+    flipped: Boolean,
+    cardToPreview: TarotCard?,
+    scope: CoroutineScope
+) {
+    var cardToPreview1 = cardToPreview
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(columns),
+        modifier = Modifier.fillMaxSize(),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(
+            items = cardsToShow,
+            key = { card ->
+                if (selectedChip == CHIP_FULL_DECK)
+                    card.code
+                else Triple(selectedChip, card.code, pickedCards.contains(card))
+            }
+        ) { card ->
+            val isPicked by remember(pickedCards) {
+                derivedStateOf {
+                    pickedCards.contains(
+                        card
+                    )
+                }
+            }
+            FlippableCard(
+                modifier = Modifier.padding(4.dp),
+                card = card,
+                size = cardSize,
+                isPicked = isPicked,
+                flippable = flippable,
+                startFlipped = if (pickedCards.contains(card)) false else flipped,
+                onTapped = {
+                    cardToPreview1 = it
+                },
+                onFlip = { flippedCard, isFront ->
+                    if (pickedCards.contains(flippedCard))
+                        return@FlippableCard
+                    if (isFront.not()) {
+                        scope.launch {
+                            delay(400)
+                            pickedCards.remove(flippedCard)
+                        }
+                        return@FlippableCard
+                    }
+                    if (pickedCards.size >= 4)
+                        return@FlippableCard
+                    scope.launch {
+                        delay(500)
+                        if (flippedCard.isF8Card)
+                            pickedCards.removeIf { it.isF8Card }
+                        delay(400)
+                        pickedCards.add(flippedCard)
+                    }
+                }
+            )
+        }
     }
 }
 

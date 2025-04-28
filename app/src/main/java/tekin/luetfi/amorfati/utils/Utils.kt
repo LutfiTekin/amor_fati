@@ -9,12 +9,11 @@ import android.provider.MediaStore
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
-import java.time.Instant
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import org.json.JSONException
 import org.json.JSONObject
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
@@ -22,6 +21,10 @@ import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJson
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJsonRecipient
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingMetaphorJson
 import tekin.luetfi.amorfati.domain.model.TarotCard
+import java.time.Instant
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.UUID
 
 val String.selectedCards: List<TarotCard>
@@ -52,7 +55,7 @@ val String.selectedCards: List<TarotCard>
             selectedUrls.mapNotNull { code ->
                 Deck.fullDeck.firstOrNull { it.code == code }
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Deck.fullDeck.shuffled()
         }
     }
@@ -73,7 +76,7 @@ val String.recipient: EmailAddress
                 ?: throw IllegalArgumentException("Invalid JSON for Tarot reading")
 
             reading.toMail
-        }catch (e: Exception){
+        } catch (e: Exception) {
             EmailAddress("", null)
         }
     }
@@ -94,7 +97,7 @@ val String.metaphorImageName: String
                 ?: throw IllegalArgumentException("Invalid JSON for Tarot reading")
 
             oneliner.toString()
-        }catch (e: Exception){
+        } catch (e: Exception) {
             UUID.randomUUID().toString()
         }
     }
@@ -116,7 +119,7 @@ private fun Int.ordinalSuffix(): String = when {
     this % 10 == 1 -> "st"
     this % 10 == 2 -> "nd"
     this % 10 == 3 -> "rd"
-    else           -> "th"
+    else -> "th"
 }
 
 /**
@@ -128,10 +131,10 @@ fun formattedTarotDateTime(epochMillis: Long = System.currentTimeMillis()): Stri
     val zdt: ZonedDateTime = Instant.ofEpochMilli(epochMillis).atZone(zone)
 
 
-    val day    = zdt.dayOfMonth
-    val month  = zdt.format(DateTimeFormatter.ofPattern("MMMM"))    // full month name
-    val year   = zdt.year
-    val hour   = zdt.format(DateTimeFormatter.ofPattern("HH"))      // 24‑hour, zero‑padded
+    val day = zdt.dayOfMonth
+    val month = zdt.format(DateTimeFormatter.ofPattern("MMMM"))    // full month name
+    val year = zdt.year
+    val hour = zdt.format(DateTimeFormatter.ofPattern("HH"))      // 24‑hour, zero‑padded
     val minute = zdt.format(DateTimeFormatter.ofPattern("mm"))      // zero‑padded minute
 
     return "${day}${day.ordinalSuffix()} of $month $year, $hour:$minute"
@@ -167,6 +170,37 @@ suspend fun TarotCard.sendToClipBoard(
             uri
         )
         clipboard.setPrimaryClip(clip)
+    }
+}
+
+
+fun <T> animateRevealPreselected(
+    preselected: List<T>,
+    pool: List<T>,
+    spinRounds: Int = 5,
+    spinDelayMs: Long = 100L
+): Flow<List<T>> = flow {
+    // Dedupe your targets once, then bail early if there’s nothing to do.
+    val targets = preselected.distinct()
+    if (targets.isEmpty() || pool.isEmpty()) {
+        emit(targets)
+        return@flow
+    }
+
+    // Build up the revealed list step by step
+    val revealed = mutableListOf<T>()
+    for (next in targets) {
+        // “Roulette” spins: pick from pool minus whatever’s already in ‘revealed’
+        repeat(spinRounds) {
+            val available = pool - revealed.toSet()
+            val preview   = available.randomOrNull() ?: next
+            emit(revealed + preview)
+            delay(spinDelayMs)
+        }
+        // Land on the real card
+        revealed += next
+        emit(revealed.toList())
+        delay(spinDelayMs * 2)
     }
 }
 

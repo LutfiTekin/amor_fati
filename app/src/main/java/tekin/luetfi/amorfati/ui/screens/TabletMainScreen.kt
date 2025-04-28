@@ -24,6 +24,7 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -51,6 +52,7 @@ import tekin.luetfi.amorfati.ui.screens.email.CardInfo
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposerViewModel
 import tekin.luetfi.amorfati.ui.screens.email.FlippableCard
 import tekin.luetfi.amorfati.ui.screens.map.MapScreen
+import tekin.luetfi.amorfati.ui.screens.tabletscreen.CardGrid
 import tekin.luetfi.amorfati.utils.Deck
 
 const val CHIP_FULL_DECK = 0
@@ -158,9 +160,10 @@ fun TabletMainScreen(
                     cardSize,
                     flippable,
                     flipped,
-                    cardToPreview,
                     scope
-                )
+                ){
+                    cardToPreview = it
+                }
             }
 
         }
@@ -273,72 +276,4 @@ fun TabletMainScreen(
     }
 }
 
-@Composable
-private fun CardGrid(
-    columns: Int,
-    cardsToShow: List<TarotCard>,
-    selectedChip: Int,
-    pickedCards: SnapshotStateList<TarotCard>,
-    cardSize: Dp,
-    flippable: Boolean,
-    flipped: Boolean,
-    cardToPreview: TarotCard?,
-    scope: CoroutineScope
-) {
-    var cardToPreview1 = cardToPreview
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(columns),
-        modifier = Modifier.fillMaxSize(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        items(
-            items = cardsToShow,
-            key = { card ->
-                if (selectedChip == CHIP_FULL_DECK)
-                    card.code
-                else Triple(selectedChip, card.code, pickedCards.contains(card))
-            }
-        ) { card ->
-            val isPicked by remember(pickedCards) {
-                derivedStateOf {
-                    pickedCards.contains(
-                        card
-                    )
-                }
-            }
-            FlippableCard(
-                modifier = Modifier.padding(4.dp),
-                card = card,
-                size = cardSize,
-                isPicked = isPicked,
-                flippable = flippable,
-                startFlipped = if (pickedCards.contains(card)) false else flipped,
-                onTapped = {
-                    cardToPreview1 = it
-                },
-                onFlip = { flippedCard, isFront ->
-                    if (pickedCards.contains(flippedCard))
-                        return@FlippableCard
-                    if (isFront.not()) {
-                        scope.launch {
-                            delay(400)
-                            pickedCards.remove(flippedCard)
-                        }
-                        return@FlippableCard
-                    }
-                    if (pickedCards.size >= 4)
-                        return@FlippableCard
-                    scope.launch {
-                        delay(500)
-                        if (flippedCard.isF8Card)
-                            pickedCards.removeIf { it.isF8Card }
-                        delay(400)
-                        pickedCards.add(flippedCard)
-                    }
-                }
-            )
-        }
-    }
-}
 

@@ -1,5 +1,14 @@
 package tekin.luetfi.amorfati.utils
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
+import android.provider.MediaStore
+import coil.ImageLoader
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -126,6 +135,39 @@ fun formattedTarotDateTime(epochMillis: Long = System.currentTimeMillis()): Stri
     val minute = zdt.format(DateTimeFormatter.ofPattern("mm"))      // zero‑padded minute
 
     return "${day}${day.ordinalSuffix()} of $month $year, $hour:$minute"
+}
+
+suspend fun TarotCard.sendToClipBoard(
+    context: Context
+) {
+    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    // 1) load the image as a Bitmap
+    val loader = ImageLoader(context)
+    val req = ImageRequest.Builder(context)
+        .data(localImageFile)
+        .build()
+    val result = loader.execute(req)
+    if (result is SuccessResult) {
+        val drawable = result.drawable as BitmapDrawable
+        val bitmap = drawable.bitmap
+
+        // 2) insert into MediaStore to get a content:// URI
+        val path = MediaStore.Images.Media.insertImage(
+            context.contentResolver,
+            bitmap,
+            code,
+            null
+        )
+        val uri = Uri.parse(path)
+
+        // 3) copy that URI into the clipboard as an IMAGE
+        val clip = ClipData.newUri(
+            context.contentResolver,
+            "Card Image",
+            uri
+        )
+        clipboard.setPrimaryClip(clip)
+    }
 }
 
 

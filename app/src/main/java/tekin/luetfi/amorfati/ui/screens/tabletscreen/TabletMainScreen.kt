@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.provider.MediaStore
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -45,6 +46,7 @@ import tekin.luetfi.amorfati.ui.screens.email.CardInfo
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposerViewModel
 import tekin.luetfi.amorfati.ui.screens.tabletscreen.map.MapScreen
 import tekin.luetfi.amorfati.utils.Deck
+import tekin.luetfi.amorfati.utils.sendToClipBoard
 
 const val CHIP_FULL_DECK = 0
 const val CHIP_F8_CARDS = 1
@@ -60,7 +62,6 @@ fun TabletMainScreen(
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
     val pickedCards = remember { mutableStateListOf<TarotCard>() }
     var cardToPreview by remember { mutableStateOf<TarotCard?>(null) }
@@ -177,33 +178,7 @@ fun TabletMainScreen(
                         onClick = {
                             // run in IO since we do disk writes
                             scope.launch(Dispatchers.IO) {
-                                // 1) load the image as a Bitmap
-                                val loader = ImageLoader(context)
-                                val req = ImageRequest.Builder(context)
-                                    .data(selectedCard.localImageFile)
-                                    .build()
-                                val result = loader.execute(req)
-                                if (result is SuccessResult) {
-                                    val drawable = result.drawable as BitmapDrawable
-                                    val bitmap = drawable.bitmap
-
-                                    // 2) insert into MediaStore to get a content:// URI
-                                    val path = MediaStore.Images.Media.insertImage(
-                                        context.contentResolver,
-                                        bitmap,
-                                        selectedCard.code,
-                                        null
-                                    )
-                                    val uri = android.net.Uri.parse(path)
-
-                                    // 3) copy that URI into the clipboard as an IMAGE
-                                    val clip = ClipData.newUri(
-                                        context.contentResolver,
-                                        "Card Image",
-                                        uri
-                                    )
-                                    clipboard.setPrimaryClip(clip)
-                                }
+                                selectedCard.sendToClipBoard(context)
                             }
                         },
                         modifier = Modifier.weight(1f)

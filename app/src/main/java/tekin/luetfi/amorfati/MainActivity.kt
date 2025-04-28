@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -23,13 +24,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import dagger.hilt.android.AndroidEntryPoint
-import tekin.luetfi.amorfati.ui.screens.tabletscreen.TabletMainScreen
+import tekin.luetfi.amorfati.ui.screens.drawingritual.DrawingRitualScreen
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposeScreen
 import tekin.luetfi.amorfati.ui.screens.settings.SettingsScreen
+import tekin.luetfi.amorfati.ui.screens.tabletscreen.TabletMainScreen
 import tekin.luetfi.amorfati.ui.theme.AmorFatiTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    var screen by mutableStateOf(Screen.Main)
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,26 +53,49 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             title = { Text(title) },
                             actions = {
-                                IconButton(onClick = { showSettings = !showSettings }) {
+                                IconButton(onClick = { screen = Screen.Settings }) {
                                     Icon(Icons.Default.Settings, null)
+                                }
+                                IconButton(onClick = { screen = Screen.DrawingRitual }) {
+                                    Icon(Icons.Default.PlayArrow, null)
                                 }
                             }
                         )
                     },
                     snackbarHost = { SnackbarHost(snackbarHostState) }
                 ) { inner ->
-                    if (showSettings) {
-                        SettingsScreen(
-                            modifier = Modifier.padding(inner).fillMaxSize(),
-                            onDone = { showSettings = false }
-                        )
-                    } else {
-                        if (isTablet){
-                            TabletMainScreen(modifier = Modifier.padding(inner).fillMaxSize())
-                        }else {
-                            EmailComposeScreen(
-                                modifier = Modifier.padding(inner).fillMaxSize(),
-                                snackbarHostState = snackbarHostState
+                    when (screen) {
+                        Screen.Main -> {
+                            if (isTablet) {
+                                TabletMainScreen(
+                                    modifier = Modifier
+                                        .padding(inner)
+                                        .fillMaxSize()
+                                )
+                            } else {
+                                EmailComposeScreen(
+                                    modifier = Modifier
+                                        .padding(inner)
+                                        .fillMaxSize(),
+                                    snackbarHostState = snackbarHostState
+                                )
+                            }
+                        }
+
+                        Screen.DrawingRitual -> {
+                            DrawingRitualScreen(
+                                modifier = Modifier
+                                    .padding(inner)
+                                    .fillMaxSize(), snackbarHostState = snackbarHostState, isTablet
+                            )
+                        }
+
+                        Screen.Settings -> {
+                            SettingsScreen(
+                                modifier = Modifier
+                                    .padding(inner)
+                                    .fillMaxSize(),
+                                onDone = { showSettings = false }
                             )
                         }
                     }
@@ -75,4 +103,8 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+enum class Screen {
+    Main, DrawingRitual, Settings
 }

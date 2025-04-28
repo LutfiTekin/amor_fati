@@ -31,10 +31,14 @@ fun DrawingRitualPane(
     var phase by remember { mutableIntStateOf(0) }
     val flips = selectedCards.size
 
+    //Pre shuffle cards
+    val f8Shuffled = remember { Deck.f8Cards.shuffled() }
+    val regularShuffled = remember { Deck.cards.shuffled() }
+
     val pool = when (phase) {
-        0 -> Deck.f8Cards
-        1 -> Deck.cards
-        else -> Deck.cards
+        0 -> f8Shuffled
+        1 -> regularShuffled
+        else -> regularShuffled
     }
 
     if (phase < 2) {
@@ -65,7 +69,7 @@ fun DrawingRitualPane(
                 items(pool, key = { it.code }) { card ->
                     FlippableCard(
                         card = card,
-                        size = 250.dp,
+                        size = if (phase == 0) 250.dp else 120.dp,
                         flippable = true,
                         startFlipped = true,
                         onFlip = { flippedCard, isFront ->
@@ -116,8 +120,8 @@ fun DrawingRitualPane(
                     FlippableCard(
                         card = card,
                         size = 120.dp,
-                        flippable = false,
-                        startFlipped = true,
+                        flippable = selectedCards.contains(card),
+                        startFlipped = selectedCards.contains(card).not(),
                         onTapped = { tapped ->
                             if (tapped == null) return@FlippableCard
                             scope.launch {

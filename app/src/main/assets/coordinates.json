@@ -1,0 +1,322 @@
+{
+    "ALE_OF_THE_ACHE": {
+        "lat": 41.005161,
+        "lng": 39.723998
+    },
+    "AMSTERDAM": {
+        "lat": 52.3676,
+        "lng": 4.9041
+    },
+    "ANTALYA": {
+        "lat": 36.8969,
+        "lng": 30.7179
+    },
+    "ATHENS": {
+        "lat": 37.9838,
+        "lng": 23.7275
+    },
+    "BAGHDAD": {
+        "lat": 33.3152,
+        "lng": 44.3661
+    },
+    "BANGKOK": {
+        "lat": 13.7563,
+        "lng": 100.5018
+    },
+    "BARCELONA": {
+        "lat": 41.3851,
+        "lng": 2.1734
+    },
+    "BERLIN": {
+        "lat": 52.52,
+        "lng": 13.405
+    },
+    "BRAZIL": {
+        "lat": -15.7801,
+        "lng": -47.9292
+    },
+    "BRUGES": {
+        "lat": 51.2093,
+        "lng": 3.2247
+    },
+    "BUSAN": {
+        "lat": 35.1796,
+        "lng": 129.0756
+    },
+    "COPENHAGEN": {
+        "lat": 55.6761,
+        "lng": 12.5683
+    },
+    "COUNCIL_OF_THREE": {
+        "lat": 50.077588,
+        "lng": 14.436177
+    },
+    "COUNTESS_OF_CHAOS": {
+        "lat": 51.340046,
+        "lng": 12.374959
+    },
+    "DESIGNATED_DRIVER": {
+        "lat": 50.073585,
+        "lng": 14.441607
+    },
+    "DRESDEN": {
+        "lat": 51.0504,
+        "lng": 13.7373
+    },
+    "DUBAI": {
+        "lat": 25.2048,
+        "lng": 55.2708
+    },
+    "DUBLIN": {
+        "lat": 53.3498,
+        "lng": -6.2603
+    },
+    "DUCHESS_AND_THE_WHITE_HOUND": {
+        "lat": 51.370024,
+        "lng": 12.400087
+    },
+    "EDINBURGH": {
+        "lat": 55.9533,
+        "lng": -3.1883
+    },
+    "FLORENCE": {
+        "lat": 43.7696,
+        "lng": 11.2558
+    },
+    "FOCUS_OF_FATE": {
+        "lat": 41.015984,
+        "lng": 28.980956
+    },
+    "GAZE_OF_EXHAUSTION": {
+        "lat": 51.345043,
+        "lng": 12.390091
+    },
+    "GENTLEMAN_OF_THE_ALPS": {
+        "lat": 46.813981,
+        "lng": 9.844726
+    },
+    "GENTLE_HIGHLANDER": {
+        "lat": 55.953334,
+        "lng": -3.188301
+    },
+    "HANOI": {
+        "lat": 21.0278,
+        "lng": 105.8342
+    },
+    "HELSINKI": {
+        "lat": 60.1695,
+        "lng": 24.9354
+    },
+    "HONG_KONG": {
+        "lat": 22.3193,
+        "lng": 114.1694
+    },
+    "ISTANBUL": {
+        "lat": 41.0082,
+        "lng": 28.9784
+    },
+    "JOHANNESBURG": {
+        "lat": 26.2041,
+        "lng": 28.0473
+    },
+    "KEEPERS_OF_THE_SKY_NEEDLE": {
+        "lat": 52.52195,
+        "lng": 13.413512
+    },
+    "KEEPER_OF_THE_BITTER_TRUTH": {
+        "lat": 36.885041,
+        "lng": 30.665994
+    },
+    "LADY_OF_LUNACY": {
+        "lat": 51.340014,
+        "lng": 12.375022
+    },
+    "LADY_OF_THE_FIRST_FLAME": {
+        "lat": 51.339965,
+        "lng": 12.374936
+    },
+    "LAS_VEGAS": {
+        "lat": 36.1699,
+        "lng": -115.1398
+    },
+    "LAVENDER_TRIO": {
+        "lat": 37.850033,
+        "lng": 30.93335
+    },
+    "LEIPZIG": {
+        "lat": 51.3396,
+        "lng": 12.3731
+    },
+    "LONDON": {
+        "lat": 51.5074,
+        "lng": -0.1278
+    },
+    "MADRID": {
+        "lat": 40.4168,
+        "lng": -3.7038
+    },
+    "MAIDEN_OF_MISCHIEF": {
+        "lat": 51.320037,
+        "lng": 12.370011
+    },
+    "MISTRESS_OF_MAYHEM": {
+        "lat": 37.720041,
+        "lng": 30.280039
+    },
+    "MOSCOW": {
+        "lat": 55.7558,
+        "lng": 37.6173
+    },
+    "MUMBAI": {
+        "lat": 19.076,
+        "lng": 72.8777
+    },
+    "NAIROBI": {
+        "lat": 1.2921,
+        "lng": 36.8219
+    },
+    "NEW_YORK": {
+        "lat": 40.7128,
+        "lng": -74.006
+    },
+    "NINE_OF_HOUNDS": {
+        "lat": 51.370035,
+        "lng": 12.400023
+    },
+    "NOMAD_OF_TRACKS": {
+        "lat": 55.676105,
+        "lng": 12.56833
+    },
+    "PRAGUE": {
+        "lat": 50.0755,
+        "lng": 14.4378
+    },
+    "QUEEN_OF_WHATEVER": {
+        "lat": 51.340069,
+        "lng": 12.375103
+    },
+    "ROME": {
+        "lat": 41.9028,
+        "lng": 12.4964
+    },
+    "ROUND_TRIP_KNIGHT": {
+        "lat": 50.06471,
+        "lng": 19.94501
+    },
+    "SAN_FRANCISCO": {
+        "lat": 37.7749,
+        "lng": -122.4194
+    },
+    "SEATTLE": {
+        "lat": 47.6062,
+        "lng": -122.3321
+    },
+    "SENTINEL_OF_THE_TWIN_TOWERS": {
+        "lat": 41.38511,
+        "lng": 2.17341
+    },
+    "SILENT_JUDGE": {
+        "lat": 36.878045,
+        "lng": 30.679041
+    },
+    "SISTERS_OF_THE_SEVEN_TEA": {
+        "lat": 36.881032,
+        "lng": 30.706029
+    },
+    "SISTER_SINISTER": {
+        "lat": 36.885011,
+        "lng": 30.666005
+    },
+    "SNOW_MEXICAN": {
+        "lat": 36.76672,
+        "lng": 31.388308
+    },
+    "STOCKHOLM": {
+        "lat": 59.3293,
+        "lng": 18.0686
+    },
+    "TBILISI": {
+        "lat": 41.7151,
+        "lng": 44.8271
+    },
+    "TEACHER_OF_TREACHERY": {
+        "lat": 25.204829,
+        "lng": 55.270817
+    },
+    "TEHRAN": {
+        "lat": 35.6892,
+        "lng": 51.389
+    },
+    "THE_ALCHEMIST": {
+        "lat": 36.62183,
+        "lng": 29.123603
+    },
+    "THE_BADDIES": {
+        "lat": 51.340015,
+        "lng": 12.375074
+    },
+    "THE_BADDIES_II": {
+        "lat": 51.33997,
+        "lng": 12.374977
+    },
+    "THE_BADDIES_III": {
+        "lat": 52.520021,
+        "lng": 13.405004
+    },
+    "THE_BALLAD": {
+        "lat": 41.008206,
+        "lng": 28.978427
+    },
+    "THE_DEALER": {
+        "lat": 36.830046,
+        "lng": 30.60006
+    },
+    "THE_DISTANT_LIAISON": {
+        "lat": 41.008242,
+        "lng": 28.978441
+    },
+    "THE_DUCHESS_OF_DRAMA": {
+        "lat": 51.339948,
+        "lng": 12.37488
+    },
+    "THE_ENDLESS_POUR": {
+        "lat": 51.340518,
+        "lng": 12.374008
+    },
+    "THE_LIBRARIAN": {
+        "lat": 41.005012,
+        "lng": 39.72691
+    },
+    "THE_LONE_STAR": {
+        "lat": 50.231026,
+        "lng": 12.869402
+    },
+    "THE_RULE_OF_THREES": {
+        "lat": 51.370005,
+        "lng": 12.400016
+    },
+    "THE_TEXAN_AND_THE_THISTLE": {
+        "lat": 50.075505,
+        "lng": 14.437829
+    },
+    "TOKYO": {
+        "lat": 35.6895,
+        "lng": 139.6917
+    },
+    "VENICE": {
+        "lat": 45.4408,
+        "lng": 12.3155
+    },
+    "VIENNA": {
+        "lat": 48.2082,
+        "lng": 16.3734
+    },
+    "WENCH_OF_WHISKEY": {
+        "lat": 51.340538,
+        "lng": 12.374029
+    },
+    "ZERMATT": {
+        "lat": 46.0207,
+        "lng": 7.7491
+    }
+}

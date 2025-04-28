@@ -1,4 +1,4 @@
-package tekin.luetfi.amorfati.ui.screens.email
+package tekin.luetfi.amorfati.ui.components
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode

@@ -1,4 +1,4 @@
-package tekin.luetfi.amorfati.ui.screens.map
+package tekin.luetfi.amorfati.ui.screens.tabletscreen.map
 
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.layout.fillMaxSize

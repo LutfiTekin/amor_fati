@@ -5,10 +5,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import tekin.luetfi.amorfati.domain.model.TarotCard
+import tekin.luetfi.amorfati.ui.components.FlippableCard
 import tekin.luetfi.amorfati.utils.Deck
 
 

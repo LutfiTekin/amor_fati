@@ -23,7 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import dagger.hilt.android.AndroidEntryPoint
-import tekin.luetfi.amorfati.ui.screens.TabletMainScreen
+import tekin.luetfi.amorfati.ui.screens.tabletscreen.TabletMainScreen
 import tekin.luetfi.amorfati.ui.screens.email.EmailComposeScreen
 import tekin.luetfi.amorfati.ui.screens.settings.SettingsScreen
 import tekin.luetfi.amorfati.ui.theme.AmorFatiTheme

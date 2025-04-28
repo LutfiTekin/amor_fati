@@ -18,11 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.domain.model.TarotCard
-import tekin.luetfi.amorfati.ui.screens.CHIP_FULL_DECK
-import tekin.luetfi.amorfati.ui.screens.email.FlippableCard
+import tekin.luetfi.amorfati.ui.components.FlippableCard
 
 @Composable
 fun CardGrid(

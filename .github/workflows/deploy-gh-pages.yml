@@ -3,28 +3,38 @@ name: Deploy to GitHub Pages from assets
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout master branch
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Setup Pages deployment
-        uses: actions/configure-pages@v3
+      - name: Setup Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
-      - name: Copy assets to temporary publish directory
+      - name: Copy assets to publish directory
         run: |
           mkdir publish
           cp -r app/src/main/assets/* publish/
 
       - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./publish
-          publish_branch: gh-pages
-          force_orphan: true
+        run: |
+          cd publish
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Deploy GitHub Pages"
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LutfiTekin/amor_fati.git
+          git push --force origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

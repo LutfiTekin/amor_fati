@@ -21,7 +21,7 @@ const val SEND_GRID_BASE_URL = "https://api.sendgrid.com/"
 const val LORE_API_BASE_URL = "https://lutfitek.in/"
 const val DEFAULT_TIMEOUT = "default_timeout"
 const val SEND_GRID_API_KEY = "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"
-const val IMAGE_HOST_DIR = "https://lutfitek.in/assets/"
+const val IMAGE_HOST_DIR = "https://aeterna.lutfitek.in/"
 const val DEFAULT_BACK_IMAGE = IMAGE_HOST_DIR + "back.png"
 const val READING_CARDS_AMOUNT = 5
 

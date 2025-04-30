@@ -101,5 +101,4 @@ object Deck {
 
     val fullDeck = cards + f8Cards + locationCards
 
-
 }

@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages from assets
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:

@@ -52,7 +52,6 @@ src/ └── main/ ├── java/tekin/luetfi/amorfati/ │   ├── MainA
      var sendEmail         by mutableStateOf(true)
      var shouldSendCC      by mutableStateOf(true)
      var selectedTemplate  by mutableStateOf(Template.list.first())
-     const val IMAGE_HOST_DIR = "https://lutfitek.in/assets/"
      // …
    }
 

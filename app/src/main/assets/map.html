@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amor Fati Map Version Panthers of Prague</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+  <style>
+    /* Fullscreen map */
+    html, body { margin: 0; padding: 0; height: 100%; }
+    #map { width: 100%; height: 100%; }
+
+    /* Parchment-style popup */
+    .leaflet-popup-content-wrapper {
+      background: linear-gradient(#fdf1c7, #e8d0a9);
+      border: 2px solid #c2a66b;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .leaflet-popup-tip {
+      background: linear-gradient(#fdf1c7, #e8d0a9);
+    }
+    .leaflet-popup-content { margin: 8px; }
+
+    /* Flippable card */
+    .flip-card {
+      width: 120px; height: 180px;
+      perspective: 1000px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    /* when flipped, show back */
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+    }
+    .flip-card-back { transform: rotateY(180deg); }
+    .flip-card-front img, .flip-card-back img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* Popup layout */
+    .popup-container { display: flex; align-items: flex-start; }
+    .popup-text { margin-left: 12px; text-align: left; }
+    .popup-text strong { display: block; margin-bottom: 4px; }
+    .popup-text em { display: block; margin-bottom: 6px; font-style: italic; }
+    .popup-text ul { padding-left: 18px; margin: 0; }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script>
+    Promise.all([
+      fetch('lore.json').then(r => r.json()),
+      fetch('coordinates.json').then(r => r.json())
+    ])
+    .then(([loreData, coordinates]) => {
+      const lore = loreData.cards;
+      const isMobile = window.innerWidth < 768;
+
+      // Random initial center (fallback Prague coords)
+      const randomCard = lore[Math.floor(Math.random() * lore.length)];
+      const center = coordinates[randomCard.code] || { lat:50.0755, lng:14.4378 };
+
+      // Initialize map
+      const map = L.map('map').setView([center.lat, center.lng], 6);
+      const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      });
+      const light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CARTO'
+      });
+      (isMobile ? light : osm).addTo(map);
+
+      // Marker clustering
+      const cluster = L.markerClusterGroup({ chunkedLoading: true });
+      map.addLayer(cluster);
+
+      // Prepare markers
+      const markers = lore.map(card => {
+        const loc = coordinates[card.code];
+        if (!loc) return null;
+        const codeLower = card.code.toLowerCase();
+        const thumb = `thumbnails/${codeLower}.png`;
+        const icon = L.icon({ iconUrl: thumb, iconSize:[50,75], iconAnchor:[25,75] });
+
+        const m = L.marker([loc.lat, loc.lng], { icon });
+        m.card = card; m.loaded = false;
+        m.bindPopup('Loading…');
+        m.on('popupopen', () => {
+          if (!m.loaded) {
+            m.setPopupContent(renderPopup(m.card));
+            const el = m.getPopup().getElement();
+            const fc = el.querySelector('.flip-card');
+            // auto-flip from back to front after 2 seconds
+            setTimeout(() => fc.classList.remove('flipped'), 2000);
+            // user-driven flips thereafter
+            fc.addEventListener('click', () => fc.classList.toggle('flipped'));
+            m.loaded = true;
+          }
+        });
+        return m;
+      }).filter(x => x);
+
+      // Only add markers in viewport
+      function update() {
+        const b = map.getBounds();
+        cluster.clearLayers();
+        markers.forEach(m => b.contains(m.getLatLng()) && cluster.addLayer(m));
+      }
+      map.on('moveend', update);
+      update();
+
+      // Build popup HTML
+      function renderPopup(card) {
+        const code = card.code.toLowerCase();
+        return `
+          <div class="popup-container">
+            <div class="flip-card flipped">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="${code}.png" alt="${card.code}"/>
+                </div>
+                <div class="flip-card-back">
+                  <img src="${code}_back.png" alt="Back of ${card.code}" onerror="this.onerror=null;this.src='back.png'"/>
+                </div>
+              </div>
+            </div>
+            <div class="popup-text">
+              <strong>${card.code.replace(/_/g,' ')}</strong>
+              <em>${card.story}</em>
+              <ul>${card.effects.map(e=>`<li>${e}</li>`).join('')}</ul>
+            </div>
+          </div>`;
+      }
+    })
+    .catch(e => console.error('Error loading map:', e));
+  </script>
+</body>
+</html>

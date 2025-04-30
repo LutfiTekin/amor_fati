@@ -10,13 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout master branch
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # important for pushing
 
-      - name: Setup Pages deployment
-        uses: actions/configure-pages@v3
-
-      - name: Copy assets to temporary publish directory
+      - name: Copy assets to publish directory
         run: |
           mkdir publish
           cp -r app/src/main/assets/* publish/
@@ -25,6 +24,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./publish
           publish_branch: gh-pages
-          force_orphan: true
+          publish_dir: ./publish

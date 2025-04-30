@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages from assets
+name: Deploy to GitHub Pages from assets (only if changed)
 
 on:
   push:
@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout master branch
+      - name: Checkout master
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup Git
+      - name: Set up Git
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
@@ -25,16 +25,25 @@ jobs:
           mkdir publish
           cp -r app/src/main/assets/* publish/
 
-      - name: Deploy to gh-pages branch
+      - name: Check if assets have changed
+        id: check_diff
+        run: |
+          git fetch origin gh-pages
+          git worktree add gh-pages-temp origin/gh-pages
+          diff_output=$(diff -r publish gh-pages-temp || true)
+          echo "diff_output<<EOF" >> $GITHUB_OUTPUT
+          echo "$diff_output" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Deploy to gh-pages if changed
+        if: ${{ steps.check_diff.outputs.diff_output != '' }}
         run: |
           cd publish
           git init
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
           git checkout -b gh-pages
-          git add .
-          git commit -m "Deploy GitHub Pages"
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/LutfiTekin/amor_fati.git
+          git add .
+          git commit -m "Deploy updated assets to GitHub Pages"
           git push --force origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

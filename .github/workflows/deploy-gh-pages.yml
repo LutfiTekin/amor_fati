@@ -13,16 +13,24 @@ jobs:
       - name: Checkout master branch
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # important for pushing
+          fetch-depth: 0
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
 
       - name: Copy assets to publish directory
         run: |
           mkdir publish
           cp -r app/src/main/assets/* publish/
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./publish
+      - name: Force push to gh-pages
+        run: |
+          cd publish
+          git init
+          git remote add origin https://github.com/LutfiTekin/amor_fati.git
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Deploy GitHub Pages"
+          git push --force origin gh-pages

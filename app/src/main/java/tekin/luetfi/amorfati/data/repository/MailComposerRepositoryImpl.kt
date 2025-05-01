@@ -22,7 +22,7 @@ class MailComposerRepositoryImpl @Inject constructor(private val api: SendGridAp
             "template_id" to Defaults.selectedTemplate.id,
         )
 
-        val response = api.sendMail(envelope)
+        val response = api.sendMail(request = envelope)
         if (response.isSuccessful.not()) error("Failed to send email")
     }
 }

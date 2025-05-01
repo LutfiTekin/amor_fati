@@ -25,6 +25,7 @@ googleGmsGoogleServices = "4.4.2"
 firebaseStorage = "21.0.1"
 maplibre = "11.8.6"
 maplibreAnno = "3.0.2"
+firebaseConfig = "22.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -59,6 +60,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 maplibre = { group = "org.maplibre.gl", name = "android-sdk", version.ref = "maplibre" }
 maplibreAnno = { group = "org.maplibre.gl", name = "android-plugin-annotation-v9", version.ref = "maplibreAnno" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebaseConfig" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -2,12 +2,14 @@ package tekin.luetfi.amorfati.ui.screens.email
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import coil.ImageLoader
 import coil.request.ImageRequest
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.storage.ktx.storage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -27,6 +29,7 @@ import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
 import tekin.luetfi.amorfati.utils.METAPHOR_IMAGE_KEY
 import tekin.luetfi.amorfati.utils.READING_TIME_KEY
+import tekin.luetfi.amorfati.utils.SEND_GRID_API_KEY
 import tekin.luetfi.amorfati.utils.formattedTarotDateTime
 import tekin.luetfi.amorfati.utils.metaphorImageName
 import javax.inject.Inject
@@ -36,13 +39,17 @@ class EmailComposerViewModel @Inject constructor(
     private val sendEmailUseCase: SendEmailUseCase,
     private val loreUseCase: GetLoreUseCase,
     private val moshi: Moshi,
-    private val imageLoader: ImageLoader,
+    private val remoteConfig: FirebaseRemoteConfig,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     init {
         // Fetch and populate your global lore list as soon as VM is created
         viewModelScope.launch {
+            remoteConfig.fetchAndActivate().addOnSuccessListener {
+                Defaults.sendgridApiKey = remoteConfig.getString(SEND_GRID_API_KEY)
+                Log.d("EmailComposerViewModel","Api key fetched: ${Defaults.sendgridApiKey.take(10)}")
+            }
             try {
                 val lore = loreUseCase()
                 Defaults.mainLore.apply {

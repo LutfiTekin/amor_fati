@@ -95,7 +95,10 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .padding(inner)
                                     .fillMaxSize(),
-                                onDone = { showSettings = false }
+                                onDone = {
+                                    showSettings = false
+                                    screen = Screen.Main
+                                }
                             )
                         }
                     }

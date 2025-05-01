@@ -97,6 +97,7 @@ object Deck {
         TarotCard(name = "Mumbai", code = "MUMBAI"),
         TarotCard(name = "Venice", code = "VENICE"),
         TarotCard(name = "London", code = "LONDON"),
+        TarotCard(name = "Hamburg", code = "HAMBURG")
     )
 
     val fullDeck = cards + f8Cards + locationCards

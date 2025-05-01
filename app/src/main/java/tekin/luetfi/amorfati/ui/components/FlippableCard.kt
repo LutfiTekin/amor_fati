@@ -33,7 +33,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filter
 import tekin.luetfi.amorfati.domain.model.TarotCard
-import tekin.luetfi.amorfati.utils.DEFAULT_BACK_IMAGE
+import tekin.luetfi.amorfati.utils.Defaults
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -89,7 +89,7 @@ fun FlippableCard(
     val showingBack = flippable && normalized in 90f..270f
     val isFront = !showingBack
 
-    val placeholderBack = rememberAsyncImagePainter(DEFAULT_BACK_IMAGE)
+    val placeholderBack = rememberAsyncImagePainter(Defaults.imageHostDir + "back.png")
     val cameraDist = 8f * LocalDensity.current.density
 
     Box(

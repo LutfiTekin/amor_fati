@@ -4,7 +4,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import tekin.luetfi.amorfati.utils.Deck
 import tekin.luetfi.amorfati.utils.Defaults
-import tekin.luetfi.amorfati.utils.IMAGE_HOST_DIR
 
 /**
  * Represents a Tarot card with its name, image URL, and a unique code.
@@ -23,7 +22,7 @@ data class TarotCard(
 ) : Parcelable {
     val imageUrl: String
         get() {
-            return IMAGE_HOST_DIR + code.lowercase() + ".png"
+            return Defaults.imageHostDir + code.lowercase() + ".png"
         }
 
     val localImageFile: String

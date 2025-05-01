@@ -68,6 +68,11 @@ class EmailComposerViewModel @Inject constructor(
     ) = viewModelScope.launch {
         try {
             progress(-1 withMessage "Processing Json...")
+            progress(-1 withMessage "Loading Selected Cards...")
+            jsonInput.selectedCards.forEach {
+                progress(-1 withMessage it.name)
+                delay(100)
+            }
             progress(-1 withMessage "Replacing Card Placeholders")
             if (Defaults.useTestBucket)
                 progress(-1 withMessage "Using Test Bucket")

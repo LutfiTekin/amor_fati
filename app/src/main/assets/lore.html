@@ -71,13 +71,13 @@
         cards.forEach(card => {
           if (card.type === 'f8' && !showF8) return;
           const section = document.createElement('section'); section.className = 'card';
-          section.style.backgroundImage = `url('${card.code}.png')`;
+          section.style.backgroundImage = `url('${card.code.toLowerCase()}.png')`;
           section.innerHTML = `
             <div class="overlay"></div>
             <div class="content">
               <h2 class="title">${card.name}</h2>
               <div class="flip-image"><div class="flip-image-inner">
-                <div class="flip-front"><img src="${card.code}.png" alt="${card.name}" /></div>
+                <div class="flip-front"><img src="${card.code.toLowerCase()}.png" alt="${card.name}" /></div>
                 <div class="flip-back"><img src="${getBack(card)}" alt="${card.name} Back"/></div>
               </div></div>
               ${card.effects?.length ? `<div class="effects"><h3>Effects</h3><ul>${card.effects.map(e => `<li>${e}</li>`).join('')}</ul></div>` : ''}
@@ -96,7 +96,7 @@
           const li = document.createElement('li'); li.className = 'mobile-item';
           li.innerHTML = `<h2 class="name">${card.name}</h2>
             <div class="details">
-              <img src="${card.code}.png" alt="${card.name}" />
+              <img src="${card.code.toLowerCase()}.png" alt="${card.name}" />
               ${card.effects?.length ? `<div class="effects"><h3>Effects</h3><ul>${card.effects.map(e=>`<li>${e}</li>`).join('')}</ul></div>` : ''}
               ${card.story ? `<div class="story"><h3>Story</h3><p>${card.story}</p></div>` : ''}
             </div>`;
@@ -111,7 +111,7 @@
       function getBack(card) {
         if (card.type === 'f8') return 'f8_back.png';
         if (card.type === 'regular') return 'back.png';
-        return `${card.code}_back.png`;
+        return `${card.code.toLowerCase()}_back.png`;
       }
     })();
 </script>

@@ -6,200 +6,112 @@
     <title>Card Lore Catalog</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        /* Global */
-        body {
-          margin: 0;
-          padding: 0;
-          font-family: 'Roboto', sans-serif;
-          background: #111;
-          color: #eee;
-          overflow: hidden;
-        }
-        .container {
-          height: 100vh;
-          width: 100vw;
-          scroll-snap-type: y mandatory;
-          overflow-y: scroll;
-        }
-        section.card {
-          height: 100vh;
-          width: 100vw;
-          scroll-snap-align: start;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          padding: 40px;
-          box-sizing: border-box;
-          background-size: cover;
-          background-position: center;
-          position: relative;
-        }
-        .overlay {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          background: rgba(0,0,0,0.6);
-        }
-        .content {
-          position: relative;
-          max-width: 800px;
-          z-index: 1;
-        }
-        .title {
-          font-family: 'Playfair Display', serif;
-          font-size: 3em;
-          margin: 0 0 20px;
-          letter-spacing: 2px;
-        }
-        /* Flippable Image Styles */
-        .flip-image {
-          width: 300px;
-          aspect-ratio: 300 / 450;
-          perspective: 1000px;
-          cursor: pointer;
-          margin: 0 auto 20px;
-        }
-        .flip-image-inner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          transform-style: preserve-3d;
-          transition: transform 0.6s;
-        }
-        .flip-image.flipped .flip-image-inner {
-          transform: rotateY(180deg);
-        }
-        .flip-front, .flip-back {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          backface-visibility: hidden;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .flip-front img, .flip-back img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .flip-back {
-          transform: rotateY(180deg);
-        }
-        .effects, .story {
-          font-size: 1.1em;
-          margin: 12px 0;
-          line-height: 1.5;
-        }
-        .effects ul {
-          list-style: none;
-          padding: 0;
-        }
-        .effects li::before {
-          content: "• ";
-          color: #f0a;
-        }
+        /* Global Styles */
+        body { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; background: #111; color: #eee; }
+        h1 { text-align: center; padding: 16px; }
+
+        /* Desktop Layout */
+        .container { height: 100vh; width: 100vw; scroll-snap-type: y mandatory; overflow-y: scroll; }
+        section.card { height: 100vh; width: 100vw; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; box-sizing: border-box; background-size: cover; background-position: center; position: relative; }
+        .overlay { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,0.6); }
+        .content { position: relative; max-width: 800px; z-index: 1; }
+        .title { font-family: 'Playfair Display', serif; font-size: 3em; margin: 0 0 20px; letter-spacing: 2px; }
+        .flip-image { width: 300px; aspect-ratio: 300/450; perspective: 1000px; cursor: pointer; margin: 0 auto 20px; }
+        .flip-image-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s; }
+        .flip-image.flipped .flip-image-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .flip-front img, .flip-back img { width: 100%; height: 100%; object-fit: cover; }
+        .flip-back { transform: rotateY(180deg); }
+
+        /* Text Blocks */
+        .effects, .story { font-size: 1.1em; margin: 12px 0; line-height: 1.5; }
+        .effects ul { list-style: none; padding: 0; }
+        .effects li::before { content: "• "; color: #f0a; }
+
         /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+        /* Mobile Layout */
+        .mobile-list { display: none; padding: 0; margin: 0; list-style: none; }
+        .mobile-item { border-bottom: 1px solid #333; padding: 12px 16px; }
+        .mobile-item .name { font-family: 'Playfair Display', serif; font-size: 1.5em; margin: 0; }
+        .mobile-item .details { display: none; margin-top: 8px; }
+        .mobile-item .details img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 8px; }
+        .mobile-item .details .effects, .mobile-item .details .story { margin: 8px 0; }
+
+        /* Responsive Switch */
+        @media (max-width: 768px) {
+          .container { display: none; }
+          .mobile-list { display: block; }
+        }
     </style>
 </head>
 <body>
+<h1>Card Lore Catalog</h1>
+<!-- Desktop Scroll Cards -->
 <div class="container" id="cards-container"></div>
+<!-- Mobile List -->
+<ul class="mobile-list" id="mobile-list"></ul>
 
 <script>
     (async () => {
-      try {
-        const res = await fetch('lore.json');
-        const data = await res.json();
-        const params = new URLSearchParams(window.location.search);
-        const showF8 = params.get('show') === 'f8';
+      const res = await fetch('lore.json');
+      const data = await res.json();
+      const params = new URLSearchParams(window.location.search);
+      const showF8 = params.get('show') === 'f8';
+      const isMobile = window.innerWidth <= 768;
+
+      if (isMobile) buildMobile(data.cards, showF8);
+      else buildDesktop(data.cards, showF8);
+
+      function buildDesktop(cards, showF8) {
         const container = document.getElementById('cards-container');
         container.innerHTML = '';
-
-        data.cards.forEach(card => {
+        cards.forEach(card => {
           if (card.type === 'f8' && !showF8) return;
-
-          // Section background
-          const section = document.createElement('section');
-          section.className = 'card';
-          section.style.backgroundImage = `url('${card.code.toLowerCase()}.png')`;
-
-          // Dark overlay
-          const overlay = document.createElement('div');
-          overlay.className = 'overlay';
-          section.appendChild(overlay);
-
-          // Content wrapper
-          const content = document.createElement('div');
-          content.className = 'content';
-
-          // Title from JSON name
-          const title = document.createElement('h2');
-          title.className = 'title';
-          title.textContent = card.name;
-          content.appendChild(title);
-
-          // Flippable Image Container
-          const flipContainer = document.createElement('div');
-          flipContainer.className = 'flip-image';
-          const inner = document.createElement('div');
-          inner.className = 'flip-image-inner';
-
-          // Front of card
-          const front = document.createElement('div'); front.className ='flip-front';
-          const frontImg = document.createElement('img');
-          frontImg.src = `${card.code.toLowerCase()}.png`;
-          frontImg.alt = card.name;
-          front.appendChild(frontImg);
-
-          // Determine back image
-          let backSrc;
-          if (card.type === 'f8') backSrc = 'f8_back.png';
-          else if (card.type === 'regular') backSrc = 'back.png';
-          else if (card.type === 'location') backSrc = `${card.code.toLowerCase()}_back.png`;
-
-          // Back of card
-          const back = document.createElement('div'); back.className ='flip-back';
-          const backImg = document.createElement('img');
-          backImg.src = backSrc;
-          backImg.alt = `${card.name} Back`;
-          back.appendChild(backImg);
-
-          inner.appendChild(front);
-          inner.appendChild(back);
-          flipContainer.appendChild(inner);
-          content.appendChild(flipContainer);
-
-          // Effects
-          if (card.effects?.length) {
-            const eEl = document.createElement('div'); eEl.className = 'effects';
-            const eTitle = document.createElement('h3'); eTitle.textContent = 'Effects'; eEl.appendChild(eTitle);
-            const ul=document.createElement('ul'); card.effects.forEach(e=>{const li=document.createElement('li');li.textContent=e;ul.appendChild(li);}); eEl.appendChild(ul);
-            content.appendChild(eEl);
-          }
-
-          // Story
-          if (card.story) {
-            const sEl=document.createElement('div'); sEl.className='story';
-            const sTitle=document.createElement('h3'); sTitle.textContent='Story'; sEl.appendChild(sTitle);
-            const p=document.createElement('p'); p.textContent=card.story; sEl.appendChild(p);
-            content.appendChild(sEl);
-          }
-
-          section.appendChild(content);
+          const section = document.createElement('section'); section.className = 'card';
+          section.style.backgroundImage = `url('${card.code}.png')`;
+          section.innerHTML = `
+            <div class="overlay"></div>
+            <div class="content">
+              <h2 class="title">${card.name}</h2>
+              <div class="flip-image"><div class="flip-image-inner">
+                <div class="flip-front"><img src="${card.code}.png" alt="${card.name}" /></div>
+                <div class="flip-back"><img src="${getBack(card)}" alt="${card.name} Back"/></div>
+              </div></div>
+              ${card.effects?.length ? `<div class="effects"><h3>Effects</h3><ul>${card.effects.map(e => `<li>${e}</li>`).join('')}</ul></div>` : ''}
+              ${card.story ? `<div class="story"><h3>Story</h3><p>${card.story}</p></div>` : ''}
+            </div>`;
           container.appendChild(section);
-
-          // Click to flip on image only
-          flipContainer.addEventListener('click', e=>{ flipContainer.classList.toggle('flipped'); e.stopPropagation(); });
+          section.querySelector('.flip-image').addEventListener('click', e => { e.currentTarget.classList.toggle('flipped'); e.stopPropagation(); });
         });
-      } catch (err) {
-        console.error('Error loading lore', err);
-        document.getElementById('cards-container').textContent = 'Failed to load lore.';
+      }
+
+      function buildMobile(cards, showF8) {
+        const list = document.getElementById('mobile-list');
+        list.innerHTML = '';
+        cards.forEach(card => {
+          if (card.type === 'f8' && !showF8) return;
+          const li = document.createElement('li'); li.className = 'mobile-item';
+          li.innerHTML = `<h2 class="name">${card.name}</h2>
+            <div class="details">
+              <img src="${card.code}.png" alt="${card.name}" />
+              ${card.effects?.length ? `<div class="effects"><h3>Effects</h3><ul>${card.effects.map(e=>`<li>${e}</li>`).join('')}</ul></div>` : ''}
+              ${card.story ? `<div class="story"><h3>Story</h3><p>${card.story}</p></div>` : ''}
+            </div>`;
+          li.querySelector('.name').addEventListener('click', () => {
+            const det = li.querySelector('.details');
+            det.style.display = det.style.display === 'block' ? 'none' : 'block';
+          });
+          list.appendChild(li);
+        });
+      }
+
+      function getBack(card) {
+        if (card.type === 'f8') return 'f8_back.png';
+        if (card.type === 'regular') return 'back.png';
+        return `${card.code}_back.png`;
       }
     })();
 </script>

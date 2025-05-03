@@ -127,7 +127,7 @@
           // Section background
           const section = document.createElement('section');
           section.className = 'card';
-          section.style.backgroundImage = `url('${card.code}.png')`;
+          section.style.backgroundImage = `url('${card.code.toLowerCase()}.png')`;
 
           // Dark overlay
           const overlay = document.createElement('div');
@@ -153,7 +153,7 @@
           // Front of card
           const front = document.createElement('div'); front.className ='flip-front';
           const frontImg = document.createElement('img');
-          frontImg.src = `${card.code}.png`;
+          frontImg.src = `${card.code.toLowerCase()}.png`;
           frontImg.alt = card.name;
           front.appendChild(frontImg);
 

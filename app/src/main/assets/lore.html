@@ -21,7 +21,7 @@
           scroll-snap-type: y mandatory;
           overflow-y: scroll;
         }
-        .card {
+        section.card {
           height: 100vh;
           width: 100vw;
           scroll-snap-align: start;
@@ -55,15 +55,42 @@
           margin: 0 0 20px;
           letter-spacing: 2px;
         }
-        .card-image {
-          max-width: 300px;
-          max-height: 300px;
-          margin-bottom: 20px;
-          border-radius: 8px;
+        /* Flippable Image Styles */
+        .flip-image {
+          width: 300px;
+          aspect-ratio: 300 / 450;
+          perspective: 1000px;
+          cursor: pointer;
+          margin: 0 auto 20px;
+        }
+        .flip-image-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.6s;
+        }
+        .flip-image.flipped .flip-image-inner {
+          transform: rotateY(180deg);
+        }
+        .flip-front, .flip-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          border-radius: 12px;
+          overflow: hidden;
           box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        .effects,
-        .story {
+        .flip-front img, .flip-back img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .flip-back {
+          transform: rotateY(180deg);
+        }
+        .effects, .story {
           font-size: 1.1em;
           margin: 12px 0;
           line-height: 1.5;
@@ -76,77 +103,99 @@
           content: "• ";
           color: #f0a;
         }
-        /* Scrollbar clean */
+        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
     </style>
 </head>
 <body>
-<div class="container" id="cards-container">
-    <!-- Cards will be injected here -->
-</div>
+<div class="container" id="cards-container"></div>
 
 <script>
     (async () => {
       try {
         const res = await fetch('lore.json');
         const data = await res.json();
+        const params = new URLSearchParams(window.location.search);
+        const showF8 = params.get('show') === 'f8';
         const container = document.getElementById('cards-container');
         container.innerHTML = '';
 
         data.cards.forEach(card => {
-          const el = document.createElement('section');
-          el.className = 'card';
-          el.style.backgroundImage = `url('${card.code.toUpperCase()}.png')`;
+          if (card.type === 'f8' && !showF8) return;
 
+          // Section background
+          const section = document.createElement('section');
+          section.className = 'card';
+          section.style.backgroundImage = `url('${card.code}.png')`;
+
+          // Dark overlay
           const overlay = document.createElement('div');
           overlay.className = 'overlay';
-          el.appendChild(overlay);
+          section.appendChild(overlay);
 
+          // Content wrapper
           const content = document.createElement('div');
           content.className = 'content';
 
+          // Title from JSON name
           const title = document.createElement('h2');
           title.className = 'title';
-          title.textContent = card.code.toLowerCase().split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          title.textContent = card.name;
           content.appendChild(title);
 
-          const img = document.createElement('img');
-          img.className = 'card-image';
-          img.src = `${card.code}.png`;
-          img.alt = title.textContent;
-          content.appendChild(img);
+          // Flippable Image Container
+          const flipContainer = document.createElement('div');
+          flipContainer.className = 'flip-image';
+          const inner = document.createElement('div');
+          inner.className = 'flip-image-inner';
 
-          if (card.effects && card.effects.length) {
-            const effects = document.createElement('div');
-            effects.className = 'effects';
-            const effTitle = document.createElement('h3');
-            effTitle.textContent = 'Effects';
-            effects.appendChild(effTitle);
-            const ul = document.createElement('ul');
-            card.effects.forEach(e => {
-              const li = document.createElement('li');
-              li.textContent = e;
-              ul.appendChild(li);
-            });
-            effects.appendChild(ul);
-            content.appendChild(effects);
+          // Front of card
+          const front = document.createElement('div'); front.className ='flip-front';
+          const frontImg = document.createElement('img');
+          frontImg.src = `${card.code}.png`;
+          frontImg.alt = card.name;
+          front.appendChild(frontImg);
+
+          // Determine back image
+          let backSrc;
+          if (card.type === 'f8') backSrc = 'f8_back.png';
+          else if (card.type === 'regular') backSrc = 'back.png';
+          else if (card.type === 'location') backSrc = `${card.code}_back.png`;
+
+          // Back of card
+          const back = document.createElement('div'); back.className ='flip-back';
+          const backImg = document.createElement('img');
+          backImg.src = backSrc;
+          backImg.alt = `${card.name} Back`;
+          back.appendChild(backImg);
+
+          inner.appendChild(front);
+          inner.appendChild(back);
+          flipContainer.appendChild(inner);
+          content.appendChild(flipContainer);
+
+          // Effects
+          if (card.effects?.length) {
+            const eEl = document.createElement('div'); eEl.className = 'effects';
+            const eTitle = document.createElement('h3'); eTitle.textContent = 'Effects'; eEl.appendChild(eTitle);
+            const ul=document.createElement('ul'); card.effects.forEach(e=>{const li=document.createElement('li');li.textContent=e;ul.appendChild(li);}); eEl.appendChild(ul);
+            content.appendChild(eEl);
           }
 
+          // Story
           if (card.story) {
-            const story = document.createElement('div');
-            story.className = 'story';
-            const stTitle = document.createElement('h3');
-            stTitle.textContent = 'Story';
-            story.appendChild(stTitle);
-            const p = document.createElement('p');
-            p.textContent = card.story;
-            story.appendChild(p);
-            content.appendChild(story);
+            const sEl=document.createElement('div'); sEl.className='story';
+            const sTitle=document.createElement('h3'); sTitle.textContent='Story'; sEl.appendChild(sTitle);
+            const p=document.createElement('p'); p.textContent=card.story; sEl.appendChild(p);
+            content.appendChild(sEl);
           }
 
-          el.appendChild(content);
-          container.appendChild(el);
+          section.appendChild(content);
+          container.appendChild(section);
+
+          // Click to flip on image only
+          flipContainer.addEventListener('click', e=>{ flipContainer.classList.toggle('flipped'); e.stopPropagation(); });
         });
       } catch (err) {
         console.error('Error loading lore', err);

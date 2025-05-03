@@ -161,7 +161,7 @@
           let backSrc;
           if (card.type === 'f8') backSrc = 'f8_back.png';
           else if (card.type === 'regular') backSrc = 'back.png';
-          else if (card.type === 'location') backSrc = `${card.code}_back.png`;
+          else if (card.type === 'location') backSrc = `${card.code.toLowerCase()}_back.png`;
 
           // Back of card
           const back = document.createElement('div'); back.className ='flip-back';

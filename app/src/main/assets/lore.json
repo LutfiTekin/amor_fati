@@ -473,14 +473,14 @@
       "name": "Bielefeld"
     },
     {
-      "code": "BOMBAY",
+      "code": "MUMBAI",
       "effects": [
         "Involves themes of spectacle, finance, or navigating extreme contrasts.",
         "Suggests intense energy, density, and countless unfolding stories."
       ],
       "story": "The city of dreams, pulsating with relentless energy and dramatic contrasts. Mumbai is a financial powerhouse and the heart of Bollywood, a place where millions live cheek-by-jowl, each with a story, creating a vibrant, often overwhelming, tapestry of life.",
       "type": "location",
-      "name": "Bombay"
+      "name": "Mumbai"
     },
     {
       "code": "BOSTON",

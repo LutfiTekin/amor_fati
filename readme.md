@@ -58,6 +58,7 @@ src/ └── main/ ├── java/tekin/luetfi/amorfati/ │   ├── MainA
 5. JSON schema
 Your dynamic template must include:
 
+```
 {
   "name":               "USER_NAME",
   "email":              "USER_EMAIL",
@@ -77,7 +78,7 @@ Your dynamic template must include:
   "metaphor_image_url": "METAPHOR_IMAGE",
   "metaphor_image_quote":"…"
 }
-
+```
 
 6. Build & Run
 

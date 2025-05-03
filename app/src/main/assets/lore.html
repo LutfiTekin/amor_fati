@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Lore Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global */
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Roboto', sans-serif;
+          background: #111;
+          color: #eee;
+          overflow: hidden;
+        }
+        .container {
+          height: 100vh;
+          width: 100vw;
+          scroll-snap-type: y mandatory;
+          overflow-y: scroll;
+        }
+        .card {
+          height: 100vh;
+          width: 100vw;
+          scroll-snap-align: start;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 40px;
+          box-sizing: border-box;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+        }
+        .overlay {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: rgba(0,0,0,0.6);
+        }
+        .content {
+          position: relative;
+          max-width: 800px;
+          z-index: 1;
+        }
+        .title {
+          font-family: 'Playfair Display', serif;
+          font-size: 3em;
+          margin: 0 0 20px;
+          letter-spacing: 2px;
+        }
+        .card-image {
+          max-width: 300px;
+          max-height: 300px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .effects,
+        .story {
+          font-size: 1.1em;
+          margin: 12px 0;
+          line-height: 1.5;
+        }
+        .effects ul {
+          list-style: none;
+          padding: 0;
+        }
+        .effects li::before {
+          content: "• ";
+          color: #f0a;
+        }
+        /* Scrollbar clean */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+    </style>
+</head>
+<body>
+<div class="container" id="cards-container">
+    <!-- Cards will be injected here -->
+</div>
+
+<script>
+    (async () => {
+      try {
+        const res = await fetch('lore.json');
+        const data = await res.json();
+        const container = document.getElementById('cards-container');
+        container.innerHTML = '';
+
+        data.cards.forEach(card => {
+          const el = document.createElement('section');
+          el.className = 'card';
+          el.style.backgroundImage = `url('${card.code.toUpperCase()}.png')`;
+
+          const overlay = document.createElement('div');
+          overlay.className = 'overlay';
+          el.appendChild(overlay);
+
+          const content = document.createElement('div');
+          content.className = 'content';
+
+          const title = document.createElement('h2');
+          title.className = 'title';
+          title.textContent = card.code.toLowerCase().split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          content.appendChild(title);
+
+          const img = document.createElement('img');
+          img.className = 'card-image';
+          img.src = `${card.code}.png`;
+          img.alt = title.textContent;
+          content.appendChild(img);
+
+          if (card.effects && card.effects.length) {
+            const effects = document.createElement('div');
+            effects.className = 'effects';
+            const effTitle = document.createElement('h3');
+            effTitle.textContent = 'Effects';
+            effects.appendChild(effTitle);
+            const ul = document.createElement('ul');
+            card.effects.forEach(e => {
+              const li = document.createElement('li');
+              li.textContent = e;
+              ul.appendChild(li);
+            });
+            effects.appendChild(ul);
+            content.appendChild(effects);
+          }
+
+          if (card.story) {
+            const story = document.createElement('div');
+            story.className = 'story';
+            const stTitle = document.createElement('h3');
+            stTitle.textContent = 'Story';
+            story.appendChild(stTitle);
+            const p = document.createElement('p');
+            p.textContent = card.story;
+            story.appendChild(p);
+            content.appendChild(story);
+          }
+
+          el.appendChild(content);
+          container.appendChild(el);
+        });
+      } catch (err) {
+        console.error('Error loading lore', err);
+        document.getElementById('cards-container').textContent = 'Failed to load lore.';
+      }
+    })();
+</script>
+</body>
+</html>

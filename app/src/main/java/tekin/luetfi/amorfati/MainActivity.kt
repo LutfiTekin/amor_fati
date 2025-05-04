@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
@@ -41,7 +39,7 @@ import tekin.luetfi.amorfati.ui.theme.AmorFatiTheme
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    var screen by mutableStateOf(Screen.Main)
+    private var screen by mutableStateOf(Screen.Main)
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,9 +62,12 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             title = { Text(title) },
                             navigationIcon = {
-                                if (screen != Screen.Main){
+                                if (screen != Screen.Main) {
                                     IconButton(onClick = { screen = Screen.Main }) {
-                                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Home")
+                                        Icon(
+                                            Icons.AutoMirrored.Filled.ArrowBack,
+                                            contentDescription = "Home"
+                                        )
                                     }
                                 }
                             },
@@ -79,7 +80,10 @@ class MainActivity : ComponentActivity() {
                                         Icon(Icons.Default.PlayArrow, null)
                                     }
                                     IconButton(onClick = { screen = Screen.CardRecognition }) {
-                                        Icon(painter = painterResource(id = R.drawable.outline_camera_24), null)
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.outline_camera_24),
+                                            null
+                                        )
                                     }
                                 }
                             }
@@ -90,26 +94,36 @@ class MainActivity : ComponentActivity() {
                             NavigationBar {
                                 NavigationBarItem(
                                     selected = screen == Screen.Main,
-                                    onClick  = { screen = Screen.Main },
-                                    icon     = { Icon(Icons.Default.Home, contentDescription = "Home") },
-                                    label    = { Text("Home") }
+                                    onClick = { screen = Screen.Main },
+                                    icon = {
+                                        Icon(
+                                            Icons.Default.Home,
+                                            contentDescription = "Home"
+                                        )
+                                    },
+                                    label = { Text("Home") }
                                 )
                                 NavigationBarItem(
                                     selected = screen == Screen.DrawingRitual,
-                                    onClick  = { screen = Screen.DrawingRitual },
-                                    icon     = { Icon(Icons.Default.PlayArrow, contentDescription = "Ritual") },
-                                    label    = { Text("Ritual") }
+                                    onClick = { screen = Screen.DrawingRitual },
+                                    icon = {
+                                        Icon(
+                                            Icons.Default.PlayArrow,
+                                            contentDescription = "Ritual"
+                                        )
+                                    },
+                                    label = { Text("Ritual") }
                                 )
                                 NavigationBarItem(
                                     selected = screen == Screen.CardRecognition,
-                                    onClick  = { screen = Screen.CardRecognition },
-                                    icon     = {
+                                    onClick = { screen = Screen.CardRecognition },
+                                    icon = {
                                         Icon(
                                             painter = painterResource(id = R.drawable.outline_camera_24),
                                             contentDescription = "Camera"
                                         )
                                     },
-                                    label    = { Text("Camera") }
+                                    label = { Text("Camera") }
                                 )
                             }
                         }
@@ -153,6 +167,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
+
                         Screen.CardRecognition -> {
                             CardRecognitionScreen(
                                 modifier = Modifier

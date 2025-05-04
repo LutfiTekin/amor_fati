@@ -93,6 +93,6 @@
     { "name": "Hamburg", "code": "HAMBURG" }
   ],
   "extraCards": [
-    { "name": "Three Glasses", "code": "THREE_GLASSES" },
+    { "name": "Three Glasses", "code": "THREE_GLASSES", "online": true }
   ]
 }

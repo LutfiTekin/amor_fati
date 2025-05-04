@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
@@ -62,8 +64,10 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             title = { Text(title) },
                             navigationIcon = {
-                                IconButton(onClick = { screen = Screen.Main }) {
-                                    Icon(Icons.Default.Home, contentDescription = "Home")
+                                if (screen != Screen.Main){
+                                    IconButton(onClick = { screen = Screen.Main }) {
+                                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Home")
+                                    }
                                 }
                             },
                             actions = {

@@ -19,20 +19,25 @@ import tekin.luetfi.amorfati.utils.Defaults
 @Parcelize
 data class TarotCard(
     val name: String,
-    val code: String
+    val code: String,
+    private val online: Boolean = false
 ) : Parcelable {
     val imageUrl: String
         get() {
             return Defaults.imageHostDir + code.lowercase() + ".png"
         }
 
-    val localImageFile: String
+    private val localImageFile: String
         get() {
             return ASSETS_DIR + code.lowercase() + ".png"
         }
 
     val image: String
-        get() = if (Defaults.onlineOnly) imageUrl else localImageFile
+        get() {
+            if (online)
+                imageUrl
+            return if (Defaults.onlineOnly) imageUrl else localImageFile
+        }
 
     val cardLore: CardLore?
         get() {
@@ -40,7 +45,11 @@ data class TarotCard(
         }
 
     private val imageHost: String
-        get() = if (Defaults.onlineOnly) Defaults.imageHostDir else ASSETS_DIR
+        get() {
+            if (online)
+                return Defaults.imageHostDir
+            return if (Defaults.onlineOnly) Defaults.imageHostDir else ASSETS_DIR
+        }
 
     val backSideImage: String
         get() {

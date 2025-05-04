@@ -3,17 +3,19 @@ package tekin.luetfi.amorfati.utils
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
-import android.provider.MediaStore
+import androidx.core.content.FileProvider
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import org.json.JSONException
 import org.json.JSONObject
 import tekin.luetfi.amorfati.data.remote.dto.EmailAddress
@@ -21,6 +23,8 @@ import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJson
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingJsonRecipient
 import tekin.luetfi.amorfati.data.remote.dto.TarotReadingMetaphorJson
 import tekin.luetfi.amorfati.domain.model.TarotCard
+import java.io.File
+import java.io.FileOutputStream
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -140,37 +144,36 @@ fun formattedTarotDateTime(epochMillis: Long = System.currentTimeMillis()): Stri
     return "${day}${day.ordinalSuffix()} of $month $year, $hour:$minute"
 }
 
-suspend fun TarotCard.sendToClipBoard(
-    context: Context
-) {
-    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    // 1) load the image as a Bitmap
+suspend fun TarotCard.sendToClipBoard(context: Context) {
     val loader = ImageLoader(context)
     val req = ImageRequest.Builder(context)
         .data(image)
         .build()
     val result = loader.execute(req)
-    if (result is SuccessResult) {
-        val drawable = result.drawable as BitmapDrawable
-        val bitmap = drawable.bitmap
+    if (result !is SuccessResult) return
 
-        // 2) insert into MediaStore to get a content:// URI
-        val path = MediaStore.Images.Media.insertImage(
-            context.contentResolver,
-            bitmap,
-            code,
-            null
-        )
-        val uri = Uri.parse(path)
+    val drawable = result.drawable as BitmapDrawable
+    val bitmap = drawable.bitmap
 
-        // 3) copy that URI into the clipboard as an IMAGE
-        val clip = ClipData.newUri(
-            context.contentResolver,
-            "Card Image",
-            uri
-        )
-        clipboard.setPrimaryClip(clip)
+    val cacheFile = withContext(Dispatchers.IO) {
+        File.createTempFile("card_${code}_", ".png", context.cacheDir)
     }
+    withContext(Dispatchers.IO) {
+        FileOutputStream(cacheFile).use { out ->
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+        }
+    }
+
+    val authority = "${context.packageName}.provider"
+    val uri = FileProvider.getUriForFile(context, authority, cacheFile)
+
+    val clip = ClipData.newUri(
+        context.contentResolver,
+        "Card Image",
+        uri
+    )
+    val clipboard = context.getSystemService(ClipboardManager::class.java)
+    clipboard.setPrimaryClip(clip)
 }
 
 

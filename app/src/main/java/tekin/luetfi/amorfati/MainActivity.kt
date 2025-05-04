@@ -48,8 +48,11 @@ class MainActivity : ComponentActivity() {
                 val configuration = LocalConfiguration.current
                 val isTablet = configuration.screenWidthDp >= 600
                 var showSettings by remember { mutableStateOf(false) }
-                val title = if (showSettings) "Settings" else {
-                    if (isTablet) "Amor Fati" else "Compose Email"
+                val title = when (screen) {
+                    Screen.Main -> if (isTablet) "Amor Fati" else "Compose Email"
+                    Screen.DrawingRitual -> "Drawing Ritual"
+                    Screen.Settings -> "Settings"
+                    Screen.CardRecognition -> "Card Recognition"
                 }
                 Scaffold(
                     topBar = {

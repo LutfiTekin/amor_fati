@@ -7,10 +7,14 @@ data class CardsResponse(
     val f8Cards: List<TarotCardDTO>,
     val locationCards: List<TarotCardDTO>,
     val extraCards: List<TarotCardDTO>
-){
+) {
 
-    val fullDeck = (cards + f8Cards + locationCards + extraCards).map { it.toCard }
+    val fullDeck =
+        (cards + f8Cards + locationCards + extraCards.map { it.copy(online = true) })
+            .map { it.toCard }
 
-    val scannableDeck = (cards + f8Cards + extraCards).map { it.toCard }
+    val scannableDeck =
+        (cards + f8Cards + extraCards.map { it.copy(online = true) })
+            .map { it.toCard }
 
 }

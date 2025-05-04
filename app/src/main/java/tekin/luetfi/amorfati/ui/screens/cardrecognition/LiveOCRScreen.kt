@@ -55,7 +55,6 @@ fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (text: Text?) -> U
             }
     }
 
-    // 1️⃣ PreviewView for CameraX
     AndroidView(
         modifier = modifier.fillMaxSize(),
         factory = { ctx ->
@@ -63,7 +62,6 @@ fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (text: Text?) -> U
                 implementationMode = PreviewView.ImplementationMode.COMPATIBLE
                 scaleType = PreviewView.ScaleType.FILL_CENTER
             }
-            // CameraX setup only once:
             val cameraProviderFuture = ProcessCameraProvider.getInstance(ctx)
             cameraProviderFuture.addListener({
                 val cameraProvider = cameraProviderFuture.get()
@@ -101,7 +99,6 @@ fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (text: Text?) -> U
         }
     )
 
-    // 2️⃣ Overlay the OCR text
     Box(
         Modifier
             .fillMaxSize()

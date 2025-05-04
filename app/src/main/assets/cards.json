@@ -91,5 +91,8 @@
     { "name": "Venice", "code": "VENICE" },
     { "name": "London", "code": "LONDON" },
     { "name": "Hamburg", "code": "HAMBURG" }
+  ],
+  "extraCards": [
+    { "name": "Three Glasses", "code": "THREE_GLASSES" },
   ]
 }

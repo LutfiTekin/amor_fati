@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -58,18 +61,54 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = { Text(title) },
+                            navigationIcon = {
+                                IconButton(onClick = { screen = Screen.Main }) {
+                                    Icon(Icons.Default.Home, contentDescription = "Home")
+                                }
+                            },
                             actions = {
                                 IconButton(onClick = { screen = Screen.Settings }) {
                                     Icon(Icons.Default.Settings, null)
                                 }
-                                IconButton(onClick = { screen = Screen.DrawingRitual }) {
-                                    Icon(Icons.Default.PlayArrow, null)
-                                }
-                                IconButton(onClick = { screen = Screen.CardRecognition }) {
-                                    Icon(painter = painterResource(id = R.drawable.outline_camera_24), null)
+                                if (isTablet) {
+                                    IconButton(onClick = { screen = Screen.DrawingRitual }) {
+                                        Icon(Icons.Default.PlayArrow, null)
+                                    }
+                                    IconButton(onClick = { screen = Screen.CardRecognition }) {
+                                        Icon(painter = painterResource(id = R.drawable.outline_camera_24), null)
+                                    }
                                 }
                             }
                         )
+                    },
+                    bottomBar = {
+                        if (!isTablet) {
+                            NavigationBar {
+                                NavigationBarItem(
+                                    selected = screen == Screen.Main,
+                                    onClick  = { screen = Screen.Main },
+                                    icon     = { Icon(Icons.Default.Home, contentDescription = "Home") },
+                                    label    = { Text("Home") }
+                                )
+                                NavigationBarItem(
+                                    selected = screen == Screen.DrawingRitual,
+                                    onClick  = { screen = Screen.DrawingRitual },
+                                    icon     = { Icon(Icons.Default.PlayArrow, contentDescription = "Ritual") },
+                                    label    = { Text("Ritual") }
+                                )
+                                NavigationBarItem(
+                                    selected = screen == Screen.CardRecognition,
+                                    onClick  = { screen = Screen.CardRecognition },
+                                    icon     = {
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.outline_camera_24),
+                                            contentDescription = "Camera"
+                                        )
+                                    },
+                                    label    = { Text("Camera") }
+                                )
+                            }
+                        }
                     },
                     snackbarHost = { SnackbarHost(snackbarHostState) }
                 ) { inner ->

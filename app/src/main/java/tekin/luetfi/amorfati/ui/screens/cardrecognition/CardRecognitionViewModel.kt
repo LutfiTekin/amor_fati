@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CardRecognitionViewModel @Inject constructor() : ViewModel() {
 
-    private val knownCards = Deck.f8Cards + Deck.cards
+    private val knownCards = Deck.scannableDeck
 
     private val maxDistance = 3
 

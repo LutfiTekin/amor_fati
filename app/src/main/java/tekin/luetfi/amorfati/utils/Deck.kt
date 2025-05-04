@@ -100,6 +100,7 @@ object Deck {
         TarotCard(name = "Hamburg", code = "HAMBURG")
     )
 
-    val fullDeck = cards + f8Cards + locationCards
+    var fullDeck = cards + f8Cards + locationCards
 
+    var scannableDeck = cards + f8Cards
 }

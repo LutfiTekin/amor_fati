@@ -1,98 +1,422 @@
 {
   "cards": [
-    { "name": "Ale Of The Ache", "code": "ALE_OF_THE_ACHE" },
-    { "name": "Council Of Three", "code": "COUNCIL_OF_THREE" },
-    { "name": "Designated Driver", "code": "DESIGNATED_DRIVER" },
-    { "name": "Duchess And The White Hound", "code": "DUCHESS_AND_THE_WHITE_HOUND" },
-    { "name": "Focus Of Fate", "code": "FOCUS_OF_FATE" },
-    { "name": "Gaze Of Exhaustion", "code": "GAZE_OF_EXHAUSTION" },
-    { "name": "Gentle Highlander", "code": "GENTLE_HIGHLANDER" },
-    { "name": "Gentleman Of The Alps", "code": "GENTLEMAN_OF_THE_ALPS" },
-    { "name": "Keeper Of The Bitter Truth", "code": "KEEPER_OF_THE_BITTER_TRUTH" },
-    { "name": "Keepers Of The Sky Needle", "code": "KEEPERS_OF_THE_SKY_NEEDLE" },
-    { "name": "Lavender Trio", "code": "LAVENDER_TRIO" },
-    { "name": "Nine Of Hounds", "code": "NINE_OF_HOUNDS" },
-    { "name": "Nomad Of Tracks", "code": "NOMAD_OF_TRACKS" },
-    { "name": "Sisters of the Seven Tea", "code": "SISTERS_OF_THE_SEVEN_TEA" },
-    { "name": "Round Trip Knight", "code": "ROUND_TRIP_KNIGHT" },
-    { "name": "Sentinel Of The Twin Towers", "code": "SENTINEL_OF_THE_TWIN_TOWERS" },
-    { "name": "Silent Judge", "code": "SILENT_JUDGE" },
-    { "name": "Sister Sinister", "code": "SISTER_SINISTER" },
-    { "name": "Snow Mexican", "code": "SNOW_MEXICAN" },
-    { "name": "Teacher Of Treachery", "code": "TEACHER_OF_TREACHERY" },
-    { "name": "The Alchemist", "code": "THE_ALCHEMIST" },
-    { "name": "The Baddies II", "code": "THE_BADDIES_II" },
-    { "name": "The Baddies III", "code": "THE_BADDIES_III" },
-    { "name": "The Baddies", "code": "THE_BADDIES" },
-    { "name": "The Ballad", "code": "THE_BALLAD" },
-    { "name": "The Dealer", "code": "THE_DEALER" },
-    { "name": "The Distant Liaison", "code": "THE_DISTANT_LIAISON" },
-    { "name": "The Endless Pour", "code": "THE_ENDLESS_POUR" },
-    { "name": "The Librarian", "code": "THE_LIBRARIAN" },
-    { "name": "The Lone Star", "code": "THE_LONE_STAR" },
-    { "name": "The Rule Of Threes", "code": "THE_RULE_OF_THREES" },
-    { "name": "The Texan And The Thistle", "code": "THE_TEXAN_AND_THE_THISTLE" }
+    {
+      "name": "Ale Of The Ache",
+      "code": "ALE_OF_THE_ACHE"
+    },
+    {
+      "name": "Council Of Three",
+      "code": "COUNCIL_OF_THREE"
+    },
+    {
+      "name": "Designated Driver",
+      "code": "DESIGNATED_DRIVER"
+    },
+    {
+      "name": "Duchess And The White Hound",
+      "code": "DUCHESS_AND_THE_WHITE_HOUND"
+    },
+    {
+      "name": "Focus Of Fate",
+      "code": "FOCUS_OF_FATE"
+    },
+    {
+      "name": "Gaze Of Exhaustion",
+      "code": "GAZE_OF_EXHAUSTION"
+    },
+    {
+      "name": "Gentle Highlander",
+      "code": "GENTLE_HIGHLANDER"
+    },
+    {
+      "name": "Gentleman Of The Alps",
+      "code": "GENTLEMAN_OF_THE_ALPS"
+    },
+    {
+      "name": "Keeper Of The Bitter Truth",
+      "code": "KEEPER_OF_THE_BITTER_TRUTH"
+    },
+    {
+      "name": "Keepers Of The Sky Needle",
+      "code": "KEEPERS_OF_THE_SKY_NEEDLE"
+    },
+    {
+      "name": "Lavender Trio",
+      "code": "LAVENDER_TRIO"
+    },
+    {
+      "name": "Nine Of Hounds",
+      "code": "NINE_OF_HOUNDS"
+    },
+    {
+      "name": "Nomad Of Tracks",
+      "code": "NOMAD_OF_TRACKS"
+    },
+    {
+      "name": "Sisters of the Seven Tea",
+      "code": "SISTERS_OF_THE_SEVEN_TEA"
+    },
+    {
+      "name": "Round Trip Knight",
+      "code": "ROUND_TRIP_KNIGHT"
+    },
+    {
+      "name": "Sentinel Of The Twin Towers",
+      "code": "SENTINEL_OF_THE_TWIN_TOWERS"
+    },
+    {
+      "name": "Silent Judge",
+      "code": "SILENT_JUDGE"
+    },
+    {
+      "name": "Sister Sinister",
+      "code": "SISTER_SINISTER"
+    },
+    {
+      "name": "Snow Mexican",
+      "code": "SNOW_MEXICAN"
+    },
+    {
+      "name": "Teacher Of Treachery",
+      "code": "TEACHER_OF_TREACHERY"
+    },
+    {
+      "name": "The Alchemist",
+      "code": "THE_ALCHEMIST"
+    },
+    {
+      "name": "The Baddies II",
+      "code": "THE_BADDIES_II"
+    },
+    {
+      "name": "The Baddies III",
+      "code": "THE_BADDIES_III"
+    },
+    {
+      "name": "The Baddies",
+      "code": "THE_BADDIES"
+    },
+    {
+      "name": "The Ballad",
+      "code": "THE_BALLAD"
+    },
+    {
+      "name": "The Dealer",
+      "code": "THE_DEALER"
+    },
+    {
+      "name": "The Distant Liaison",
+      "code": "THE_DISTANT_LIAISON"
+    },
+    {
+      "name": "The Endless Pour",
+      "code": "THE_ENDLESS_POUR"
+    },
+    {
+      "name": "The Librarian",
+      "code": "THE_LIBRARIAN"
+    },
+    {
+      "name": "The Lone Star",
+      "code": "THE_LONE_STAR"
+    },
+    {
+      "name": "The Rule Of Threes",
+      "code": "THE_RULE_OF_THREES"
+    },
+    {
+      "name": "The Texan And The Thistle",
+      "code": "THE_TEXAN_AND_THE_THISTLE"
+    }
   ],
   "f8Cards": [
-    { "name": "Queen Of Whatever", "code": "QUEEN_OF_WHATEVER" },
-    { "name": "Countess Of Chaos", "code": "COUNTESS_OF_CHAOS" },
-    { "name": "The Duchess Of Drama", "code": "THE_DUCHESS_OF_DRAMA" },
-    { "name": "Maiden Of Mischief", "code": "MAIDEN_OF_MISCHIEF" },
-    { "name": "Lady Of Lunacy", "code": "LADY_OF_LUNACY" },
-    { "name": "Lady Of The First Flame", "code": "LADY_OF_THE_FIRST_FLAME" },
-    { "name": "Mistress Of Mayhem", "code": "MISTRESS_OF_MAYHEM" },
-    { "name": "Wench Of Whiskey", "code": "WENCH_OF_WHISKEY" }
+    {
+      "name": "Queen Of Whatever",
+      "code": "QUEEN_OF_WHATEVER"
+    },
+    {
+      "name": "Countess Of Chaos",
+      "code": "COUNTESS_OF_CHAOS"
+    },
+    {
+      "name": "The Duchess Of Drama",
+      "code": "THE_DUCHESS_OF_DRAMA"
+    },
+    {
+      "name": "Maiden Of Mischief",
+      "code": "MAIDEN_OF_MISCHIEF"
+    },
+    {
+      "name": "Lady Of Lunacy",
+      "code": "LADY_OF_LUNACY"
+    },
+    {
+      "name": "Lady Of The First Flame",
+      "code": "LADY_OF_THE_FIRST_FLAME"
+    },
+    {
+      "name": "Mistress Of Mayhem",
+      "code": "MISTRESS_OF_MAYHEM"
+    },
+    {
+      "name": "Wench Of Whiskey",
+      "code": "WENCH_OF_WHISKEY"
+    }
   ],
   "locationCards": [
-    { "name": "Tehran", "code": "TEHRAN" },
-    { "name": "Hong Kong", "code": "HONG_KONG" },
-    { "name": "Baghdad", "code": "BAGHDAD" },
-    { "name": "Hanoi", "code": "HANOI" },
-    { "name": "Seattle", "code": "SEATTLE" },
-    { "name": "New York", "code": "NEW_YORK" },
-    { "name": "Athens", "code": "ATHENS" },
-    { "name": "Bangkok", "code": "BANGKOK" },
-    { "name": "Helsinki", "code": "HELSINKI" },
-    { "name": "Bielefeld", "code": "BIELEFELD" },
-    { "name": "Berlin", "code": "BERLIN" },
-    { "name": "Prague", "code": "PRAGUE" },
-    { "name": "Stockholm", "code": "STOCKHOLM" },
-    { "name": "Moscow", "code": "MOSCOW" },
-    { "name": "Rome", "code": "ROME" },
-    { "name": "Brazil", "code": "BRAZIL" },
-    { "name": "Barcelona", "code": "BARCELONA" },
-    { "name": "Nairobi", "code": "NAIROBI" },
-    { "name": "Edinburgh", "code": "EDINBURGH" },
-    { "name": "Zermatt", "code": "ZERMATT" },
-    { "name": "Johannesburg", "code": "JOHANNESBURG" },
-    { "name": "Las Vegas", "code": "LAS_VEGAS" },
-    { "name": "Erfurt", "code": "ERFURT" },
-    { "name": "Leipzig", "code": "LEIPZIG" },
-    { "name": "Antalya", "code": "ANTALYA" },
-    { "name": "Amsterdam", "code": "AMSTERDAM" },
-    { "name": "Boston", "code": "BOSTON" },
-    { "name": "Florence", "code": "FLORENCE" },
-    { "name": "Busan", "code": "BUSAN" },
-    { "name": "Tokyo", "code": "TOKYO" },
-    { "name": "Tbilisi", "code": "TBILISI" },
-    { "name": "Bruges", "code": "BRUGES" },
-    { "name": "Vienna", "code": "VIENNA" },
-    { "name": "San Francisco", "code": "SAN_FRANCISCO" },
-    { "name": "Dublin", "code": "DUBLIN" },
-    { "name": "Copenhagen", "code": "COPENHAGEN" },
-    { "name": "Madrid", "code": "MADRID" },
-    { "name": "Dubai", "code": "DUBAI" },
-    { "name": "Versailles", "code": "VERSAILLES" },
-    { "name": "Istanbul", "code": "ISTANBUL" },
-    { "name": "Sheffield", "code": "SHEFFIELD" },
-    { "name": "Dresden", "code": "DRESDEN" },
-    { "name": "Jerusalem", "code": "JERUSALEM" },
-    { "name": "Mumbai", "code": "MUMBAI" },
-    { "name": "Venice", "code": "VENICE" },
-    { "name": "London", "code": "LONDON" },
-    { "name": "Hamburg", "code": "HAMBURG" }
+    {
+      "name": "Tehran",
+      "code": "TEHRAN"
+    },
+    {
+      "name": "Hong Kong",
+      "code": "HONG_KONG"
+    },
+    {
+      "name": "Baghdad",
+      "code": "BAGHDAD"
+    },
+    {
+      "name": "Hanoi",
+      "code": "HANOI"
+    },
+    {
+      "name": "Seattle",
+      "code": "SEATTLE"
+    },
+    {
+      "name": "New York",
+      "code": "NEW_YORK"
+    },
+    {
+      "name": "Athens",
+      "code": "ATHENS"
+    },
+    {
+      "name": "Bangkok",
+      "code": "BANGKOK"
+    },
+    {
+      "name": "Helsinki",
+      "code": "HELSINKI"
+    },
+    {
+      "name": "Bielefeld",
+      "code": "BIELEFELD"
+    },
+    {
+      "name": "Berlin",
+      "code": "BERLIN"
+    },
+    {
+      "name": "Prague",
+      "code": "PRAGUE"
+    },
+    {
+      "name": "Stockholm",
+      "code": "STOCKHOLM"
+    },
+    {
+      "name": "Moscow",
+      "code": "MOSCOW"
+    },
+    {
+      "name": "Rome",
+      "code": "ROME"
+    },
+    {
+      "name": "Brazil",
+      "code": "BRAZIL"
+    },
+    {
+      "name": "Barcelona",
+      "code": "BARCELONA"
+    },
+    {
+      "name": "Nairobi",
+      "code": "NAIROBI"
+    },
+    {
+      "name": "Edinburgh",
+      "code": "EDINBURGH"
+    },
+    {
+      "name": "Zermatt",
+      "code": "ZERMATT"
+    },
+    {
+      "name": "Johannesburg",
+      "code": "JOHANNESBURG"
+    },
+    {
+      "name": "Las Vegas",
+      "code": "LAS_VEGAS"
+    },
+    {
+      "name": "Erfurt",
+      "code": "ERFURT"
+    },
+    {
+      "name": "Leipzig",
+      "code": "LEIPZIG"
+    },
+    {
+      "name": "Antalya",
+      "code": "ANTALYA"
+    },
+    {
+      "name": "Amsterdam",
+      "code": "AMSTERDAM"
+    },
+    {
+      "name": "Boston",
+      "code": "BOSTON"
+    },
+    {
+      "name": "Florence",
+      "code": "FLORENCE"
+    },
+    {
+      "name": "Busan",
+      "code": "BUSAN"
+    },
+    {
+      "name": "Tokyo",
+      "code": "TOKYO"
+    },
+    {
+      "name": "Tbilisi",
+      "code": "TBILISI"
+    },
+    {
+      "name": "Bruges",
+      "code": "BRUGES"
+    },
+    {
+      "name": "Vienna",
+      "code": "VIENNA"
+    },
+    {
+      "name": "San Francisco",
+      "code": "SAN_FRANCISCO"
+    },
+    {
+      "name": "Dublin",
+      "code": "DUBLIN"
+    },
+    {
+      "name": "Copenhagen",
+      "code": "COPENHAGEN"
+    },
+    {
+      "name": "Madrid",
+      "code": "MADRID"
+    },
+    {
+      "name": "Dubai",
+      "code": "DUBAI"
+    },
+    {
+      "name": "Versailles",
+      "code": "VERSAILLES"
+    },
+    {
+      "name": "Istanbul",
+      "code": "ISTANBUL"
+    },
+    {
+      "name": "Sheffield",
+      "code": "SHEFFIELD"
+    },
+    {
+      "name": "Dresden",
+      "code": "DRESDEN"
+    },
+    {
+      "name": "Jerusalem",
+      "code": "JERUSALEM"
+    },
+    {
+      "name": "Mumbai",
+      "code": "MUMBAI"
+    },
+    {
+      "name": "Venice",
+      "code": "VENICE"
+    },
+    {
+      "name": "London",
+      "code": "LONDON"
+    },
+    {
+      "name": "Hamburg",
+      "code": "HAMBURG"
+    }
   ],
   "extraCards": [
-    { "name": "Three Glasses", "code": "THREE_GLASSES", "online": true }
+    {
+      "name": "Three Glasses",
+      "code": "THREE_GLASSES"
+    },
+    {
+      "name": "Brothers Of Carnage",
+      "code": "BROTHERS_OF_CARNAGE"
+    },
+    {
+      "name": "Calling Of Fate",
+      "code": "CALLING_OF_FATE"
+    },
+    {
+      "name": "Cave Of Unseen Light",
+      "code": "CAVE_OF_UNSEEN_LIGHT"
+    },
+    {
+      "name": "Empress Of Unbothered Realms",
+      "code": "EMPRESS_OF_UNBOTHERED_REALMS"
+    },
+    {
+      "name": "Forest Rider",
+      "code": "FOREST_RIDER"
+    },
+    {
+      "name": "Ghost Of The Third One",
+      "code": "GHOST_OF_THE_THIRD_ONE"
+    },
+    {
+      "name": "High Promile Happiness",
+      "code": "HIGH_PROMILE_HAPPINESS"
+    },
+    {
+      "name": "Plane Spotter",
+      "code": "PLANE_SPOTTER"
+    },
+    {
+      "name": "Scribes Of The Hidden Monastery",
+      "code": "SCRIBES_OF_THE_HIDDEN_MONASTERY"
+    },
+    {
+      "name": "The Baddies IV",
+      "code": "THE_BADDIES_IV"
+    },
+    {
+      "name": "The Lost Horizon",
+      "code": "THE_LOST_HORIZON"
+    },
+    {
+      "name": "The Low Rider",
+      "code": "THE_LOW_RIDER"
+    },
+    {
+      "name": "The Ottoman Rose Of Éire",
+      "code": "THE_OTTOMAN_ROSE_OF_ÉIRE"
+    },
+    {
+      "name": "The Trickster",
+      "code": "THE_TRICKSTER"
+    },
+    {
+      "name": "The Unbearable Dullness Of Being",
+      "code": "THE_UNBEARABLE_DULLNESS_OF_BEING"
+    }
   ]
 }

@@ -34,6 +34,7 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
@@ -79,10 +80,10 @@ fun CardRecognitionScreen(
 
 @kotlin.OptIn(FlowPreview::class)
 @Composable
-fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (String) -> Unit) {
+fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (text: Text?) -> Unit) {
     val lifecycleOwner = LocalLifecycleOwner.current
     var ocrText by remember { mutableStateOf("Initializing...") }
-    val ocrFlow = remember { MutableStateFlow<String>("") }
+    val ocrFlow = remember { MutableStateFlow<Text?>(null) }
 
     LaunchedEffect(Unit) {
         ocrFlow
@@ -118,9 +119,9 @@ fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (String) -> Unit) 
                         analysis.setAnalyzer(
                             ContextCompat.getMainExecutor(ctx)
                         ) { imageProxy ->
-                            processImageProxy(imageProxy, recognizer) { text ->
-                                ocrText = text
-                                ocrFlow.value = text
+                            processImageProxy(imageProxy, recognizer) { visionText ->
+                                ocrText = visionText?.text.orEmpty().ifBlank { "No text detected" }
+                                ocrFlow.value = visionText
                             }
                         }
                     }
@@ -166,17 +167,17 @@ fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (String) -> Unit) 
 private fun processImageProxy(
     imageProxy: ImageProxy,
     recognizer: TextRecognizer,
-    onResult: (String) -> Unit
+    onResult: (Text?) -> Unit
 ) {
     val mediaImage = imageProxy.image
     if (mediaImage != null) {
         val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
         recognizer.process(image)
             .addOnSuccessListener { visionText ->
-                onResult(visionText.text.ifBlank { "No text detected" })
+                onResult(visionText)
             }
             .addOnFailureListener { e ->
-                onResult("OCR error: ${e.localizedMessage}")
+                onResult(null)
             }
             .addOnCompleteListener {
                 imageProxy.close()

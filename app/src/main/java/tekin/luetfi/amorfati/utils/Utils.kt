@@ -147,7 +147,7 @@ suspend fun TarotCard.sendToClipBoard(
     // 1) load the image as a Bitmap
     val loader = ImageLoader(context)
     val req = ImageRequest.Builder(context)
-        .data(localImageFile)
+        .data(image)
         .build()
     val result = loader.execute(req)
     if (result is SuccessResult) {

@@ -10,6 +10,7 @@ object Defaults {
     var useTestBucket by mutableStateOf(false)
     var sendEmail by mutableStateOf(true)
     var shouldSendCC by mutableStateOf(true)
+    var onlineOnly by mutableStateOf(false)
     var selectedTemplate by mutableStateOf(Template.list.first())
     val sender = EmailAddress("readingby@lutfitek.in", "Lütfi Tekin")
     val cc = EmailAddress("cc@lutfitek.in", "Lütfi Tekin")

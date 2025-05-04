@@ -31,18 +31,24 @@ data class TarotCard(
             return ASSETS_DIR + code.lowercase() + ".png"
         }
 
+    val image: String
+        get() = if (Defaults.onlineOnly) imageUrl else localImageFile
+
     val cardLore: CardLore?
         get() {
             return Defaults.mainLore.find { it.code == code }
         }
 
+    private val imageHost: String
+        get() = if (Defaults.onlineOnly) Defaults.imageHostDir else ASSETS_DIR
+
     val backSideImage: String
         get() {
             if (isLocationCard)
-                return ASSETS_DIR + code.lowercase() + "_back.png"
+                return imageHost + code.lowercase() + "_back.png"
             if (isF8Card)
-                return "${ASSETS_DIR}f8_back.png"
-            return "${ASSETS_DIR}back.png"
+                return "${imageHost}f8_back.png"
+            return "${imageHost}back.png"
         }
 
     private val isLocationCard: Boolean

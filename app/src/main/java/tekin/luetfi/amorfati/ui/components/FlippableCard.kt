@@ -142,7 +142,7 @@ fun FlippableCard(
     ) {
         if (isFront) {
             AsyncImage(
-                model = card.localImageFile,
+                model = card.image,
                 contentDescription = "${card.name} front",
                 modifier = Modifier.matchParentSize()
             )

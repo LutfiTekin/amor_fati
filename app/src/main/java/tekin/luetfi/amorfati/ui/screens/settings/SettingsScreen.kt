@@ -42,6 +42,21 @@ fun SettingsScreen(modifier: Modifier = Modifier, onDone: () -> Unit) {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text("Session Settings", style = MaterialTheme.typography.titleLarge)
+        Text("These settings will not persist. They will reset to default every start.", style = MaterialTheme.typography.bodySmall)
+
+
+        // Toggle online image fetching
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Always get the images from the server")
+            Switch(
+                checked = Defaults.onlineOnly,
+                onCheckedChange = { Defaults.onlineOnly = it }
+            )
+        }
 
         // Toggle test‑bucket
         Row(

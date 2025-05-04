@@ -39,10 +39,12 @@ import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.ui.screens.email.CardBottomSheet
+import tekin.luetfi.amorfati.utils.sendToClipBoard
 
 
 @Composable
@@ -54,15 +56,21 @@ fun CardRecognitionScreen(
     var foundCard by remember { mutableStateOf<TarotCard?>(null) }
     val context = LocalContext.current
 
+
+    LaunchedEffect(Unit) {
+        viewModel.foundCardFlow.collectLatest {
+            foundCard = it
+            it.sendToClipBoard(context)
+        }
+    }
+
     foundCard?.let {
         CardBottomSheet(it) {
             foundCard = null
         }
     } ?: run {
         LiveOcrCamera(modifier) {
-            viewModel.searchForValidCard(scannedText = it, context = context) { card ->
-                foundCard = card
-            }
+            viewModel.searchForValidCard(scannedText = it)
         }
     }
 
@@ -72,7 +80,6 @@ fun CardRecognitionScreen(
 @kotlin.OptIn(FlowPreview::class)
 @Composable
 fun LiveOcrCamera(modifier: Modifier = Modifier, scannedText: (String) -> Unit) {
-    val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     var ocrText by remember { mutableStateOf("Initializing...") }
     val ocrFlow = remember { MutableStateFlow<String>("") }

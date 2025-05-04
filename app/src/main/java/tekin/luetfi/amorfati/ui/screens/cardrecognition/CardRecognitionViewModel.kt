@@ -1,14 +1,14 @@
 package tekin.luetfi.amorfati.ui.screens.cardrecognition
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import tekin.luetfi.amorfati.domain.model.TarotCard
 import tekin.luetfi.amorfati.utils.Deck
-import tekin.luetfi.amorfati.utils.sendToClipBoard
 import javax.inject.Inject
 
 
@@ -22,7 +22,12 @@ class CardRecognitionViewModel @Inject constructor(): ViewModel() {
 
     private val minimumCardNameLength = knownCardNames.minOf { it.length } - 1
 
-    fun searchForValidCard(scannedText: String, context: Context, foundCard: (TarotCard) -> Unit) = viewModelScope.launch(Dispatchers.Default) {
+
+    private val _foundCardFlow = MutableSharedFlow<TarotCard>(replay = 0)
+
+    val foundCardFlow = _foundCardFlow.asSharedFlow()
+
+    fun searchForValidCard(scannedText: String) = viewModelScope.launch(Dispatchers.Default) {
         //Skip short text
         if (scannedText.length < minimumCardNameLength)
             return@launch
@@ -31,8 +36,7 @@ class CardRecognitionViewModel @Inject constructor(): ViewModel() {
         if (card == null)
             return@launch
         val tarotCard = knownCards.first { it.name.lowercase() == card }
-        foundCard(tarotCard)
-        tarotCard.sendToClipBoard(context)
+        _foundCardFlow.emit(tarotCard)
     }
 
 }

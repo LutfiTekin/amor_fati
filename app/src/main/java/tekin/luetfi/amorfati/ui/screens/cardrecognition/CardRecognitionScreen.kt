@@ -2,7 +2,11 @@
 
 package tekin.luetfi.amorfati.ui.screens.cardrecognition
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.util.Size
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.OptIn
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
@@ -11,11 +15,17 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -56,6 +66,18 @@ fun CardRecognitionScreen(
 
     var foundCard by remember { mutableStateOf<TarotCard?>(null) }
     val context = LocalContext.current
+    var hasCameraPermission by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED
+        )
+    }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        hasCameraPermission = granted
+    }
 
 
     LaunchedEffect(Unit) {
@@ -66,12 +88,42 @@ fun CardRecognitionScreen(
     }
 
     foundCard?.let {
-        CardBottomSheet(it) {
-            foundCard = null
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "A match found. The card is being loaded to clipboard.",
+                style = MaterialTheme.typography.headlineLarge,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+            CardBottomSheet(it) {
+                foundCard = null
+            }
         }
+
     } ?: run {
-        LiveOcrCamera(modifier) {
-            viewModel.searchForValidCard(scannedText = it)
+        if (hasCameraPermission) {
+            LiveOcrCamera(modifier) { scanned ->
+                viewModel.searchForValidCard(scannedText = scanned)
+            }
+        } else {
+            Column(
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("This feature requires camera access to read your tarot card.")
+                Spacer(Modifier.height(12.dp))
+                Button(onClick = { permissionLauncher.launch(Manifest.permission.CAMERA) }) {
+                    Text("Grant Camera Permission")
+                }
+            }
         }
     }
 

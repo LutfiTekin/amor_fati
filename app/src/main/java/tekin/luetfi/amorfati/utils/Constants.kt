@@ -21,7 +21,7 @@ object Defaults {
 }
 
 const val SEND_GRID_BASE_URL = "https://api.sendgrid.com/"
-const val LORE_API_BASE_URL = "https://lutfitek.in/"
+const val LORE_API_BASE_URL = "https://aeterna.lutfitek.in/"
 const val DEFAULT_TIMEOUT = "default_timeout"
 const val READING_CARDS_AMOUNT = 5
 const val ASSETS_DIR = "file:///android_asset/"

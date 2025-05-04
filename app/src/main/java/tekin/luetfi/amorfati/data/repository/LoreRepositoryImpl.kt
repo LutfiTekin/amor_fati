@@ -9,4 +9,7 @@ class LoreRepositoryImpl @Inject constructor(
     private val api: LoreApi
 ) : LoreRepository {
     override suspend fun getLore(): Lore = api.fetchLore()
+
+    override suspend fun getCards() = api.fetchNewCards()
+
 }

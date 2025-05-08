@@ -38,20 +38,20 @@ fun List<ReadingProgress>.compileLogMessage(): String? {
         .mapNotNull { rp ->
             when {
                 rp.imageUploadProgress != null -> "Uploading Image ${rp.imageUploadProgress}%"
-                rp.progressText.isNotBlank()   -> rp.progressText.trim()
-                else                            -> null
+                rp.progressText.isNotBlank() -> rp.progressText.trim()
+                else -> null
             }
         }
 
 
-    return uniqueMessages.takeIf { it.isNotEmpty() }
-        ?.joinToString(separator = "\n")
+    return uniqueMessages.takeIf { it.isNotEmpty() }?.reversed()
+        ?.joinToString(separator = "\n").orEmpty()
 }
 
 fun List<ReadingProgress>.addNewProgress(progress: ReadingProgress): List<ReadingProgress> {
     val list = this.toMutableList()
     if (progress.imageUploadProgress != null)
-        list.removeIf{ it.imageUploadProgress != null }
+        list.removeIf { it.imageUploadProgress != null }
     list.add(progress)
     return list.toList()
 }

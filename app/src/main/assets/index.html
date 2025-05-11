@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Amor Fati Gallery</title>
     <!-- Tarot-inspired font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
-          rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- Font Awesome for button icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-pbP7f/DH3Wj8Qa+dqklhWkkO4U+SSqVbE4GNk7KP/1w5qjWkRHj/EvNCp1KYyn0JfOI3VyHbVTVz3H1vZ6+INA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
     <style>
         body {
           font-family: Arial, sans-serif;
@@ -24,6 +34,7 @@
           color: #f4e3c5;
           text-shadow: 0 0 8px rgba(244, 227, 197, 0.8);
         }
+
         .map-link {
           text-align: center;
           margin-bottom: 40px;
@@ -40,20 +51,28 @@
           font-weight: bold;
           letter-spacing: 1px;
           font-family: 'Cinzel', serif;
-          box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.3);
+          box-shadow:
+            inset 0 0 10px rgba(0, 0, 0, 0.2),
+            0 4px 6px rgba(0, 0, 0, 0.3);
           transition: transform 0.3s, box-shadow 0.3s;
           position: relative;
         }
-        .map-link .btn::before {
-          content: '🧭';
+        /* remove the old pseudo-element rule that was forcing the same icon on every button */
+        /* .map-link .btn::before { … } */
+
+        /* give space between your FontAwesome <i> and the text */
+        .map-link .btn i {
           margin-right: 8px;
-          font-size: 1.2rem;
           vertical-align: middle;
         }
+
         .map-link .btn:hover {
           transform: scale(1.05) rotate(2deg);
-          box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.3), 0 6px 12px rgba(0, 0, 0, 0.4);
+          box-shadow:
+            inset 0 0 12px rgba(0, 0, 0, 0.3),
+            0 6px 12px rgba(0, 0, 0, 0.4);
         }
+
         .gallery {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -71,6 +90,7 @@
         .gallery img:hover {
           border-color: #fff;
         }
+
         .modal {
           display: none;
           position: fixed;
@@ -136,9 +156,27 @@
 </head>
 <body>
 <h1>Tarot Card Gallery</h1>
-<!-- Tarot-themed Map Button -->
+
+<!-- Tarot-themed Map Buttons -->
 <div class="map-link">
-    <a href="map.html" target="_blank" class="btn">Explore the Map</a>
+    <a
+            href="https://chatgpt.com/g/g-6820704c74b881919e1cf98b88a7f4e8-amor-fati-aeterna"
+            target="_blank"
+            class="btn"
+    >
+        <i class="fa-solid fa-book-reader" aria-hidden="true"></i>
+        Start Your Reading
+    </a>
+
+    <a href="map.html" target="_blank" class="btn">
+        <i class="fa-solid fa-map" aria-hidden="true"></i>
+        Explore the Map
+    </a>
+
+    <a href="lore.html" class="btn">
+        <i class="fa-solid fa-scroll" aria-hidden="true"></i>
+        The Lore
+    </a>
 </div>
 
 <div class="gallery" id="gallery"></div>
@@ -146,7 +184,7 @@
 <div class="modal" id="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-        <img id="modal-img" src="" alt="Full Image">
+        <img id="modal-img" src="" alt="Full Image" />
         <div class="lore" id="modal-lore">Loading...</div>
         <div class="nav-buttons">
             <button onclick="showPrev()">Previous</button>
@@ -160,47 +198,26 @@
     let loreData = {};
 
     fetch(loreUrl)
-      .then(response => response.json())
+      .then(r => r.json())
       .then(data => {
-        data.cards.forEach(card => {
-          loreData[card.code] = card.story;
+        data.cards.forEach(c => {
+          loreData[c.code] = c.story;
         });
       });
 
     const imageCodes = [
-  "ALE_OF_THE_ACHE",
-  "COUNCIL_OF_THREE",
-  "DESIGNATED_DRIVER",
-  "DUCHESS_AND_THE_WHITE_HOUND",
-  "FOCUS_OF_FATE",
-  "GAZE_OF_EXHAUSTION",
-  "GENTLEMAN_OF_THE_ALPS",
-  "GENTLE_HIGHLANDER",
-  "KEEPERS_OF_THE_SKY_NEEDLE",
-  "KEEPER_OF_THE_BITTER_TRUTH",
-  "LAVENDER_TRIO",
-  "NINE_OF_HOUNDS",
-  "NOMAD_OF_TRACKS",
-  "ROUND_TRIP_KNIGHT",
-  "SENTINEL_OF_THE_TWIN_TOWERS",
-  "SILENT_JUDGE",
-  "SISTERS_OF_THE_SEVEN_TEA",
-  "SISTER_SINISTER",
-  "SNOW_MEXICAN",
-  "TEACHER_OF_TREACHERY",
-  "THE_ALCHEMIST",
-  "THE_BADDIES",
-  "THE_BADDIES_II",
-  "THE_BADDIES_III",
-  "THE_BALLAD",
-  "THE_DEALER",
-  "THE_DISTANT_LIAISON",
-  "THE_ENDLESS_POUR",
-  "THE_LIBRARIAN",
-  "THE_LONE_STAR",
-  "THE_RULE_OF_THREES",
-  "THE_TEXAN_AND_THE_THISTLE"
-];
+      "ALE_OF_THE_ACHE", "COUNCIL_OF_THREE", "DESIGNATED_DRIVER",
+      "DUCHESS_AND_THE_WHITE_HOUND", "FOCUS_OF_FATE", "GAZE_OF_EXHAUSTION",
+      "GENTLEMAN_OF_THE_ALPS", "GENTLE_HIGHLANDER", "KEEPERS_OF_THE_SKY_NEEDLE",
+      "KEEPER_OF_THE_BITTER_TRUTH", "LAVENDER_TRIO", "NINE_OF_HOUNDS",
+      "NOMAD_OF_TRACKS", "ROUND_TRIP_KNIGHT", "SENTINEL_OF_THE_TWIN_TOWERS",
+      "SILENT_JUDGE", "SISTERS_OF_THE_SEVEN_TEA", "SISTER_SINISTER",
+      "SNOW_MEXICAN", "TEACHER_OF_TREACHERY", "THE_ALCHEMIST",
+      "THE_BADDIES", "THE_BADDIES_II", "THE_BADDIES_III",
+      "THE_BALLAD", "THE_DEALER", "THE_DISTANT_LIAISON",
+      "THE_ENDLESS_POUR", "THE_LIBRARIAN", "THE_LONE_STAR",
+      "THE_RULE_OF_THREES", "THE_TEXAN_AND_THE_THISTLE"
+    ];
 
     const images = imageCodes.map(code => {
       const filename = code.toLowerCase();
@@ -217,19 +234,19 @@
     const modalImg = document.getElementById('modal-img');
     const modalLore = document.getElementById('modal-lore');
 
-    function openModal(imageIndex) {
-      currentIndex = imageIndex;
-      const image = images[currentIndex];
+    function openModal(ix) {
+      currentIndex = ix;
+      const img = images[ix];
       modal.style.display = 'flex';
       modalImg.style.opacity = 0;
-      modalImg.src = image.thumbnail;
-      const tempImg = new Image();
-      tempImg.onload = () => {
-        modalImg.src = image.full;
+      modalImg.src = img.thumbnail;
+      const tmp = new Image();
+      tmp.onload = () => {
+        modalImg.src = img.full;
         modalImg.style.opacity = 1;
       };
-      tempImg.src = image.full;
-      modalLore.textContent = loreData[image.code] || 'No lore entry available.';
+      tmp.src = img.full;
+      modalLore.textContent = loreData[img.code] || 'No lore entry available.';
     }
 
     function closeModal() {
@@ -239,24 +256,21 @@
     }
 
     function showPrev() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      openModal(currentIndex);
+      openModal((currentIndex - 1 + images.length) % images.length);
     }
-
     function showNext() {
-      currentIndex = (currentIndex + 1) % images.length;
-      openModal(currentIndex);
+      openModal((currentIndex + 1) % images.length);
     }
 
-    images.forEach((img, index) => {
-      const imageElement = document.createElement('img');
-      imageElement.src = img.thumbnail;
-      imageElement.alt = img.code;
-      imageElement.onclick = () => openModal(index);
-      gallery.appendChild(imageElement);
+    images.forEach((img, i) => {
+      const el = document.createElement('img');
+      el.src = img.thumbnail;
+      el.alt = img.code;
+      el.onclick = () => openModal(i);
+      gallery.appendChild(el);
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (modal.style.display === 'flex') {
         if (e.key === 'ArrowLeft') showPrev();
         else if (e.key === 'ArrowRight') showNext();

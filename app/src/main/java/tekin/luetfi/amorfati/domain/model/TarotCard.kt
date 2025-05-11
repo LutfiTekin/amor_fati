@@ -35,7 +35,7 @@ data class TarotCard(
     val image: String
         get() {
             if (online)
-                imageUrl
+                return imageUrl
             return if (Defaults.onlineOnly) imageUrl else localImageFile
         }
 
@@ -70,3 +70,27 @@ data class TarotCard(
 
 }
 
+
+
+/**
+ * Converts a String to a TarotCard object.
+ *
+ * This extension function assumes the String represents the name of a Tarot card.
+ * It creates a TarotCard with the given name and generates a code by converting
+ * the name to uppercase and replacing spaces with underscores.
+ *
+ * @return A new TarotCard object.
+ */
+fun String.sealed(): TarotCard = TarotCard(this, this.uppercase().replace(" ","_"))
+
+/**
+ * Creates a [TarotCard] instance using an infix function syntax.
+ *
+ * This allows for a more natural and readable way to create a [TarotCard]
+ * by specifying the name followed by the 'sealedWith' keyword and the code.
+ *
+ * @receiver The name of the Tarot card.
+ * @param code The unique code for the Tarot card.
+ * @return A new [TarotCard] instance with the given name and code.
+ */
+infix fun String.sealedWith(code: String): TarotCard = TarotCard(this, code)

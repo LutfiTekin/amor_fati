@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Amor Fati Gallery</title>
-    <!-- Tarot-inspired font -->
     <link
             href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
             rel="stylesheet"
     />
-    <!-- Font Awesome for button icons -->
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -39,6 +37,12 @@
           font-family: 'Cinzel', serif;
           color: #f4e3c5;
           margin-top: 40px;
+          /* Add clear to ensure titles start on new line after grid items */
+          clear: both;
+          /* Add padding to separate title from grid */
+          padding-top: 20px;
+          padding-bottom: 10px;
+          grid-column: 1 / -1; /* Make title span full grid width */
         }
         .map-link {
           text-align: center;
@@ -61,6 +65,7 @@
             0 4px 6px rgba(0, 0, 0, 0.3);
           transition: transform 0.3s, box-shadow 0.3s;
           position: relative;
+          margin: 5px; /* Add margin for better spacing on smaller screens */
         }
         .map-link .btn i {
           margin-right: 8px;
@@ -168,7 +173,8 @@
         The Lore
     </a>
 </div>
-<div class="gallery" id="gallery"></div>
+<div class="gallery" id="gallery">
+</div>
 <div class="modal" id="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
@@ -183,72 +189,126 @@
 <script>
     const loreUrl = 'lore.json';
     let loreData = {};
-    fetch(loreUrl).then(res => res.json()).then(data => {
-        data.cards.forEach(c => loreData[c.code] = c.story);
-    });
+    fetch(loreUrl)
+        .then(res => res.json())
+        .then(data => {
+            data.cards.forEach(c => loreData[c.code] = c.story);
+        })
+        .catch(error => console.error('Error fetching lore data:', error)); // Added error handling for lore fetch
 
-    fetch('cards.json').then(res => res.json()).then(data => {
-        const sortByName = group => group.sort((a, b) => a.name.localeCompare(b.name));
-        const f8 = sortByName(data.f8Cards);
-        const core = sortByName(data.cards);
-        const city = sortByName(data.locationCards);
-        const melody = sortByName(data.melodyCards);
-        const extra = sortByName(data.extraCards);
+    fetch('cards.json')
+        .then(res => res.json())
+        .then(data => {
+            const sortByName = group => group.sort((a, b) => a.name.localeCompare(b.name));
 
-        const images = [...f8, ...core, ...city, ...melody, ...extra].map(card => {
-            const file = card.code.toLowerCase();
-            return {
-                code: card.code,
-                thumbnail: `thumbnails/${file}.png`,
-                full: `${file}.png`
+            const f8 = sortByName(data.f8Cards || []); // Added fallback for potentially missing keys
+            const core = sortByName(data.cards || []);
+            const city = sortByName(data.locationCards || []);
+            const melody = sortByName(data.melodyCards || []);
+            const extra = sortByName(data.extraCards || []);
+
+            // Combine all cards into a single array for modal navigation, preserving order
+            const allCardsRaw = [...f8, ...core, ...city, ...melody, ...extra];
+            window.images = allCardsRaw.map(card => {
+                const file = card.code.toLowerCase();
+                return {
+                    code: card.code,
+                    thumbnail: `thumbnails/${file}.png`,
+                    full: `${file}.png`
+                };
+            });
+
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // Clear previous content if any
+            let globalIndex = 0;
+
+            const addImagesToGallery = (cardArray, sectionTitle) => {
+                if (sectionTitle) {
+                    const titleElement = document.createElement('h2');
+                    titleElement.textContent = sectionTitle;
+                    gallery.appendChild(titleElement);
+                }
+
+                cardArray.forEach(card => {
+                    const file = card.code.toLowerCase();
+                    const el = document.createElement('img');
+                    el.src = `thumbnails/${file}.png`;
+                    el.alt = card.name; // Use card name for alt text
+                    el.dataset.globalIndex = globalIndex; // Store the global index
+
+                    el.addEventListener('click', () => openModal(parseInt(el.dataset.globalIndex)));
+                    gallery.appendChild(el);
+                    globalIndex++; // Increment global index for each image added
+                });
             };
-        });
 
-        const gallery = document.getElementById('gallery');
-        images.forEach((img, i) => {
-            const el = document.createElement('img');
-            el.src = img.thumbnail;
-            el.alt = img.code;
-            el.addEventListener('click', () => openModal(i));
-            gallery.appendChild(el);
-        });
+            // Add sections
+            addImagesToGallery([...f8, ...core]); // F8 and Core cards together, no title
+            addImagesToGallery(city, "City Cards");
+            addImagesToGallery(melody, "Melody Cards");
+            addImagesToGallery(extra, "Extra Cards");
 
-        window.images = images;
-    });
+        })
+        .catch(error => console.error('Error fetching or processing card data:', error)); // Added error handling for card fetch
 
     let currentIndex = 0;
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
     const modalLore = document.getElementById('modal-lore');
 
-    function openModal(idx) {
-        currentIndex = idx;
-        const img = images[idx];
+    function openModal(globalIdx) {
+        currentIndex = globalIdx;
+        // Ensure images array is loaded before accessing it
+        if (!window.images || window.images.length === 0) {
+            console.error("Image data not loaded yet.");
+            return;
+        }
+        if (globalIdx < 0 || globalIdx >= window.images.length) {
+             console.error("Invalid image index:", globalIdx);
+             return;
+        }
+
+        const imgData = window.images[globalIdx];
         modal.style.display = 'flex';
-        modalImg.style.opacity = 0;
-        modalImg.src = img.thumbnail;
+        modalImg.style.opacity = 0; // Start transparent for fade-in effect
+        modalImg.src = imgData.thumbnail; // Load thumbnail first for perceived speed
+
+        // Preload full image
         const tmp = new Image();
         tmp.onload = () => {
-            modalImg.src = img.full;
-            modalImg.style.opacity = 1;
+            modalImg.src = imgData.full; // Set full image source
+            modalImg.style.opacity = 1; // Fade in
         };
-        tmp.src = img.full;
-        modalLore.textContent = loreData[img.code] || 'No lore entry available.';
+        tmp.onerror = () => { // Handle cases where full image fails to load
+             console.error("Failed to load full image:", imgData.full);
+             modalImg.src = imgData.thumbnail; // Fallback to thumbnail
+             modalImg.style.opacity = 1;
+        };
+        tmp.src = imgData.full;
+
+        modalLore.textContent = loreData[imgData.code] || 'No lore entry available.';
     }
 
     function closeModal() {
         modal.style.display = 'none';
-        modalImg.src = '';
-        modalLore.textContent = '';
+        modalImg.src = ''; // Clear image source
+        modalLore.textContent = ''; // Clear lore text
     }
 
     function showPrev() {
-        openModal((currentIndex - 1 + images.length) % images.length);
+         // Ensure images array is loaded
+        if (!window.images || window.images.length === 0) return;
+        const newIndex = (currentIndex - 1 + window.images.length) % window.images.length;
+        openModal(newIndex);
     }
     function showNext() {
-        openModal((currentIndex + 1) % images.length);
+         // Ensure images array is loaded
+        if (!window.images || window.images.length === 0) return;
+        const newIndex = (currentIndex + 1) % window.images.length;
+        openModal(newIndex);
     }
 
+    // Keyboard navigation for modal
     document.addEventListener('keydown', e => {
         if (modal.style.display === 'flex') {
             if (e.key === 'ArrowLeft') showPrev();
@@ -256,6 +316,14 @@
             else if (e.key === 'Escape') closeModal();
         }
     });
+
+    // Close modal if clicking outside the content area
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) { // Check if the click is directly on the modal background
+        closeModal();
+      }
+    });
+
 </script>
 </body>
 </html>

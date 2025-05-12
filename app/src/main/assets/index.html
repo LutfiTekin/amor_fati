@@ -34,7 +34,12 @@
           color: #f4e3c5;
           text-shadow: 0 0 8px rgba(244, 227, 197, 0.8);
         }
-
+        h2 {
+          text-align: center;
+          font-family: 'Cinzel', serif;
+          color: #f4e3c5;
+          margin-top: 40px;
+        }
         .map-link {
           text-align: center;
           margin-bottom: 40px;
@@ -67,7 +72,6 @@
             inset 0 0 12px rgba(0, 0, 0, 0.3),
             0 6px 12px rgba(0, 0, 0, 0.4);
         }
-
         .gallery {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -85,7 +89,6 @@
         .gallery img:hover {
           border-color: #fff;
         }
-
         .modal {
           display: none;
           position: fixed;
@@ -151,31 +154,21 @@
 </head>
 <body>
 <h1>Tarot Card Gallery</h1>
-
-<!-- Tarot-themed Map Buttons -->
 <div class="map-link">
-    <a
-            href="https://chatgpt.com/g/g-6820704c74b881919e1cf98b88a7f4e8-amor-fati-aeterna"
-            target="_blank"
-            class="btn"
-    >
+    <a href="https://chatgpt.com/g/g-6820704c74b881919e1cf98b88a7f4e8-amor-fati-aeterna" target="_blank" class="btn">
         <i class="fa-solid fa-book-reader" aria-hidden="true"></i>
         Start Your Reading
     </a>
-
     <a href="map.html" target="_blank" class="btn">
         <i class="fa-solid fa-map" aria-hidden="true"></i>
         Explore the Map
     </a>
-
     <a href="lore.html" class="btn">
         <i class="fa-solid fa-scroll" aria-hidden="true"></i>
         The Lore
     </a>
 </div>
-
 <div class="gallery" id="gallery"></div>
-
 <div class="modal" id="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
@@ -187,49 +180,41 @@
         </div>
     </div>
 </div>
-
 <script>
-    // Load lore as before
     const loreUrl = 'lore.json';
     let loreData = {};
-    fetch(loreUrl)
-      .then(res => res.json())
-      .then(data => {
+    fetch(loreUrl).then(res => res.json()).then(data => {
         data.cards.forEach(c => loreData[c.code] = c.story);
-      });
+    });
 
-    // Fetch cards.json, exclude locationCards, sort groups, then build gallery
-    fetch('cards.json')
-      .then(res => res.json())
-      .then(data => {
-        // Sort each group by name
-        const f8 = data.f8Cards
-          .sort((a,b) => a.name.localeCompare(b.name));
-        const core = data.cards
-          .sort((a,b) => a.name.localeCompare(b.name));
-        const extra = data.extraCards
-          .sort((a,b) => a.name.localeCompare(b.name));
+    fetch('cards.json').then(res => res.json()).then(data => {
+        const sortByName = group => group.sort((a, b) => a.name.localeCompare(b.name));
+        const f8 = sortByName(data.f8Cards);
+        const core = sortByName(data.cards);
+        const city = sortByName(data.locationCards);
+        const melody = sortByName(data.melodyCards);
+        const extra = sortByName(data.extraCards);
 
-        // Combine in the requested order
-        window.images = [...f8, ...core, ...extra].map(card => {
-          const file = card.code.toLowerCase();
-          return {
-            code: card.code,
-            thumbnail: `thumbnails/${file}.png`,
-            full: `${file}.png`
-          };
+        const images = [...f8, ...core, ...city, ...melody, ...extra].map(card => {
+            const file = card.code.toLowerCase();
+            return {
+                code: card.code,
+                thumbnail: `thumbnails/${file}.png`,
+                full: `${file}.png`
+            };
         });
 
-        // Build gallery thumbnails
         const gallery = document.getElementById('gallery');
         images.forEach((img, i) => {
-          const el = document.createElement('img');
-          el.src = img.thumbnail;
-          el.alt = img.code;
-          el.addEventListener('click', () => openModal(i));
-          gallery.appendChild(el);
+            const el = document.createElement('img');
+            el.src = img.thumbnail;
+            el.alt = img.code;
+            el.addEventListener('click', () => openModal(i));
+            gallery.appendChild(el);
         });
-      });
+
+        window.images = images;
+    });
 
     let currentIndex = 0;
     const modal = document.getElementById('modal');
@@ -237,39 +222,39 @@
     const modalLore = document.getElementById('modal-lore');
 
     function openModal(idx) {
-      currentIndex = idx;
-      const img = images[idx];
-      modal.style.display = 'flex';
-      modalImg.style.opacity = 0;
-      modalImg.src = img.thumbnail;
-      const tmp = new Image();
-      tmp.onload = () => {
-        modalImg.src = img.full;
-        modalImg.style.opacity = 1;
-      };
-      tmp.src = img.full;
-      modalLore.textContent = loreData[img.code] || 'No lore entry available.';
+        currentIndex = idx;
+        const img = images[idx];
+        modal.style.display = 'flex';
+        modalImg.style.opacity = 0;
+        modalImg.src = img.thumbnail;
+        const tmp = new Image();
+        tmp.onload = () => {
+            modalImg.src = img.full;
+            modalImg.style.opacity = 1;
+        };
+        tmp.src = img.full;
+        modalLore.textContent = loreData[img.code] || 'No lore entry available.';
     }
 
     function closeModal() {
-      modal.style.display = 'none';
-      modalImg.src = '';
-      modalLore.textContent = '';
+        modal.style.display = 'none';
+        modalImg.src = '';
+        modalLore.textContent = '';
     }
 
     function showPrev() {
-      openModal((currentIndex - 1 + images.length) % images.length);
+        openModal((currentIndex - 1 + images.length) % images.length);
     }
     function showNext() {
-      openModal((currentIndex + 1) % images.length);
+        openModal((currentIndex + 1) % images.length);
     }
 
     document.addEventListener('keydown', e => {
-      if (modal.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') showPrev();
-        else if (e.key === 'ArrowRight') showNext();
-        else if (e.key === 'Escape') closeModal();
-      }
+        if (modal.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') showPrev();
+            else if (e.key === 'ArrowRight') showNext();
+            else if (e.key === 'Escape') closeModal();
+        }
     });
 </script>
 </body>

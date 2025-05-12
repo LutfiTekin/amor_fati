@@ -419,5 +419,167 @@
       "code": "THE_UNBEARABLE_DULLNESS_OF_BEING",
       "online": true
     }
+  ],
+  "melody_cards": [
+    {
+      "name": "Brothers In Arms",
+      "code": "BROTHERS_IN_ARMS"
+    },
+    {
+      "name": "Bitch",
+      "code": "BITCH"
+    },
+    {
+      "name": "Born In The Usa",
+      "code": "BORN_IN_THE_USA"
+    },
+    {
+      "name": "99 Problems",
+      "code": "99_PROBLEMS"
+    },
+    {
+      "name": "Eat The Rich",
+      "code": "EAT_THE_RICH"
+    },
+    {
+      "name": "Are Friends Electric",
+      "code": "ARE_FRIENDS_ELECTRIC"
+    },
+    {
+      "name": "Highway To Hell",
+      "code": "HIGHWAY_TO_HELL"
+    },
+    {
+      "name": "Hotel California",
+      "code": "HOTEL_CALIFORNIA"
+    },
+    {
+      "name": "Ain't No Sunshine",
+      "code": "AINT_NO_SUNSHINE"
+    },
+    {
+      "name": "Hells Bells",
+      "code": "HELLS_BELLS"
+    },
+    {
+      "name": "All Along The Watchtower",
+      "code": "ALL_ALONG_THE_WATCHTOWER"
+    },
+    {
+      "name": "Knockin' On Heaven's Door",
+      "code": "KNOCKIN_ON_HEAVES_DOOR"
+    },
+    {
+      "name": "Lady In Red",
+      "code": "LADY_IN_RED"
+    },
+    {
+      "name": "Fear Of The Dark",
+      "code": "FEAR_OF_THE_DARK"
+    },
+    {
+      "name": "Money For Nothing",
+      "code": "MONEY_FOR_NOTHING"
+    },
+    {
+      "name": "Mad World",
+      "code": "MAD_WORLD"
+    },
+    {
+      "name": "Lonely Boy",
+      "code": "LONELY_BOY"
+    },
+    {
+      "name": "Maneater",
+      "code": "MANEATER"
+    },
+    {
+      "name": "Miles Away",
+      "code": "MILES_AWAY"
+    },
+    {
+      "name": "Night Moves",
+      "code": "NIGHT_MOVES"
+    },
+    {
+      "name": "Play With Fire",
+      "code": "PLAY_WITH_FIRE"
+    },
+    {
+      "name": "Paint It Black",
+      "code": "PAINT_IT_BLACK"
+    },
+    {
+      "name": "My Way",
+      "code": "MY_WAY"
+    },
+    {
+      "name": "Simple Man",
+      "code": "SIMPLE_MAN"
+    },
+    {
+      "name": "Rumour Has It",
+      "code": "RUMOUR_HAS_IT"
+    },
+    {
+      "name": "Somebody That I Used To Know",
+      "code": "SOMEBODY_THAT_I_USED_TO_KNOW"
+    },
+    {
+      "name": "Shape Of My Heart",
+      "code": "SHAPE_OF_MY_HEART"
+    },
+    {
+      "name": "Someone New",
+      "code": "SOMEONE_NEW"
+    },
+    {
+      "name": "Stairway To Heaven",
+      "code": "STAIRWAY_TO_HEAVEN"
+    },
+    {
+      "name": "Starman",
+      "code": "STARMAN"
+    },
+    {
+      "name": "The Devil You Know",
+      "code": "THE_DEVIL_YOU_KNOW"
+    },
+    {
+      "name": "Telephone",
+      "code": "TELEPHONE"
+    },
+    {
+      "name": "The Winner Takes It All",
+      "code": "THE_WINNER_TAKES_IT_ALL"
+    },
+    {
+      "name": "Time",
+      "code": "TIME"
+    },
+    {
+      "name": "The Man Who Sold The World",
+      "code": "THE_MAN_WHO_SOLD_THE_WORLD"
+    },
+    {
+      "name": "Under Pressure",
+      "code": "UNDER_PRESSURE"
+    },
+    {
+      "name": "We Didn't Start The Fire",
+      "code": "WE_DIDNT_START_THE_FIRE"
+    },
+    {
+      "name": "You And Me And The Devil Makes Three",
+      "code": "YOU_AND_ME_AND_THE_DEVIL_MAKES_THREE"
+    },
+    {
+      "name": "Trouble Is A Friend",
+      "code": "TROUBLE_IS_A_FRIEND"
+    },
+    {
+      "name": "Wicked Ones",
+      "code": "WICKED_ONES"
+    }
   ]
 }

@@ -73,15 +73,22 @@
     (async function() {
       const urlParams = new URLSearchParams(window.location.search);
       let cardParam = urlParams.get('cards');
-      const [loreData, coordinates] = await Promise.all([
+      const [loreData, coordinates, cardsData] = await Promise.all([
         fetch('lore.json').then(r => r.json()),
-        fetch('coordinates.json').then(r => r.json())
+        fetch('coordinates.json').then(r => r.json()),
+        fetch('cards.json').then(r => r.json())
       ]);
 
       const lore = {};
       for (const c of loreData.cards) lore[c.code] = c;
 
       const validCardCodes = Object.keys(coordinates).filter(code => lore[code]);
+      const getCardType = (code) => {
+        if (cardsData.f8Cards.some(c => c.code === code)) return 'f8';
+        if (cardsData.locationCards.some(c => c.code === code)) return 'location';
+        if (cardsData.melodyCards.some(c => c.code === code)) return 'melody';
+        return 'standard';
+      }
 
       if (!cardParam) {
         const sample = [];
@@ -131,6 +138,12 @@
         const marker = L.marker([stagingLat, stagingLng], { icon }).addTo(map);
         markers.push(marker);
 
+        const type = getCardType(code);
+        const back = type === 'f8' ? 'f8_back.png'
+                   : type === 'location' ? `${codeLower}_back.png`
+                   : type === 'melody' ? 'melody_back.png'
+                   : 'back.png';
+
         const popup = `
           <div class="popup-container">
             <div class="flip-card flipped">
@@ -139,7 +152,7 @@
                   <img src="${codeLower}.png" alt="${code}"/>
                 </div>
                 <div class="flip-card-back">
-                  <img src="${codeLower}_back.png" onerror="this.onerror=null;this.src='back.png'"/>
+                  <img src="${back}" onerror="this.onerror=null;this.src='back.png'"/>
                 </div>
               </div>
             </div>

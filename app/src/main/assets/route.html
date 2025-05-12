@@ -42,31 +42,40 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
     (async function() {
-      const params = new URLSearchParams(window.location.search);
-      const cardParam = params.get('cards');
-      if (!cardParam) {
-        alert("No cards specified.");
-        return;
-      }
-      const cardCodes = cardParam.split('-').map(c => c.toUpperCase()).slice(0, 5);
+      const urlParams = new URLSearchParams(window.location.search);
+      let cardParam = urlParams.get('cards');
       const [loreData, coordinates] = await Promise.all([
         fetch('lore.json').then(r => r.json()),
         fetch('coordinates.json').then(r => r.json())
       ]);
+
+      const lore = {};
+      for (const c of loreData.cards) lore[c.code] = c;
+
+      const validCardCodes = Object.keys(coordinates).filter(code => lore[code]);
+
+      if (!cardParam) {
+        const sample = [];
+        const sampleLen = 3 + Math.floor(Math.random() * 7); // 3 to 9 cards
+        while (sample.length < sampleLen) {
+          const pick = validCardCodes[Math.floor(Math.random() * validCardCodes.length)];
+          if (!sample.includes(pick)) sample.push(pick);
+        }
+        const newUrl = `${window.location.pathname}?cards=${sample.join('-')}`;
+        window.location.href = newUrl;
+        return;
+      }
+
+      const cardCodes = cardParam.split('-').map(c => c.toUpperCase()).filter(c => coordinates[c] && lore[c]);
       const map = L.map('map').setView([20, 0], 2);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
-      const lore = {};
-      for (const c of loreData.cards) lore[c.code] = c;
-
       const points = [];
       for (const code of cardCodes) {
         const coord = coordinates[code];
         const card = lore[code];
-        if (!coord || !card) continue;
-        points.push([coord.lat, coord.lng]);
         const codeLower = code.toLowerCase();
         const popup = `
           <div class="popup-container">
@@ -95,6 +104,7 @@
           setTimeout(() => fc.classList.remove('flipped'), 2000);
           fc.addEventListener('click', () => fc.classList.toggle('flipped'));
         });
+        points.push([coord.lat, coord.lng]);
       }
       if (points.length > 1) {
         L.polyline(points, { color: 'purple', weight: 4, opacity: 0.8 }).addTo(map);

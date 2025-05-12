@@ -35,6 +35,16 @@
         .popup-text strong { display: block; margin-bottom: 4px; }
         .popup-text em { display: block; margin-bottom: 6px; font-style: italic; }
         .popup-text ul { padding-left: 18px; margin: 0; }
+        .route-line {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: drawLine 2s ease forwards;
+        }
+        @keyframes drawLine {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
     </style>
 </head>
 <body>
@@ -56,7 +66,7 @@
 
       if (!cardParam) {
         const sample = [];
-        const sampleLen = 3 + Math.floor(Math.random() * 7); // 3 to 9 cards
+        const sampleLen = 3 + Math.floor(Math.random() * 7);
         while (sample.length < sampleLen) {
           const pick = validCardCodes[Math.floor(Math.random() * validCardCodes.length)];
           if (!sample.includes(pick)) sample.push(pick);
@@ -66,17 +76,42 @@
         return;
       }
 
-      const cardCodes = cardParam.split('-').map(c => c.toUpperCase()).filter(c => coordinates[c] && lore[c]);
+      const cardCodes = cardParam.split('-').map(c => c.toUpperCase());
+      const filteredCodes = cardCodes.filter(c => coordinates[c] && lore[c]);
+
       const map = L.map('map').setView([20, 0], 2);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
       const points = [];
-      for (const code of cardCodes) {
+      const markers = [];
+      const seenCoords = new Set();
+
+      const stagingLat = 85;
+      let stagingLng = -180;
+      const spacing = 10;
+
+      for (const code of filteredCodes) {
         const coord = coordinates[code];
         const card = lore[code];
         const codeLower = code.toLowerCase();
+
+        let lat = coord.lat;
+        let lng = coord.lng;
+        const coordKey = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+        if (seenCoords.has(coordKey)) {
+          const offset = (Math.random() - 0.5) * 0.02;
+          lat += offset;
+          lng += offset;
+        }
+        seenCoords.add(coordKey);
+        points.push([lat, lng]);
+
+        const icon = L.icon({ iconUrl: `thumbnails/${codeLower}.png`, iconSize:[50,75], iconAnchor:[25,75] });
+        const marker = L.marker([stagingLat, stagingLng], { icon }).addTo(map);
+        markers.push(marker);
+
         const popup = `
           <div class="popup-container">
             <div class="flip-card flipped">
@@ -95,8 +130,7 @@
               <ul>${(card.effects || []).map(e => `<li>${e}</li>`).join('')}</ul>
             </div>
           </div>`;
-        const icon = L.icon({ iconUrl: `thumbnails/${codeLower}.png`, iconSize:[50,75], iconAnchor:[25,75] });
-        const marker = L.marker([coord.lat, coord.lng], { icon }).addTo(map);
+
         marker.bindPopup(popup);
         marker.on('popupopen', () => {
           const el = marker.getPopup().getElement();
@@ -104,11 +138,32 @@
           setTimeout(() => fc.classList.remove('flipped'), 2000);
           fc.addEventListener('click', () => fc.classList.toggle('flipped'));
         });
-        points.push([coord.lat, coord.lng]);
+        stagingLng += spacing;
       }
+
       if (points.length > 1) {
-        L.polyline(points, { color: 'purple', weight: 4, opacity: 0.8 }).addTo(map);
-        map.fitBounds(points);
+        const bounds = L.latLngBounds(points);
+        const center = bounds.getCenter();
+        const tightZoom = points.every(([lat, lng]) =>
+          Math.abs(lat - center.lat) < 1 && Math.abs(lng - center.lng) < 1
+        );
+        map.fitBounds(bounds, { maxZoom: tightZoom ? 9 : 4 });
+
+        let path = [];
+        const drawSegment = (i) => {
+          if (i >= markers.length) return;
+          markers[i].setLatLng(points[i]);
+          if (i > 0) {
+            const seg = L.polyline([points[i - 1], points[i]], {
+              color: 'purple',
+              weight: 4,
+              className: 'route-line'
+            }).addTo(map);
+          }
+          setTimeout(() => drawSegment(i + 1), 2000);
+        };
+
+        drawSegment(0);
       }
     })();
 </script>

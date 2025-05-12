@@ -881,6 +881,443 @@
       "story": "Nestled at the foot of the iconic Matterhorn, Zermatt is a place defined by its majestic peak. It speaks of aspiration, challenge, and the awe-inspiring power of nature. A destination for those who seek heights, literal or figurative.",
       "type": "location",
       "name": "Zermatt"
+    },
+    {
+      "code": "99_PROBLEMS",
+      "effects": [
+        "Signifies numerous challenges and obstacles.",
+        "Focuses attention on a central, persistent issue.",
+        "Tests resilience and problem-solving ability."
+      ],
+      "story": "When troubles mount, this card appears as a reminder that challenges are plentiful, but the core struggle often lies in overcoming one significant hurdle. It calls for perseverance and wit to navigate a sea of complications.",
+      "type": "melody",
+      "name": "99 Problems"
+    },
+    {
+      "code": "AINT_NO_SUNSHINE",
+      "effects": [
+        "Signifies absence, loss, or profound sadness.",
+        "Highlights dependence on something or someone missing.",
+        "Brings a feeling of melancholy or incompleteness."
+      ],
+      "story": "When the light disappears, this card reflects the void left behind. It embodies the deep sense of loss and sadness that comes with the absence of a vital presence, casting a shadow over the narrative until that light returns.",
+      "type": "melody",
+      "name": "Ain't No Sunshine"
+    },
+    {
+      "code": "ALL_ALONG_THE_WATCHTOWER",
+      "effects": [
+        "Highlights different perspectives and impending change.",
+        "Suggests observation and prophecy.",
+        "Indicates that events are unfolding as predicted, though perhaps interpreted differently."
+      ],
+      "story": "From elevated vantage points, figures watch as events unfold below, each seeing the same signs but interpreting them through their own lens. This card speaks to inevitable changes, warnings unheeded, and the varied perspectives from which destiny can be observed.",
+      "type": "melody",
+      "name": "All Along The Watchtower"
+    },
+    {
+      "code": "ARE_FRIENDS_ELECTRIC",
+      "effects": [
+        "Questions the nature of connection and authenticity.",
+        "May involve unusual or artificial relationships.",
+        "Suggests communication through unconventional means."
+      ],
+      "story": "In a world increasingly mediated by technology, this card asks about the genuine nature of our bonds. It highlights connections that might feel artificial or unexpected, exploring how we relate to each other in a digitally-interconnected or unconventional landscape.",
+      "type": "melody",
+      "name": "Are Friends Electric"
+    },
+    {
+      "code": "BITCH",
+      "effects": [
+        "Introduces defiance and strong will.",
+        "Challenges existing power structures or expectations."
+      ],
+      "story": "Unapologetically bold, this card embodies fierce independence and a refusal to back down. It represents speaking truth, even when unpopular, and asserting one's power against opposition.",
+      "type": "melody",
+      "name": "Bitch"
+    },
+    {
+      "code": "BORN_IN_THE_USA",
+      "effects": [
+        "Connects to themes of origin and identity.",
+        "May highlight patriotism or disillusionment.",
+        "Suggests a return to roots or a journey of self-discovery."
+      ],
+      "story": "More than just a birthplace, this card speaks to the complex tapestry of identity tied to a nation. It can represent a deep-seated connection to one's homeland, or the challenging realities faced within it, prompting reflection on belonging and journey.",
+      "type": "melody",
+      "name": "Born In The Usa"
+    },
+    {
+      "code": "BROTHERS_IN_ARMS",
+      "effects": [
+        "Fosters unity and mutual support.",
+        "Strengthens bonds in times of adversity."
+      ],
+      "story": "A testament to unwavering loyalty and shared struggle. This card signifies camaraderie forged in the crucible of hardship, where allies stand shoulder to shoulder against overwhelming odds.",
+      "type": "melody",
+      "name": "Brothers In Arms"
+    },
+    {
+      "code": "EAT_THE_RICH",
+      "effects": [
+        "Introduces themes of social inequality or rebellion.",
+        "May signify a dramatic shift in resources or power dynamics."
+      ],
+      "story": "A stark commentary on societal imbalance, this card represents a desire to overturn established hierarchies. It can point to simmering resentment, calls for redistribution, or a dramatic confrontation between the privileged and the dispossessed.",
+      "type": "melody",
+      "name": "Eat The Rich"
+    },
+    {
+      "code": "FEAR_OF_THE_DARK",
+      "effects": [
+        "Introduces primal fears and anxieties.",
+        "Highlights threats that are unseen or unknown.",
+        "Challenges characters to confront their deepest dreads."
+      ],
+      "story": "When shadows lengthen, this card brings forth the oldest fears. It speaks of the unknown, the hidden dangers lurking just out of sight, and the challenge of confronting the anxieties that reside in the deepest parts of the psyche.",
+      "type": "melody",
+      "name": "Fear Of The Dark"
+    },
+    {
+      "code": "HELLS_BELLS",
+      "effects": [
+        "Warns of impending danger or dark forces.",
+        "Signifies a powerful and often sinister arrival.",
+        "Creates an atmosphere of foreboding or dramatic tension."
+      ],
+      "story": "The sound that signals doom, this card announces the approach of something formidable and often malevolent. It serves as a dramatic warning, increasing tension and suggesting that powerful, perhaps supernatural, forces are at play.",
+      "type": "melody",
+      "name": "Hells Bells"
+    },
+    {
+      "code": "HIGHWAY_TO_HELL",
+      "effects": [
+        "Indicates a dangerous or destructive path.",
+        "Warns of irreversible choices and temptations.",
+        "Suggests a journey with a grim destination."
+      ],
+      "story": "A road paved with bad intentions, this card represents a trajectory towards ruin. It warns against succumbing to destructive impulses or making choices that lead down a path with inevitable negative consequences, no matter how enticing the journey might seem.",
+      "type": "melody",
+      "name": "Highway To Hell"
+    },
+    {
+      "code": "HOTEL_CALIFORNIA",
+      "effects": [
+        "Represents a situation that is difficult or impossible to leave.",
+        "Highlights themes of allure, entrapment, or inescapable luxury.",
+        "May involve nostalgia or a feeling of being caught between worlds."
+      ],
+      "story": "A place of paradoxical beauty and captivity, this card signifies a situation you can check into, but never truly escape. It speaks of alluring circumstances that becomes binding, leaving one feeling trapped despite the outward appearance of freedom.",
+      "type": "melody",
+      "name": "Hotel California"
+    },
+    {
+      "code": "KNOCKIN_ON_HEAVES_DOOR",
+      "effects": [
+        "Signifies approaching an end or a transition.",
+        "Represents seeking peace or release.",
+        "May indicate a final threshold or moments of reflection."
+      ],
+      "story": "At the edge of something profound, this card embodies the journey towards a final destination or a significant transition. It can represent a search for peace, a culmination of events, or the quiet moments before crossing a critical boundary.",
+      "type": "melody",
+      "name": "Knockin' On Heaven's Door"
+    },
+    {
+      "code": "LADY_IN_RED",
+      "effects": [
+        "Represents a striking or captivating presence.",
+        "Draws immediate attention and focus.",
+        "May signify passion, beauty, or a memorable encounter."
+      ],
+      "story": "A figure who commands the eye, this card embodies undeniable presence and allure. Appearing in a moment of significance, she captures attention and injects passion or drama into the scene, leaving a lasting impression.",
+      "type": "melody",
+      "name": "Lady In Red"
+    },
+    {
+      "code": "LONELY_BOY",
+      "effects": [
+        "Signifies isolation and solitude.",
+        "May involve introspection or a search for connection.",
+        "Highlights feelings of being misunderstood or alone."
+      ],
+      "story": "In a crowd or by himself, this card embodies the experience of solitude. It can represent physical isolation, emotional loneliness, or a period of introspection where one grapples with feelings of being disconnected from others.",
+      "type": "melody",
+      "name": "Lonely Boy"
+    },
+    {
+      "code": "MAD_WORLD",
+      "effects": [
+        "Reflects feelings of disillusionment and strangeness.",
+        "Portrays the environment as chaotic or nonsensical.",
+        "Suggests feeling alienated or out of place."
+      ],
+      "story": "When reality seems bizarre and incomprehensible, this card captures the feeling of being adrift in a chaotic existence. It speaks to a perception of the world as illogical or overwhelming, leaving individuals feeling disconnected and bewildered.",
+      "type": "melody",
+      "name": "Mad World"
+    },
+    {
+      "code": "MANEATER",
+      "effects": [
+        "Introduces a seductive and dangerous threat.",
+        "Involves relationships that consume or exploit.",
+        "Warns against irresistible but harmful allure."
+      ],
+      "story": "Charm masking danger, this card represents a force that draws others in only to consume or destroy them. It speaks of irresistible allure that leads to ruin, highlighting predatory relationships or situations where one is at risk of being devoured.",
+      "type": "melody",
+      "name": "Maneater"
+    },
+    {
+      "code": "MILES_AWAY",
+      "effects": [
+        "Represents significant physical or emotional distance.",
+        "Highlights themes of separation, longing, or inaccessibility.",
+        "Suggests a gap that needs to be bridged."
+      ],
+      "story": "Whether across continents or emotional divides, this card signifies a great distance. It embodies the feeling of separation, the yearning for what is far off, or the challenge of connecting across significant physical or emotional space.",
+      "type": "melody",
+      "name": "Miles Away"
+    },
+    {
+      "code": "MONEY_FOR_NOTHING",
+      "effects": [
+        "Involves easy or unexpected gains.",
+        "Questions the value of effort or traditional work.",
+        "May offer a critique of economics or reward systems."
+      ],
+      "story": "Rewards received without apparent effort, this card points to windfalls, lucky breaks, or questioning conventional wisdom about earning. It can highlight situations where value seems disconnected from labor, or where critique is leveled against systems of wealth.",
+      "type": "melody",
+      "name": "Money For Nothing"
+    },
+    {
+      "code": "MY_WAY",
+      "effects": [
+        "Emphasizes independence and self-reliance.",
+        "Introduces defiance against conformity.",
+        "Highlights living life on one's own terms."
+      ],
+      "story": "A declaration of autonomy, this card celebrates individuality and a refusal to follow the crowd. It represents charting one's own course, making independent choices, and standing firm in one's personal convictions, even when faced with pressure to conform.",
+      "type": "melody",
+      "name": "My Way"
+    },
+    {
+      "code": "NIGHT_MOVES",
+      "effects": [
+        "Involves secretive or clandestine actions.",
+        "Connects to past memories or youthful experiences.",
+        "Suggests events happening under the cover of darkness or discretion."
+      ],
+      "story": "Under the cloak of night, hidden actions and youthful escapades unfold. This card speaks of things that happen away from plain sight, secret plans, or nostalgic recollections of events that transpired in the shadows or during formative years.",
+      "type": "melody",
+      "name": "Night Moves"
+    },
+    {
+      "code": "PAINT_IT_BLACK",
+      "effects": [
+        "Reflects deep despair, loss, or mourning.",
+        "Suggests a transformation of perspective to see only negativity.",
+        "Creates an atmosphere of overwhelming sadness."
+      ],
+      "story": "When grief consumes, the world loses its color. This card embodies profound sorrow and the feeling of seeing everything through the lens of loss. It represents a state where only darkness prevails, marking a period of mourning or deep despair.",
+      "type": "melody",
+      "name": "Paint It Black"
+    },
+    {
+      "code": "PLAY_WITH_FIRE",
+      "effects": [
+        "Warns against taking dangerous risks.",
+        "Highlights actions with potential severe consequences.",
+        "Suggests engaging with volatile or unpredictable elements."
+      ],
+      "story": "Engaging with known danger, this card is a stark warning about the perils of reckless behavior. It represents situations where one is willingly interacting with volatile forces, suggesting that getting burned is a very real possibility.",
+      "type": "melody",
+      "name": "Play With Fire"
+    },
+    {
+      "code": "RUMOUR_HAS_IT",
+      "effects": [
+        "Introduces speculation and gossip.",
+        "Highlights the spread of unreliable information.",
+        "Affects reputation or perception based on hearsay."
+      ],
+      "story": "Whispers in the air, this card signifies the power of unfounded stories and speculation. It represents the spread of gossip, the impact of reputation based on rumor, and the difficulty of discerning truth from fabrication in a world of buzzing innuendo.",
+      "type": "melody",
+      "name": "Rumour Has It"
+    },
+    {
+      "code": "SHAPE_OF_MY_HEART",
+      "effects": [
+        "Reveals inner self, hidden intentions, or vulnerability.",
+        "Explores the core nature or true feelings of a character.",
+        "Suggests looking beyond the surface."
+      ],
+      "story": "More than outward appearance, this card delves into the hidden core of a person. It represents the true nature of one's heart, the secret motivations, or the underlying vulnerability that shapes who they are beneath the surface.",
+      "type": "melody",
+      "name": "Shape Of My Heart"
+    },
+    {
+      "code": "SIMPLE_MAN",
+      "effects": [
+        "Focuses on basic values and humility.",
+        "Suggests finding contentment in simplicity.",
+        "Highlights an uncomplicated life or character."
+      ],
+      "story": "In a world of complexity, this card finds strength in the fundamental. It represents a character or situation grounded in simple truths, valuing honesty, humility, and the quiet dignity of an uncomplicated existence.",
+      "type": "melody",
+      "name": "Simple Man"
+    },
+    {
+      "code": "SOMEBODY_THAT_I_USED_TO_KNOW",
+      "effects": [
+        "Reflects on changed relationships and past connections.",
+        "Highlights a feeling of unfamiliarity with someone once known.",
+        "Suggests drifting apart or fundamental personal change."
+      ],
+      "story": "A poignant reflection on altered bonds, this card speaks to the experience of encountering someone from the past who now feels like a stranger. It embodies the sadness of lost connection and the realization that people can change in profound ways.",
+      "type": "melody",
+      "name": "Somebody That I Used To Know"
+    },
+    {
+      "code": "SOMEONE_NEW",
+      "effects": [
+        "Introduces a new person into the narrative.",
+        "May signify fresh perspectives or unexpected encounters.",
+        "Often relates to new romantic possibilities."
+      ],
+      "story": "A fresh face enters the scene, bringing with them the potential for new dynamics, unexpected turns, and perhaps the spark of romance. This card represents the arrival of an individual who will impact the existing story in unforeseen ways.",
+      "type": "melody",
+      "name": "Someone New"
+    },
+    {
+      "code": "STAIRWAY_TO_HEAVEN",
+      "effects": [
+        "Represents a spiritual journey or aspiration.",
+        "Suggests a gradual ascent towards enlightenment or a lofty goal.",
+        "May signify ultimate reward or transcendence."
+      ],
+      "story": "A path leading upwards, this card embodies a journey of growth, learning, or spiritual enlightenment. It represents the process of striving towards a higher state or a significant achievement, suggesting that the ascent is as important as the destination.",
+      "type": "melody",
+      "name": "Stairway To Heaven"
+    },
+    {
+      "code": "STARMAN",
+      "effects": [
+        "Involves external or alien influence.",
+        "Suggests hope, change, or perspective from afar.",
+        "May introduce elements of the cosmic or extraordinary."
+      ],
+      "story": "From beyond the familiar sky, a figure arrives, bringing with them new perspectives, unusual abilities, or a catalyst for change. This card signifies intervention from an outside force, often benevolent or intended to shake up the status quo.",
+      "type": "melody",
+      "name": "Starman"
+    },
+    {
+      "code": "TELEPHONE",
+      "effects": [
+        "Highlights communication issues or opportunities.",
+        "May signify a crucial message or missed connection.",
+        "Relates to the transfer of information across distance."
+      ],
+      "story": "A device that connects worlds, this card represents the flow of information, the challenges of communication, or a pivotal message waiting to be received or sent. It can highlight misunderstandings, vital news, or the impact of technology on connection.",
+      "type": "melody",
+      "name": "Telephone"
+    },
+    {
+      "code": "THE_DEVIL_YOU_KNOW",
+      "effects": [
+        "Relates to dealing with familiar evils or known dangers.",
+        "Suggests choosing a predictable threat over an unknown one.",
+        "Highlights the comfort or discomfort found in routine negative situations."
+      ],
+      "story": "Better the devil you know than the devil you don't. This card embodies the choice to face a recognized problem or adversary, even if unpleasant, rather than stepping into the uncertainty of the unknown. It speaks to familiar struggles and predictable consequences.",
+      "type": "melody",
+      "name": "The Devil You Know"
+    },
+    {
+      "code": "THE_MAN_WHO_SOLD_THE_WORLD",
+      "effects": [
+        "Involves a profound shift in identity or values.",
+        "Suggests a character is not who they appear to be.",
+        "May signify a metaphorical or literal 'selling out'."
+      ],
+      "story": "A figure shrouded in mystery, this card represents a fundamental change in identity, perhaps for gain or survival. It speaks to shedding one's past, embracing a new persona, or the unsettling feeling that someone has traded their true self for something else.",
+      "type": "melody",
+      "name": "The Man Who Sold The World"
+    },
+    {
+      "code": "THE_WINNER_TAKES_IT_ALL",
+      "effects": [
+        "Focuses on the consequences of competition or conflict.",
+        "Signifies a decisive outcome with clear winners and losers.",
+        "Highlights themes of sacrifice and the cost of victory."
+      ],
+      "story": "When the dust settles, one stands triumphant while others face defeat. This card embodies the finality of competition and the often-high price paid for ultimate victory, leaving little room for compromise or shared success.",
+      "type": "melody",
+      "name": "The Winner Takes It All"
+    },
+    {
+      "code": "TIME",
+      "effects": [
+        "Represents the passage of time and its effects.",
+        "May involve reflection on the past or future.",
+        "Highlights themes of aging, regret, or missed opportunities."
+      ],
+      "story": "The relentless march of moments, this card speaks to the ephemeral nature of existence and the impact of time on events and individuals. It can prompt reflection on decisions made, opportunities lost, or the inevitable changes brought by the passage of days.",
+      "type": "melody",
+      "name": "Time"
+    },
+    {
+      "code": "TROUBLE_IS_A_FRIEND",
+      "effects": [
+        "Suggests a complex relationship with problems or chaos.",
+        "Highlights finding comfort or familiarity in difficult situations.",
+        "Embodies a character who is drawn to or handles trouble with ease."
+      ],
+      "story": "For some, difficulty is not an adversary but a companion. This card represents a character or situation where trouble is embraced, navigated with surprising ease, or even sought out, highlighting an unconventional relationship with chaos and adversity.",
+      "type": "melody",
+      "name": "Trouble Is A Friend"
+    },
+    {
+      "code": "UNDER_PRESSURE",
+      "effects": [
+        "Highlights intense stress and challenges.",
+        "Tests resilience and ability to cope.",
+        "May signify a breaking point or a moment of transformation."
+      ],
+      "story": "When the weight of the world feels unbearable, this card embodies the experience of facing intense pressure. It represents a moment where one's limits are tested, potentially leading to collapse or a breakthrough forged in hardship.",
+      "type": "melody",
+      "name": "Under Pressure"
+    },
+    {
+      "code": "WE_DIDNT_START_THE_FIRE",
+      "effects": [
+        "Relates to inheriting existing problems or conflicts.",
+        "Highlights themes of blame, historical context, or systemic issues.",
+        "Suggests dealing with consequences of past events not initiated by the current generation."
+      ],
+      "story": "Facing a chaotic situation that wasn't their making, this card represents dealing with inherited problems or conflicts. It speaks to the feeling of being thrust into existing turmoil and grappling with the historical context or systemic issues that led to it.",
+      "type": "melody",
+      "name": "We Didn't Start The Fire"
+    },
+    {
+      "code": "WICKED_ONES",
+      "effects": [
+        "Involves characters with questionable morals or intentions.",
+        "Suggests embracing darker impulses or shared transgression.",
+        "Highlights figures who operate outside conventional norms."
+      ],
+      "story": "Operating in shades of grey or outright darkness, this card represents individuals who are mischievous, morally ambiguous, or actively embrace a wicked path. It speaks to figures who challenge norms and find camaraderie in shared defiance or questionable deeds.",
+      "type": "melody",
+      "name": "Wicked Ones"
+    },
+    {
+      "code": "YOU_AND_ME_AND_THE_DEVIL_MAKES_THREE",
+      "effects": [
+        "Introduces a destructive third party or influence.",
+        "Highlights temptation, negative dynamics in a relationship, or a perilous alliance.",
+        "Warns of harmful external forces impacting a bond."
+      ],
+      "story": "When a third element enters a relationship, bringing chaos or temptation, this card appears. It signifies a destructive influence, a perilous alliance, or the unsettling presence of a force that corrupts or challenges the bond between two.",
+      "type": "melody",
+      "name": "You And Me And The Devil Makes Three"
     }
   ]
 }

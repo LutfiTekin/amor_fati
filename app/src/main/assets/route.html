@@ -8,6 +8,23 @@
     <style>
         html, body { margin: 0; padding: 0; height: 100%; }
         #map { width: 100%; height: 100%; }
+        #overlay {
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0,0,0,0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        }
+        #start-btn {
+          font-size: 1.5rem;
+          padding: 1rem 2rem;
+          background: gold;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        }
         .leaflet-popup-content-wrapper {
           background: linear-gradient(#fdf1c7, #e8d0a9);
           border: 2px solid #c2a66b;
@@ -49,6 +66,8 @@
 </head>
 <body>
 <div id="map"></div>
+<div id="overlay"><button id="start-btn">Begin Journey</button></div>
+<audio id="ping" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
     (async function() {
@@ -141,30 +160,38 @@
         stagingLng += spacing;
       }
 
-      if (points.length > 1) {
-        const bounds = L.latLngBounds(points);
-        const center = bounds.getCenter();
-        const tightZoom = points.every(([lat, lng]) =>
-          Math.abs(lat - center.lat) < 1 && Math.abs(lng - center.lng) < 1
-        );
-        map.fitBounds(bounds, { maxZoom: tightZoom ? 9 : 4 });
+      document.getElementById("start-btn").addEventListener("click", () => {
+        document.getElementById("overlay").style.display = "none";
 
-        let path = [];
-        const drawSegment = (i) => {
-          if (i >= markers.length) return;
-          markers[i].setLatLng(points[i]);
-          if (i > 0) {
-            const seg = L.polyline([points[i - 1], points[i]], {
-              color: 'purple',
-              weight: 4,
-              className: 'route-line'
-            }).addTo(map);
-          }
-          setTimeout(() => drawSegment(i + 1), 2000);
-        };
+        if (points.length > 1) {
+          const bounds = L.latLngBounds(points);
+          const center = bounds.getCenter();
+          const tightZoom = points.every(([lat, lng]) =>
+            Math.abs(lat - center.lat) < 1 && Math.abs(lng - center.lng) < 1
+          );
+          map.fitBounds(bounds, { maxZoom: tightZoom ? 9 : 4 });
 
-        drawSegment(0);
-      }
+          let path = [];
+          const ping = document.getElementById("ping");
+
+          const drawSegment = (i) => {
+            if (i >= markers.length) return;
+            markers[i].setLatLng(points[i]);
+            if (i > 0) {
+              const seg = L.polyline([points[i - 1], points[i]], {
+                color: 'purple',
+                weight: 4,
+                className: 'route-line'
+              }).addTo(map);
+              ping.currentTime = 0;
+              ping.play();
+            }
+            setTimeout(() => drawSegment(i + 1), 2000);
+          };
+
+          drawSegment(0);
+        }
+      });
     })();
 </script>
 </body>

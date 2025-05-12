@@ -326,5 +326,165 @@
     "ZERMATT": {
         "lat": 46.0207,
         "lng": 7.7491
+    },
+    "99_PROBLEMS": {
+        "lat": 40.7128,
+        "lng": -74.006
+    },
+    "AINT_NO_SUNSHINE": {
+        "lat": 38.627,
+        "lng": -90.1994
+    },
+    "ALL_ALONG_THE_WATCHTOWER": {
+        "lat": 47.6062,
+        "lng": -122.3321
+    },
+    "ARE_FRIENDS_ELECTRIC": {
+        "lat": 53.3811,
+        "lng": -1.4701
+    },
+    "BITCH": {
+        "lat": 34.0522,
+        "lng": -118.2437
+    },
+    "BORN_IN_THE_USA": {
+        "lat": 40.2206,
+        "lng": -74.0121
+    },
+    "BROTHERS_IN_ARMS": {
+        "lat": 54.9714,
+        "lng": -1.6174
+    },
+    "EAT_THE_RICH": {
+        "lat": 42.3601,
+        "lng": -71.0589
+    },
+    "FEAR_OF_THE_DARK": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "HELLS_BELLS": {
+        "lat": -33.8651,
+        "lng": 151.2099
+    },
+    "HIGHWAY_TO_HELL": {
+        "lat": -33.8651,
+        "lng": 151.2099
+    },
+    "HOTEL_CALIFORNIA": {
+        "lat": 34.0522,
+        "lng": -118.2437
+    },
+    "KNOCKIN_ON_HEAVES_DOOR": {
+        "lat": 46.7867,
+        "lng": -92.1005
+    },
+    "LADY_IN_RED": {
+        "lat": 51.8979,
+        "lng": -8.4706
+    },
+    "MONEY_FOR_NOTHING": {
+        "lat": 54.9714,
+        "lng": -1.6174
+    },
+    "MAD_WORLD": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "LONELY_BOY": {
+        "lat": 41.4993,
+        "lng": -81.6944
+    },
+    "MANEATER": {
+        "lat": 40.2732,
+        "lng": -76.8867
+    },
+    "MILES_AWAY": {
+        "lat": 43.6532,
+        "lng": -79.3832
+    },
+    "NIGHT_MOVES": {
+        "lat": 42.3314,
+        "lng": -83.0458
+    },
+    "PAINT_IT_BLACK": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "PLAY_WITH_FIRE": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "MY_WAY": {
+        "lat": 40.7128,
+        "lng": -74.006
+    },
+    "SIMPLE_MAN": {
+        "lat": 30.3322,
+        "lng": -81.6557
+    },
+    "RUMOUR_HAS_IT": {
+        "lat": 51.4545,
+        "lng": -2.5879
+    },
+    "SOMEBODY_THAT_I_USED_TO_KNOW": {
+        "lat": -37.8136,
+        "lng": 144.9631
+    },
+    "SHAPE_OF_MY_HEART": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "SOMEONE_NEW": {
+        "lat": 53.3498,
+        "lng": -6.2603
+    },
+    "STAIRWAY_TO_HEAVEN": {
+        "lat": 51.4816,
+        "lng": -3.1791
+    },
+    "STARMAN": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "TELEPHONE": {
+        "lat": 40.7128,
+        "lng": -74.006
+    },
+    "THE_DEVIL_YOU_KNOW": {
+        "lat": 34.0522,
+        "lng": -118.2437
+    },
+    "THE_MAN_WHO_SOLD_THE_WORLD": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "THE_WINNER_TAKES_IT_ALL": {
+        "lat": 59.3293,
+        "lng": 18.0686
+    },
+    "TIME": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "TROUBLE_IS_A_FRIEND": {
+        "lat": -33.8688,
+        "lng": 151.2093
+    },
+    "UNDER_PRESSURE": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "WE_DIDNT_START_THE_FIRE": {
+        "lat": 40.9126,
+        "lng": -73.8371
+    },
+    "WICKED_ONES": {
+        "lat": 34.0522,
+        "lng": -118.2437
+    },
+    "YOU_AND_ME_AND_THE_DEVIL_MAKES_THREE": {
+        "lat": 33.749,
+        "lng": -84.388
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Amor Fati Gallery</title>
+    <title>Amor Fati Aeterna</title>
     <link
             href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
             rel="stylesheet"
@@ -189,80 +189,85 @@
 <script>
     const loreUrl = 'lore.json';
     let loreData = {};
-    fetch(loreUrl)
-        .then(res => res.json())
-        .then(data => {
-            data.cards.forEach(c => loreData[c.code] = c.story);
-        })
-        .catch(error => console.error('Error fetching lore data:', error)); // Added error handling for lore fetch
+    let cardData = {}; // To store card data once fetched
+    let allCardsRaw = []; // To store combined raw card data
+    window.images = []; // To store processed image data
 
-    fetch('cards.json')
-        .then(res => res.json())
-        .then(data => {
-            const sortByName = group => group.sort((a, b) => a.name.localeCompare(b.name));
+    // Fetch both data sources concurrently
+    Promise.all([
+        fetch(loreUrl).then(res => res.json()),
+        fetch('cards.json').then(res => res.json())
+    ])
+    .then(([loreJson, cardsJson]) => {
+        // Process lore data
+        loreJson.cards.forEach(c => loreData[c.code] = c.story);
 
-            const f8 = sortByName(data.f8Cards || []); // Added fallback for potentially missing keys
-            const core = sortByName(data.cards || []);
-            const city = sortByName(data.locationCards || []);
-            const melody = sortByName(data.melodyCards || []);
-            const extra = sortByName(data.extraCards || []);
+        // Process card data
+        cardData = cardsJson;
+        const sortByName = group => group.sort((a, b) => a.name.localeCompare(b.name));
 
-            // Combine all cards into a single array for modal navigation, preserving order
-            const allCardsRaw = [...f8, ...core, ...city, ...melody, ...extra];
-            window.images = allCardsRaw.map(card => {
-                const file = card.code.toLowerCase();
-                return {
-                    code: card.code,
-                    thumbnail: `thumbnails/${file}.png`,
-                    full: `${file}.png`
-                };
-            });
+        const f8 = sortByName(cardData.f8Cards || []);
+        const core = sortByName(cardData.cards || []);
+        const city = sortByName(cardData.locationCards || []);
+        const melody = sortByName(cardData.melodyCards || []);
+        const extra = sortByName(cardData.extraCards || []);
 
-            const gallery = document.getElementById('gallery');
-            gallery.innerHTML = ''; // Clear previous content if any
-            let globalIndex = 0;
-
-            const addImagesToGallery = (cardArray, sectionTitle) => {
-                if (sectionTitle) {
-                    const titleElement = document.createElement('h2');
-                    titleElement.textContent = sectionTitle;
-                    gallery.appendChild(titleElement);
-                }
-
-                cardArray.forEach(card => {
-                    const file = card.code.toLowerCase();
-                    const el = document.createElement('img');
-                    el.src = `thumbnails/${file}.png`;
-                    el.alt = card.name; // Use card name for alt text
-                    el.dataset.globalIndex = globalIndex; // Store the global index
-
-                    el.addEventListener('click', () => openModal(parseInt(el.dataset.globalIndex)));
-                    gallery.appendChild(el);
-                    globalIndex++; // Increment global index for each image added
-                });
+        // Combine all cards into a single array for modal navigation, preserving order
+        allCardsRaw = [...f8, ...core, ...city, ...melody, ...extra];
+        window.images = allCardsRaw.map(card => {
+            const file = card.code.toLowerCase();
+            return {
+                code: card.code,
+                thumbnail: `thumbnails/${file}.png`,
+                full: `${file}.png`
             };
+        });
 
-            // Add sections
-            addImagesToGallery([...f8, ...core]); // F8 and Core cards together, no title
-            addImagesToGallery(city, "City Cards");
-            addImagesToGallery(melody, "Melody Cards");
-            addImagesToGallery(extra, "Extra Cards");
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = ''; // Clear previous content if any
+        let globalIndex = 0;
 
-            // Check for card parameter in URL after images are loaded
-            const urlParams = new URLSearchParams(window.location.search);
-            const cardCodeFromUrl = urlParams.get('card');
-
-            if (cardCodeFromUrl && window.images && window.images.length > 0) {
-                const cardIndex = window.images.findIndex(card => card.code.toUpperCase() === cardCodeFromUrl.toUpperCase());
-                if (cardIndex !== -1) {
-                    openModal(cardIndex);
-                } else {
-                    console.log(`Card with code ${cardCodeFromUrl} not found.`);
-                }
+        const addImagesToGallery = (cardArray, sectionTitle) => {
+            if (sectionTitle) {
+                const titleElement = document.createElement('h2');
+                titleElement.textContent = sectionTitle;
+                gallery.appendChild(titleElement);
             }
 
-        })
-        .catch(error => console.error('Error fetching or processing card data:', error)); // Added error handling for card fetch
+            cardArray.forEach(card => {
+                const file = card.code.toLowerCase();
+                const el = document.createElement('img');
+                el.src = `thumbnails/${file}.png`;
+                el.alt = card.name; // Use card name for alt text
+                el.dataset.globalIndex = globalIndex; // Store the global index
+
+                el.addEventListener('click', () => openModal(parseInt(el.dataset.globalIndex)));
+                gallery.appendChild(el);
+                globalIndex++; // Increment global index for each image added
+            });
+        };
+
+        // Add sections
+        addImagesToGallery([...f8, ...core]); // F8 and Core cards together, no title
+        addImagesToGallery(city, "City Cards");
+        addImagesToGallery(melody, "Melody Cards");
+        addImagesToGallery(extra, "Extra Cards");
+
+        // Check for card parameter in URL after both data sources are loaded
+        const urlParams = new URLSearchParams(window.location.search);
+        const cardCodeFromUrl = urlParams.get('card');
+
+        if (cardCodeFromUrl && window.images && window.images.length > 0) {
+            const cardIndex = window.images.findIndex(card => card.code.toUpperCase() === cardCodeFromUrl.toUpperCase());
+            if (cardIndex !== -1) {
+                openModal(cardIndex);
+            } else {
+                console.log(`Card with code ${cardCodeFromUrl} not found.`);
+            }
+        }
+
+    })
+    .catch(error => console.error('Error fetching or processing data:', error)); // Added general error handling for Promise.all
 
     let currentIndex = 0;
     const modal = document.getElementById('modal');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Amor Fati Aeterna</title>
+    <title>Amor Fati Gallery</title>
     <link
             href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
             rel="stylesheet"
@@ -305,12 +305,19 @@
         tmp.src = imgData.full;
 
         modalLore.textContent = loreData[imgData.code] || 'No lore entry available.';
+
+        // Update URL with card code
+        const newUrl = `${window.location.pathname}?card=${imgData.code}`;
+        history.pushState({ path: newUrl }, '', newUrl);
     }
 
     function closeModal() {
         modal.style.display = 'none';
         modalImg.src = ''; // Clear image source
         modalLore.textContent = ''; // Clear lore text
+
+        // Revert URL to base when modal is closed
+        history.pushState({}, '', window.location.pathname);
     }
 
     function showPrev() {

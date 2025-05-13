@@ -600,6 +600,74 @@
     {
       "name": "Time In A Bottle",
       "code": "TIME_IN_A_BOTTLE"
+    },
+    {
+      "name": "Half A World Away",
+      "code": "HALF_A_WORLD_AWAY"
+    },
+    {
+      "name": "Pop Muzik",
+      "code": "POP_MUZIK"
+    },
+    {
+      "name": "In The Ghetto",
+      "code": "IN_THE_GHETTO"
+    },
+    {
+      "name": "It's A Man's Man's Man's World",
+      "code": "ITS_A_MANS_MANS_MANS_WORLD"
+    },
+    {
+      "name": "No Milk Today",
+      "code": "NO_MILK_TODAY"
+    },
+    {
+      "name": "Take Me Out",
+      "code": "TAKE_ME_OUT"
+    },
+    {
+      "name": "Ain't No Mountain High Enough",
+      "code": "AINT_NO_MOUNTAIN_HIGH_ENOUGH"
+    },
+    {
+      "name": "Here Comes The Sun",
+      "code": "HERE_COMES_THE_SUN"
+    },
+    {
+      "name": "Rockstar",
+      "code": "ROCKSTAR"
+    },
+    {
+      "name": "Renegades",
+      "code": "RENEGADES"
+    },
+    {
+      "name": "Dream On",
+      "code": "DREAM_ON"
+    },
+    {
+      "name": "Set Fire To The Rain",
+      "code": "SET_FIRE_TO_THE_RAIN"
+    },
+    {
+      "name": "Uptown Girl",
+      "code": "UPTOWN_GIRL"
+    },
+    {
+      "name": "Where Is My Mind",
+      "code": "WHERE_IS_MY_MIND"
+    },
+    {
+      "name": "Take Me To Church",
+      "code": "TAKE_ME_TO_CHURCH"
+    },
+    {
+      "name": "Twist In My Sobriety",
+      "code": "TWIST_IN_MY_SOBRIETY"
+    },
+    {
+      "name": "Young Folks",
+      "code": "YOUNG_FOLKS"
     }
   ]
 }

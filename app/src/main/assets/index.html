@@ -248,6 +248,19 @@
             addImagesToGallery(melody, "Melody Cards");
             addImagesToGallery(extra, "Extra Cards");
 
+            // Check for card parameter in URL after images are loaded
+            const urlParams = new URLSearchParams(window.location.search);
+            const cardCodeFromUrl = urlParams.get('card');
+
+            if (cardCodeFromUrl && window.images && window.images.length > 0) {
+                const cardIndex = window.images.findIndex(card => card.code.toUpperCase() === cardCodeFromUrl.toUpperCase());
+                if (cardIndex !== -1) {
+                    openModal(cardIndex);
+                } else {
+                    console.log(`Card with code ${cardCodeFromUrl} not found.`);
+                }
+            }
+
         })
         .catch(error => console.error('Error fetching or processing card data:', error)); // Added error handling for card fetch
 

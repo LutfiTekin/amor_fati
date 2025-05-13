@@ -430,7 +430,7 @@
       "code": "BITCH"
     },
     {
-      "name": "Born In The Usa",
+      "name": "Born In The U.S.A.",
       "code": "BORN_IN_THE_USA"
     },
     {
@@ -580,6 +580,26 @@
     {
       "name": "Wicked Ones",
       "code": "WICKED_ONES"
+    },
+    {
+      "name": "Comfortably Numb",
+      "code": "COMFORTABLY_NUMB"
+    },
+    {
+      "name": "Wanted Dead Or Alive",
+      "code": "WANTED_DEAD_OR_ALIVE"
+    },
+    {
+      "name": "Cold As Ice",
+      "code": "COLD_AS_ICE"
+    },
+    {
+      "name": "Fast Car",
+      "code": "FAST_CAR"
+    },
+    {
+      "name": "Time In A Bottle",
+      "code": "TIME_IN_A_BOTTLE"
     }
   ]
 }

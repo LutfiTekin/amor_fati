@@ -1318,6 +1318,61 @@
       "story": "When a third element enters a relationship, bringing chaos or temptation, this card appears. It signifies a destructive influence, a perilous alliance, or the unsettling presence of a force that corrupts or challenges the bond between two.",
       "type": "melody",
       "name": "You And Me And The Devil Makes Three"
+    },
+    {
+      "code": "COMFORTABLY_NUMB",
+      "effects": [
+        "Signifies detachment or emotional distance.",
+        "Suggests a state of altered perception or reality.",
+        "May highlight a struggle between inner feelings and outward appearance."
+      ],
+      "story": "A veil descends, muffling the sharp edges of reality. This card embodies a state of emotional disconnection, where feelings are distant and the world feels muted. It can represent a coping mechanism or a profound sense of alienation, a quiet existence behind a barrier.",
+      "type": "melody",
+      "name": "Comfortably Numb"
+    },
+    {
+      "code": "WANTED_DEAD_OR_ALIVE",
+      "effects": [
+        "Introduces high stakes and pursuit.",
+        "Signifies being a target or having a bounty.",
+        "Highlights themes of survival and being on the run."
+      ],
+      "story": "With a price on their head, the subject of this card is in constant peril. It represents a situation of intense pursuit, where one is either the hunter or the hunted, navigating a world where every shadow might conceal a threat. Survival is paramount.",
+      "type": "melody",
+      "name": "Wanted Dead Or Alive"
+    },
+    {
+      "code": "COLD_AS_ICE",
+      "effects": [
+        "Signifies emotional unavailability or harshness.",
+        "Introduces a lack of empathy or warmth.",
+        "May indicate a situation characterized by indifference or cruelty."
+      ],
+      "story": "A chilling presence, this card embodies a lack of warmth, empathy, or emotional response. It represents a person or situation marked by coldness, indifference, or even cruelty, where feelings are frozen and compassion is absent.",
+      "type": "melody",
+      "name": "Cold As Ice"
+    },
+    {
+      "code": "FAST_CAR",
+      "effects": [
+        "Represents escape, freedom, or rapid change.",
+        "Highlights themes of youth, dreams, or leaving something behind.",
+        "Suggests a journey towards a different life."
+      ],
+      "story": "Windows down, the world blurring past, this card embodies the yearning for escape and the pursuit of a better life. It signifies a journey driven by dreams and a desire to leave behind limitations, representing freedom, youth, and the open road towards the unknown.",
+      "type": "melody",
+      "name": "Fast Car"
+    },
+    {
+      "code": "TIME_IN_A_BOTTLE",
+      "effects": [
+        "Reflects on the fleeting nature of time.",
+        "Highlights a desire to preserve moments or memories.",
+        "Suggests a focus on appreciating the present or regretting the past."
+      ],
+      "story": "A poignant reminder of how quickly moments slip away, this card embodies the wish to capture and hold onto time. It speaks to nostalgia, the preciousness of fleeting experiences, and the bittersweet realization that some moments, however cherished, cannot be kept forever.",
+      "type": "melody",
+      "name": "Time In A Bottle"
     }
   ]
 }

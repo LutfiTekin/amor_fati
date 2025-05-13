@@ -486,5 +486,25 @@
     "YOU_AND_ME_AND_THE_DEVIL_MAKES_THREE": {
         "lat": 33.749,
         "lng": -84.388
+    },
+    "COMFORTABLY_NUMB": {
+        "lat": 51.5072,
+        "lng": -0.1276
+    },
+    "WANTED_DEAD_OR_ALIVE": {
+        "lat": 40.0583,
+        "lng": -74.4057
+    },
+    "COLD_AS_ICE": {
+        "lat": 40.7128,
+        "lng": -74.0060
+    },
+    "FAST_CAR": {
+        "lat": 41.7637,
+        "lng": -72.6851
+    },
+    "TIME_IN_A_BOTTLE": {
+        "lat": 42.3601,
+        "lng": -71.0589
     }
 }

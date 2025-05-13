@@ -506,5 +506,73 @@
     "TIME_IN_A_BOTTLE": {
         "lat": 42.3601,
         "lng": -71.0589
+    },
+    "HALF_A_WORLD_AWAY": {
+        "lat": 53.4808,
+        "lng": -2.2426
+    },
+    "POP_MUZIK": {
+        "lat": 51.5074,
+        "lng": -0.1278
+    },
+    "IN_THE_GHETTO": {
+        "lat": 35.1495,
+        "lng": -90.0490
+    },
+    "ITS_A_MANS_MANS_MANS_WORLD": {
+        "lat": 33.4700,
+        "lng": -82.0194
+    },
+    "NO_MILK_TODAY": {
+        "lat": 53.4808,
+        "lng": -2.2426
+    },
+    "TAKE_ME_OUT": {
+        "lat": 55.8642,
+        "lng": -4.2518
+    },
+    "AINT_NO_MOUNTAIN_HIGH_ENOUGH": {
+        "lat": 38.9072,
+        "lng": -77.0369
+    },
+    "HERE_COMES_THE_SUN": {
+        "lat": 53.4084,
+        "lng": -2.9916
+    },
+    "ROCKSTAR": {
+        "lat": 43.0481,
+        "lng": -76.1474
+    },
+    "RENEGADES": {
+        "lat": 42.4398,
+        "lng": -76.5019
+    },
+    "DREAM_ON": {
+        "lat": 42.3601,
+        "lng": -71.0589
+    },
+    "SET_FIRE_TO_THE_RAIN": {
+        "lat": 51.5074,
+        "lng": -0.1278
+    },
+    "UPTOWN_GIRL": {
+        "lat": 40.8370,
+        "lng": -73.8861
+    },
+    "WHERE_IS_MY_MIND": {
+        "lat": 42.3601,
+        "lng": -71.0589
+    },
+    "TAKE_ME_TO_CHURCH": {
+        "lat": 52.9500,
+        "lng": -6.1000
+    },
+    "TWIST_IN_MY_SOBRIETY": {
+        "lat": 51.9616,
+        "lng": 7.6284
+    },
+    "YOUNG_FOLKS": {
+        "lat": 59.3293,
+        "lng": 18.0686
     }
 }

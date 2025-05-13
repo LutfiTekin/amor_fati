@@ -1373,6 +1373,193 @@
       "story": "A poignant reminder of how quickly moments slip away, this card embodies the wish to capture and hold onto time. It speaks to nostalgia, the preciousness of fleeting experiences, and the bittersweet realization that some moments, however cherished, cannot be kept forever.",
       "type": "melody",
       "name": "Time In A Bottle"
+    },
+    {
+      "code": "HALF_A_WORLD_AWAY",
+      "effects": [
+        "Signifies distance and longing.",
+        "Highlights themes of separation or connection across vast space.",
+        "Suggests a desire for closeness despite physical barriers."
+      ],
+      "story": "Across oceans and continents, a connection endures. This card embodies the feeling of being separated by a great distance, yet still bound by emotion or memory. It speaks to longing, the challenges of remote relationships, and the hope of bridging the gap.",
+      "type": "melody",
+      "name": "Half A World Away"
+    },
+    {
+      "code": "POP_MUZIK",
+      "effects": [
+        "Introduces widespread influence or trends.",
+        "Highlights themes of popularity, catchy ideas, or cultural shifts.",
+        "Suggests something that is easily accessible or universally recognized."
+      ],
+      "story": "A sound that spreads like wildfire, this card represents ideas, trends, or influences that quickly gain widespread popularity. It speaks to the power of simple, catchy concepts that resonate with many, shaping the cultural landscape.",
+      "type": "melody",
+      "name": "Pop Muzik"
+    },
+    {
+      "code": "IN_THE_GHETTO",
+      "effects": [
+        "Highlights themes of hardship and environment.",
+        "Suggests challenges related to origin or limited opportunity.",
+        "Brings attention to social or economic struggles."
+      ],
+      "story": "Amidst challenging surroundings, a story unfolds. This card brings focus to the difficulties faced in impoverished or marginalized environments. It speaks to the impact of one's origins on their path and the systemic issues that create barriers.",
+      "type": "melody",
+      "name": "In The Ghetto"
+    },
+    {
+      "code": "ITS_A_MANS_MANS_MANS_WORLD",
+      "effects": [
+        "Addresses themes of power dynamics and gender roles.",
+        "Highlights inequalities or struggles for recognition.",
+        "Suggests navigating a system built by and for a dominant group."
+      ],
+      "story": "In a world shaped by one perspective, challenges arise for others. This card speaks to the power imbalances and inequalities that exist within a system dominated by a particular group. It highlights the struggles for recognition and influence in such an environment.",
+      "type": "melody",
+      "name": "It's A Man's Man's Man's World"
+    },
+    {
+      "code": "NO_MILK_TODAY",
+      "effects": [
+        "Signifies unexpected absence or lack.",
+        "Highlights a sudden change in routine or availability.",
+        "Suggests a small, everyday disappointment or disruption."
+      ],
+      "story": "A simple expectation unmet, this card represents a minor disruption or a sudden, unexpected lack of something ordinary. It speaks to small disappointments, changes in routine, or the feeling of being caught slightly off guard by the absence of something familiar.",
+      "type": "melody",
+      "name": "No Milk Today"
+    },
+    {
+      "code": "TAKE_ME_OUT",
+      "effects": [
+        "Encourages action, engagement, or a change of scene.",
+        "Suggests a desire for excitement or connection.",
+        "Highlights themes of invitation or stepping into the spotlight."
+      ],
+      "story": "A call to step out of the ordinary and into the world. This card embodies the desire for engagement, excitement, or a change of environment. It can represent an invitation to participate, a push to be seen, or the urge to break free from routine.",
+      "type": "melody",
+      "name": "Take Me Out"
+    },
+    {
+      "code": "AINT_NO_MOUNTAIN_HIGH_ENOUGH",
+      "effects": [
+        "Signifies unwavering determination and devotion.",
+        "Highlights overcoming obstacles for a connection or goal.",
+        "Suggests a powerful bond that transcends barriers."
+      ],
+      "story": "No obstacle is too great for this connection. This card embodies fierce dedication and the willingness to overcome any challenge to reach someone or achieve a shared goal. It speaks to the power of devotion and a bond that is stronger than any physical or emotional barrier.",
+      "type": "melody",
+      "name": "Ain't No Mountain High Enough"
+    },
+    {
+      "code": "HERE_COMES_THE_SUN",
+      "effects": [
+        "Represents hope, optimism, and a new beginning.",
+        "Signifies the end of hardship or darkness.",
+        "Brings a sense of relief and brighter times ahead."
+      ],
+      "story": "After a period of darkness, light returns. This card embodies the arrival of hope, signaling the end of difficult times and the promise of brighter days. It brings a sense of relief, renewal, and the warmth of optimism after a challenging period.",
+      "type": "melody",
+      "name": "Here Comes The Sun"
+    },
+    {
+      "code": "ROCKSTAR",
+      "effects": [
+        "Introduces fame, excess, or a larger-than-life persona.",
+        "Highlights themes of ambition, performance, or living on the edge.",
+        "Suggests a focus on public image or wild behavior."
+      ],
+      "story": "Living life in the fast lane, this card embodies the allure and potential pitfalls of fame and excess. It speaks to ambition, performance, and a lifestyle that is often public, wild, and pushes boundaries.",
+      "type": "melody",
+      "name": "Rockstar"
+    },
+    {
+      "code": "RENEGADES",
+      "effects": [
+        "Signifies defiance and breaking away from norms.",
+        "Highlights themes of individuality, rebellion, or forming unconventional alliances.",
+        "Suggests operating outside established systems."
+      ],
+      "story": "Refusing to follow the beaten path, this card represents those who forge their own way. It embodies the spirit of rebellion, individuality, and the formation of bonds outside of traditional structures. It speaks to challenging the status quo and finding strength in being different.",
+      "type": "melody",
+      "name": "Renegades"
+    },
+    {
+      "code": "DREAM_ON",
+      "effects": [
+        "Encourages perseverance and holding onto aspirations.",
+        "Highlights the power of dreams and hope.",
+        "Suggests a long-term pursuit despite difficulties."
+      ],
+      "story": "Despite the challenges, the vision remains. This card is a message of encouragement, urging one to hold onto their dreams and continue striving towards them, even when the path is difficult. It speaks to resilience and the enduring power of hope.",
+      "type": "melody",
+      "name": "Dream On"
+    },
+    {
+      "code": "SET_FIRE_TO_THE_RAIN",
+      "effects": [
+        "Signifies intense emotion and dramatic release.",
+        "Highlights a cathartic or destructive expression of feelings.",
+        "Suggests passion that defies logic or circumstance."
+      ],
+      "story": "Emotions so powerful they defy the natural order, this card embodies a dramatic and intense release of feeling. It speaks to passion that is almost destructive, a cathartic expression that goes against reason or circumstance.",
+      "type": "melody",
+      "name": "Set Fire To The Rain"
+    },
+    {
+      "code": "UPTOWN_GIRL",
+      "effects": [
+        "Introduces themes of social class and aspiration.",
+        "Highlights a contrast between different worlds or backgrounds.",
+        "Suggests attraction or movement across social divides."
+      ],
+      "story": "Worlds collide in this encounter. This card highlights the differences and potential connections between individuals from contrasting social backgrounds. It speaks to aspiration, the allure of a different life, and the bridging of social divides.",
+      "type": "melody",
+      "name": "Uptown Girl"
+    },
+    {
+      "code": "WHERE_IS_MY_MIND",
+      "effects": [
+        "Signifies disorientation or confusion.",
+        "Highlights a feeling of being lost or disconnected from reality.",
+        "Suggests a search for clarity or self-awareness."
+      ],
+      "story": "A sense of detachment and confusion prevails. This card embodies the feeling of being disoriented, questioning reality, or feeling disconnected from one's thoughts or surroundings. It speaks to a search for mental clarity or a return to solid ground.",
+      "type": "melody",
+      "name": "Where Is My Mind?"
+    },
+    {
+      "code": "TAKE_ME_TO_CHURCH",
+      "effects": [
+        "Signifies intense devotion or surrender.",
+        "Highlights themes of faith, passion, or finding sacred meaning.",
+        "Suggests a profound emotional or spiritual experience."
+      ],
+      "story": "A powerful plea for transcendence or ultimate devotion. This card embodies intense passion, a search for sacred meaning, or a moment of complete surrender to a feeling or belief. It speaks to finding a place of profound emotional or spiritual significance.",
+      "type": "melody",
+      "name": "Take Me To Church"
+    },
+    {
+      "code": "TWIST_IN_MY_SOBRIETY",
+      "effects": [
+        "Introduces a disruption to clarity or stability.",
+        "Highlights themes of altered perception or unexpected change in perspective.",
+        "Suggests a moment that challenges one's understanding or control."
+      ],
+      "story": "A sudden shift disrupts the expected state of mind. This card embodies a moment that alters perception, challenges stability, or introduces an unexpected change in how one sees the world or a situation. It speaks to a loss of control or a surprising turn.",
+      "type": "melody",
+      "name": "Twist In My Sobriety"
+    },
+    {
+      "code": "YOUNG_FOLKS",
+      "effects": [
+        "Highlights themes of youth, innocence, and budding relationships.",
+        "Suggests carefree interactions and simple connections.",
+        "Represents the beginning of a journey or a new phase."
+      ],
+      "story": "In the springtime of life, connections are made with ease. This card embodies the spirit of youth, simple interactions, and the beginning of new relationships or journeys. It speaks to carefree moments and the potential for growth and discovery together.",
+      "type": "melody",
+      "name": "Young Folks"
     }
   ]
 }

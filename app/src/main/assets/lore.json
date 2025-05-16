@@ -1562,247 +1562,279 @@
       "name": "Young Folks"
     },
     {
-      "code": "ADIYAMAN",
-      "effects": [
-        "Introduces themes related to Adiyaman.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Adiyaman brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Adıyaman"
-    },
-    {
-      "code": "ADANA",
-      "effects": [
-        "Introduces themes related to Adana.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Adana brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Adana"
-    },
-    {
-      "code": "ALBUQUERQUE",
-      "effects": [
-        "Introduces themes related to Albuquerque.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Albuquerque brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Albuquerque"
-    },
-    {
-      "code": "BATUMI",
-      "effects": [
-        "Introduces themes related to Batumi.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Batumi brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Batumi"
-    },
-    {
-      "code": "BURSA",
-      "effects": [
-        "Introduces themes related to Bursa.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Bursa brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Bursa"
-    },
-    {
-      "code": "COLOGNE",
-      "effects": [
-        "Introduces themes related to Cologne.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Cologne brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Cologne"
-    },
-    {
-      "code": "GAZIANTEP",
-      "effects": [
-        "Introduces themes related to Gaziantep.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Gaziantep brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Gaziantep"
-    },
-    {
-      "code": "IZMIR",
-      "effects": [
-        "Introduces themes related to Izmir.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Izmir brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "İzmir"
-    },
-    {
-      "code": "KAHRAMANMARAS",
-      "effects": [
-        "Introduces themes related to Kahramanmaras.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Kahramanmaras brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Kahramanmaraş"
-    },
-    {
-      "code": "KASSEL",
-      "effects": [
-        "Introduces themes related to Kassel.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Kassel brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Kassel"
-    },
-    {
-      "code": "KONYA",
-      "effects": [
-        "Introduces themes related to Konya.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Konya brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Konya"
-    },
-    {
-      "code": "KYIV",
-      "effects": [
-        "Introduces themes related to Kyiv.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Kyiv brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Kyiv"
-    },
-    {
-      "code": "LISBON",
-      "effects": [
-        "Introduces themes related to Lisbon.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Lisbon brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Lisbon"
-    },
-    {
-      "code": "MARDIN",
-      "effects": [
-        "Introduces themes related to Mardin.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Mardin brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Mardin"
-    },
-    {
-      "code": "MINSK",
-      "effects": [
-        "Introduces themes related to Minsk.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Minsk brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Minsk"
-    },
-    {
-      "code": "NEWFOUNDLAND",
-      "effects": [
-        "Introduces themes related to Newfoundland.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Newfoundland brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Newfoundland"
-    },
-    {
-      "code": "SAN_ANTONIO",
-      "effects": [
-        "Introduces themes related to San Antonio.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. San Antonio brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "San Antonio"
-    },
-    {
-      "code": "ST_PETERSBURG",
-      "effects": [
-        "Introduces themes related to St Petersburg.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. St Petersburg brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "St Petersburg"
-    },
-    {
-      "code": "SUMQAYIT",
-      "effects": [
-        "Introduces themes related to Sumqayit.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Sumqayit brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Sumqayit"
-    },
-    {
-      "code": "VAN",
-      "effects": [
-        "Introduces themes related to Van.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Van brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Van"
-    },
-    {
-      "code": "VEENENDAAL",
-      "effects": [
-        "Introduces themes related to Veenendaal.",
-        "Adds a unique local flavor to the narrative."
-      ],
-      "story": "A place known for its unique character and history. Veenendaal brings its own energy and stories to the journey.",
-      "type": "location",
-      "name": "Veenendaal"
-    },
-    {
       "code": "BOULEVARD_OF_BROKEN_DREAMS",
       "effects": [
+        "Signifies a path marked by disappointment or unfulfilled aspirations.",
+        "Highlights themes of melancholy, solitude, or searching for connection.",
+        "Suggests a journey through difficult emotional landscapes."
       ],
-      "story": "",
+      "story": "A road walked alone, lined with the echoes of what could have been. This card embodies the feeling of navigating a path where hopes have faded and dreams remain out of reach. It speaks to solitude, introspection, and the quiet melancholy of unfulfilled potential.",
       "type": "melody",
       "name": "Boulevard Of Broken Dreams"
     },
     {
       "code": "DOWN_ON_THE_CORNER",
       "effects": [
+        "Introduces themes of community, simple pleasures, or street life.",
+        "Highlights everyday interactions and shared moments.",
+        "Suggests finding joy in ordinary places."
       ],
-      "story": "",
+      "story": "Where the rhythm of the street provides the soundtrack to simple joys. This card embodies the spirit of community found in everyday places, highlighting shared moments, impromptu gatherings, and the simple pleasures of connection.",
       "type": "melody",
       "name": "Down On The Corner"
     },
     {
       "code": "MONEY_MONEY_MONEY",
       "effects": [
+        "Focuses on themes of wealth, ambition, or financial desires.",
+        "Highlights the pursuit of material gain.",
+        "May suggest consequences related to wealth or its pursuit."
       ],
-      "story": "A place known for its unique character and history. Money Money Money brings its own energy and stories to the journey.",
+      "story": "A relentless pursuit of fortune, this card embodies the focus on material wealth and the ambitions driven by financial desires. It speaks to the power and influence of money, and the potential consequences, both positive and negative, that come with its pursuit.",
       "type": "melody",
       "name": "Money Money Money"
     },
     {
       "code": "DUNYANIN_EN_GUZEL_KIZI",
       "effects": [
-
+        "Introduces a figure of captivating beauty or significance.",
+        "Draws attention and admiration.",
+        "May signify inspiration or a central focus of affection/attention."
       ],
-      "story": "",
+      "story": "A presence that embodies exceptional beauty or holds profound significance, captivating all who perceive her. This card represents a figure who becomes a focal point, inspiring admiration, affection, or intense attention.",
       "type": "melody",
       "name": "Dunyanın En Guzel Kızı"
+    },
+    {
+      "code": "ADIYAMAN",
+      "effects": [
+        "Connects to ancient history and monumental structures.",
+        "Highlights themes of legacy, elevation, or hidden knowledge (Nemrut Dağı).",
+        "Suggests a journey to uncover the past or gain perspective."
+      ],
+      "story": "Guarded by the colossal heads of ancient gods atop Nemrut Dağı, Adıyaman is a place where history reaches for the sky. This card signifies a connection to deep roots, the weight of legacy, and the journey to uncover forgotten truths or gain a higher perspective.",
+      "type": "location",
+      "name": "Adıyaman"
+    },
+    {
+      "code": "ADANA",
+      "effects": [
+        "Introduces themes of heat, intensity, and vibrant local culture (spicy food, lively markets).",
+        "Highlights resilience and a strong sense of identity.",
+        "Suggests navigating a fiery or passionate environment."
+      ],
+      "story": "Where the heat of the sun meets the spice of the cuisine, Adana pulses with vibrant energy. This card embodies a place of intense flavors, strong character, and a lively atmosphere, suggesting a narrative that is bold, resilient, and full of local color.",
+      "type": "location",
+      "name": "Adana"
+    },
+    {
+      "code": "ALBUQUERQUE",
+      "effects": [
+        "Involves elevation and broad perspectives (hot air balloons, high desert).",
+        "Highlights themes of transition, unique landscapes, or unexpected discoveries.",
+        "Suggests a journey of change or seeing things from a new angle."
+      ],
+      "story": "Floating above the high desert, Albuquerque offers a unique vantage point. This card signifies a place of wide-open spaces, striking landscapes, and moments of elevated perspective. It suggests a journey of transition, unexpected sights, and seeing the world from a different height.",
+      "type": "location",
+      "name": "Albuquerque"
+    },
+    {
+      "code": "BATUMI",
+      "effects": [
+        "Blends coastal relaxation with modern ambition.",
+        "Highlights themes of transformation, unexpected architecture, or a mix of old and new.",
+        "Suggests a place of leisure with surprising elements."
+      ],
+      "story": "Where the Black Sea coast meets a skyline of modern marvels, Batumi is a city in transition. This card embodies a place of seaside charm and ambitious development, suggesting a narrative that blends relaxation with surprising, sometimes unconventional, growth.",
+      "type": "location",
+      "name": "Batumi"
+    },
+    {
+      "code": "BURSA",
+      "effects": [
+        "Connects to historical depth (Ottoman Empire) and natural beauty (Uludağ).",
+        "Highlights themes of legacy, tranquility, or a blend of urban and natural elements.",
+        "Suggests a journey through history or finding peace in nature."
+      ],
+      "story": "At the foot of the majestic Uludağ mountain, Bursa whispers tales of the early Ottoman Empire. This card signifies a place of historical significance and natural serenity, suggesting a narrative that explores legacy, finds tranquility, or balances urban life with the call of the mountains.",
+      "type": "location",
+      "name": "Bursa"
+    },
+    {
+      "code": "COLOGNE",
+      "effects": [
+        "Highlights resilience, cultural vibrancy (Carnival), and historical weight (Cathedral).",
+        "Involves themes of enduring spirit, celebration, or navigating complex history.",
+        "Suggests a place of strong identity and lively traditions."
+      ],
+      "story": "Dominated by its magnificent Cathedral, Cologne is a city with an unbreakable spirit and a love for celebration. This card embodies a place of historical depth, cultural vibrancy, and resilience in the face of adversity, suggesting a narrative that is lively, enduring, and deeply rooted.",
+      "type": "location",
+      "name": "Cologne"
+    },
+    {
+      "code": "GAZIANTEP",
+      "effects": [
+        "Focuses on culinary richness and historical layers (ancient mosaics).",
+        "Highlights themes of tradition, craftsmanship, or uncovering hidden treasures.",
+        "Suggests a journey of sensory discovery or connecting with the past."
+      ],
+      "story": "A city renowned for its exquisite cuisine and ancient artistry, Gaziantep is a feast for the senses and a journey through time. This card signifies a place of rich traditions, skilled craftsmanship, and hidden historical layers waiting to be discovered, suggesting a narrative of sensory delight and connection to the past.",
+      "type": "location",
+      "name": "Gaziantep"
+    },
+    {
+      "code": "IZMIR",
+      "effects": [
+        "Emphasizes a relaxed, modern, and outward-looking perspective (Aegean coast).",
+        "Highlights themes of freedom, connection to the sea, or embracing the present.",
+        "Suggests a breezy, open, and contemporary narrative."
+      ],
+      "story": "Facing the Aegean Sea, İzmir is a city with a relaxed pace and a modern outlook. This card embodies a place of coastal freedom, open horizons, and a vibrant contemporary culture, suggesting a narrative that is breezy, outward-looking, and embraces the present.",
+      "type": "location",
+      "name": "İzmir"
+    },
+    {
+      "code": "KAHRAMANMARAS",
+      "effects": [
+        "Connects to themes of heroism, resilience, and historical struggle.",
+        "Highlights a strong sense of identity forged through hardship.",
+        "Suggests a narrative of overcoming adversity or standing firm."
+      ],
+      "story": "Bearing the title 'Heroic City', Kahramanmaraş is a place defined by its history of resistance and resilience. This card signifies a strong, unyielding spirit forged through hardship, suggesting a narrative that involves overcoming significant challenges and standing firm in one's identity.",
+      "type": "location",
+      "name": "Kahramanmaraş"
+    },
+    {
+      "code": "KASSEL",
+      "effects": [
+        "Introduces themes of art, culture, and periodic transformation (documenta).",
+        "Highlights cycles of change and artistic expression.",
+        "Suggests a narrative influenced by creativity and renewal."
+      ],
+      "story": "Home to the renowned documenta art exhibition, Kassel is a city that periodically reinvents itself through culture. This card signifies a place of artistic significance and cycles of transformation, suggesting a narrative influenced by creativity, renewal, and the power of contemporary expression.",
+      "type": "location",
+      "name": "Kassel"
+    },
+    {
+      "code": "KONYA",
+      "effects": [
+        "Connects to spiritual depth, philosophy (Rumi), and tradition.",
+        "Highlights themes of introspection, seeking wisdom, or historical continuity.",
+        "Suggests a journey of inner discovery or connecting with ancient teachings."
+      ],
+      "story": "The city of Rumi and the whirling dervishes, Konya is a center of spiritual and philosophical depth. This card signifies a place of introspection, ancient wisdom, and enduring tradition, suggesting a narrative that involves seeking inner understanding or connecting with profound historical and spiritual currents.",
+      "type": "location",
+      "name": "Konya"
+    },
+    {
+      "code": "KYIV",
+      "effects": [
+        "Highlights resilience, historical layers, and ongoing transformation.",
+        "Involves themes of enduring spirit, cultural identity, or navigating turbulent times.",
+        "Suggests a narrative of strength and historical significance."
+      ],
+      "story": "An ancient city on the Dnipro, Kyiv is a testament to resilience and layered history. This card signifies a place of deep cultural roots, enduring spirit, and ongoing transformation, suggesting a narrative that involves strength, historical significance, and navigating turbulent times.",
+      "type": "location",
+      "name": "Kyiv"
+    },
+    {
+      "code": "LISBON",
+      "effects": [
+        "Involves themes of exploration, melancholy beauty (Fado), and historical journeys.",
+        "Highlights a sense of saudade, coastal connection, or navigating hilly terrain.",
+        "Suggests a narrative of discovery, longing, and historical echoes by the sea."
+      ],
+      "story": "Seven hills meeting the Tagus, Lisbon is a city of explorers and melancholic melodies. This card embodies a place of historical journeys, a unique coastal beauty, and a sense of 'saudade' – a deep, often wistful, longing. It suggests a narrative of discovery, emotional depth, and historical echoes by the sea.",
+      "type": "location",
+      "name": "Lisbon"
+    },
+    {
+      "code": "MARDIN",
+      "effects": [
+        "Connects to ancient history, layered cultures, and stunning architecture.",
+        "Highlights themes of timelessness, intricate details, or navigating a complex, beautiful environment.",
+        "Suggests a journey through history and diverse influences."
+      ],
+      "story": "Clinging to a hillside overlooking the Mesopotamian plains, Mardin is a city of stone, history, and intertwined cultures. This card signifies a place of timeless beauty, intricate architecture, and diverse influences, suggesting a narrative that journeys through deep history and navigates a complex, stunning environment.",
+      "type": "location",
+      "name": "Mardin"
+    },
+    {
+      "code": "MINSK",
+      "effects": [
+        "Highlights themes of order, reconstruction, and a complex modern identity.",
+        "Suggests navigating a structured environment or uncovering hidden layers beneath a planned surface.",
+        "Involves themes of history and contemporary life."
+      ],
+      "story": "Rebuilt after destruction, Minsk is a city of wide avenues and imposing architecture. This card signifies a place of order, reconstruction, and a complex modern identity, suggesting a narrative that involves navigating a structured environment or uncovering hidden layers beneath a carefully planned surface.",
+      "type": "location",
+      "name": "Minsk"
+    },
+    {
+      "code": "NEWFOUNDLAND",
+      "effects": [
+        "Introduces themes of isolation, rugged beauty, and unique cultural identity.",
+        "Highlights resilience, storytelling, or connection to the sea.",
+        "Suggests a journey to a remote or distinct place."
+      ],
+      "story": "An island apart, Newfoundland is a place of dramatic coastlines, resilient communities, and a rich tradition of storytelling. This card signifies a remote, rugged beauty and a unique cultural identity, suggesting a narrative that involves isolation, resilience, or a journey to a distinct and captivating place.",
+      "type": "location",
+      "name": "Newfoundland"
+    },
+    {
+      "code": "SAN_ANTONIO",
+      "effects": [
+        "Blends historical conflict (The Alamo) with cultural vibrancy (Riverwalk).",
+        "Highlights themes of struggle, heritage, or lively urban spaces.",
+        "Suggests a narrative that balances historical reflection with vibrant contemporary life."
+      ],
+      "story": "Where history echoes by the river's edge, San Antonio blends its past with vibrant present. This card signifies a place of historical struggle and rich cultural life, suggesting a narrative that balances reflection on heritage with the lively energy of its urban spaces.",
+      "type": "location",
+      "name": "San Antonio"
+    },
+    {
+      "code": "ST_PETERSBURG",
+      "effects": [
+        "Introduces themes of imperial grandeur, artistic depth, and historical drama.",
+        "Highlights ambition, beauty, or navigating a city built on water and will.",
+        "Suggests a narrative of grand scale and cultural significance."
+      ],
+      "story": "Built from a swamp by imperial will, St. Petersburg is a city of breathtaking palaces and artistic treasures. This card signifies a place of grand ambition, cultural depth, and historical drama, suggesting a narrative of imperial scale, artistic significance, and navigating a city shaped by powerful forces.",
+      "type": "location",
+      "name": "St. Petersburg"
+    },
+    {
+      "code": "SUMQAYIT",
+      "effects": [
+        "Highlights themes of industrial legacy, transformation, or environmental challenges.",
+        "Suggests a narrative of change, adaptation, or dealing with the past's impact.",
+        "Connects to post-industrial landscapes and community resilience."
+      ],
+      "story": "A city shaped by industry, Sumqayit represents transformation and resilience. This card signifies a place dealing with its industrial legacy and undergoing change, suggesting a narrative that involves adaptation, environmental themes, or the enduring spirit of a community.",
+      "type": "location",
+      "name": "Sumqayit"
+    },
+    {
+      "code": "VAN",
+      "effects": [
+        "Connects to ancient kingdoms, stunning natural beauty (Lake Van), and historical layers.",
+        "Highlights themes of deep history, serenity, or navigating a landscape of contrasts.",
+        "Suggests a journey through time and a connection to powerful natural forces."
+      ],
+      "story": "Dominated by its vast, ancient lake and historical fortress, Van is a place of profound history and natural beauty. This card signifies a connection to ancient kingdoms, serene landscapes, and layered pasts, suggesting a narrative that journeys through time and connects with powerful natural forces.",
+      "type": "location",
+      "name": "Van"
+    },
+    {
+      "code": "VEENENDAAL",
+      "effects": [
+        "Highlights themes of community, local life, or finding significance in the ordinary.",
+        "Suggests a narrative focused on small-town dynamics or personal connections.",
+        "Connects to the everyday and the familiar."
+      ],
+      "story": "A town rooted in community and local life, Veenendaal represents the significance found in the ordinary. This card signifies a place focused on local dynamics and personal connections, suggesting a narrative that explores the everyday and the familiar.",
+      "type": "location",
+      "name": "Veenendaal"
     }
   ]
 }

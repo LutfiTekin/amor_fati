@@ -752,6 +752,22 @@
     {
       "name": "Young Folks",
       "code": "YOUNG_FOLKS"
+    },
+    {
+      "name": "Boulevard Of Broken Dreams",
+      "code": "BOULEVARD_OF_BROKEN_DREAMS"
+    },
+    {
+      "name": "Down On The Corner",
+      "code": "DOWN_ON_THE_CORNER"
+    },
+    {
+      "name": "Money Money Money",
+      "code": "MONEY_MONEY_MONEY"
+    },
+    {
+      "name": "Dunyanin En Guzel Kızı",
+      "code": "DUNYANIN_EN_GUZEL_KIZI"
     }
   ]
 }

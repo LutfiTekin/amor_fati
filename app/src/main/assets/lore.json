@@ -1560,6 +1560,216 @@
       "story": "In the springtime of life, connections are made with ease. This card embodies the spirit of youth, simple interactions, and the beginning of new relationships or journeys. It speaks to carefree moments and the potential for growth and discovery together.",
       "type": "melody",
       "name": "Young Folks"
+    },
+    {
+      "code": "ADIYAMAN",
+      "effects": [
+        "Introduces themes related to Adiyaman.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Adiyaman brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Adıyaman"
+    },
+    {
+      "code": "ADANA",
+      "effects": [
+        "Introduces themes related to Adana.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Adana brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Adana"
+    },
+    {
+      "code": "ALBUQUERQUE",
+      "effects": [
+        "Introduces themes related to Albuquerque.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Albuquerque brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Albuquerque"
+    },
+    {
+      "code": "BATUMI",
+      "effects": [
+        "Introduces themes related to Batumi.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Batumi brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Batumi"
+    },
+    {
+      "code": "BURSA",
+      "effects": [
+        "Introduces themes related to Bursa.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Bursa brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Bursa"
+    },
+    {
+      "code": "COLOGNE",
+      "effects": [
+        "Introduces themes related to Cologne.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Cologne brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Cologne"
+    },
+    {
+      "code": "GAZIANTEP",
+      "effects": [
+        "Introduces themes related to Gaziantep.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Gaziantep brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Gaziantep"
+    },
+    {
+      "code": "IZMIR",
+      "effects": [
+        "Introduces themes related to Izmir.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Izmir brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "İzmir"
+    },
+    {
+      "code": "KAHRAMANMARAS",
+      "effects": [
+        "Introduces themes related to Kahramanmaras.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Kahramanmaras brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Kahramanmaraş"
+    },
+    {
+      "code": "KASSEL",
+      "effects": [
+        "Introduces themes related to Kassel.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Kassel brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Kassel"
+    },
+    {
+      "code": "KONYA",
+      "effects": [
+        "Introduces themes related to Konya.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Konya brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Konya"
+    },
+    {
+      "code": "KYIV",
+      "effects": [
+        "Introduces themes related to Kyiv.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Kyiv brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Kyiv"
+    },
+    {
+      "code": "LISBON",
+      "effects": [
+        "Introduces themes related to Lisbon.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Lisbon brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Lisbon"
+    },
+    {
+      "code": "MARDIN",
+      "effects": [
+        "Introduces themes related to Mardin.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Mardin brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Mardin"
+    },
+    {
+      "code": "MINSK",
+      "effects": [
+        "Introduces themes related to Minsk.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Minsk brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Minsk"
+    },
+    {
+      "code": "NEWFOUNDLAND",
+      "effects": [
+        "Introduces themes related to Newfoundland.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Newfoundland brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Newfoundland"
+    },
+    {
+      "code": "SAN_ANTONIO",
+      "effects": [
+        "Introduces themes related to San Antonio.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. San Antonio brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "San Antonio"
+    },
+    {
+      "code": "ST_PETERSBURG",
+      "effects": [
+        "Introduces themes related to St Petersburg.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. St Petersburg brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "St Petersburg"
+    },
+    {
+      "code": "SUMQAYIT",
+      "effects": [
+        "Introduces themes related to Sumqayit.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Sumqayit brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Sumqayit"
+    },
+    {
+      "code": "VAN",
+      "effects": [
+        "Introduces themes related to Van.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Van brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Van"
+    },
+    {
+      "code": "VEENENDAAL",
+      "effects": [
+        "Introduces themes related to Veenendaal.",
+        "Adds a unique local flavor to the narrative."
+      ],
+      "story": "A place known for its unique character and history. Veenendaal brings its own energy and stories to the journey.",
+      "type": "location",
+      "name": "Veenendaal"
     }
   ]
 }

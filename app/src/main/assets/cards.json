@@ -351,6 +351,90 @@
     {
       "name": "Hamburg",
       "code": "HAMBURG"
+    },
+    {
+      "name": "Adiyaman",
+      "code": "ADIYAMAN"
+    },
+    {
+      "name": "Adana",
+      "code": "ADANA"
+    },
+    {
+      "name": "Albuquerque",
+      "code": "ALBUQUERQUE"
+    },
+    {
+      "name": "Batumi",
+      "code": "BATUMI"
+    },
+    {
+      "name": "Bursa",
+      "code": "BURSA"
+    },
+    {
+      "name": "Cologne",
+      "code": "COLOGNE"
+    },
+    {
+      "name": "Gaziantep",
+      "code": "GAZIANTEP"
+    },
+    {
+      "name": "İzmir",
+      "code": "IZMIR"
+    },
+    {
+      "name": "Kahramanmaraş",
+      "code": "KAHRAMANMARAS"
+    },
+    {
+      "name": "Kassel",
+      "code": "KASSEL"
+    },
+    {
+      "name": "Konya",
+      "code": "KONYA"
+    },
+    {
+      "name": "Kyiv",
+      "code": "KYIV"
+    },
+    {
+      "name": "Lisbon",
+      "code": "LISBON"
+    },
+    {
+      "name": "Mardin",
+      "code": "MARDIN"
+    },
+    {
+      "name": "Minsk",
+      "code": "MINSK"
+    },
+    {
+      "name": "Newfoundland",
+      "code": "NEWFOUNDLAND"
+    },
+    {
+      "name": "San Antonio",
+      "code": "SAN_ANTONIO"
+    },
+    {
+      "name": "St. Petersburg",
+      "code": "ST_PETERSBURG"
+    },
+    {
+      "name": "Sumqayit",
+      "code": "SUMQAYIT"
+    },
+    {
+      "name": "Van",
+      "code": "VAN"
+    },
+    {
+      "name": "Veenendaal",
+      "code": "VEENENDAAL"
     }
   ],
   "extraCards": [
@@ -623,7 +707,7 @@
     },
     {
       "name": "Take Me Out",
-      "code": "TAKE_ME_OUT"
+      "code": "TAME_ME_OUT"
     },
     {
       "name": "Ain't No Mountain High Enough",

@@ -18,7 +18,7 @@
         "Her connection to the F8 of the Fair suggests significant, lively, and fated happenings.",
         "Recurring appearances of the Lady bring moments of stark clarity amidst the madness."
       ],
-      "story": "Dancing to her own rhythm, this Lady, one of the F8 of the Fair, embraces the wonderfully weird. She finds joy in the absurd, turning situations on their head with playful abandon and reminding us not to take things too seriously.",
+      "story": "Dancing to her own rhythm, this Lady, one of the F8 of the Fair, embraces the wonderfully weird. She finds joy in the absurd, turning situations on her head with playful abandon and reminding us not to take things too seriously.",
       "type": "f8",
       "name": "Lady Of Lunacy"
     },
@@ -1770,6 +1770,39 @@
       "story": "A place known for its unique character and history. Veenendaal brings its own energy and stories to the journey.",
       "type": "location",
       "name": "Veenendaal"
+    },
+    {
+      "code": "BOULEVARD_OF_BROKEN_DREAMS",
+      "effects": [
+      ],
+      "story": "",
+      "type": "melody",
+      "name": "Boulevard Of Broken Dreams"
+    },
+    {
+      "code": "DOWN_ON_THE_CORNER",
+      "effects": [
+      ],
+      "story": "",
+      "type": "melody",
+      "name": "Down On The Corner"
+    },
+    {
+      "code": "MONEY_MONEY_MONEY",
+      "effects": [
+      ],
+      "story": "A place known for its unique character and history. Money Money Money brings its own energy and stories to the journey.",
+      "type": "melody",
+      "name": "Money Money Money"
+    },
+    {
+      "code": "DUNYANIN_EN_GUZEL_KIZI",
+      "effects": [
+
+      ],
+      "story": "",
+      "type": "melody",
+      "name": "Dunyanın En Guzel Kızı"
     }
   ]
 }

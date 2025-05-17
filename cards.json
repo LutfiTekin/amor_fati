@@ -1,0 +1,769 @@
+{
+  "cards": [
+    {
+      "name": "Ale Of The Ache",
+      "code": "ALE_OF_THE_ACHE"
+    },
+    {
+      "name": "Council Of Three",
+      "code": "COUNCIL_OF_THREE"
+    },
+    {
+      "name": "Designated Driver",
+      "code": "DESIGNATED_DRIVER"
+    },
+    {
+      "name": "Duchess And The White Hound",
+      "code": "DUCHESS_AND_THE_WHITE_HOUND"
+    },
+    {
+      "name": "Focus Of Fate",
+      "code": "FOCUS_OF_FATE"
+    },
+    {
+      "name": "Gaze Of Exhaustion",
+      "code": "GAZE_OF_EXHAUSTION"
+    },
+    {
+      "name": "Gentle Highlander",
+      "code": "GENTLE_HIGHLANDER"
+    },
+    {
+      "name": "Gentleman Of The Alps",
+      "code": "GENTLEMAN_OF_THE_ALPS"
+    },
+    {
+      "name": "Keeper Of The Bitter Truth",
+      "code": "KEEPER_OF_THE_BITTER_TRUTH"
+    },
+    {
+      "name": "Keepers Of The Sky Needle",
+      "code": "KEEPERS_OF_THE_SKY_NEEDLE"
+    },
+    {
+      "name": "Lavender Trio",
+      "code": "LAVENDER_TRIO"
+    },
+    {
+      "name": "Nine Of Hounds",
+      "code": "NINE_OF_HOUNDS"
+    },
+    {
+      "name": "Nomad Of Tracks",
+      "code": "NOMAD_OF_TRACKS"
+    },
+    {
+      "name": "Sisters of the Seven Tea",
+      "code": "SISTERS_OF_THE_SEVEN_TEA"
+    },
+    {
+      "name": "Round Trip Knight",
+      "code": "ROUND_TRIP_KNIGHT"
+    },
+    {
+      "name": "Sentinel Of The Twin Towers",
+      "code": "SENTINEL_OF_THE_TWIN_TOWERS"
+    },
+    {
+      "name": "Silent Judge",
+      "code": "SILENT_JUDGE"
+    },
+    {
+      "name": "Sister Sinister",
+      "code": "SISTER_SINISTER"
+    },
+    {
+      "name": "Snow Mexican",
+      "code": "SNOW_MEXICAN"
+    },
+    {
+      "name": "Teacher Of Treachery",
+      "code": "TEACHER_OF_TREACHERY"
+    },
+    {
+      "name": "The Alchemist",
+      "code": "THE_ALCHEMIST"
+    },
+    {
+      "name": "The Baddies II",
+      "code": "THE_BADDIES_II"
+    },
+    {
+      "name": "The Baddies III",
+      "code": "THE_BADDIES_III"
+    },
+    {
+      "name": "The Baddies",
+      "code": "THE_BADDIES"
+    },
+    {
+      "name": "The Ballad",
+      "code": "THE_BALLAD"
+    },
+    {
+      "name": "The Dealer",
+      "code": "THE_DEALER"
+    },
+    {
+      "name": "The Distant Liaison",
+      "code": "THE_DISTANT_LIAISON"
+    },
+    {
+      "name": "The Endless Pour",
+      "code": "THE_ENDLESS_POUR"
+    },
+    {
+      "name": "The Librarian",
+      "code": "THE_LIBRARIAN"
+    },
+    {
+      "name": "The Lone Star",
+      "code": "THE_LONE_STAR"
+    },
+    {
+      "name": "The Rule Of Threes",
+      "code": "THE_RULE_OF_THREES"
+    },
+    {
+      "name": "The Texan And The Thistle",
+      "code": "THE_TEXAN_AND_THE_THISTLE"
+    }
+  ],
+  "f8Cards": [
+    {
+      "name": "Queen Of Whatever",
+      "code": "QUEEN_OF_WHATEVER"
+    },
+    {
+      "name": "Countess Of Chaos",
+      "code": "COUNTESS_OF_CHAOS"
+    },
+    {
+      "name": "The Duchess Of Drama",
+      "code": "THE_DUCHESS_OF_DRAMA"
+    },
+    {
+      "name": "Maiden Of Mischief",
+      "code": "MAIDEN_OF_MISCHIEF"
+    },
+    {
+      "name": "Lady Of Lunacy",
+      "code": "LADY_OF_LUNACY"
+    },
+    {
+      "name": "Lady Of The First Flame",
+      "code": "LADY_OF_THE_FIRST_FLAME"
+    },
+    {
+      "name": "Mistress Of Mayhem",
+      "code": "MISTRESS_OF_MAYHEM"
+    },
+    {
+      "name": "Wench Of Whiskey",
+      "code": "WENCH_OF_WHISKEY"
+    }
+  ],
+  "locationCards": [
+    {
+      "name": "Tehran",
+      "code": "TEHRAN"
+    },
+    {
+      "name": "Hong Kong",
+      "code": "HONG_KONG"
+    },
+    {
+      "name": "Baghdad",
+      "code": "BAGHDAD"
+    },
+    {
+      "name": "Hanoi",
+      "code": "HANOI"
+    },
+    {
+      "name": "Seattle",
+      "code": "SEATTLE"
+    },
+    {
+      "name": "New York",
+      "code": "NEW_YORK"
+    },
+    {
+      "name": "Athens",
+      "code": "ATHENS"
+    },
+    {
+      "name": "Bangkok",
+      "code": "BANGKOK"
+    },
+    {
+      "name": "Helsinki",
+      "code": "HELSINKI"
+    },
+    {
+      "name": "Bielefeld",
+      "code": "BIELEFELD"
+    },
+    {
+      "name": "Berlin",
+      "code": "BERLIN"
+    },
+    {
+      "name": "Prague",
+      "code": "PRAGUE"
+    },
+    {
+      "name": "Stockholm",
+      "code": "STOCKHOLM"
+    },
+    {
+      "name": "Moscow",
+      "code": "MOSCOW"
+    },
+    {
+      "name": "Rome",
+      "code": "ROME"
+    },
+    {
+      "name": "Brazil",
+      "code": "BRAZIL"
+    },
+    {
+      "name": "Barcelona",
+      "code": "BARCELONA"
+    },
+    {
+      "name": "Nairobi",
+      "code": "NAIROBI"
+    },
+    {
+      "name": "Edinburgh",
+      "code": "EDINBURGH"
+    },
+    {
+      "name": "Zermatt",
+      "code": "ZERMATT"
+    },
+    {
+      "name": "Johannesburg",
+      "code": "JOHANNESBURG"
+    },
+    {
+      "name": "Las Vegas",
+      "code": "LAS_VEGAS"
+    },
+    {
+      "name": "Erfurt",
+      "code": "ERFURT"
+    },
+    {
+      "name": "Leipzig",
+      "code": "LEIPZIG"
+    },
+    {
+      "name": "Antalya",
+      "code": "ANTALYA"
+    },
+    {
+      "name": "Amsterdam",
+      "code": "AMSTERDAM"
+    },
+    {
+      "name": "Boston",
+      "code": "BOSTON"
+    },
+    {
+      "name": "Florence",
+      "code": "FLORENCE"
+    },
+    {
+      "name": "Busan",
+      "code": "BUSAN"
+    },
+    {
+      "name": "Tokyo",
+      "code": "TOKYO"
+    },
+    {
+      "name": "Tbilisi",
+      "code": "TBILISI"
+    },
+    {
+      "name": "Bruges",
+      "code": "BRUGES"
+    },
+    {
+      "name": "Vienna",
+      "code": "VIENNA"
+    },
+    {
+      "name": "San Francisco",
+      "code": "SAN_FRANCISCO"
+    },
+    {
+      "name": "Dublin",
+      "code": "DUBLIN"
+    },
+    {
+      "name": "Copenhagen",
+      "code": "COPENHAGEN"
+    },
+    {
+      "name": "Madrid",
+      "code": "MADRID"
+    },
+    {
+      "name": "Dubai",
+      "code": "DUBAI"
+    },
+    {
+      "name": "Versailles",
+      "code": "VERSAILLES"
+    },
+    {
+      "name": "Istanbul",
+      "code": "ISTANBUL"
+    },
+    {
+      "name": "Sheffield",
+      "code": "SHEFFIELD"
+    },
+    {
+      "name": "Dresden",
+      "code": "DRESDEN"
+    },
+    {
+      "name": "Jerusalem",
+      "code": "JERUSALEM"
+    },
+    {
+      "name": "Mumbai",
+      "code": "MUMBAI"
+    },
+    {
+      "name": "Venice",
+      "code": "VENICE"
+    },
+    {
+      "name": "London",
+      "code": "LONDON"
+    },
+    {
+      "name": "Hamburg",
+      "code": "HAMBURG"
+    },
+    {
+      "name": "Adiyaman",
+      "code": "ADIYAMAN"
+    },
+    {
+      "name": "Adana",
+      "code": "ADANA"
+    },
+    {
+      "name": "Albuquerque",
+      "code": "ALBUQUERQUE"
+    },
+    {
+      "name": "Batumi",
+      "code": "BATUMI"
+    },
+    {
+      "name": "Bursa",
+      "code": "BURSA"
+    },
+    {
+      "name": "Cologne",
+      "code": "COLOGNE"
+    },
+    {
+      "name": "Gaziantep",
+      "code": "GAZIANTEP"
+    },
+    {
+      "name": "İzmir",
+      "code": "IZMIR"
+    },
+    {
+      "name": "Kahramanmaraş",
+      "code": "KAHRAMANMARAS"
+    },
+    {
+      "name": "Kassel",
+      "code": "KASSEL"
+    },
+    {
+      "name": "Konya",
+      "code": "KONYA"
+    },
+    {
+      "name": "Kyiv",
+      "code": "KYIV"
+    },
+    {
+      "name": "Lisbon",
+      "code": "LISBON"
+    },
+    {
+      "name": "Mardin",
+      "code": "MARDIN"
+    },
+    {
+      "name": "Minsk",
+      "code": "MINSK"
+    },
+    {
+      "name": "Newfoundland",
+      "code": "NEWFOUNDLAND"
+    },
+    {
+      "name": "San Antonio",
+      "code": "SAN_ANTONIO"
+    },
+    {
+      "name": "St. Petersburg",
+      "code": "ST_PETERSBURG"
+    },
+    {
+      "name": "Sumqayit",
+      "code": "SUMQAYIT"
+    },
+    {
+      "name": "Van",
+      "code": "VAN"
+    },
+    {
+      "name": "Veenendaal",
+      "code": "VEENENDAAL"
+    }
+  ],
+  "extraCards": [
+    {
+      "name": "Three Glasses",
+      "code": "THREE_GLASSES"
+    },
+    {
+      "name": "Brothers Of Carnage",
+      "code": "BROTHERS_OF_CARNAGE"
+    },
+    {
+      "name": "Calling Of Fate",
+      "code": "CALLING_OF_FATE"
+    },
+    {
+      "name": "Cave Of Unseen Light",
+      "code": "CAVE_OF_UNSEEN_LIGHT"
+    },
+    {
+      "name": "Empress Of Unbothered Realms",
+      "code": "EMPRESS_OF_UNBOTHERED_REALMS"
+    },
+    {
+      "name": "Forest Rider",
+      "code": "FOREST_RIDER"
+    },
+    {
+      "name": "Ghost Of The Third One",
+      "code": "GHOST_OF_THE_THIRD_ONE"
+    },
+    {
+      "name": "High Promile Happiness",
+      "code": "HIGH_PROMILE_HAPPINESS"
+    },
+    {
+      "name": "Plane Spotter",
+      "code": "PLANE_SPOTTER"
+    },
+    {
+      "name": "Scribes Of The Hidden Monastery",
+      "code": "SCRIBES_OF_THE_HIDDEN_MONASTERY"
+    },
+    {
+      "name": "The Baddies IV",
+      "code": "THE_BADDIES_IV"
+    },
+    {
+      "name": "The Lost Horizon",
+      "code": "THE_LOST_HORIZON"
+    },
+    {
+      "name": "The Low Rider",
+      "code": "THE_LOW_RIDER"
+    },
+    {
+      "name": "The Ottoman Rose Of Éire",
+      "code": "THE_OTTOMAN_ROSE_OF_EIRE"
+    },
+    {
+      "name": "The Trickster",
+      "code": "THE_TRICKSTER"
+    },
+    {
+      "name": "The Unbearable Dullness Of Being",
+      "code": "THE_UNBEARABLE_DULLNESS_OF_BEING",
+      "online": true
+    }
+  ],
+  "melodyCards": [
+    {
+      "name": "Brothers In Arms",
+      "code": "BROTHERS_IN_ARMS"
+    },
+    {
+      "name": "Bitch",
+      "code": "BITCH"
+    },
+    {
+      "name": "Born In The U.S.A.",
+      "code": "BORN_IN_THE_USA"
+    },
+    {
+      "name": "99 Problems",
+      "code": "99_PROBLEMS"
+    },
+    {
+      "name": "Eat The Rich",
+      "code": "EAT_THE_RICH"
+    },
+    {
+      "name": "Are Friends Electric",
+      "code": "ARE_FRIENDS_ELECTRIC"
+    },
+    {
+      "name": "Highway To Hell",
+      "code": "HIGHWAY_TO_HELL"
+    },
+    {
+      "name": "Hotel California",
+      "code": "HOTEL_CALIFORNIA"
+    },
+    {
+      "name": "Ain't No Sunshine",
+      "code": "AINT_NO_SUNSHINE"
+    },
+    {
+      "name": "Hells Bells",
+      "code": "HELLS_BELLS"
+    },
+    {
+      "name": "All Along The Watchtower",
+      "code": "ALL_ALONG_THE_WATCHTOWER"
+    },
+    {
+      "name": "Knockin' On Heaven's Door",
+      "code": "KNOCKIN_ON_HEAVENS_DOOR"
+    },
+    {
+      "name": "Lady In Red",
+      "code": "LADY_IN_RED"
+    },
+    {
+      "name": "Fear Of The Dark",
+      "code": "FEAR_OF_THE_DARK"
+    },
+    {
+      "name": "Money For Nothing",
+      "code": "MONEY_FOR_NOTHING"
+    },
+    {
+      "name": "Mad World",
+      "code": "MAD_WORLD"
+    },
+    {
+      "name": "Lonely Boy",
+      "code": "LONELY_BOY"
+    },
+    {
+      "name": "Maneater",
+      "code": "MANEATER"
+    },
+    {
+      "name": "Miles Away",
+      "code": "MILES_AWAY"
+    },
+    {
+      "name": "Night Moves",
+      "code": "NIGHT_MOVES"
+    },
+    {
+      "name": "Play With Fire",
+      "code": "PLAY_WITH_FIRE"
+    },
+    {
+      "name": "Paint It Black",
+      "code": "PAINT_IT_BLACK"
+    },
+    {
+      "name": "My Way",
+      "code": "MY_WAY"
+    },
+    {
+      "name": "Simple Man",
+      "code": "SIMPLE_MAN"
+    },
+    {
+      "name": "Rumour Has It",
+      "code": "RUMOUR_HAS_IT"
+    },
+    {
+      "name": "Somebody That I Used To Know",
+      "code": "SOMEBODY_THAT_I_USED_TO_KNOW"
+    },
+    {
+      "name": "Shape Of My Heart",
+      "code": "SHAPE_OF_MY_HEART"
+    },
+    {
+      "name": "Someone New",
+      "code": "SOMEONE_NEW"
+    },
+    {
+      "name": "Stairway To Heaven",
+      "code": "STAIRWAY_TO_HEAVEN"
+    },
+    {
+      "name": "Starman",
+      "code": "STARMAN"
+    },
+    {
+      "name": "The Devil You Know",
+      "code": "THE_DEVIL_YOU_KNOW"
+    },
+    {
+      "name": "Telephone",
+      "code": "TELEPHONE"
+    },
+    {
+      "name": "The Winner Takes It All",
+      "code": "THE_WINNER_TAKES_IT_ALL"
+    },
+    {
+      "name": "Time",
+      "code": "TIME"
+    },
+    {
+      "name": "The Man Who Sold The World",
+      "code": "THE_MAN_WHO_SOLD_THE_WORLD"
+    },
+    {
+      "name": "Under Pressure",
+      "code": "UNDER_PRESSURE"
+    },
+    {
+      "name": "We Didn't Start The Fire",
+      "code": "WE_DIDNT_START_THE_FIRE"
+    },
+    {
+      "name": "You And Me And The Devil Makes Three",
+      "code": "YOU_AND_ME_AND_THE_DEVIL_MAKES_THREE"
+    },
+    {
+      "name": "Trouble Is A Friend",
+      "code": "TROUBLE_IS_A_FRIEND"
+    },
+    {
+      "name": "Wicked Ones",
+      "code": "WICKED_ONES"
+    },
+    {
+      "name": "Comfortably Numb",
+      "code": "COMFORTABLY_NUMB"
+    },
+    {
+      "name": "Wanted Dead Or Alive",
+      "code": "WANTED_DEAD_OR_ALIVE"
+    },
+    {
+      "name": "Cold As Ice",
+      "code": "COLD_AS_ICE"
+    },
+    {
+      "name": "Fast Car",
+      "code": "FAST_CAR"
+    },
+    {
+      "name": "Time In A Bottle",
+      "code": "TIME_IN_A_BOTTLE"
+    },
+    {
+      "name": "Half A World Away",
+      "code": "HALF_A_WORLD_AWAY"
+    },
+    {
+      "name": "Pop Muzik",
+      "code": "POP_MUZIK"
+    },
+    {
+      "name": "In The Ghetto",
+      "code": "IN_THE_GHETTO"
+    },
+    {
+      "name": "It's A Man's Man's Man's World",
+      "code": "ITS_A_MANS_MANS_MANS_WORLD"
+    },
+    {
+      "name": "No Milk Today",
+      "code": "NO_MILK_TODAY"
+    },
+    {
+      "name": "Take Me Out",
+      "code": "TAKE_ME_OUT"
+    },
+    {
+      "name": "Ain't No Mountain High Enough",
+      "code": "AINT_NO_MOUNTAIN_HIGH_ENOUGH"
+    },
+    {
+      "name": "Here Comes The Sun",
+      "code": "HERE_COMES_THE_SUN"
+    },
+    {
+      "name": "Rockstar",
+      "code": "ROCKSTAR"
+    },
+    {
+      "name": "Renegades",
+      "code": "RENEGADES"
+    },
+    {
+      "name": "Dream On",
+      "code": "DREAM_ON"
+    },
+    {
+      "name": "Set Fire To The Rain",
+      "code": "SET_FIRE_TO_THE_RAIN"
+    },
+    {
+      "name": "Uptown Girl",
+      "code": "UPTOWN_GIRL"
+    },
+    {
+      "name": "Where Is My Mind",
+      "code": "WHERE_IS_MY_MIND"
+    },
+    {
+      "name": "Take Me To Church",
+      "code": "TAKE_ME_TO_CHURCH"
+    },
+    {
+      "name": "Twist In My Sobriety",
+      "code": "TWIST_IN_MY_SOBRIETY"
+    },
+    {
+      "name": "Young Folks",
+      "code": "YOUNG_FOLKS"
+    },
+    {
+      "name": "Boulevard Of Broken Dreams",
+      "code": "BOULEVARD_OF_BROKEN_DREAMS"
+    },
+    {
+      "name": "Down On The Corner",
+      "code": "DOWN_ON_THE_CORNER"
+    },
+    {
+      "name": "Money Money Money",
+      "code": "MONEY_MONEY_MONEY"
+    }
+  ]
+}

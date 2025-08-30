@@ -1,0 +1,1840 @@
+{
+  "cards": [
+    {
+      "code": "COUNTESS_OF_CHAOS",
+      "effects": [
+        "Introduces playful disruption and shakes up the status quo with vibrant energy.",
+        "As one of the F8 of the Fair, her presence hints at fated, energetic events.",
+        "Multiple appearances of the Countess cut through the confusion, offering bright clarity."
+      ],
+      "story": "A proud member of the F8 of the Fair, the Countess orchestrates delightful disorder. She revels in upsetting expectations, injecting infectious energy and spontaneous fun into the mundane, ensuring life is never predictable when she's around.",
+      "type": "f8",
+      "name": "Countess Of Chaos"
+    },
+    {
+      "code": "LADY_OF_LUNACY",
+      "effects": [
+        "Ushers in delightful absurdity and unexpected, unconventional turns.",
+        "Her connection to the F8 of the Fair suggests significant, lively, and fated happenings.",
+        "Recurring appearances of the Lady bring moments of stark clarity amidst the madness."
+      ],
+      "story": "Dancing to her own rhythm, this Lady, one of the F8 of the Fair, embraces the wonderfully weird. She finds joy in the absurd, turning situations on her head with playful abandon and reminding us not to take things too seriously.",
+      "type": "f8",
+      "name": "Lady Of Lunacy"
+    },
+    {
+      "code": "LADY_OF_THE_FIRST_FLAME",
+      "effects": [
+        "Sparks initiative, ignites passion, and encourages bold new beginnings.",
+        "Belonging to the F8 of the Fair points towards destined, energetic developments and actions.",
+        "Her repeated presence illuminates the path forward, bringing clear vision."
+      ],
+      "story": "Carrying the spark of creation and change, this member of the F8 of the Fair ignites action. She embodies fiery spirit, bold initiatives, and the courage to light the way, pushing the narrative towards dynamic beginnings.",
+      "type": "f8",
+      "name": "Lady Of The First Flame"
+    },
+    {
+      "code": "MAIDEN_OF_MISCHIEF",
+      "effects": [
+        "Infuses the story with playful trickery and lighthearted pranks.",
+        "Her F8 of the Fair status signals fateful, fun-filled events designed to amuse.",
+        "If the Maiden is seen often, sharp clarity emerges from the playful confusion."
+      ],
+      "story": "With a knowing wink and a clever plan, this Maiden from the F8 of the Fair delights in harmless trouble. She keeps everyone guessing, adding an element of playful unpredictability and ensuring laughter follows in her wake.",
+      "type": "f8",
+      "name": "Maiden Of Mischief"
+    },
+    {
+      "code": "MISTRESS_OF_MAYHEM",
+      "effects": [
+        "Creates exciting, uncontrolled situations where the unexpected thrives.",
+        "Her role within the F8 of the Fair hints at destined, tumultuous, but ultimately fun events.",
+        "Multiple sightings of the Mistress bring piercing insight into the beautiful bedlam."
+      ],
+      "story": "Where things get messy, interesting, and thrillingly unpredictable, the Mistress feels right at home. A key figure in the F8 of the Fair, she orchestrates beautiful bedlam, ensuring the story embraces exciting, uncontrolled energy.",
+      "type": "f8",
+      "name": "Mistress Of Mayhem"
+    },
+    {
+      "code": "QUEEN_OF_WHATEVER",
+      "effects": [
+        "Brings adaptable leadership, unflappable control, and the ability to own any situation.",
+        "Her F8 of the Fair connection implies fated, significant events where she takes charge.",
+        "Frequent appearances of the Queen yield moments of undeniable truth and clarity."
+      ],
+      "story": "Ruling her domain—whatever it may be—with confidence and flair, this Queen from the F8 of the Fair adapts to any circumstance. Unfazed and in control, she embodies resilience and the power to make any situation her own.",
+      "type": "f8",
+      "name": "Queen Of Whatever"
+    },
+    {
+      "code": "THE_DUCHESS_OF_DRAMA",
+      "effects": [
+        "Heightens emotions and events with theatrical flair, making life less ordinary.",
+        "As an F8 of the Fair member, suggests fated, expressive happenings filled with passion.",
+        "Repeated appearances of the Duchess bring clarity through understanding the underlying emotions."
+      ],
+      "story": "Life is a stage, and this Duchess ensures it's never boring! Part of the F8 of the Fair, she amplifies emotions, turning everyday occurrences into grand performances filled with passion, style, and unforgettable moments.",
+      "type": "f8",
+      "name": "The Duchess Of Drama"
+    },
+    {
+      "code": "WENCH_OF_WHISKEY",
+      "effects": [
+        "Encourages bold choices, spirited encounters, and embracing life's strong flavors.",
+        "Her F8 of the Fair status points towards destined, potentially intoxicating events.",
+        "Frequent appearances of the Wench illuminate the path toward bold self-expression with unexpected clarity."
+      ],
+      "story": "Bold, unapologetic, and full of spirit, this Wench from the F8 of the Fair savors the strong, rich experiences life offers. She encourages others to be daring, speak their minds, and enjoy the potent moments.",
+      "type": "f8",
+      "name": "Wench Of Whiskey"
+    },
+    {
+      "code": "ALE_OF_THE_ACHE",
+      "effects": [
+        "Suggests a resolution involving financial matters, potentially stemming from past difficulties or burdens, unless the influence of The Distant Liaison negates this path."
+      ],
+      "story": "In shared drink, solace is sought, or perhaps bargains are struck. This card speaks of burdens carried, memories revisited, and the potential for monetary tides to turn, washing away old aches or bringing past financial dealings to a head.",
+      "type": "regular",
+      "name": "Ale Of The Ache"
+    },
+    {
+      "code": "COUNCIL_OF_THREE",
+      "effects": [
+        "Infuses the narrative with spontaneity and unexpected turns.",
+        "Ensures the presence of peace and guides towards a harmonious resolution.",
+        "Enhances communication and understanding between involved parties."
+      ],
+      "story": "Three figures gather in quiet counsel. One, with an eye for the fleeting moment, captures the unseen threads of fate. Another radiates a calming presence, a steadfast anchor ensuring concord. The third bridges divides, weaving understanding with words and wisdom. Together, they shape outcomes through shared insight and diverse strengths.",
+      "type": "regular",
+      "name": "Council Of Three"
+    },
+    {
+      "code": "DESIGNATED_DRIVER",
+      "effects": [
+        "Introduces elements of unpredictable travel and surprisingly managed chaos."
+      ],
+      "story": "Entrusted with safe passage, this figure navigates the roads with more enthusiasm than finesse. Their journey, often punctuated by humorous near-misses, speaks of reluctant responsibility and the spontaneous detours life throws our way. Companions arrive, perhaps not smoothly, but always eventually.",
+      "type": "regular",
+      "name": "Designated Driver"
+    },
+    {
+      "code": "DUCHESS_AND_THE_WHITE_HOUND",
+      "effects": [
+        "Provides an absolute guarantee of a positive and fulfilling conclusion.",
+        "If other cards featuring the energetic Duchess appear, expect moments of sharp insight and clarity to emerge."
+      ],
+      "story": "Elegance and loyalty stride hand-in-paw. An energetic Duchess, full of life and dramatic flair, is accompanied by her faithful, graceful hound. Together, they navigate challenges with style, their combined presence assuring protection and a happy ending.",
+      "type": "regular",
+      "name": "Duchess And The White Hound"
+    },
+    {
+      "code": "FOCUS_OF_FATE",
+      "effects": [
+        "Suggests a pivotal moment where destiny is captured or revealed through an unexpected lens."
+      ],
+      "story": "The world narrows to a single frame, a candid moment captured, revealing the subtle workings of chance and consequence. This card represents a snapshot of destiny, where an unguarded instant holds profound significance, shifting the narrative's direction.",
+      "type": "regular",
+      "name": "Focus Of Fate"
+    },
+    {
+      "code": "GAZE_OF_EXHAUSTION",
+      "effects": [
+        "Hints at a necessary pause or moment of reflection after intense activity.",
+        "If this figure appears across multiple cards, moments of sharp clarity will punctuate the narrative."
+      ],
+      "story": "A fleeting moment captures the toll of boundless energy. Even the most vibrant spirit requires respite. This card signifies a pause, a breath taken amidst the whirlwind, perhaps a moment where weariness gives way to unexpected perspective.",
+      "type": "regular",
+      "name": "Gaze Of Exhaustion"
+    },
+    {
+      "code": "GENTLEMAN_OF_THE_ALPS",
+      "effects": [],
+      "story": "Hailing from serene mountain landscapes, this figure presents a polished and kind demeanor. Yet, beneath the surface or perhaps from the safety of distance, a playful, even trolling, nature may emerge, adding a layer of unpredictable complexity.",
+      "type": "regular",
+      "name": "Gentleman Of The Alps"
+    },
+    {
+      "code": "GENTLE_HIGHLANDER",
+      "effects": [
+        "Guarantees a peaceful resolution and a harmonious conclusion to the narrative."
+      ],
+      "story": "From misty peaks comes a figure of quiet strength and profound kindness. Their presence is a soothing balm upon troubled waters, calming turbulent situations and gently steering events towards a peaceful and positive outcome.",
+      "type": "regular",
+      "name": "Gentle Highlander"
+    },
+    {
+      "code": "KEEPERS_OF_THE_SKY_NEEDLE",
+      "effects": [
+        "Blends sudden inspiration and spontaneous events with the certainty of a peaceful conclusion."
+      ],
+      "story": "Beneath a towering monument reaching for the heavens, two guardians stand watch. One seeks the extraordinary in the patterns of the everyday, attuned to sudden shifts. The other embodies tranquility, a gentle force ensuring harmony prevails against the odds.",
+      "type": "regular",
+      "name": "Keepers Of The Sky Needle"
+    },
+    {
+      "code": "KEEPER_OF_THE_BITTER_TRUTH",
+      "effects": [
+        "Facilitates communication, potentially by revealing uncomfortable but necessary truths for growth."
+      ],
+      "story": "Sometimes clarity comes with a sting. This figure delivers truths that may be hard to swallow but are essential for understanding and progress. They value honesty above comfort, fostering communication through stark revelations.",
+      "type": "regular",
+      "name": "Keeper Of The Bitter Truth"
+    },
+    {
+      "code": "LAVENDER_TRIO",
+      "effects": [
+        "Weaves threads of spontaneity and fosters clearer communication.",
+        "If any card associated with the 'Nomad of Tracks' character is also present, expect an extraordinary turn of luck in matters of the heart.",
+        "The presence of this card may block effects related to financial outcomes."
+      ],
+      "story": "In calming fields of lavender, three souls converge. One chases spontaneous beauty, another bridges understanding through shared language, and the third carries an aura of connection, potentially blossoming into romance under the right stars. Their meeting signifies harmony, communication, and latent affection.",
+      "type": "regular",
+      "name": "Lavender Trio"
+    },
+    {
+      "code": "NINE_OF_HOUNDS",
+      "effects": [
+        "Provides an absolute, unequivocal guarantee of a positive, protected, and fulfilling outcome.",
+        "Mandates that the 'future holds' section will be detailed in nine distinct points, overriding the 'Rule of Threes' effect if both are present."
+      ],
+      "story": "A powerful convergence of loyalty, instinct, and collective energy. Nine faithful hounds signal overwhelming support, unwavering protection, and a path guided by intuition towards a guaranteed positive destiny. Their presence banishes doubt and ensures success.",
+      "type": "regular",
+      "name": "Nine Of Hounds"
+    },
+    {
+      "code": "NOMAD_OF_TRACKS",
+      "effects": [
+        "Signifies solitary journeys, introspection, and unexpected discoveries made while traveling alone."
+      ],
+      "story": "The rhythm of the rails calls to this solitary wanderer. Traversing landscapes alone, they find inspiration not just in destinations, but in the journey itself. Camera ever-ready, they capture the unscripted moments found between the tracks, embracing the freedom of the open road.",
+      "type": "regular",
+      "name": "Nomad Of Tracks"
+    },
+    {
+      "code": "ROUND_TRIP_KNIGHT",
+      "effects": [
+        "Foretells journeys undertaken for others, marked by humorous obstacles but eventual, perhaps surprising, success."
+      ],
+      "story": "Like a knight errant on an unconventional steed (perhaps four-wheeled and prone to mishaps), this figure embarks on quests for others. Their path is rarely straightforward, marked by charming incompetence, yet they possess an uncanny knack for completing the mission, returning companions safely home.",
+      "type": "regular",
+      "name": "Round Trip Knight"
+    },
+    {
+      "code": "SENTINEL_OF_THE_TWIN_TOWERS",
+      "effects": [
+        "Hints at watchful observation and the potential for sudden, surprising events to unfold."
+      ],
+      "story": "Standing observant before imposing modern monoliths, this sentinel watches the world with a keen eye. They find the extraordinary within the monumental, ever alert to the flicker of surprise in the urban landscape, embodying readiness for the unexpected.",
+      "type": "regular",
+      "name": "Sentinel Of The Twin Towers"
+    },
+    {
+      "code": "SILENT_JUDGE",
+      "effects": [
+        "Offers quiet wisdom and keen observation.",
+        "If drawn alongside cards linked to the 'Nomad of Tracks', it brings profound clarity.",
+        "If drawn with cards linked to 'The Alchemist', it signals the potential for mild conflict or tension."
+      ],
+      "story": "Observing with calm detachment, this figure assesses situations without uttering a word. Their silent judgment carries weight, offering unspoken insights, revealing hidden clarity, or subtly highlighting underlying friction between parties.",
+      "type": "regular",
+      "name": "Silent Judge"
+    },
+    {
+      "code": "SISTERS_OF_THE_SEVEN_TEA",
+      "effects": [
+        "Expands the narrative, drawing out events and weaving in additional layers of detail."
+      ],
+      "story": "Gathered around a table, three figures share hushed whispers and knowing glances over steaming cups. Their quiet conversation holds sway, revealing hidden threads of connection and allowing the story to unfold with careful deliberation, revealing truths layer by layer.",
+      "type": "regular",
+      "name": "Sisters Of The Seven Tea"
+    },
+    {
+      "code": "SISTER_SINISTER",
+      "effects": [
+        "Represents calm wisdom that may possess a hidden edge or complex motives.",
+        "Brings clarity when paired with 'Nomad of Tracks' associated cards.",
+        "Suggests minor conflict or friction when appearing alongside 'The Alchemist' associated cards."
+      ],
+      "story": "A figure whose serene exterior might conceal sharp insights or intricate intentions. Their presence speaks of close, complex relationships where wisdom and potential challenge intertwine, offering clarity to some, friction to others.",
+      "type": "regular",
+      "name": "Sister Sinister"
+    },
+    {
+      "code": "SNOW_MEXICAN",
+      "effects": [
+        "Adds one extra line, a touch of dark or unexpected humor, to the 'future holds' section of the reading."
+      ],
+      "story": "An unexpected presence, bringing a unique blend of sweetness and startlingly dark humor from a cold origin to unfamiliar territory. Known for unhinged pronouncements delivered with a smile, they add spice and surprise to any situation.",
+      "type": "regular",
+      "name": "Snow Mexican"
+    },
+    {
+      "code": "TEACHER_OF_TREACHERY",
+      "effects": [
+        "Hints at financial outcomes derived from clever schemes, hard-learned lessons, or past betrayals, an effect nullified if The Distant Liaison is present."
+      ],
+      "story": "Wisdom gained through complex, perhaps even perilous, ventures is imparted here. This figure represents lessons learned in the crucible of cunning deals or broken trust, suggesting that current financial fortunes are linked to past maneuvers.",
+      "type": "regular",
+      "name": "Teacher Of Treachery"
+    },
+    {
+      "code": "THE_ALCHEMIST",
+      "effects": [
+        "Foretells a potential transformation in financial standing, possibly through unconventional means or shrewd resource management, an outcome potentially altered should The Distant Liaison appear."
+      ],
+      "story": "Possessing the knowledge to transmute fortunes, The Alchemist represents the power to change one's financial state. Whether through meticulous planning, hidden knowledge, or a touch of daring, this card signals a significant shift in material resources.",
+      "type": "regular",
+      "name": "The Alchemist"
+    },
+    {
+      "code": "THE_BADDIES",
+      "effects": [
+        "Introduces an element of playful mischief and unpredictable energy.",
+        "If other cards featuring this figure appear, moments of sharp clarity will emerge."
+      ],
+      "story": "The first in a series of playful disruptors, this figure embraces delightful chaos. Their energy is a whirlwind of spontaneity and vibrant intensity, signaling that while trouble may be brewing, it's undoubtedly the fun kind. Expect the unexpected when they appear.",
+      "type": "regular",
+      "name": "The Baddies"
+    },
+    {
+      "code": "THE_BADDIES_II",
+      "effects": [
+        "Introduces an element of playful mischief and unpredictable energy.",
+        "Multiple appearances of this figure bring surprisingly lucid insights."
+      ],
+      "story": "Following close behind the first, this 'Baddie' continues the theme of delightful chaos. Their presence amplifies the whirlwind of spontaneity and vibrant intensity, ensuring life is unpredictable and fun when they are around.",
+      "type": "regular",
+      "name": "The Baddies II"
+    },
+    {
+      "code": "THE_BADDIES_III",
+      "effects": [
+        "Introduces an element of playful mischief and unpredictable energy.",
+        "Recurring appearances of this figure grant moments of profound understanding amidst the chaos."
+      ],
+      "story": "The final figure in this playful trio, this 'Baddie' solidifies the presence of delightful chaos. Their combined energy is a powerful force of spontaneity and vibrant intensity, guaranteeing the story is filled with unexpected, yet fun, developments.",
+      "type": "regular",
+      "name": "The Baddies III"
+    },
+    {
+      "code": "THE_BALLAD",
+      "effects": [
+        "Implies a financial resolution intrinsically linked to past narratives, shared histories, or long-forgotten ventures, a theme potentially silenced by The Distant Liaison's presence."
+      ],
+      "story": "A story unfolds, echoing with the financial triumphs and trials of yesteryears. This card sings of past partnerships, journeys undertaken together, and how their monetary consequences ripple into the present, shaping the final verse of the current tale.",
+      "type": "regular",
+      "name": "The Ballad"
+    },
+    {
+      "code": "THE_DEALER",
+      "effects": [
+        "Improves communication, especially in negotiations, exchanges, or when clarity is needed."
+      ],
+      "story": "Cards on the table, deals are struck, and information changes hands. This figure facilitates understanding and agreement, ensuring all parties see the situation clearly, enabling fair exchanges and clear communication.",
+      "type": "regular",
+      "name": "The Dealer"
+    },
+    {
+      "code": "THE_DISTANT_LIAISON",
+      "effects": [
+        "If cards associated with the 'Nomad of Tracks' character is present, this card unlocks extreme luck in love.",
+        "Its presence universally blocks any effects related to financial outcomes."
+      ],
+      "story": "Connection maintained across vast distances, a testament to affection that defies geography. This figure represents relationships nurtured from afar, holding the potential to spark romance while simultaneously disrupting or negating purely material concerns.",
+      "type": "regular",
+      "name": "The Distant Liaison"
+    },
+    {
+      "code": "THE_ENDLESS_POUR",
+      "effects": [
+        "Suggests social gatherings, shared experiences, and potentially unrestrained indulgence.",
+        "Clarity may surface if this vibrant figure features prominently in the reading through multiple cards."
+      ],
+      "story": "The drinks flow freely, fueling conversation, celebration, perhaps even excess. This card represents hospitality, the sharing of spirits (both literal and figurative), and the potential for revelations or consequences born from uninhibited moments.",
+      "type": "regular",
+      "name": "The Endless Pour"
+    },
+    {
+      "code": "THE_LIBRARIAN",
+      "effects": [
+        "Points to a resolution determined by careful accounting, hidden knowledge, documented facts, or financial records, unless The Distant Liaison's influence changes the script."
+      ],
+      "story": "Within quiet halls of knowledge, accounts are kept, secrets guarded, and histories recorded. This keeper of records holds the key to understanding financial situations through meticulous detail, forgotten ledgers, or carefully cataloged information.",
+      "type": "regular",
+      "name": "The Librarian"
+    },
+    {
+      "code": "THE_LONE_STAR",
+      "effects": [
+        "Represents self-reliance and independence, while also enhancing connection through improved communication."
+      ],
+      "story": "A symbol of independence, quiet wisdom, and resilience. This solitary figure walks their own path but possesses the key to connection through shared language and understanding, bridging solitude with communication.",
+      "type": "regular",
+      "name": "The Lone Star"
+    },
+    {
+      "code": "THE_RULE_OF_THREES",
+      "effects": [
+        "Mandates that the 'future holds' section of the reading will be presented in three distinct points.",
+        "Expect moments of piercing insight if this energetic figure appears in multiple cards."
+      ],
+      "story": "Events unfold in a distinct rhythm; challenges, opportunities, and revelations seem to arrive in triplicate. This card signifies patterns, cosmic balance, and the principle that good things—and sometimes troubles—come in threes.",
+      "type": "regular",
+      "name": "The Rule Of Threes"
+    },
+    {
+      "code": "THE_TEXAN_AND_THE_THISTLE",
+      "effects": [
+        "Enhances clear communication and mutual understanding.",
+        "Guarantees a peaceful, positive outcome through combined wisdom and calm."
+      ],
+      "story": "An unlikely yet harmonious pairing: the steadfast, quiet wisdom of the plains meets the gentle, resilient strength of the highlands. Together, these figures bridge differences, foster understanding, and ensure that goodwill prevails, leading to harmonious resolutions.",
+      "type": "regular",
+      "name": "The Texan And The Thistle"
+    },
+    {
+      "code": "AMSTERDAM",
+      "effects": [
+        "Involves navigation through intricate systems (canals).",
+        "Highlights themes of freedom, art, or fluid boundaries."
+      ],
+      "story": "A labyrinth of waterways and narrow houses, navigated by bike. Amsterdam is a city of artistic freedom, historical depth, and a unique charm that flows through its canals. It encourages exploration and embraces individuality.",
+      "type": "location",
+      "name": "Amsterdam"
+    },
+    {
+      "code": "ANTALYA",
+      "effects": [
+        "Introduces themes of relaxation, historical layers, or journeys by the sea.",
+        "Suggests a blend of leisure and ancient echoes."
+      ],
+      "story": "Where the Taurus Mountains meet the turquoise Mediterranean. Antalya is a city of sun-drenched coasts and ancient Roman ruins. It offers a blend of modern leisure and deep history, a gateway to relaxation and exploration.",
+      "type": "location",
+      "name": "Antalya"
+    },
+    {
+      "code": "ATHENS",
+      "effects": [
+        "Brings foundational issues or core beliefs to the forefront.",
+        "Involves debate, philosophical discussion, or connecting to historical roots."
+      ],
+      "story": "Where democracy was born among sun-bleached stones. Athens stands as a testament to ancient thought and enduring legacy. The Acropolis watches over a modern city grappling with its past, a place of philosophical questions and historical weight.",
+      "type": "location",
+      "name": "Athens"
+    },
+    {
+      "code": "BAGHDAD",
+      "effects": [
+        "Connects the narrative to deep history or ancient knowledge.",
+        "May introduce themes of resilience, challenges overcome, or echoes of a glorious past."
+      ],
+      "story": "Echoes of the Abbasid Caliphate resonate through modern streets. Baghdad is a city steeped in history, a place of ancient wisdom and enduring spirit, where tales of scholars and kings mingle with the realities of today.",
+      "type": "location",
+      "name": "Baghdad"
+    },
+    {
+      "code": "BANGKOK",
+      "effects": [
+        "Overwhelms the senses with vibrant energy.",
+        "May introduce elements of spiritual seeking or exhilarating chaos."
+      ],
+      "story": "A symphony of smells, sounds, and sights. Bangkok is a city of dazzling temples and bustling markets, where spiritual calm meets urban frenzy. Navigate canals and avenues for an experience that is both chaotic and profoundly beautiful.",
+      "type": "location",
+      "name": "Bangkok"
+    },
+    {
+      "code": "BARCELONA",
+      "effects": [
+        "Inspires creativity, artistic expression, or unconventional solutions.",
+        "Involves themes of beauty, design, or coastal life."
+      ],
+      "story": "Where Gaudí's dreams took physical form, melting into the Mediterranean sun. Barcelona is a city of vibrant art, unique architecture, and lively street life. Creativity flows as freely as the sea breeze, inviting bold expression.",
+      "type": "location",
+      "name": "Barcelona"
+    },
+    {
+      "code": "BERLIN",
+      "effects": [
+        "Explores themes of division, transformation, or creative rebellion.",
+        "Connects to history and underground currents."
+      ],
+      "story": "A city constantly reinventing itself, bearing the scars of history and bursting with defiant creativity. Berlin is a place of stark contrasts, where freedom and introspection, past and future, collide in a vibrant, ever-changing landscape.",
+      "type": "location",
+      "name": "Berlin"
+    },
+    {
+      "code": "BIELEFELD",
+      "effects": [
+        "Introduces elements of mystery or questioning reality.",
+        "May signify that something is not quite as it seems or is difficult to locate."
+      ],
+      "story": "Rumored to exist, yet frustratingly elusive. The city of Bielefeld is a place that defies certainty, a whispered joke among those who question the obvious. Its presence suggests a narrative where reality is malleable and the map holds blanks.",
+      "type": "location",
+      "name": "Bielefeld"
+    },
+    {
+      "code": "MUMBAI",
+      "effects": [
+        "Involves themes of spectacle, finance, or navigating extreme contrasts.",
+        "Suggests intense energy, density, and countless unfolding stories."
+      ],
+      "story": "The city of dreams, pulsating with relentless energy and dramatic contrasts. Mumbai is a financial powerhouse and the heart of Bollywood, a place where millions live cheek-by-jowl, each with a story, creating a vibrant, often overwhelming, tapestry of life.",
+      "type": "location",
+      "name": "Mumbai"
+    },
+    {
+      "code": "BOSTON",
+      "effects": [
+        "Connects the story to founding principles, intellectual pursuits, or historical independence.",
+        "Involves themes of education, tradition, or coastal strength."
+      ],
+      "story": "Steeped in revolutionary history and academic prowess. Boston is a city of strong identity, where cobblestone streets meet modern innovation. It represents foundational ideas, intellectual debate, and a resilient spirit.",
+      "type": "location",
+      "name": "Boston"
+    },
+    {
+      "code": "BRAZIL",
+      "effects": [
+        " Expands the scope of the narrative geographically or thematically.",
+        "Introduces diversity, vibrant energy, or strong emotional currents."
+      ],
+      "story": "A continent of color, rhythm, and vast landscapes. Brazil is a place of incredible diversity, from the Amazon rainforest to bustling metropolises. Its spirit is passionate and energetic, promising stories as varied and expansive as the land itself.",
+      "type": "location",
+      "name": "Brazil"
+    },
+    {
+      "code": "BRUGES",
+      "effects": [
+        "Infuses the narrative with romance, historical detail, or a sense of stepping back in time.",
+        "Suggests beauty, charm, and perhaps hidden sweetness."
+      ],
+      "story": "Step into a fairytale of canals and cobblestones. Bruges is a perfectly preserved medieval city, exuding charm and romance. Its quiet beauty invites leisurely exploration, promising sweet discoveries around every historic corner.",
+      "type": "location",
+      "name": "Bruges"
+    },
+    {
+      "code": "BUSAN",
+      "effects": [
+        "Involves journeys, especially by sea or across varied terrain.",
+        "Highlights themes of coastal life, connection to nature, or vibrant community."
+      ],
+      "story": "Mountains tumble into the sea in this dynamic port city. Busan is a place of stunning natural beauty and vibrant urban life, famous for its beaches, seafood, and energetic culture. It represents the meeting point of land, sea, and human activity.",
+      "type": "location",
+      "name": "Busan"
+    },
+    {
+      "code": "CHORNOBYL",
+      "effects": [
+        "Reveals hidden consequences or lingering effects from past events.",
+        "May introduce unexpected environmental or psychological challenges."
+      ],
+      "story": "A silent sentinel in the exclusion zone, frozen in a moment of catastrophic consequence. Chernobyl stands as a stark reminder of forces unleashed, its empty streets and abandoned buildings holding a haunting stillness and the potential for unexpected discoveries or lingering dangers.",
+      "type": "location",
+      "name": "Chornobyl"
+    },
+    {
+      "code": "COPENHAGEN",
+      "effects": [
+        "Brings a sense of comfort, well-being ('Hygge'), or aesthetic focus.",
+        "Highlights themes of simple joys, design, or balanced living."
+      ],
+      "story": "Effortlessly charming, powered by bikes and 'Hygge'. Copenhagen is a city of beautiful design, clean living, and a profound appreciation for simple comforts. It represents a balanced approach to life, finding joy in the everyday.",
+      "type": "location",
+      "name": "Copenhagen"
+    },
+    {
+      "code": "DRESDEN",
+      "effects": [
+        "Deals with themes of destruction, rebuilding, or artistic revival.",
+        "Connects to history, tragedy, and the power of restoration."
+      ],
+      "story": "Rising from the ashes, a baroque masterpiece reborn. Dresden is a city marked by history but defined by its resilience and the painstaking restoration of its artistic soul. It represents the power of beauty to endure and return.",
+      "type": "location",
+      "name": "Dresden"
+    },
+    {
+      "code": "DUBLIN",
+      "effects": [
+        "Encourages storytelling, social connection, or engagement with history.",
+        "Brings warmth, wit, and a touch of rebellious spirit."
+      ],
+      "story": "Where words flow as freely as the stout. Dublin is a city of storytellers, history, and vibrant pub culture. Its streets echo with literary giants and the laughter of locals, a place where connection and conversation are paramount.",
+      "type": "location",
+      "name": "Dublin"
+    },
+    {
+      "code": "DUBAI",
+      "effects": [
+        "Involves themes of wealth, rapid development, or constructing new realities.",
+        "Highlights the artificial, the luxurious, or ambition in unexpected environments."
+      ],
+      "story": "A city risen from the desert sands on sheer ambition. Dubai is a place of futuristic skyscrapers, luxurious excess, and rapid transformation. It represents the power of vision and resources to create a world, almost from scratch.",
+      "type": "location",
+      "name": "Dubai"
+    },
+    {
+      "code": "EDINBURGH",
+      "effects": [
+        "Introduces elements of history, drama, or performance.",
+        "Suggests hidden stories or a sense of the theatrical in everyday life."
+      ],
+      "story": "Presided over by a majestic castle, Edinburgh is a city of dramatic landscapes and historical layers. Its alleys and pubs are steeped in stories, its festivals a celebration of performance. A place where history feels like a character itself.",
+      "type": "location",
+      "name": "Edinburgh"
+    },
+    {
+      "code": "ERFURT",
+      "effects": [
+        "Connects the narrative to medieval history or spiritual reflection.",
+        "Brings a sense of quiet charm, tradition, or foundational moments."
+      ],
+      "story": "Cross the Bridge of Merchants into a timeless medieval heart. Erfurt is a city of quiet history, where Martin Luther walked and half-timbered houses stand testament to centuries past. It offers a sense of grounded history and gentle charm.",
+      "type": "location",
+      "name": "Erfurt"
+    },
+    {
+      "code": "FLORENCE",
+      "effects": [
+        "Inspires the creation or appreciation of beauty and art.",
+        "Involves themes of legacy, mastery, or navigating overwhelming beauty."
+      ],
+      "story": "The cradle of the Renaissance, a city where art flows through the very air. Florence is a living masterpiece, demanding awe and contemplation. Its beauty is profound, a testament to human creativity that can be both inspiring and overwhelming.",
+      "type": "location",
+      "name": "Florence"
+    },
+    {
+      "code": "HAMBURG",
+      "effects": [
+        "Facilitates connections and exchange, particularly related to trade or cultural currents.",
+        "May introduce elements of unexpected harmony or underground movements."
+      ],
+      "story": "A bustling port city where the rhythm of the Elbe meets the pulse of urban life. Hamburg is a place of constant arrival and departure, a hub for trade and culture, its warehouses whispering tales of global exchange and its stages echoing with music and creativity.",
+      "type": "location",
+      "name": "Hamburg"
+    },
+    {
+      "code": "HANOI",
+      "effects": [
+        "Brings a sense of nostalgia or introspection.",
+        "Highlights small details, street-level observations, or unexpected encounters."
+      ],
+      "story": "Beneath the hum of scooters, an ancient soul breathes. Hanoi is a city of layered history, French colonial charm blending with Vietnamese tradition. Its narrow streets invite exploration, promising sensory delights and quiet moments of discovery.",
+      "type": "location",
+      "name": "Hanoi"
+    },
+    {
+      "code": "HELSINKI",
+      "effects": [
+        "Brings a sense of calm, clarity, or focused effort.",
+        "Highlights themes of design, resilience, or connection to natural elements."
+      ],
+      "story": "Clean lines meet a crisp, cool air. Helsinki is a city of thoughtful design and quiet strength, nestled between forest and sea. Its calm exterior belies a deep resilience and a profound appreciation for form and function.",
+      "type": "location",
+      "name": "Helsinki"
+    },
+    {
+      "code": "HONG_KONG",
+      "effects": [
+        "Accelerates the pace of events.",
+        "Introduces themes of finance, trade, or unexpected opportunities in a bustling environment."
+      ],
+      "story": "A vertical city of neon and glass, where East and West collide in a whirlwind of commerce and culture. Hong Kong is a place of relentless energy, sudden shifts in fortune, and a million stories unfolding on crowded streets and towering heights.",
+      "type": "location",
+      "name": "Hong Kong"
+    },
+    {
+      "code": "ISTANBUL",
+      "effects": [
+        "Bridges divides (cultural, geographical).",
+        "Involves themes of trade, exchange, or navigating complex layers of history."
+      ],
+      "story": "Where two continents embrace across the Bosphorus. Istanbul is a city of incredible history, blending East and West in a vibrant mosaic of mosques, markets, and palaces. Its layered past and bustling present create a unique, dynamic energy.",
+      "type": "location",
+      "name": "Istanbul"
+    },
+    {
+      "code": "JERUSALEM",
+      "effects": [
+        "Introduces deep spiritual or historical themes.",
+        "Involves navigating complex beliefs, ancient roots, or interconnected faiths."
+      ],
+      "story": "A city unlike any other, holy to billions, built on layers of faith and history. Jerusalem's ancient stones hold profound significance, a place where the spiritual and the earthly are inextricably linked, a crossroads of devotion and complexity.",
+      "type": "location",
+      "name": "Jerusalem"
+    },
+    {
+      "code": "JOHANNESBURG",
+      "effects": [
+        "Introduces themes of wealth, resources, or social complexity.",
+        "Signifies urban transformation or navigating a challenging environment."
+      ],
+      "story": "Born from gold, Johannesburg is a city of raw energy and stark contrasts. It's a place of immense potential and significant challenges, a complex urban landscape constantly in motion, built on resources and resilience.",
+      "type": "location",
+      "name": "Johannesburg"
+    },
+    {
+      "code": "LAS_VEGAS",
+      "effects": [
+        "Introduces risk, chance, and sudden gains or losses.",
+        "Highlights themes of illusion, spectacle, or artificial environments."
+      ],
+      "story": "A shimmering mirage in the desert, built on luck and spectacle. Las Vegas is a city of extremes, where fortunes are made and lost in a blink. It represents the allure and danger of chasing dreams under bright, artificial lights.",
+      "type": "location",
+      "name": "Las Vegas"
+    },
+    {
+      "code": "LEIPZIG",
+      "effects": [
+        "Involves themes of harmony, revolution, or cultural resurgence.",
+        "Connects to music, history, and a vibrant modern energy."
+      ],
+      "story": "A city of music and quiet revolution. Leipzig echoes with the notes of Bach and the footsteps of those who changed history peacefully. Today, it pulses with youthful energy, a place where culture, history, and innovation dance together.",
+      "type": "location",
+      "name": "Leipzig"
+    },
+    {
+      "code": "LONDON",
+      "effects": [
+        "Adds layers of historical depth or complexity to the narrative.",
+        "May introduce unexpected encounters or challenges related to navigation within a vast network."
+      ],
+      "story": "A sprawling metropolis built on centuries of history, where ancient landmarks stand watch over bustling modernity. London is a nexus of culture, finance, and countless intersecting lives, a city of hidden corners and iconic vistas.",
+      "type": "location",
+      "name": "London"
+    },
+    {
+      "code": "MADRID",
+      "effects": [
+        "Involves themes of passion, intense social energy, or artistic expression.",
+        "Suggests grandiosity, history, and a vibrant nocturnal life."
+      ],
+      "story": "The heart of Spain, beating with fiery passion and artistic flair. Madrid is a city of grand boulevards, world-class art, and a nightlife that thrives until dawn. It embodies intensity, culture, and an unyielding spirit.",
+      "type": "location",
+      "name": "Madrid"
+    },
+    {
+      "code": "MOSCOW",
+      "effects": [
+        "Brings powerful forces, historical weight, or challenging dynamics to bear.",
+        "Suggests grandeur, intensity, or hidden complexities."
+      ],
+      "story": "Beneath onion domes and Kremlin walls, a powerful heart beats. Moscow is a city of immense history and enduring strength, a place where grand architecture and layered past create an atmosphere of intensity and deep significance.",
+      "type": "location",
+      "name": "Moscow"
+    },
+    {
+      "code": "MUMBAI",
+      "effects": [
+        "Involves themes of spectacle, finance, or navigating extreme contrasts.",
+        "Suggests intense energy, density, and countless unfolding stories."
+      ],
+      "story": "The city of dreams, pulsating with relentless energy and dramatic contrasts. Mumbai is a financial powerhouse and the heart of Bollywood, a place where millions live cheek-by-jowl, each with a story, creating a vibrant, often overwhelming, tapestry of life.",
+      "type": "location",
+      "name": "Mumbai"
+    },
+    {
+      "code": "NAIROBI",
+      "effects": [
+        "Signifies a gateway to a larger journey or wilderness.",
+        "Highlights themes of urban challenge, resilience, or stark contrasts."
+      ],
+      "story": "The green city in the sun, a dynamic hub where urban sprawl meets the edge of the wild. Nairobi is a place of bustling energy, rapid growth, and the ever-present call of the safari. It represents a threshold between civilization and nature.",
+      "type": "location",
+      "name": "Nairobi"
+    },
+    {
+      "code": "NEW_YORK",
+      "effects": [
+        "Introduces multiple converging plot lines or unexpected character interactions.",
+        "Signifies rapid changes in fortune or status."
+      ],
+      "story": "A concrete galaxy of towering ambition and endless possibility. New York pulses with relentless energy, a melting pot where millions chase dreams. Every street corner holds a potential encounter, every moment a chance for life to change dramatically.",
+      "type": "location",
+      "name": "New York"
+    },
+    {
+      "code": "PRAGUE",
+      "effects": [
+        "Infuses the narrative with romance, history, or a touch of the mystical.",
+        "Suggests hidden depths or ancient secrets beneath a beautiful surface."
+      ],
+      "story": "Spire-laden and ancient, Prague feels plucked from a fairytale. Its cobblestone streets and ancient bridges whisper tales of kings, alchemists, and magic. A city where history feels alive and every corner holds a hidden wonder.",
+      "type": "location",
+      "name": "Prague"
+    },
+    {
+      "code": "ROME",
+      "effects": [
+        "Connects the story to deep, ancient roots or fate.",
+        "Involves themes of enduring legacy, beauty, or navigating complex, sometimes crumbling, systems."
+      ],
+      "story": "The Eternal City, a living museum where modern life flows around ancient ruins. Rome is a place of overwhelming history, passionate life, and a sense that fate is woven into the very stones. Beauty and chaos coexist in timeless grandeur.",
+      "type": "location",
+      "name": "Rome"
+    },
+    {
+      "code": "SAN_FRANCISCO",
+      "effects": [
+        "Involves navigating complex terrain (hills, social dynamics).",
+        "Highlights themes of innovation, shifting perspectives (fog), or liberal ideas."
+      ],
+      "story": "Hills meeting the bay under a shroud of fog. San Francisco is a city of iconic views, innovative spirit, and a history of challenging norms. It invites diverse perspectives and requires navigating its unique, often steep, landscape.",
+      "type": "location",
+      "name": "San Francisco"
+    },
+    {
+      "code": "SEATTLE",
+      "effects": [
+        " Encourages introspection or quiet moments.",
+        "May introduce elements of innovation, technology, or natural beauty."
+      ],
+      "story": "Washed by persistent drizzle, Seattle is a city where evergreen nature meets digital innovation. Coffee fuels introspection, while the scent of pine hangs in the cool, damp air. A place for quiet thought and sudden technological leaps.",
+      "type": "location",
+      "name": "Seattle"
+    },
+    {
+      "code": "SHEFFIELD",
+      "effects": [
+        "Highlights themes of resilience, industry, or underground culture.",
+        "Suggests grit, determination, and unexpected creativity."
+      ],
+      "story": "Forged in steel, set among rolling hills. Sheffield carries the legacy of its industrial past while nurturing a vibrant modern scene. It's a city of grit, creativity, and a down-to-earth spirit shaped by work and landscape.",
+      "type": "location",
+      "name": "Sheffield"
+    },
+    {
+      "code": "STOCKHOLM",
+      "effects": [
+        "Involves navigation, connectivity (especially water-based), or collaborative efforts.",
+        "Highlights themes of design, balance, or innovation within a natural setting."
+      ],
+      "story": "Built across fourteen islands, linked by bridges and waterways. Stockholm is a city of balanced beauty, where sleek design meets stunning archipelago nature. Life flows around the water, serene yet constantly connected and innovative.",
+      "type": "location",
+      "name": "Stockholm"
+    },
+    {
+      "code": "TBILISI",
+      "effects": [
+        "Blends different cultures and histories.",
+        "Introduces themes of resilience, hospitality, or rejuvenation (like sulfur baths)."
+      ],
+      "story": "Nestled in a dramatic gorge, where Europe meets Asia. Tbilisi is a city of warm hospitality, ancient churches, and colorful balconies. It's a place of resilience, layered history, and a unique spirit forged at the crossroads of cultures.",
+      "type": "location",
+      "name": "Tbilisi"
+    },
+    {
+      "code": "TEHRAN",
+      "effects": [
+        "May reveal hidden truths or connections to ancient histories.",
+        "Suggests layers of complexity beneath the surface."
+      ],
+      "story": "A city built on empires, where the whispers of ancient Persia meet the pulse of modern life. Tehran holds secrets in its alleys and stories in its mountains, a place where past and present intertwine in intricate, sometimes surprising, ways.",
+      "type": "location",
+      "name": "Tehran"
+    },
+    {
+      "code": "TOKYO",
+      "effects": [
+        "Accelerates the narrative with intense energy and change.",
+        "Introduces themes of technology, tradition vs. future, or navigating dense complexity."
+      ],
+      "story": "A futuristic metropolis where ancient traditions stand alongside cutting-edge technology. Tokyo is a city of incredible density and relentless energy, a place where countless experiences are packed into every moment, blending the serene and the hyper-modern.",
+      "type": "location",
+      "name": "Tokyo"
+    },
+    {
+      "code": "VENICE",
+      "effects": [
+        "Involves unique navigation and movement.",
+        "Highlights themes of beauty, romance, history, and perhaps vulnerability or decay."
+      ],
+      "story": "Floating on water, a city built on art and history, slowly sinking back into the lagoon. Venice is a place of unparalleled beauty and fragile romance, where time seems to move differently, inviting exploration down silent canals and ancient alleys.",
+      "type": "location",
+      "name": "Venice"
+    },
+    {
+      "code": "VERSAILLES",
+      "effects": [
+        "Introduces themes of power, opulence, or the consequences of extravagance.",
+        "Connects to royal history and intricate social structures."
+      ],
+      "story": "A palace and gardens built for a Sun King, dripping with gold and history. Versailles represents the height of imperial power and extravagant beauty. Its manicured perfection hides whispers of court intrigue and the weight of history.",
+      "type": "location",
+      "name": "Versailles"
+    },
+    {
+      "code": "VIENNA",
+      "effects": [
+        "Brings historical gravitas and themes of empire or legacy.",
+        "Involves artistic expression (especially music) or refined social interactions."
+      ],
+      "story": "Imperial grandeur and musical mastery define Vienna. This city of palaces, opera houses, and elegant cafes whispers tales of emperors and composers. It represents a world of refined culture, historical depth, and artistic brilliance.",
+      "type": "location",
+      "name": "Vienna"
+    },
+    {
+      "code": "ZERMATT",
+      "effects": [
+        "Involves overcoming challenges (physical or metaphorical).",
+        "Highlights themes of natural beauty, aspiration, or seeking elevated perspectives."
+      ],
+      "story": "Nestled at the foot of the iconic Matterhorn, Zermatt is a place defined by its majestic peak. It speaks of aspiration, challenge, and the awe-inspiring power of nature. A destination for those who seek heights, literal or figurative.",
+      "type": "location",
+      "name": "Zermatt"
+    },
+    {
+      "code": "99_PROBLEMS",
+      "effects": [
+        "Signifies numerous challenges and obstacles.",
+        "Focuses attention on a central, persistent issue.",
+        "Tests resilience and problem-solving ability."
+      ],
+      "story": "When troubles mount, this card appears as a reminder that challenges are plentiful, but the core struggle often lies in overcoming one significant hurdle. It calls for perseverance and wit to navigate a sea of complications.",
+      "type": "melody",
+      "name": "99 Problems"
+    },
+    {
+      "code": "AINT_NO_SUNSHINE",
+      "effects": [
+        "Signifies absence, loss, or profound sadness.",
+        "Highlights dependence on something or someone missing.",
+        "Brings a feeling of melancholy or incompleteness."
+      ],
+      "story": "When the light disappears, this card reflects the void left behind. It embodies the deep sense of loss and sadness that comes with the absence of a vital presence, casting a shadow over the narrative until that light returns.",
+      "type": "melody",
+      "name": "Ain't No Sunshine"
+    },
+    {
+      "code": "ALL_ALONG_THE_WATCHTOWER",
+      "effects": [
+        "Highlights different perspectives and impending change.",
+        "Suggests observation and prophecy.",
+        "Indicates that events are unfolding as predicted, though perhaps interpreted differently."
+      ],
+      "story": "From elevated vantage points, figures watch as events unfold below, each seeing the same signs but interpreting them through their own lens. This card speaks to inevitable changes, warnings unheeded, and the varied perspectives from which destiny can be observed.",
+      "type": "melody",
+      "name": "All Along The Watchtower"
+    },
+    {
+      "code": "ARE_FRIENDS_ELECTRIC",
+      "effects": [
+        "Questions the nature of connection and authenticity.",
+        "May involve unusual or artificial relationships.",
+        "Suggests communication through unconventional means."
+      ],
+      "story": "In a world increasingly mediated by technology, this card asks about the genuine nature of our bonds. It highlights connections that might feel artificial or unexpected, exploring how we relate to each other in a digitally-interconnected or unconventional landscape.",
+      "type": "melody",
+      "name": "Are Friends Electric"
+    },
+    {
+      "code": "BITCH",
+      "effects": [
+        "Introduces defiance and strong will.",
+        "Challenges existing power structures or expectations."
+      ],
+      "story": "Unapologetically bold, this card embodies fierce independence and a refusal to back down. It represents speaking truth, even when unpopular, and asserting one's power against opposition.",
+      "type": "melody",
+      "name": "Bitch"
+    },
+    {
+      "code": "BORN_IN_THE_USA",
+      "effects": [
+        "Connects to themes of origin and identity.",
+        "May highlight patriotism or disillusionment.",
+        "Suggests a return to roots or a journey of self-discovery."
+      ],
+      "story": "More than just a birthplace, this card speaks to the complex tapestry of identity tied to a nation. It can represent a deep-seated connection to one's homeland, or the challenging realities faced within it, prompting reflection on belonging and journey.",
+      "type": "melody",
+      "name": "Born In The Usa"
+    },
+    {
+      "code": "BROTHERS_IN_ARMS",
+      "effects": [
+        "Fosters unity and mutual support.",
+        "Strengthens bonds in times of adversity."
+      ],
+      "story": "A testament to unwavering loyalty and shared struggle. This card signifies camaraderie forged in the crucible of hardship, where allies stand shoulder to shoulder against overwhelming odds.",
+      "type": "melody",
+      "name": "Brothers In Arms"
+    },
+    {
+      "code": "EAT_THE_RICH",
+      "effects": [
+        "Introduces themes of social inequality or rebellion.",
+        "May signify a dramatic shift in resources or power dynamics."
+      ],
+      "story": "A stark commentary on societal imbalance, this card represents a desire to overturn established hierarchies. It can point to simmering resentment, calls for redistribution, or a dramatic confrontation between the privileged and the dispossessed.",
+      "type": "melody",
+      "name": "Eat The Rich"
+    },
+    {
+      "code": "FEAR_OF_THE_DARK",
+      "effects": [
+        "Introduces primal fears and anxieties.",
+        "Highlights threats that are unseen or unknown.",
+        "Challenges characters to confront their deepest dreads."
+      ],
+      "story": "When shadows lengthen, this card brings forth the oldest fears. It speaks of the unknown, the hidden dangers lurking just out of sight, and the challenge of confronting the anxieties that reside in the deepest parts of the psyche.",
+      "type": "melody",
+      "name": "Fear Of The Dark"
+    },
+    {
+      "code": "HELLS_BELLS",
+      "effects": [
+        "Warns of impending danger or dark forces.",
+        "Signifies a powerful and often sinister arrival.",
+        "Creates an atmosphere of foreboding or dramatic tension."
+      ],
+      "story": "The sound that signals doom, this card announces the approach of something formidable and often malevolent. It serves as a dramatic warning, increasing tension and suggesting that powerful, perhaps supernatural, forces are at play.",
+      "type": "melody",
+      "name": "Hells Bells"
+    },
+    {
+      "code": "HIGHWAY_TO_HELL",
+      "effects": [
+        "Indicates a dangerous or destructive path.",
+        "Warns of irreversible choices and temptations.",
+        "Suggests a journey with a grim destination."
+      ],
+      "story": "A road paved with bad intentions, this card represents a trajectory towards ruin. It warns against succumbing to destructive impulses or making choices that lead down a path with inevitable negative consequences, no matter how enticing the journey might seem.",
+      "type": "melody",
+      "name": "Highway To Hell"
+    },
+    {
+      "code": "HOTEL_CALIFORNIA",
+      "effects": [
+        "Represents a situation that is difficult or impossible to leave.",
+        "Highlights themes of allure, entrapment, or inescapable luxury.",
+        "May involve nostalgia or a feeling of being caught between worlds."
+      ],
+      "story": "A place of paradoxical beauty and captivity, this card signifies a situation you can check into, but never truly escape. It speaks of alluring circumstances that becomes binding, leaving one feeling trapped despite the outward appearance of freedom.",
+      "type": "melody",
+      "name": "Hotel California"
+    },
+    {
+      "code": "KNOCKIN_ON_HEAVENS_DOOR",
+      "effects": [
+        "Signifies approaching an end or a transition.",
+        "Represents seeking peace or release.",
+        "May indicate a final threshold or moments of reflection."
+      ],
+      "story": "At the edge of something profound, this card embodies the journey towards a final destination or a significant transition. It can represent a search for peace, a culmination of events, or the quiet moments before crossing a critical boundary.",
+      "type": "melody",
+      "name": "Knockin' On Heaven's Door"
+    },
+    {
+      "code": "LADY_IN_RED",
+      "effects": [
+        "Represents a striking or captivating presence.",
+        "Draws immediate attention and focus.",
+        "May signify passion, beauty, or a memorable encounter."
+      ],
+      "story": "A figure who commands the eye, this card embodies undeniable presence and allure. Appearing in a moment of significance, she captures attention and injects passion or drama into the scene, leaving a lasting impression.",
+      "type": "melody",
+      "name": "Lady In Red"
+    },
+    {
+      "code": "LONELY_BOY",
+      "effects": [
+        "Signifies isolation and solitude.",
+        "May involve introspection or a search for connection.",
+        "Highlights feelings of being misunderstood or alone."
+      ],
+      "story": "In a crowd or by himself, this card embodies the experience of solitude. It can represent physical isolation, emotional loneliness, or a period of introspection where one grapples with feelings of being disconnected from others.",
+      "type": "melody",
+      "name": "Lonely Boy"
+    },
+    {
+      "code": "MAD_WORLD",
+      "effects": [
+        "Reflects feelings of disillusionment and strangeness.",
+        "Portrays the environment as chaotic or nonsensical.",
+        "Suggests feeling alienated or out of place."
+      ],
+      "story": "When reality seems bizarre and incomprehensible, this card captures the feeling of being adrift in a chaotic existence. It speaks to a perception of the world as illogical or overwhelming, leaving individuals feeling disconnected and bewildered.",
+      "type": "melody",
+      "name": "Mad World"
+    },
+    {
+      "code": "MANEATER",
+      "effects": [
+        "Introduces a seductive and dangerous threat.",
+        "Involves relationships that consume or exploit.",
+        "Warns against irresistible but harmful allure."
+      ],
+      "story": "Charm masking danger, this card represents a force that draws others in only to consume or destroy them. It speaks of irresistible allure that leads to ruin, highlighting predatory relationships or situations where one is at risk of being devoured.",
+      "type": "melody",
+      "name": "Maneater"
+    },
+    {
+      "code": "MILES_AWAY",
+      "effects": [
+        "Represents significant physical or emotional distance.",
+        "Highlights themes of separation, longing, or inaccessibility.",
+        "Suggests a gap that needs to be bridged."
+      ],
+      "story": "Whether across continents or emotional divides, this card signifies a great distance. It embodies the feeling of separation, the yearning for what is far off, or the challenge of connecting across significant physical or emotional space.",
+      "type": "melody",
+      "name": "Miles Away"
+    },
+    {
+      "code": "MONEY_FOR_NOTHING",
+      "effects": [
+        "Involves easy or unexpected gains.",
+        "Questions the value of effort or traditional work.",
+        "May offer a critique of economics or reward systems."
+      ],
+      "story": "Rewards received without apparent effort, this card points to windfalls, lucky breaks, or questioning conventional wisdom about earning. It can highlight situations where value seems disconnected from labor, or where critique is leveled against systems of wealth.",
+      "type": "melody",
+      "name": "Money For Nothing"
+    },
+    {
+      "code": "MY_WAY",
+      "effects": [
+        "Emphasizes independence and self-reliance.",
+        "Introduces defiance against conformity.",
+        "Highlights living life on one's own terms."
+      ],
+      "story": "A declaration of autonomy, this card celebrates individuality and a refusal to follow the crowd. It represents charting one's own course, making independent choices, and standing firm in one's personal convictions, even when faced with pressure to conform.",
+      "type": "melody",
+      "name": "My Way"
+    },
+    {
+      "code": "NIGHT_MOVES",
+      "effects": [
+        "Involves secretive or clandestine actions.",
+        "Connects to past memories or youthful experiences.",
+        "Suggests events happening under the cover of darkness or discretion."
+      ],
+      "story": "Under the cloak of night, hidden actions and youthful escapades unfold. This card speaks of things that happen away from plain sight, secret plans, or nostalgic recollections of events that transpired in the shadows or during formative years.",
+      "type": "melody",
+      "name": "Night Moves"
+    },
+    {
+      "code": "PAINT_IT_BLACK",
+      "effects": [
+        "Reflects deep despair, loss, or mourning.",
+        "Suggests a transformation of perspective to see only negativity.",
+        "Creates an atmosphere of overwhelming sadness."
+      ],
+      "story": "When grief consumes, the world loses its color. This card embodies profound sorrow and the feeling of seeing everything through the lens of loss. It represents a state where only darkness prevails, marking a period of mourning or deep despair.",
+      "type": "melody",
+      "name": "Paint It Black"
+    },
+    {
+      "code": "PLAY_WITH_FIRE",
+      "effects": [
+        "Warns against taking dangerous risks.",
+        "Highlights actions with potential severe consequences.",
+        "Suggests engaging with volatile or unpredictable elements."
+      ],
+      "story": "Engaging with known danger, this card is a stark warning about the perils of reckless behavior. It represents situations where one is willingly interacting with volatile forces, suggesting that getting burned is a very real possibility.",
+      "type": "melody",
+      "name": "Play With Fire"
+    },
+    {
+      "code": "RUMOUR_HAS_IT",
+      "effects": [
+        "Introduces speculation and gossip.",
+        "Highlights the spread of unreliable information.",
+        "Affects reputation or perception based on hearsay."
+      ],
+      "story": "Whispers in the air, this card signifies the power of unfounded stories and speculation. It represents the spread of gossip, the impact of reputation based on rumor, and the difficulty of discerning truth from fabrication in a world of buzzing innuendo.",
+      "type": "melody",
+      "name": "Rumour Has It"
+    },
+    {
+      "code": "SHAPE_OF_MY_HEART",
+      "effects": [
+        "Reveals inner self, hidden intentions, or vulnerability.",
+        "Explores the core nature or true feelings of a character.",
+        "Suggests looking beyond the surface."
+      ],
+      "story": "More than outward appearance, this card delves into the hidden core of a person. It represents the true nature of one's heart, the secret motivations, or the underlying vulnerability that shapes who they are beneath the surface.",
+      "type": "melody",
+      "name": "Shape Of My Heart"
+    },
+    {
+      "code": "SIMPLE_MAN",
+      "effects": [
+        "Focuses on basic values and humility.",
+        "Suggests finding contentment in simplicity.",
+        "Highlights an uncomplicated life or character."
+      ],
+      "story": "In a world of complexity, this card finds strength in the fundamental. It represents a character or situation grounded in simple truths, valuing honesty, humility, and the quiet dignity of an uncomplicated existence.",
+      "type": "melody",
+      "name": "Simple Man"
+    },
+    {
+      "code": "SOMEBODY_THAT_I_USED_TO_KNOW",
+      "effects": [
+        "Reflects on changed relationships and past connections.",
+        "Highlights a feeling of unfamiliarity with someone once known.",
+        "Suggests drifting apart or fundamental personal change."
+      ],
+      "story": "A poignant reflection on altered bonds, this card speaks to the experience of encountering someone from the past who now feels like a stranger. It embodies the sadness of lost connection and the realization that people can change in profound ways.",
+      "type": "melody",
+      "name": "Somebody That I Used To Know"
+    },
+    {
+      "code": "SOMEONE_NEW",
+      "effects": [
+        "Introduces a new person into the narrative.",
+        "May signify fresh perspectives or unexpected encounters.",
+        "Often relates to new romantic possibilities."
+      ],
+      "story": "A fresh face enters the scene, bringing with them the potential for new dynamics, unexpected turns, and perhaps the spark of romance. This card represents the arrival of an individual who will impact the existing story in unforeseen ways.",
+      "type": "melody",
+      "name": "Someone New"
+    },
+    {
+      "code": "STAIRWAY_TO_HEAVEN",
+      "effects": [
+        "Represents a spiritual journey or aspiration.",
+        "Suggests a gradual ascent towards enlightenment or a lofty goal.",
+        "May signify ultimate reward or transcendence."
+      ],
+      "story": "A path leading upwards, this card embodies a journey of growth, learning, or spiritual enlightenment. It represents the process of striving towards a higher state or a significant achievement, suggesting that the ascent is as important as the destination.",
+      "type": "melody",
+      "name": "Stairway To Heaven"
+    },
+    {
+      "code": "STARMAN",
+      "effects": [
+        "Involves external or alien influence.",
+        "Suggests hope, change, or perspective from afar.",
+        "May introduce elements of the cosmic or extraordinary."
+      ],
+      "story": "From beyond the familiar sky, a figure arrives, bringing with them new perspectives, unusual abilities, or a catalyst for change. This card signifies intervention from an outside force, often benevolent or intended to shake up the status quo.",
+      "type": "melody",
+      "name": "Starman"
+    },
+    {
+      "code": "TELEPHONE",
+      "effects": [
+        "Highlights communication issues or opportunities.",
+        "May signify a crucial message or missed connection.",
+        "Relates to the transfer of information across distance."
+      ],
+      "story": "A device that connects worlds, this card represents the flow of information, the challenges of communication, or a pivotal message waiting to be received or sent. It can highlight misunderstandings, vital news, or the impact of technology on connection.",
+      "type": "melody",
+      "name": "Telephone"
+    },
+    {
+      "code": "THE_DEVIL_YOU_KNOW",
+      "effects": [
+        "Relates to dealing with familiar evils or known dangers.",
+        "Suggests choosing a predictable threat over an unknown one.",
+        "Highlights the comfort or discomfort found in routine negative situations."
+      ],
+      "story": "Better the devil you know than the devil you don't. This card embodies the choice to face a recognized problem or adversary, even if unpleasant, rather than stepping into the uncertainty of the unknown. It speaks to familiar struggles and predictable consequences.",
+      "type": "melody",
+      "name": "The Devil You Know"
+    },
+    {
+      "code": "THE_MAN_WHO_SOLD_THE_WORLD",
+      "effects": [
+        "Involves a profound shift in identity or values.",
+        "Suggests a character is not who they appear to be.",
+        "May signify a metaphorical or literal 'selling out'."
+      ],
+      "story": "A figure shrouded in mystery, this card represents a fundamental change in identity, perhaps for gain or survival. It speaks to shedding one's past, embracing a new persona, or the unsettling feeling that someone has traded their true self for something else.",
+      "type": "melody",
+      "name": "The Man Who Sold The World"
+    },
+    {
+      "code": "THE_WINNER_TAKES_IT_ALL",
+      "effects": [
+        "Focuses on the consequences of competition or conflict.",
+        "Signifies a decisive outcome with clear winners and losers.",
+        "Highlights themes of sacrifice and the cost of victory."
+      ],
+      "story": "When the dust settles, one stands triumphant while others face defeat. This card embodies the finality of competition and the often-high price paid for ultimate victory, leaving little room for compromise or shared success.",
+      "type": "melody",
+      "name": "The Winner Takes It All"
+    },
+    {
+      "code": "TIME",
+      "effects": [
+        "Represents the passage of time and its effects.",
+        "May involve reflection on the past or future.",
+        "Highlights themes of aging, regret, or missed opportunities."
+      ],
+      "story": "The relentless march of moments, this card speaks to the ephemeral nature of existence and the impact of time on events and individuals. It can prompt reflection on decisions made, opportunities lost, or the inevitable changes brought by the passage of days.",
+      "type": "melody",
+      "name": "Time"
+    },
+    {
+      "code": "TROUBLE_IS_A_FRIEND",
+      "effects": [
+        "Suggests a complex relationship with problems or chaos.",
+        "Highlights finding comfort or familiarity in difficult situations.",
+        "Embodies a character who is drawn to or handles trouble with ease."
+      ],
+      "story": "For some, difficulty is not an adversary but a companion. This card represents a character or situation where trouble is embraced, navigated with surprising ease, or even sought out, highlighting an unconventional relationship with chaos and adversity.",
+      "type": "melody",
+      "name": "Trouble Is A Friend"
+    },
+    {
+      "code": "UNDER_PRESSURE",
+      "effects": [
+        "Highlights intense stress and challenges.",
+        "Tests resilience and ability to cope.",
+        "May signify a breaking point or a moment of transformation."
+      ],
+      "story": "When the weight of the world feels unbearable, this card embodies the experience of facing intense pressure. It represents a moment where one's limits are tested, potentially leading to collapse or a breakthrough forged in hardship.",
+      "type": "melody",
+      "name": "Under Pressure"
+    },
+    {
+      "code": "WE_DIDNT_START_THE_FIRE",
+      "effects": [
+        "Relates to inheriting existing problems or conflicts.",
+        "Highlights themes of blame, historical context, or systemic issues.",
+        "Suggests dealing with consequences of past events not initiated by the current generation."
+      ],
+      "story": "Facing a chaotic situation that wasn't their making, this card represents dealing with inherited problems or conflicts. It speaks to the feeling of being thrust into existing turmoil and grappling with the historical context or systemic issues that led to it.",
+      "type": "melody",
+      "name": "We Didn't Start The Fire"
+    },
+    {
+      "code": "WICKED_ONES",
+      "effects": [
+        "Involves characters with questionable morals or intentions.",
+        "Suggests embracing darker impulses or shared transgression.",
+        "Highlights figures who operate outside conventional norms."
+      ],
+      "story": "Operating in shades of grey or outright darkness, this card represents individuals who are mischievous, morally ambiguous, or actively embrace a wicked path. It speaks to figures who challenge norms and find camaraderie in shared defiance or questionable deeds.",
+      "type": "melody",
+      "name": "Wicked Ones"
+    },
+    {
+      "code": "YOU_AND_ME_AND_THE_DEVIL_MAKES_THREE",
+      "effects": [
+        "Introduces a destructive third party or influence.",
+        "Highlights temptation, negative dynamics in a relationship, or a perilous alliance.",
+        "Warns of harmful external forces impacting a bond."
+      ],
+      "story": "When a third element enters a relationship, bringing chaos or temptation, this card appears. It signifies a destructive influence, a perilous alliance, or the unsettling presence of a force that corrupts or challenges the bond between two.",
+      "type": "melody",
+      "name": "You And Me And The Devil Makes Three"
+    },
+    {
+      "code": "COMFORTABLY_NUMB",
+      "effects": [
+        "Signifies detachment or emotional distance.",
+        "Suggests a state of altered perception or reality.",
+        "May highlight a struggle between inner feelings and outward appearance."
+      ],
+      "story": "A veil descends, muffling the sharp edges of reality. This card embodies a state of emotional disconnection, where feelings are distant and the world feels muted. It can represent a coping mechanism or a profound sense of alienation, a quiet existence behind a barrier.",
+      "type": "melody",
+      "name": "Comfortably Numb"
+    },
+    {
+      "code": "WANTED_DEAD_OR_ALIVE",
+      "effects": [
+        "Introduces high stakes and pursuit.",
+        "Signifies being a target or having a bounty.",
+        "Highlights themes of survival and being on the run."
+      ],
+      "story": "With a price on their head, the subject of this card is in constant peril. It represents a situation of intense pursuit, where one is either the hunter or the hunted, navigating a world where every shadow might conceal a threat. Survival is paramount.",
+      "type": "melody",
+      "name": "Wanted Dead Or Alive"
+    },
+    {
+      "code": "COLD_AS_ICE",
+      "effects": [
+        "Signifies emotional unavailability or harshness.",
+        "Introduces a lack of empathy or warmth.",
+        "May indicate a situation characterized by indifference or cruelty."
+      ],
+      "story": "A chilling presence, this card embodies a lack of warmth, empathy, or emotional response. It represents a person or situation marked by coldness, indifference, or even cruelty, where feelings are frozen and compassion is absent.",
+      "type": "melody",
+      "name": "Cold As Ice"
+    },
+    {
+      "code": "FAST_CAR",
+      "effects": [
+        "Represents escape, freedom, or rapid change.",
+        "Highlights themes of youth, dreams, or leaving something behind.",
+        "Suggests a journey towards a different life."
+      ],
+      "story": "Windows down, the world blurring past, this card embodies the yearning for escape and the pursuit of a better life. It signifies a journey driven by dreams and a desire to leave behind limitations, representing freedom, youth, and the open road towards the unknown.",
+      "type": "melody",
+      "name": "Fast Car"
+    },
+    {
+      "code": "TIME_IN_A_BOTTLE",
+      "effects": [
+        "Reflects on the fleeting nature of time.",
+        "Highlights a desire to preserve moments or memories.",
+        "Suggests a focus on appreciating the present or regretting the past."
+      ],
+      "story": "A poignant reminder of how quickly moments slip away, this card embodies the wish to capture and hold onto time. It speaks to nostalgia, the preciousness of fleeting experiences, and the bittersweet realization that some moments, however cherished, cannot be kept forever.",
+      "type": "melody",
+      "name": "Time In A Bottle"
+    },
+    {
+      "code": "HALF_A_WORLD_AWAY",
+      "effects": [
+        "Signifies distance and longing.",
+        "Highlights themes of separation or connection across vast space.",
+        "Suggests a desire for closeness despite physical barriers."
+      ],
+      "story": "Across oceans and continents, a connection endures. This card embodies the feeling of being separated by a great distance, yet still bound by emotion or memory. It speaks to longing, the challenges of remote relationships, and the hope of bridging the gap.",
+      "type": "melody",
+      "name": "Half A World Away"
+    },
+    {
+      "code": "POP_MUZIK",
+      "effects": [
+        "Introduces widespread influence or trends.",
+        "Highlights themes of popularity, catchy ideas, or cultural shifts.",
+        "Suggests something that is easily accessible or universally recognized."
+      ],
+      "story": "A sound that spreads like wildfire, this card represents ideas, trends, or influences that quickly gain widespread popularity. It speaks to the power of simple, catchy concepts that resonate with many, shaping the cultural landscape.",
+      "type": "melody",
+      "name": "Pop Muzik"
+    },
+    {
+      "code": "IN_THE_GHETTO",
+      "effects": [
+        "Highlights themes of hardship and environment.",
+        "Suggests challenges related to origin or limited opportunity.",
+        "Brings attention to social or economic struggles."
+      ],
+      "story": "Amidst challenging surroundings, a story unfolds. This card brings focus to the difficulties faced in impoverished or marginalized environments. It speaks to the impact of one's origins on their path and the systemic issues that create barriers.",
+      "type": "melody",
+      "name": "In The Ghetto"
+    },
+    {
+      "code": "ITS_A_MANS_MANS_MANS_WORLD",
+      "effects": [
+        "Addresses themes of power dynamics and gender roles.",
+        "Highlights inequalities or struggles for recognition.",
+        "Suggests navigating a system built by and for a dominant group."
+      ],
+      "story": "In a world shaped by one perspective, challenges arise for others. This card speaks to the power imbalances and inequalities that exist within a system dominated by a particular group. It highlights the struggles for recognition and influence in such an environment.",
+      "type": "melody",
+      "name": "It's A Man's Man's Man's World"
+    },
+    {
+      "code": "NO_MILK_TODAY",
+      "effects": [
+        "Signifies unexpected absence or lack.",
+        "Highlights a sudden change in routine or availability.",
+        "Suggests a small, everyday disappointment or disruption."
+      ],
+      "story": "A simple expectation unmet, this card represents a minor disruption or a sudden, unexpected lack of something ordinary. It speaks to small disappointments, changes in routine, or the feeling of being caught slightly off guard by the absence of something familiar.",
+      "type": "melody",
+      "name": "No Milk Today"
+    },
+    {
+      "code": "TAKE_ME_OUT",
+      "effects": [
+        "Encourages action, engagement, or a change of scene.",
+        "Suggests a desire for excitement or connection.",
+        "Highlights themes of invitation or stepping into the spotlight."
+      ],
+      "story": "A call to step out of the ordinary and into the world. This card embodies the desire for engagement, excitement, or a change of environment. It can represent an invitation to participate, a push to be seen, or the urge to break free from routine.",
+      "type": "melody",
+      "name": "Take Me Out"
+    },
+    {
+      "code": "AINT_NO_MOUNTAIN_HIGH_ENOUGH",
+      "effects": [
+        "Signifies unwavering determination and devotion.",
+        "Highlights overcoming obstacles for a connection or goal.",
+        "Suggests a powerful bond that transcends barriers."
+      ],
+      "story": "No obstacle is too great for this connection. This card embodies fierce dedication and the willingness to overcome any challenge to reach someone or achieve a shared goal. It speaks to the power of devotion and a bond that is stronger than any physical or emotional barrier.",
+      "type": "melody",
+      "name": "Ain't No Mountain High Enough"
+    },
+    {
+      "code": "HERE_COMES_THE_SUN",
+      "effects": [
+        "Represents hope, optimism, and a new beginning.",
+        "Signifies the end of hardship or darkness.",
+        "Brings a sense of relief and brighter times ahead."
+      ],
+      "story": "After a period of darkness, light returns. This card embodies the arrival of hope, signaling the end of difficult times and the promise of brighter days. It brings a sense of relief, renewal, and the warmth of optimism after a challenging period.",
+      "type": "melody",
+      "name": "Here Comes The Sun"
+    },
+    {
+      "code": "ROCKSTAR",
+      "effects": [
+        "Introduces fame, excess, or a larger-than-life persona.",
+        "Highlights themes of ambition, performance, or living on the edge.",
+        "Suggests a focus on public image or wild behavior."
+      ],
+      "story": "Living life in the fast lane, this card embodies the allure and potential pitfalls of fame and excess. It speaks to ambition, performance, and a lifestyle that is often public, wild, and pushes boundaries.",
+      "type": "melody",
+      "name": "Rockstar"
+    },
+    {
+      "code": "RENEGADES",
+      "effects": [
+        "Signifies defiance and breaking away from norms.",
+        "Highlights themes of individuality, rebellion, or forming unconventional alliances.",
+        "Suggests operating outside established systems."
+      ],
+      "story": "Refusing to follow the beaten path, this card represents those who forge their own way. It embodies the spirit of rebellion, individuality, and the formation of bonds outside of traditional structures. It speaks to challenging the status quo and finding strength in being different.",
+      "type": "melody",
+      "name": "Renegades"
+    },
+    {
+      "code": "DREAM_ON",
+      "effects": [
+        "Encourages perseverance and holding onto aspirations.",
+        "Highlights the power of dreams and hope.",
+        "Suggests a long-term pursuit despite difficulties."
+      ],
+      "story": "Despite the challenges, the vision remains. This card is a message of encouragement, urging one to hold onto their dreams and continue striving towards them, even when the path is difficult. It speaks to resilience and the enduring power of hope.",
+      "type": "melody",
+      "name": "Dream On"
+    },
+    {
+      "code": "SET_FIRE_TO_THE_RAIN",
+      "effects": [
+        "Signifies intense emotion and dramatic release.",
+        "Highlights a cathartic or destructive expression of feelings.",
+        "Suggests passion that defies logic or circumstance."
+      ],
+      "story": "Emotions so powerful they defy the natural order, this card embodies a dramatic and intense release of feeling. It speaks to passion that is almost destructive, a cathartic expression that goes against reason or circumstance.",
+      "type": "melody",
+      "name": "Set Fire To The Rain"
+    },
+    {
+      "code": "UPTOWN_GIRL",
+      "effects": [
+        "Introduces themes of social class and aspiration.",
+        "Highlights a contrast between different worlds or backgrounds.",
+        "Suggests attraction or movement across social divides."
+      ],
+      "story": "Worlds collide in this encounter. This card highlights the differences and potential connections between individuals from contrasting social backgrounds. It speaks to aspiration, the allure of a different life, and the bridging of social divides.",
+      "type": "melody",
+      "name": "Uptown Girl"
+    },
+    {
+      "code": "WHERE_IS_MY_MIND",
+      "effects": [
+        "Signifies disorientation or confusion.",
+        "Highlights a feeling of being lost or disconnected from reality.",
+        "Suggests a search for clarity or self-awareness."
+      ],
+      "story": "A sense of detachment and confusion prevails. This card embodies the feeling of being disoriented, questioning reality, or feeling disconnected from one's thoughts or surroundings. It speaks to a search for mental clarity or a return to solid ground.",
+      "type": "melody",
+      "name": "Where Is My Mind?"
+    },
+    {
+      "code": "TAKE_ME_TO_CHURCH",
+      "effects": [
+        "Signifies intense devotion or surrender.",
+        "Highlights themes of faith, passion, or finding sacred meaning.",
+        "Suggests a profound emotional or spiritual experience."
+      ],
+      "story": "A powerful plea for transcendence or ultimate devotion. This card embodies intense passion, a search for sacred meaning, or a moment of complete surrender to a feeling or belief. It speaks to finding a place of profound emotional or spiritual significance.",
+      "type": "melody",
+      "name": "Take Me To Church"
+    },
+    {
+      "code": "TWIST_IN_MY_SOBRIETY",
+      "effects": [
+        "Introduces a disruption to clarity or stability.",
+        "Highlights themes of altered perception or unexpected change in perspective.",
+        "Suggests a moment that challenges one's understanding or control."
+      ],
+      "story": "A sudden shift disrupts the expected state of mind. This card embodies a moment that alters perception, challenges stability, or introduces an unexpected change in how one sees the world or a situation. It speaks to a loss of control or a surprising turn.",
+      "type": "melody",
+      "name": "Twist In My Sobriety"
+    },
+    {
+      "code": "YOUNG_FOLKS",
+      "effects": [
+        "Highlights themes of youth, innocence, and budding relationships.",
+        "Suggests carefree interactions and simple connections.",
+        "Represents the beginning of a journey or a new phase."
+      ],
+      "story": "In the springtime of life, connections are made with ease. This card embodies the spirit of youth, simple interactions, and the beginning of new relationships or journeys. It speaks to carefree moments and the potential for growth and discovery together.",
+      "type": "melody",
+      "name": "Young Folks"
+    },
+    {
+      "code": "BOULEVARD_OF_BROKEN_DREAMS",
+      "effects": [
+        "Signifies a path marked by disappointment or unfulfilled aspirations.",
+        "Highlights themes of melancholy, solitude, or searching for connection.",
+        "Suggests a journey through difficult emotional landscapes."
+      ],
+      "story": "A road walked alone, lined with the echoes of what could have been. This card embodies the feeling of navigating a path where hopes have faded and dreams remain out of reach. It speaks to solitude, introspection, and the quiet melancholy of unfulfilled potential.",
+      "type": "melody",
+      "name": "Boulevard Of Broken Dreams"
+    },
+    {
+      "code": "DOWN_ON_THE_CORNER",
+      "effects": [
+        "Introduces themes of community, simple pleasures, or street life.",
+        "Highlights everyday interactions and shared moments.",
+        "Suggests finding joy in ordinary places."
+      ],
+      "story": "Where the rhythm of the street provides the soundtrack to simple joys. This card embodies the spirit of community found in everyday places, highlighting shared moments, impromptu gatherings, and the simple pleasures of connection.",
+      "type": "melody",
+      "name": "Down On The Corner"
+    },
+    {
+      "code": "MONEY_MONEY_MONEY",
+      "effects": [
+        "Focuses on themes of wealth, ambition, or financial desires.",
+        "Highlights the pursuit of material gain.",
+        "May suggest consequences related to wealth or its pursuit."
+      ],
+      "story": "A relentless pursuit of fortune, this card embodies the focus on material wealth and the ambitions driven by financial desires. It speaks to the power and influence of money, and the potential consequences, both positive and negative, that come with its pursuit.",
+      "type": "melody",
+      "name": "Money Money Money"
+    },
+    {
+      "code": "DUNYANIN_EN_GUZEL_KIZI",
+      "effects": [
+        "Introduces a figure of captivating beauty or significance.",
+        "Draws attention and admiration.",
+        "May signify inspiration or a central focus of affection/attention."
+      ],
+      "story": "A presence that embodies exceptional beauty or holds profound significance, captivating all who perceive her. This card represents a figure who becomes a focal point, inspiring admiration, affection, or intense attention.",
+      "type": "melody",
+      "name": "Dunyanın En Guzel Kızı"
+    },
+    {
+      "code": "ADIYAMAN",
+      "effects": [
+        "Connects to ancient history and monumental structures.",
+        "Highlights themes of legacy, elevation, or hidden knowledge (Nemrut Dağı).",
+        "Suggests a journey to uncover the past or gain perspective."
+      ],
+      "story": "Guarded by the colossal heads of ancient gods atop Nemrut Dağı, Adıyaman is a place where history reaches for the sky. This card signifies a connection to deep roots, the weight of legacy, and the journey to uncover forgotten truths or gain a higher perspective.",
+      "type": "location",
+      "name": "Adıyaman"
+    },
+    {
+      "code": "ADANA",
+      "effects": [
+        "Introduces themes of heat, intensity, and vibrant local culture (spicy food, lively markets).",
+        "Highlights resilience and a strong sense of identity.",
+        "Suggests navigating a fiery or passionate environment."
+      ],
+      "story": "Where the heat of the sun meets the spice of the cuisine, Adana pulses with vibrant energy. This card embodies a place of intense flavors, strong character, and a lively atmosphere, suggesting a narrative that is bold, resilient, and full of local color.",
+      "type": "location",
+      "name": "Adana"
+    },
+    {
+      "code": "ALBUQUERQUE",
+      "effects": [
+        "Involves elevation and broad perspectives (hot air balloons, high desert).",
+        "Highlights themes of transition, unique landscapes, or unexpected discoveries.",
+        "Suggests a journey of change or seeing things from a new angle."
+      ],
+      "story": "Floating above the high desert, Albuquerque offers a unique vantage point. This card signifies a place of wide-open spaces, striking landscapes, and moments of elevated perspective. It suggests a journey of transition, unexpected sights, and seeing the world from a different height.",
+      "type": "location",
+      "name": "Albuquerque"
+    },
+    {
+      "code": "BATUMI",
+      "effects": [
+        "Blends coastal relaxation with modern ambition.",
+        "Highlights themes of transformation, unexpected architecture, or a mix of old and new.",
+        "Suggests a place of leisure with surprising elements."
+      ],
+      "story": "Where the Black Sea coast meets a skyline of modern marvels, Batumi is a city in transition. This card embodies a place of seaside charm and ambitious development, suggesting a narrative that blends relaxation with surprising, sometimes unconventional, growth.",
+      "type": "location",
+      "name": "Batumi"
+    },
+    {
+      "code": "BURSA",
+      "effects": [
+        "Connects to historical depth (Ottoman Empire) and natural beauty (Uludağ).",
+        "Highlights themes of legacy, tranquility, or a blend of urban and natural elements.",
+        "Suggests a journey through history or finding peace in nature."
+      ],
+      "story": "At the foot of the majestic Uludağ mountain, Bursa whispers tales of the early Ottoman Empire. This card signifies a place of historical significance and natural serenity, suggesting a narrative that explores legacy, finds tranquility, or balances urban life with the call of the mountains.",
+      "type": "location",
+      "name": "Bursa"
+    },
+    {
+      "code": "COLOGNE",
+      "effects": [
+        "Highlights resilience, cultural vibrancy (Carnival), and historical weight (Cathedral).",
+        "Involves themes of enduring spirit, celebration, or navigating complex history.",
+        "Suggests a place of strong identity and lively traditions."
+      ],
+      "story": "Dominated by its magnificent Cathedral, Cologne is a city with an unbreakable spirit and a love for celebration. This card embodies a place of historical depth, cultural vibrancy, and resilience in the face of adversity, suggesting a narrative that is lively, enduring, and deeply rooted.",
+      "type": "location",
+      "name": "Cologne"
+    },
+    {
+      "code": "GAZIANTEP",
+      "effects": [
+        "Focuses on culinary richness and historical layers (ancient mosaics).",
+        "Highlights themes of tradition, craftsmanship, or uncovering hidden treasures.",
+        "Suggests a journey of sensory discovery or connecting with the past."
+      ],
+      "story": "A city renowned for its exquisite cuisine and ancient artistry, Gaziantep is a feast for the senses and a journey through time. This card signifies a place of rich traditions, skilled craftsmanship, and hidden historical layers waiting to be discovered, suggesting a narrative of sensory delight and connection to the past.",
+      "type": "location",
+      "name": "Gaziantep"
+    },
+    {
+      "code": "IZMIR",
+      "effects": [
+        "Emphasizes a relaxed, modern, and outward-looking perspective (Aegean coast).",
+        "Highlights themes of freedom, connection to the sea, or embracing the present.",
+        "Suggests a breezy, open, and contemporary narrative."
+      ],
+      "story": "Facing the Aegean Sea, İzmir is a city with a relaxed pace and a modern outlook. This card embodies a place of coastal freedom, open horizons, and a vibrant contemporary culture, suggesting a narrative that is breezy, outward-looking, and embraces the present.",
+      "type": "location",
+      "name": "İzmir"
+    },
+    {
+      "code": "KAHRAMANMARAS",
+      "effects": [
+        "Connects to themes of heroism, resilience, and historical struggle.",
+        "Highlights a strong sense of identity forged through hardship.",
+        "Suggests a narrative of overcoming adversity or standing firm."
+      ],
+      "story": "Bearing the title 'Heroic City', Kahramanmaraş is a place defined by its history of resistance and resilience. This card signifies a strong, unyielding spirit forged through hardship, suggesting a narrative that involves overcoming significant challenges and standing firm in one's identity.",
+      "type": "location",
+      "name": "Kahramanmaraş"
+    },
+    {
+      "code": "KASSEL",
+      "effects": [
+        "Introduces themes of art, culture, and periodic transformation (documenta).",
+        "Highlights cycles of change and artistic expression.",
+        "Suggests a narrative influenced by creativity and renewal."
+      ],
+      "story": "Home to the renowned documenta art exhibition, Kassel is a city that periodically reinvents itself through culture. This card signifies a place of artistic significance and cycles of transformation, suggesting a narrative influenced by creativity, renewal, and the power of contemporary expression.",
+      "type": "location",
+      "name": "Kassel"
+    },
+    {
+      "code": "KONYA",
+      "effects": [
+        "Connects to spiritual depth, philosophy (Rumi), and tradition.",
+        "Highlights themes of introspection, seeking wisdom, or historical continuity.",
+        "Suggests a journey of inner discovery or connecting with ancient teachings."
+      ],
+      "story": "The city of Rumi and the whirling dervishes, Konya is a center of spiritual and philosophical depth. This card signifies a place of introspection, ancient wisdom, and enduring tradition, suggesting a narrative that involves seeking inner understanding or connecting with profound historical and spiritual currents.",
+      "type": "location",
+      "name": "Konya"
+    },
+    {
+      "code": "KYIV",
+      "effects": [
+        "Highlights resilience, historical layers, and ongoing transformation.",
+        "Involves themes of enduring spirit, cultural identity, or navigating turbulent times.",
+        "Suggests a narrative of strength and historical significance."
+      ],
+      "story": "An ancient city on the Dnipro, Kyiv is a testament to resilience and layered history. This card signifies a place of deep cultural roots, enduring spirit, and ongoing transformation, suggesting a narrative that involves strength, historical significance, and navigating turbulent times.",
+      "type": "location",
+      "name": "Kyiv"
+    },
+    {
+      "code": "LISBON",
+      "effects": [
+        "Involves themes of exploration, melancholy beauty (Fado), and historical journeys.",
+        "Highlights a sense of saudade, coastal connection, or navigating hilly terrain.",
+        "Suggests a narrative of discovery, longing, and historical echoes by the sea."
+      ],
+      "story": "Seven hills meeting the Tagus, Lisbon is a city of explorers and melancholic melodies. This card embodies a place of historical journeys, a unique coastal beauty, and a sense of 'saudade' – a deep, often wistful, longing. It suggests a narrative of discovery, emotional depth, and historical echoes by the sea.",
+      "type": "location",
+      "name": "Lisbon"
+    },
+    {
+      "code": "MARDIN",
+      "effects": [
+        "Connects to ancient history, layered cultures, and stunning architecture.",
+        "Highlights themes of timelessness, intricate details, or navigating a complex, beautiful environment.",
+        "Suggests a journey through history and diverse influences."
+      ],
+      "story": "Clinging to a hillside overlooking the Mesopotamian plains, Mardin is a city of stone, history, and intertwined cultures. This card signifies a place of timeless beauty, intricate architecture, and diverse influences, suggesting a narrative that journeys through deep history and navigates a complex, stunning environment.",
+      "type": "location",
+      "name": "Mardin"
+    },
+    {
+      "code": "MINSK",
+      "effects": [
+        "Highlights themes of order, reconstruction, and a complex modern identity.",
+        "Suggests navigating a structured environment or uncovering hidden layers beneath a planned surface.",
+        "Involves themes of history and contemporary life."
+      ],
+      "story": "Rebuilt after destruction, Minsk is a city of wide avenues and imposing architecture. This card signifies a place of order, reconstruction, and a complex modern identity, suggesting a narrative that involves navigating a structured environment or uncovering hidden layers beneath a carefully planned surface.",
+      "type": "location",
+      "name": "Minsk"
+    },
+    {
+      "code": "NEWFOUNDLAND",
+      "effects": [
+        "Introduces themes of isolation, rugged beauty, and unique cultural identity.",
+        "Highlights resilience, storytelling, or connection to the sea.",
+        "Suggests a journey to a remote or distinct place."
+      ],
+      "story": "An island apart, Newfoundland is a place of dramatic coastlines, resilient communities, and a rich tradition of storytelling. This card signifies a remote, rugged beauty and a unique cultural identity, suggesting a narrative that involves isolation, resilience, or a journey to a distinct and captivating place.",
+      "type": "location",
+      "name": "Newfoundland"
+    },
+    {
+      "code": "SAN_ANTONIO",
+      "effects": [
+        "Blends historical conflict (The Alamo) with cultural vibrancy (Riverwalk).",
+        "Highlights themes of struggle, heritage, or lively urban spaces.",
+        "Suggests a narrative that balances historical reflection with vibrant contemporary life."
+      ],
+      "story": "Where history echoes by the river's edge, San Antonio blends its past with vibrant present. This card signifies a place of historical struggle and rich cultural life, suggesting a narrative that balances reflection on heritage with the lively energy of its urban spaces.",
+      "type": "location",
+      "name": "San Antonio"
+    },
+    {
+      "code": "ST_PETERSBURG",
+      "effects": [
+        "Introduces themes of imperial grandeur, artistic depth, and historical drama.",
+        "Highlights ambition, beauty, or navigating a city built on water and will.",
+        "Suggests a narrative of grand scale and cultural significance."
+      ],
+      "story": "Built from a swamp by imperial will, St. Petersburg is a city of breathtaking palaces and artistic treasures. This card signifies a place of grand ambition, cultural depth, and historical drama, suggesting a narrative of imperial scale, artistic significance, and navigating a city shaped by powerful forces.",
+      "type": "location",
+      "name": "St. Petersburg"
+    },
+    {
+      "code": "SUMQAYIT",
+      "effects": [
+        "Highlights themes of industrial legacy, transformation, or environmental challenges.",
+        "Suggests a narrative of change, adaptation, or dealing with the past's impact.",
+        "Connects to post-industrial landscapes and community resilience."
+      ],
+      "story": "A city shaped by industry, Sumqayit represents transformation and resilience. This card signifies a place dealing with its industrial legacy and undergoing change, suggesting a narrative that involves adaptation, environmental themes, or the enduring spirit of a community.",
+      "type": "location",
+      "name": "Sumqayit"
+    },
+    {
+      "code": "VAN",
+      "effects": [
+        "Connects to ancient kingdoms, stunning natural beauty (Lake Van), and historical layers.",
+        "Highlights themes of deep history, serenity, or navigating a landscape of contrasts.",
+        "Suggests a journey through time and a connection to powerful natural forces."
+      ],
+      "story": "Dominated by its vast, ancient lake and historical fortress, Van is a place of profound history and natural beauty. This card signifies a connection to ancient kingdoms, serene landscapes, and layered pasts, suggesting a narrative that journeys through time and connects with powerful natural forces.",
+      "type": "location",
+      "name": "Van"
+    },
+    {
+      "code": "VEENENDAAL",
+      "effects": [
+        "Highlights themes of community, local life, or finding significance in the ordinary.",
+        "Suggests a narrative focused on small-town dynamics or personal connections.",
+        "Connects to the everyday and the familiar."
+      ],
+      "story": "A town rooted in community and local life, Veenendaal represents the significance found in the ordinary. This card signifies a place focused on local dynamics and personal connections, suggesting a narrative that explores the everyday and the familiar.",
+      "type": "location",
+      "name": "Veenendaal"
+    }
+  ]
+}

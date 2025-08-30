@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Ribbon of Fate Tied Across the Earth</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        html, body { margin: 0; padding: 0; height: 100%; }
+        #map { width: 100%; height: 100%; }
+        #overlay {
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0,0,0,0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        }
+        #start-btn {
+          font-size: 1.5rem;
+          padding: 1rem 2rem;
+          background: gold;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+        .leaflet-popup-content-wrapper {
+          background: linear-gradient(#fdf1c7, #e8d0a9);
+          border: 2px solid #c2a66b;
+          border-radius: 8px;
+        }
+        .leaflet-popup-tip {
+          background: linear-gradient(#fdf1c7, #e8d0a9);
+        }
+        .flip-card {
+          width: 120px; height: 180px; perspective: 1000px; cursor: pointer; flex-shrink: 0;
+        }
+        .flip-card-inner {
+          position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+          position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+        }
+        .flip-card-back { transform: rotateY(180deg); }
+        .flip-card-front img, .flip-card-back img {
+          width: 100%; height: 100%; object-fit: cover; border-radius: 4px; display: block;
+        }
+        .popup-container { display: flex; align-items: flex-start; }
+        .popup-text { margin-left: 12px; text-align: left; }
+        .popup-text strong { display: block; margin-bottom: 4px; }
+        .popup-text em { display: block; margin-bottom: 6px; font-style: italic; }
+        .popup-text ul { padding-left: 18px; margin: 0; }
+        .route-line {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: drawLine 2s ease forwards;
+        }
+        @keyframes drawLine {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="overlay"><button id="start-btn">Begin Journey</button></div>
+<audio id="ping" preload="auto" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg"></audio>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    (async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let cardParam = urlParams.get('cards');
+      const [loreData, coordinates, cardsData] = await Promise.all([
+        fetch('lore.json').then(r => r.json()),
+        fetch('coordinates.json').then(r => r.json()),
+        fetch('cards.json').then(r => r.json())
+      ]);
+
+      const lore = {};
+      for (const c of loreData.cards) lore[c.code] = c;
+
+      const validCardCodes = Object.keys(coordinates).filter(code => lore[code]);
+      const getCardType = (code) => {
+        if (cardsData.f8Cards.some(c => c.code === code)) return 'f8';
+        if (cardsData.locationCards.some(c => c.code === code)) return 'location';
+        if (cardsData.melodyCards.some(c => c.code === code)) return 'melody';
+        return 'standard';
+      }
+
+      if (!cardParam) {
+        const sample = [];
+        const sampleLen = 3 + Math.floor(Math.random() * 7);
+        while (sample.length < sampleLen) {
+          const pick = validCardCodes[Math.floor(Math.random() * validCardCodes.length)];
+          if (!sample.includes(pick)) sample.push(pick);
+        }
+        const newUrl = `${window.location.pathname}?cards=${sample.join('-')}`;
+        window.location.href = newUrl;
+        return;
+      }
+
+      const cardCodes = cardParam.split('-').map(c => c.toUpperCase());
+      const filteredCodes = cardCodes.filter(c => coordinates[c] && lore[c]);
+
+      const map = L.map('map').setView([20, 0], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      const points = [];
+      const markers = [];
+      const seenCoords = new Set();
+
+      const stagingLat = 85;
+      let stagingLng = -180;
+      const spacing = 10;
+
+      for (const code of filteredCodes) {
+        const coord = coordinates[code];
+        const card = lore[code];
+        const codeLower = code.toLowerCase();
+
+        let lat = coord.lat;
+        let lng = coord.lng;
+        const coordKey = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+        if (seenCoords.has(coordKey)) {
+          const offset = (Math.random() - 0.5) * 0.02;
+          lat += offset;
+          lng += offset;
+        }
+        seenCoords.add(coordKey);
+        points.push([lat, lng]);
+
+        const icon = L.icon({ iconUrl: `thumbnails/${codeLower}.png`, iconSize:[50,75], iconAnchor:[25,75] });
+        const marker = L.marker([stagingLat, stagingLng], { icon }).addTo(map);
+        markers.push(marker);
+
+        const type = getCardType(code);
+        const back = type === 'f8' ? 'f8_back.png'
+                   : type === 'location' ? `${codeLower}_back.png`
+                   : type === 'melody' ? 'melody_back.png'
+                   : 'back.png';
+
+        const popup = `
+          <div class="popup-container">
+            <div class="flip-card flipped">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="${codeLower}.png" alt="${code}"/>
+                </div>
+                <div class="flip-card-back">
+                  <img src="${back}" onerror="this.onerror=null;this.src='back.png'"/>
+                </div>
+              </div>
+            </div>
+            <div class="popup-text">
+              <strong>${code.replace(/_/g, ' ')}</strong>
+              <em>${card.story}</em>
+              <ul>${(card.effects || []).map(e => `<li>${e}</li>`).join('')}</ul>
+            </div>
+          </div>`;
+
+        marker.bindPopup(popup);
+        marker.on('popupopen', () => {
+          const el = marker.getPopup().getElement();
+          const fc = el.querySelector('.flip-card');
+          setTimeout(() => fc.classList.remove('flipped'), 2000);
+          fc.addEventListener('click', () => fc.classList.toggle('flipped'));
+        });
+        stagingLng += spacing;
+      }
+
+      document.getElementById("start-btn").addEventListener("click", () => {
+        document.getElementById("overlay").style.display = "none";
+
+        if (points.length > 1) {
+          const bounds = L.latLngBounds(points);
+          const center = bounds.getCenter();
+          const tightZoom = points.every(([lat, lng]) =>
+            Math.abs(lat - center.lat) < 1 && Math.abs(lng - center.lng) < 1
+          );
+          map.fitBounds(bounds, { maxZoom: tightZoom ? 9 : 4 });
+
+          let path = [];
+          const ping = document.getElementById("ping");
+
+          const drawSegment = (i) => {
+            if (i >= markers.length) return;
+            markers[i].setLatLng(points[i]);
+            if (i > 0) {
+              const seg = L.polyline([points[i - 1], points[i]], {
+                color: 'purple',
+                weight: 4,
+                className: 'route-line'
+              }).addTo(map);
+              ping.currentTime = 0;
+              ping.play();
+            }
+            setTimeout(() => drawSegment(i + 1), 2000);
+          };
+
+          drawSegment(0);
+        }
+      });
+    })();
+</script>
+</body>
+</html>

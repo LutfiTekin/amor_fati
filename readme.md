@@ -2,7 +2,7 @@
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.8-blue.svg)](https://kotlinlang.org) [![Jetpack%20Compose](https://img.shields.io/badge/Jetpack%20Compose-Material3-green.svg)](https://developer.android.com/jetpack/compose) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**AmorFati** is a Kotlin-based Android app built with Jetpack Compose (Material 3) for crafting and emailing customized Tarot readings. It supports both phone and tablet layouts, dynamic JSON templates, animated card interactions, image uploads, and integrates with SendGrid for email delivery.
+**AmorFati** is a Kotlin-based Android app built with Jetpack Compose (Material 3) for crafting and emailing customized Tarot readings.
 
 ---
 
